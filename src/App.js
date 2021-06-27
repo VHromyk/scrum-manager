@@ -3,8 +3,7 @@ import AddButton from './components/AddButton';
 function App() {
   return (
     <div>
-      {/* <AddButton /> */}
-      <p>Let's go!!!</p>
+      <AddButton />
     </div>
   );
 }

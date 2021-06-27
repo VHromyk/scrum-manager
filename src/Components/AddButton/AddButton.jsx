@@ -1,6 +1,6 @@
 import React from 'react';
 import SvgComponent from '../SvgComponent';
-import styles from './AddButton.module.css';
+import styles from './AddButton.module.scss';
 
 const AddButton = () => (
   <button className={styles.button}>

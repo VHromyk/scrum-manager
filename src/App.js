@@ -1,4 +1,5 @@
 import AddButton from './components/AddButton';
+import ModalProjects from './components/ModalProjects';
 import Header from './components/Header';
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div>
       <Header />
       <AddButton />
+      {/* <ModalProjects /> */}
     </div>
   );
 }

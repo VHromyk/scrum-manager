@@ -1,0 +1,75 @@
+.form {
+  padding: 121px 51px 225px 50px;
+  margin: 0px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.modal {
+  top: 0px;
+  right: 0px;
+  width: 530px;
+  position: absolute;
+  background-color: #fff;
+  height: 100%;
+}
+.input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  width: 429px;
+  height: 55px;
+  margin-bottom: 50px;
+}
+
+.input2 {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  width: 429px;
+  height: 80px;
+  margin-bottom: 60px;
+}
+.title {
+  margin-bottom: 25px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button1 {
+  width: 148px;
+  background-color: #ff6b08;
+  border-radius: 25px;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+  align-items: center;
+  padding: 11px 44px;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+}
+.button2 {
+  width: 154px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.buttonSvg {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.buttonContainer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  //   width: 17px;
+  //   height: 17px;
+}
+// .buttonSvg svg {
+//     top: 50%;
+//     left: 50%;
+//     width: 17px;
+//     height: 17px;
+
+// }

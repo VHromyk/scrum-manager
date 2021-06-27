@@ -3,8 +3,9 @@
 @import './shared.scss';
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: $page-bcg-color;
+  font-family: 'Montserrat', sans-serif;
+  background-color: $page-bcg-color;
+  box-sizing: border-box;
 }
 ul {
   list-style: none;
@@ -19,4 +20,7 @@ p {
 h1,
 h2 {
   margin: 0;
+}
+a {
+  text-decoration: none;
 }

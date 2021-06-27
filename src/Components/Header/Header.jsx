@@ -1,17 +1,12 @@
-import React from 'react';
-import styles from './Header.module.scss'
 import SvgComponent from '../SvgComponent';
-
+import styles from './Header.module.scss';
 
 const Header = () => (
-    <div className={styles.header}>
-        <a href="/" className={styles.logo}>
-            <SvgComponent name='logo'
-                height={styles.logo}
-                width={styles.logo}/>
-        </a>
-    </div>
-)
-
+  <div className={styles.header}>
+    <a href="/" className={styles.logoLink}>
+      <SvgComponent name="logo" classes={styles.logo} />
+    </a>
+  </div>
+);
 
 export default Header;

@@ -1,17 +1,21 @@
-import React from 'react';
-import Icons from '../../images/sprite.svg'; // Path to your icons.svg
 import PropTypes from 'prop-types';
-import styles from './SvgComponent.module.scss';
+import Icons from '../../images/sprite.svg'; // Path to your icons.svg
 
-const SvgComponent = ({ name, width, height }) => (
-  <svg className={styles.name} width={width} height={height}>
-    <use xlinkHref={`${Icons}#icon-${name} `} />
-  </svg>
-);
+const SvgComponent = ({ name, classes }) => {
+  return (
+    <svg className={classes}>
+      <use xlinkHref={`${Icons}#${name}`} />
+    </svg>
+  );
+};
+
+SvgComponent.defaultProps = {
+  classes: '',
+};
 
 SvgComponent.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.number,
+  classes: PropTypes.string,
 };
 
 export default SvgComponent;

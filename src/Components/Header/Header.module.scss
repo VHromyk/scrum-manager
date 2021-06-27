@@ -1,0 +1,37 @@
+@import '../../styles/shared.scss';
+.header {
+    border: 1px solid $border-main-color;
+    background-color: $page-bcg-color;
+}
+.logo {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+.logo {
+    margin-top: 15px;
+    margin-left: 20px;
+    height: 30px;
+    width: 100px;
+}
+}
+@media (min-width: 768px) {
+.header {
+        height: 80px;
+    }
+    .logo {
+    margin-top: 19px;
+    margin-left: 40px;
+    height: 42px;
+    width: 140px;
+}
+}
+
+@media (min-width: 1280px) {
+.logo {
+    margin-left: 55px;
+}
+}

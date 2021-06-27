@@ -1,0 +1,9 @@
+.button {
+  background-color: transparent;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0px;
+  outline: none;
+  border: none;
+}

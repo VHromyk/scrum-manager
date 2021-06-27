@@ -1,9 +1,9 @@
-import AddButton from './Components/AddButton';
+import AddButton from './components/AddButton';
 
 function App() {
   return (
     <div>
-      {/* <AddButton /> */}
+      <AddButton />
       <p>Let's go!!!</p>
     </div>
   );

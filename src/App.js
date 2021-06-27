@@ -4,7 +4,6 @@ function App() {
   return (
     <div>
       <AddButton />
-      <p>Let's go!!!</p>
     </div>
   );
 }

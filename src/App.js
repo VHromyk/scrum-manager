@@ -1,5 +1,5 @@
-import AddButton from './Components/AddButton';
-import Header from './Components/Header';
+import AddButton from './components/AddButton';
+import Header from './components/Header';
 
 function App() {
   return (

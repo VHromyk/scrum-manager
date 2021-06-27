@@ -1,4 +1,4 @@
-import AddButton from './Components/AddButton';
+import AddButton from './components/AddButton';
 
 function App() {
   return (

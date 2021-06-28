@@ -2,7 +2,7 @@ import ProjectList from '../ProjectsList';
 import styles from './MainPage.module.scss';
 import AddButton from '../AddButton';
 
-const MainPage = ({ name, classes }) => {
+const MainPage = () => {
   return (
     <div className={styles.containerPage}>
       <div className={styles.containerTitle}>

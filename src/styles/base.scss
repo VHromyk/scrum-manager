@@ -5,6 +5,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: $page-bcg-color;
+  box-sizing: border-box;
 }
 
 ul {
@@ -21,3 +22,8 @@ h1,
 h2 {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
+

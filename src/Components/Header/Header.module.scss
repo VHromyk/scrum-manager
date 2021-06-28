@@ -1,23 +1,10 @@
 @import '../../styles/shared.scss';
 
-.header {
-  border: 1px solid $border-main-color;
-}
-
 .logoLink {
   display: block;
 }
 
 @media (max-width: 768px) {
-  .header {
-    height: 60px;
-  }
-
-  .logoLink {
-    margin-top: 15px;
-    margin-left: 20px;
-  }
-
   .logo {
     height: 30px;
     width: 100px;
@@ -25,23 +12,8 @@
 }
 
 @media (min-width: 768px) {
-  .header {
-    height: 80px;
-  }
-
-  .logoLink {
-    margin-top: 19px;
-    margin-left: 40px;
-  }
-
   .logo {
     height: 42px;
     width: 140px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .logoLink {
-    margin-left: 55px;
   }
 }

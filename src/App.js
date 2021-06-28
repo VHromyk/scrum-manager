@@ -1,13 +1,23 @@
 import AddButton from './components/AddButton';
+// import ModalProjects from './components/ModalProjects';
 import Header from './components/Header';
+import Container from './components/Container';
+import HeaderWrapper from './components/HeaderWrapper';
 import SvgComponent from './components/SvgComponent';
 import IconButton from './components/IconButton';
 import ModalProjects from './components/ModalProjects';
 import styles from './App.module.scss';
 
+
 function App() {
   return (
     <>
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+      <Container>
+        <AddButton />
+      </Container>
       <Header />
       <AddButton />
 

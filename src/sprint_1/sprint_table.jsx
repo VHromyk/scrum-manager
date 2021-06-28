@@ -1,29 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import IconButton from '../Components/IconButton/IconButton';
+import styles from './sprint_1.module.scss'
 
-const SprintTable = () => {
-    const deleteTask = ()=> {
-         dispatch(deteteTask(value, userToken, tasks));
-    }
+const SprintTable = ({sprintName}) => {
+    // const deleteTask = ()=> {
+    //      dispatch(deteteTask(value, userToken, tasks));
+    // }
   return (
     <>
       <ul className={styles.table_header}>
-        <li className={styles.table_colums}>Task</li>
+        <li className={styles.table_colums}>{sprintName}</li>
         <li className={styles.table_colums}>Sheduled hours</li>
         <li className={styles.table_colums}>Spent hour/day</li>
         <li className={styles.table_colums}>Hours spent</li>
           </ul>
-          <ul className={styles.table_filling}>
-          {newTask.map((task) => (
-              <li className={styles.table_row}><input className={styles.table_row_input}></input></li>
-              <li className={styles.table_row}></li>
-              <li className={styles.table_row}><input className={styles.table_row_input}></input></li>
-              <li className={styles.table_row}></li>
-              <button onClick={deleteTask}></button>
-          ))
-      }</ul>
+          {/* {newTask.map((task) => ( */}
+            <ul className={styles.table_filling}>
+              <li className={styles.sprintTitle} ><span >Sprint Name</span></li>
+              <li className={styles.table_row}><span className={styles.table_row_text}>Sheduled hours</span><span>5</span></li>
+              <li className={styles.table_row}><span className={styles.table_row_text}>Spent hour/day</span><input className={styles.table_row_input}></input></li>
+              <li className={styles.table_row}><span className={styles.table_row_text}>Hours spent</span><span>5</span></li>
+             <IconButton classes={styles.deleteSprintBtn} aria-label="delete sprint button"/>
+             </ul>
+          {/* )) */}
+      {/* } */}
     </>
   );
 };
 
-module.exports = SprintTable;
+export default SprintTable;

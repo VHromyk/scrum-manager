@@ -1,12 +1,35 @@
-import AddButton from './components/AddButton';
-import Sprint from './sprint_1/sprint_1';
+
+// import Sprint from './sprint_1/sprint_1';
+
+
+import HeaderWrapper from './Components/HeaderWrapper';
+import Header from './Components/Header';
+import Container from './Components/Container';
+import Icons from './Components/Icons';
+import SprintCard from './Components/SprintCard';
+import MainPage from './Components/MainPage';
+import ModalProjects from './Components/ModalProjects';
 
 function App() {
   return (
-    <div>
-      <Sprint/>
-      <AddButton />
-    </div>
+    <>
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+
+      {/* <Container>
+        <Icons />
+      </Container>
+      </Container> */}
+
+      <Container>
+        <MainPage />
+      </Container>
+
+      {/* <ModalProjects /> */}
+       {/* <Sprint/>  */}
+    </>
+
   );
 }
 

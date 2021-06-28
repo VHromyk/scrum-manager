@@ -3,7 +3,7 @@
 .SprintCard {
   position: relative;
   background: $text-dark-theme-color;
-  box-shadow: $box-shadow;
+  box-shadow: $light-theme-box-shadow;
   border-radius: 5px;
 }
 
@@ -48,19 +48,20 @@
   }
 }
 
-.Btn {
+.deleteSprintBtn {
   position: absolute;
   bottom: 10px;
   right: 10px;
   background: transparent;
-  border: none;
-  outline: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  &:hover {
-    cursor: pointer;
-  }
+}
+
+.deleteSprintIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
 }
 
 @media screen and (max-width: 767px) {

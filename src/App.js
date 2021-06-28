@@ -1,10 +1,10 @@
-import HeaderWrapper from './Components/HeaderWrapper';
-import Header from './Components/Header';
-import Container from './Components/Container';
-import Icons from './Components/Icons';
-import SprintCard from './Components/SprintCard';
-import MainPage from './Components/MainPage';
-import ModalProjects from './Components/ModalProjects';
+import HeaderWrapper from './components/HeaderWrapper';
+import Header from './components/Header';
+import Container from './components/Container';
+import Icons from './components/Icons';
+import SprintCard from './components/SprintCard';
+import MainPage from './components/MainPage';
+import ModalProjects from './components/ModalProjects';
 
 function App() {
   return (

@@ -22,25 +22,33 @@ function LoginPage() {
   return (
     <Section>
       <Form onSubmit={handleSubmit}>
-        <h1>Enter</h1>
-        <div className={s.input}>
-          <label for="email">E-mail</label>
+        <h1 className={s.title}>Enter</h1>
+        <div className={s.inputReg}>
+          <label for="email" className={s.label}>
+            E-mail
+          </label>
           <input
             type="email"
             name="email"
             value={email}
             id="email"
+            className={s.input}
             onChange={handleChangeEmail}
           />
         </div>
-        <label for="password1">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          id="password1"
-          onChange={handleChangePassword}
-        />
+        <div className={s.inputReg}>
+          <label for="password1" className={s.label}>
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            id="password1"
+            className={s.input}
+            onChange={handleChangePassword}
+          />
+        </div>
         <Button type="submit" text="Enter" />
         <p>
           No account?

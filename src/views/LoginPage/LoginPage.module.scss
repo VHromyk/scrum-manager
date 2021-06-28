@@ -1,12 +1,2 @@
 @import '../../styles/shared.scss';
-
-.input {
-  border: 0;
-  margin: 0;
-  display: inline-flex;
-  padding: 0;
-  position: relative;
-  min-width: 0;
-  flex-direction: column;
-  vertical-align: top;
-}
+@import '../RegisterPage/RegisterPage.module.scss';

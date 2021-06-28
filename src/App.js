@@ -1,8 +1,10 @@
-import HeaderWrapper from './components/HeaderWrapper';
-import Header from './components/Header';
-import Container from './components/Container';
-import Icons from './components/Icons';
-import ModalProjects from './components/ModalProjects';
+import HeaderWrapper from './Components/HeaderWrapper';
+import Header from './Components/Header';
+import Container from './Components/Container';
+import Icons from './Components/Icons';
+import SprintCard from './Components/SprintCard';
+import ProjectList from './Components/ProjectsList';
+import ModalProjects from './Components/ModalProjects';
 
 function App() {
   return (
@@ -10,9 +12,14 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <Container>
+
+      {/* <Container>
         <Icons />
-      </Container>
+      </Container> */}
+      {/* 
+      <Container>
+        <ProjectList />
+      </Container> */}
 
       {/* <ModalProjects /> */}
     </>

@@ -1,0 +1,63 @@
+@import '../../styles/shared.scss';
+
+.projectName {
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 6px;
+
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.25; // line-height/font-size
+}
+
+.projectDescription {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // opacity: 0;
+}
+
+.deleteProjectBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  background-color: transparent;
+}
+
+.deleteProjectIcon {
+  width: 30px;
+  height: 30px;
+  fill: $icon-dark-theme-bcg-color;
+}
+
+@media screen and(min-width: 768px) {
+  .projectName {
+    margin-bottom: 10px;
+
+    font-size: 26px;
+    line-height: 1.23;
+  }
+
+  .projectDescription {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+
+  .deleteProjectIcon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media screen and(min-width: 1280px) {
+  .projectName {
+    margin-bottom: 20px;
+  }
+}

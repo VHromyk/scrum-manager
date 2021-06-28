@@ -15,6 +15,7 @@ function App() {
 
       {/* <Container>
         <Icons />
+      </Container>
       </Container> */}
       {/* 
       <Container>

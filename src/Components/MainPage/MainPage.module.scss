@@ -17,11 +17,11 @@
     margin-right: 30px;
   }
 }
+.buttonName {
+  display: none;
+}
 
 @media (min-width: 320px) {
-  .buttonName {
-    display: none;
-  }
   .containerButton {
     position: absolute;
     right: 0px;
@@ -50,7 +50,7 @@
   }
   .containerPage {
     padding-top: 40px;
-    padding-bottom: 0px;
+    padding-bottom: 40px;
   }
   .containerTitle {
     margin-bottom: 30px;

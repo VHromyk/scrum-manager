@@ -45,9 +45,6 @@ const RegisterPage = () => {
       <Form onSubmit={handleSubmit}>
         <h1 className={s.title}>Registration</h1>
         <div className={s.inputReg}>
-          <label for="email" className={s.label}>
-            E-mail
-          </label>
           <input
             id="email"
             type="email"
@@ -55,12 +52,12 @@ const RegisterPage = () => {
             value={email}
             className={s.input}
             onChange={handleChange}
-          ></input>
+          />
+          <label for="email" className={s.label}>
+            E-mail
+          </label>
         </div>
         <div className={s.inputReg}>
-          <label for="password1" className={s.label}>
-            Password
-          </label>
           <input
             id="password1"
             type="password"
@@ -69,22 +66,25 @@ const RegisterPage = () => {
             value={password}
             className={s.input}
             onChange={handleChange}
-          ></input>
+          />
+          <label for="password1" className={s.label}>
+            Password
+          </label>
         </div>
         <div className={s.inputReg}>
-          <label for="repeatPass" className={s.label}>
-            Repeate password
-          </label>
           <input
             id="repeatPass"
             type="password"
             className={s.input}
             minlength="5"
             name="repeatPass"
-          ></input>
+          />
+          <label for="repeatPass" className={s.label}>
+            Repeate password
+          </label>
         </div>
         <Button type="submit" text="Register" />
-        <p>
+        <p className={s.linkTo}>
           Do you have an account?
           <a className={s.linkTologin} href="/login">
             Log in

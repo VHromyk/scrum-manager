@@ -49,16 +49,23 @@
 }
 
 .label {
+  color: $text-light-theme-color;
   top: 0;
   left: 0;
   font-size: 18px;
+  font-weight: 400;
   position: absolute;
   .input:focus + & {
-    transform: translate(-50%, -230%) scale(1);
-    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-      transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transform: translate(0%, -170%);
+    font-size: 12px;
   }
   @media screen and (max-width: 767px) {
     font-size: 16px;
   }
+}
+
+.linkTo {
+  color: $text-light-theme-color;
+  font-size: 12px;
+  font-weight: 400;
 }

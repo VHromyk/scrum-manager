@@ -1,0 +1,19 @@
+@import '../../styles/shared.scss';
+
+.wrapper {
+  border-bottom: 1px solid $border-main-color;
+  height: 60px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding-top: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    height: 80px;
+    padding-top: 19px;
+  }
+}

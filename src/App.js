@@ -13,8 +13,6 @@ function App() {
       <Container>
         <Icons />
       </Container>
-
-      {/* <ModalProjects /> */}
     </>
   );
 }

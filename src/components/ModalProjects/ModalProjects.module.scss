@@ -1,0 +1,169 @@
+@import '../../styles/shared.scss';
+
+.form {
+  position: absolute;
+  height: 100%;
+  background-color: $components-bcg-color;
+}
+
+.title {
+  margin-bottom: 50px;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.22;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.input {
+  // width: 429px;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 50px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid $input-field-border-color;
+  &::placeholder {
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+    color: $text-light-theme-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
+  }
+}
+
+.input:invalid:after {
+  display: inline-block;
+  padding-left: 10px;
+  content: '\2713';
+}
+
+.textarea {
+  // width: 429px;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 60px;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid $input-field-border-color;
+  &::placeholder {
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+    color: $text-light-theme-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button1 {
+  align-items: center;
+  width: 148px;
+  margin-bottom: 20px;
+  padding: 11px 44px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  background-color: $accent-color;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  box-shadow: $dark-theme-box-shadow;
+  color: $text-dark-theme-color;
+  cursor: pointer;
+}
+.button1:hover {
+  box-shadow: none;
+  background-color: $text-main-color;
+}
+
+.button2 {
+  width: 154px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  color: $text-light-theme-color;
+  cursor: pointer;
+}
+.button2:hover {
+  color: $text-main-color;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  fill: $icon-without-bgc-color;
+  cursor: pointer;
+}
+
+@media (min-width: 320px) {
+  .form {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 63px 20px 0px 20px;
+    width: 320px;
+    height: 100%;
+    background-color: $components-bcg-color;
+  }
+}
+@media screen and (min-width: 768px) {
+  .form {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: auto;
+    transform: none;
+    transform: translate(0, 0);
+
+    padding: 121px 51px 0px 32px;
+    width: 512px;
+    height: 100%;
+    background-color: $components-bcg-color;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 121px 51px 0px 50px;
+    margin: 0px;
+    width: 530px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: $components-bcg-color;
+  }
+}
+// .helper {
+//   margin-top: -50px;
+//   color: #ff001b;
+//   font-size: px;
+//   line-height: 1, 17;
+// }

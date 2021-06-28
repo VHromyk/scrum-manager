@@ -1,0 +1,15 @@
+@import '../../styles/shared.scss';
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0px;
+  padding: 0px;
+  font: inherit;
+  cursor: pointer;
+
+  border: none;
+  outline: none;
+}

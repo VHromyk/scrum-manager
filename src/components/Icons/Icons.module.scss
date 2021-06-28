@@ -1,0 +1,157 @@
+@import '../../styles/shared.scss';
+
+// Іконка додати людей
+.addPeopleBtn {
+  background-color: transparent;
+}
+
+.addPeopleIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-without-bgc-color;
+}
+
+// Кнопка з діаграмою
+.analyticsBtn {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  background-color: $accent-color;
+}
+
+.analyticsIcon {
+  width: 22px;
+  height: 22px;
+  fill: $icon-dark-theme-color;
+}
+
+// Кнопка у вигляді стрілочки (показати проекти)
+.arrowBtn {
+  background-color: transparent;
+}
+
+.arrowIcon {
+  width: 30px;
+  height: 10px;
+  fill: $icon-without-bgc-color;
+}
+
+// Кнопка у вигляді кружечка (Попередні дні на формі створення спринта)
+.circleBtn {
+  width: 34px;
+  height: 34px;
+
+  background-color: transparent;
+  border: 1px solid $icon-circle-border-color;
+  border-radius: 50%;
+}
+
+.circleIcon {
+  width: 16px;
+  height: 16px;
+  fill: $accent-color;
+}
+
+// Кнопка закрити вікно створення спринта/задачі/додавання людей
+.closeBtn {
+  background-color: transparent;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  fill: $icon-without-bgc-color;
+}
+
+// Кнопка видалити проект (корзинка)
+.deleteProjectBtn {
+  background-color: transparent;
+}
+
+.deleteProjectIcon {
+  width: 30px;
+  height: 30px;
+  fill: $icon-dark-theme-bcg-color;
+}
+
+@media screen and(min-width: 768px) {
+  .deleteProjectIcon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+// Кнопки видалити спринт (корзинка) та змінити назву проекту/спринта
+.deleteSprintBtn,
+.projectBtn {
+  background-color: transparent;
+}
+
+.deleteSprintIcon,
+.projectIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
+}
+
+// Маленькі стрілки вліво та вправо
+.arrowLeftBtn,
+.arrowRightBtn {
+  background-color: transparent;
+}
+
+.arrowLeftIcon,
+.arrowRightIcon {
+  width: 8px;
+  height: 12px;
+  fill: $icon-without-bgc-color;
+}
+
+// Показати/сховати календар (стрілки вверх та вниз)
+.arrowUpBtn,
+.arrowDownBtn {
+  background-color: transparent;
+}
+
+.arrowUpIcon,
+.arrowDownIcon {
+  width: 12px;
+  height: 10px;
+  fill: $icon-light-theme-color;
+}
+
+// Кнопка logout
+.logoutBtn {
+  background-color: transparent;
+}
+
+.logoutIcon {
+  width: 18px;
+  height: 18px;
+  fill: $icon-without-bgc-color;
+}
+
+@media screen and(max-width: 767px) {
+  .logoutBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $icon-light-theme-bcg-color;
+  }
+
+  .logoutIcon {
+    fill: $page-bcg-color;
+  }
+}
+
+// Кнопка пошуку завдання (лупа)
+.searchBtn {
+  background-color: transparent;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-color;
+}

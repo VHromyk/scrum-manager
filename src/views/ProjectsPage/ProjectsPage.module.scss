@@ -2,6 +2,10 @@
 .containerTitle {
   display: flex;
   justify-content: space-between;
+  h1 {
+    font-weight: 500;
+    font-size: 26px;
+  }
 }
 .containerButton {
   display: flex;
@@ -36,8 +40,6 @@
   .containerTitle {
     margin-bottom: 36px;
     h1 {
-      font-weight: 500;
-      font-size: 26px;
       line-height: 1.23;
       letter-spacing: 0.04em;
       color: $text-main-color;

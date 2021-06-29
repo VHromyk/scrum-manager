@@ -1,28 +1,64 @@
-import RegisterPage from './views/RegisterPage';
-import LoginPage from './views/LoginPage';
-
+import React, { useEffect, Suspense, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch, Redirect } from 'react-router-dom';
+import { authOperations } from './redux/auth';
+import Spinner from './components/Spinner';
 import HeaderWrapper from './components/HeaderWrapper';
 import Header from './components/Header';
-import Container from './components/Container';
-import Icons from './components/Icons';
-import SprintCard from './components/SprintCard';
-import MainPage from './components/MainPage';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import routes from './routes';
+
+// const RegisterPage = lazy(() =>
+//   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
+// );
+
+// const LoginPage = lazy(() =>
+//   import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
+// );
+
+// const ProjectsPage = lazy(() =>
+//   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
+// );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
 
-      {/* <Container>
-        <Icons />
-      </Container>
-      </Container> */}
+      {/* <Suspense fallback={<Spinner />}>
+        <Switch>
+          <PublicRoute
+            path={routes.signup}
+            restricted
+            redirectTo={routes.projects}
+          >
+            <RegisterPage />
+          </PublicRoute>
 
-      <Container>
-        <MainPage />
-      </Container>
+          <PublicRoute
+            path={routes.login}
+            restricted
+            redirectTo={routes.projects}
+          >
+            <LoginPage />
+          </PublicRoute>
+
+          <PrivateRoute path={routes.projects} redirectTo={routes.signup}>
+            <ProjectsPage />
+          </PrivateRoute>
+
+          <Redirect to={routes.signup} />
+        </Switch>
+      </Suspense> */}
     </>
   );
 }

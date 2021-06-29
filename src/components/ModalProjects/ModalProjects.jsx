@@ -40,8 +40,9 @@ function ModalProjects({ onClick }) {
       setValidText('valid');
     }
   };
+
   return (
-    <ModalBackdrop>
+    <ModalBackdrop onClose={onClick}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Сreating a project</h2>
         <div className={styles.containerInput1}>
@@ -50,7 +51,6 @@ function ModalProjects({ onClick }) {
             type="text"
             name="project-name"
             placeholder="Project name"
-            type="text"
             value={name}
             onChange={handleInputChange}
             autoComplete="off"
@@ -79,11 +79,13 @@ function ModalProjects({ onClick }) {
           <button className={styles.button1} type="submit">
             Ready
           </button>
-          <button className={styles.button2}>Cancel</button>
+          <button className={styles.button2} onClick={onClick}>
+            Cancel
+          </button>
         </div>
         <IconButton
           classes={styles.closeBtn}
-          aria-label="add people button"
+          aria-label="close window"
           onClick={onClick}
         >
           <SvgComponent name="close" classes={styles.closeIcon} />

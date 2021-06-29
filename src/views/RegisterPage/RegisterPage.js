@@ -32,6 +32,7 @@ const RegisterPage = () => {
     e.preventDefault();
     if (password === repeatPass) {
       // onRegister({ email, password });
+      localStorage.setItem('auth', JSON.stringify({ email, password }));
     } else if (password !== repeatPass) {
       setPassword('');
       setRepeatPass('');
@@ -39,6 +40,7 @@ const RegisterPage = () => {
 
     setEmail('');
     setPassword('');
+    setRepeatPass('');
   };
   return (
     <Section>

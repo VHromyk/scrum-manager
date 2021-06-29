@@ -4,7 +4,7 @@ import Container from './Components/Container';
 import Icons from './Components/Icons';
 import SprintCard from './Components/SprintCard';
 import MainPage from './Components/MainPage';
-import ModalProjects from './Components/ModalProjects';
+import TaskModal from './Components/TaskModal';
 
 function App() {
   return (
@@ -21,8 +21,6 @@ function App() {
       <Container>
         <MainPage />
       </Container>
-
-      {/* <ModalProjects /> */}
     </>
   );
 }

@@ -12,7 +12,7 @@
   width: 429px;
   border: 0;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 57px;
   display: inline-flex;
   padding: 0;
   position: relative;
@@ -55,10 +55,12 @@
   font-size: 18px;
   font-weight: 400;
   position: absolute;
-  .input:focus + & {
+  .input:focus + &,
+  .input:not(:placeholder-shown) + & {
     transform: translate(0%, -170%);
     font-size: 12px;
   }
+
   @media screen and (max-width: 767px) {
     font-size: 16px;
   }
@@ -68,4 +70,5 @@
   color: $text-light-theme-color;
   font-size: 12px;
   font-weight: 400;
+  margin-top: 17px;
 }

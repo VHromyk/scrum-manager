@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
 import Form from '../../components/Form';
-import s from './RegisterPage.module.scss';
+import localStorageService from '../../utils/localStorage/service';
+import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
@@ -32,7 +33,8 @@ const RegisterPage = () => {
     e.preventDefault();
     if (password === repeatPass) {
       // onRegister({ email, password });
-      localStorage.setItem('auth', JSON.stringify({ email, password }));
+
+      localStorageService.saveIn('auth', { email });
     } else if (password !== repeatPass) {
       setPassword('');
       setRepeatPass('');
@@ -45,50 +47,58 @@ const RegisterPage = () => {
   return (
     <Section>
       <Form onSubmit={handleSubmit}>
-        <h1 className={s.title}>Registration</h1>
-        <div className={s.inputReg}>
+        <h1 className={styles.title}>Registration</h1>
+        <div className={styles.inputReg}>
           <input
             id="email"
             type="email"
             name="email"
+            placeholder=" "
             value={email}
-            className={s.input}
+            className={styles.input}
             onChange={handleChange}
+            required
           />
-          <label for="email" className={s.label}>
+          <label htmlFor="email" className={styles.label}>
             E-mail
           </label>
         </div>
-        <div className={s.inputReg}>
+        <div className={styles.inputReg}>
           <input
             id="password1"
             type="password"
-            minlength="5"
+            minLength="5"
             name="password"
+            placeholder=" "
             value={password}
-            className={s.input}
+            className={styles.input}
             onChange={handleChange}
+            required
           />
-          <label for="password1" className={s.label}>
+          <label htmlFor="password1" className={styles.label}>
             Password
           </label>
         </div>
-        <div className={s.inputReg}>
+        <div className={styles.inputReg}>
           <input
             id="repeatPass"
             type="password"
-            className={s.input}
-            minlength="5"
+            placeholder=" "
+            className={styles.input}
+            minLength="5"
             name="repeatPass"
+            value={repeatPass}
+            onChange={handleChange}
+            required
           />
-          <label for="repeatPass" className={s.label}>
+          <label htmlFor="repeatPass" className={styles.label}>
             Repeate password
           </label>
         </div>
         <Button type="submit" text="Register" />
-        <p className={s.linkTo}>
+        <p className={styles.linkTo}>
           Do you have an account?
-          <a className={s.linkTologin} href="/login">
+          <a className={styles.linkTologin} href="/login">
             Log in
           </a>
         </p>

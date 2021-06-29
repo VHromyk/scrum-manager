@@ -13,12 +13,12 @@
   height: 538px;
   background: #fafafa;
   border-radius: 5px;
-  box-shadow: $box-shadow;
+  box-shadow: $light-theme-box-shadow;
 }
 
 @media screen and (max-width: 767px) {
   .registerForm {
-    top: 60px;
+    // top: 60px;
     padding: 47px 20px 166px;
     width: 320px;
     height: 508px;
@@ -26,8 +26,8 @@
   }
 }
 
-@media screen and (max-width: 1170px) {
-  .registerForm {
-    top: 30%;
-  }
-}
+// @media screen and (max-width: 1170px) {
+//   .registerForm {
+//     top: 30%;
+//   }
+// }

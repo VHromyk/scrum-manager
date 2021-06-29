@@ -2,16 +2,22 @@
 
 .section {
   position: relative;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   background-image: none;
   background-repeat: no-repeat;
-  background-color: $page-bcg-color;
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    background-image: none;
+  }
 }
 
 @media screen and (min-width: 1170px) {
   .section {
-    max-width: 1170px;
-    height: 768px;
+    // height: 767px;
     background-image: url('./../../images/desktop/union-orange-desktop.png'),
       url('../../images/desktop/small-ellipse-desktop.png'),
       url('../../images/desktop/small-white-ellipse-desktop.png'),
@@ -38,16 +44,9 @@
   }
 }
 
-@media screen and (max-width: 767px) {
-  .section {
-    height: 508px;
-  }
-}
-
 @media screen and (max-width: 1170px) {
   .section {
-    max-width: 767px;
-    height: 1024px;
+    // height: 1024px;
     background-repeat: no-repeat;
     background-image: url('./../../images/tablet/union-orange-tablet.png'),
       url('../../images/tablet/small-ellipse-tablet.png'),
@@ -89,7 +88,7 @@
     width: 179px;
     height: 252px;
     left: 0px;
-    bottom: 246px;
+    bottom: 198px;
   }
   @media screen and (max-width: 767px) {
     display: none;

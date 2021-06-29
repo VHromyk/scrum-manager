@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+@import './shared.scss';
+
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: $page-bcg-color;
+  box-sizing: border-box;
 }
+
 ul {
   list-style: none;
   margin: 0;
@@ -17,3 +22,8 @@ h1,
 h2 {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
+

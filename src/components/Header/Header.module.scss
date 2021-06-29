@@ -1,0 +1,19 @@
+@import '../../styles/shared.scss';
+
+.logoLink {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 30px;
+    width: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    height: 42px;
+    width: 140px;
+  }
+}

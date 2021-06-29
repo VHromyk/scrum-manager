@@ -1,13 +1,34 @@
+
 import RegisterPage from './views/RegisterPage';
 import LoginPage from './views/LoginPage';
+import HeaderWrapper from './components/HeaderWrapper';
+import Header from './components/Header';
+import Container from './components/Container';
+import Icons from './components/Icons';
+import SprintCard from './components/SprintCard';
+import MainPage from './components/MainPage';
+import ModalProjects from './components/ModalProjects';
 
-const App = () => {
+function App() {
   return (
     <>
-      <RegisterPage />
-      {/* <LoginPage /> */}
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+
+      {/* <Container>
+        <Icons />
+      </Container>
+      </Container> */}
+
+      <Container>
+        <MainPage />
+      </Container>
+
+      {/* <ModalProjects /> */}
     </>
   );
-};
+}
+
 
 export default App;

@@ -1,0 +1,65 @@
+@import '../../styles/shared.scss';
+
+.userMenuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userEmail {
+  margin-right: 10px;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.21px;
+  letter-spacing: 0.04em;
+
+  color: $text-main-color;
+}
+
+.logoutBtn {
+  background-color: transparent;
+}
+
+.logoutIcon {
+  width: 18px;
+  height: 18px;
+}
+
+@media screen and(min-width: 480px) {
+  .userEmail {
+    margin-right: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .logoutBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $icon-light-theme-bcg-color;
+  }
+
+  .logoutIcon {
+    fill: $page-bcg-color;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .userEmail {
+    margin-right: 77px;
+  }
+
+  .logoutIcon {
+    margin-right: 10px;
+    fill: $icon-light-theme-color;
+  }
+
+  .logoutText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    color: $text-light-theme-color;
+  }
+}

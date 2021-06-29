@@ -57,7 +57,6 @@ function TaskModal() {
             type="text"
             name="task-name"
             placeholder="Task name"
-            type="text"
             value={nameTask}
             onChange={handleInputChange}
             autoComplete="off"

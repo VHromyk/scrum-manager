@@ -14,16 +14,15 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <RegisterPage />
 
       {/* <Container>
         <Icons />
       </Container>
       </Container> */}
 
-      {/* <Container>
+      <Container>
         <MainPage />
-      </Container> */}
+      </Container>
 
       {/* <ModalProjects /> */}
     </>

@@ -1,3 +1,6 @@
+
+import RegisterPage from './views/RegisterPage';
+import LoginPage from './views/LoginPage';
 import HeaderWrapper from './components/HeaderWrapper';
 import Header from './components/Header';
 import Container from './components/Container';
@@ -26,5 +29,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;

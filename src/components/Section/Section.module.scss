@@ -1,0 +1,97 @@
+@import '../../styles/shared.scss';
+
+.section {
+  position: relative;
+  margin: 0 auto;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-color: $page-bcg-color;
+}
+
+@media screen and (min-width: 1170px) {
+  .section {
+    max-width: 1170px;
+    height: 768px;
+    background-image: url('./../../images/desktop/union-orange-desktop.png'),
+      url('../../images/desktop/small-ellipse-desktop.png'),
+      url('../../images/desktop/small-white-ellipse-desktop.png'),
+      url('../../images/desktop/union-white-desktop.png'),
+      url('../../images/desktop/white-ellipse-desktop.png'),
+      url('../../images/desktop/exstra-small-ellipse-desktop.png'),
+      url('../../images/desktop/half-ellipse-desktop.png');
+    background-size: 542px, 78px, 48px, 603px, 118px, 26px, 298px;
+    background-position: top 233px right 0px, top 103px left 877px,
+      top 230px left 240px, top 199px right 0px, top 367px left 111px,
+      top 129px left 1055px, bottom 0px left 145px;
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url('./../../images/desktop/union-orange-desktop@2x.png'),
+        url('../../images/desktop/small-ellipse-desktop@2x.png'),
+        url('../../images/desktop/small-white-ellipse-desktop@2x.png'),
+        url('../../images/desktop/union-white-desktop@2x.png'),
+        url('../../images/desktop/white-ellipse-desktop@2x.png'),
+        url('../../images/desktop/exstra-small-ellipse-desktop@2x.png'),
+        url('../../images/desktop/half-ellipse-desktop@2x.png');
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    height: 508px;
+  }
+}
+
+@media screen and (max-width: 1170px) {
+  .section {
+    max-width: 767px;
+    height: 1024px;
+    background-repeat: no-repeat;
+    background-image: url('./../../images/tablet/union-orange-tablet.png'),
+      url('../../images/tablet/small-ellipse-tablet.png'),
+      url('../../images/tablet/union-white-tablet.png'),
+      url('../../images/tablet/white-ellipse-tablet.png'),
+      url('../../images/tablet/half-ellipse-tablet.png');
+    background-size: 254px, 78px, 272px, 187px, 22px;
+    background-position: top 233px right 0px, top 113px right 69px,
+      top 209px right 0px, top 517px left 0px, top 250px left 0px;
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url('./../../images/tablet/union-orange-tablet@2x.png'),
+        url('./../../images/tablet/small-ellipse-tablet@2x.png'),
+        url('./../../images/tablet/union-white-tablet@2x.png'),
+        url('./../../images/tablet/white-ellipse-tablet@2x.png'),
+        url('./../../images/tablet/half-ellipse-tablet@2x.png');
+    }
+  }
+}
+
+.divForImg {
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+}
+
+.img {
+  position: absolute;
+  width: 252px;
+  height: 252px;
+  left: 183px;
+  pointer-events: none;
+  bottom: 0;
+  opacity: 0.9;
+  z-index: 1;
+  @media screen and (max-width: 1170px) {
+    width: 179px;
+    height: 252px;
+    left: 0px;
+    bottom: 246px;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}

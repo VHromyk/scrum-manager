@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Section from '../../components/Section';
 import Form from '../../components/Form';
 import Button from '../../components/Button';
-import s from './LoginPage.module.scss';
+import styles from './LoginPage.module.scss';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -22,9 +22,9 @@ function LoginPage() {
   return (
     <Section>
       <Form onSubmit={handleSubmit}>
-        <h1 className={s.title}>Enter</h1>
-        <div className={s.inputReg}>
-          <label for="email" className={s.label}>
+        <h1 className={styles.title}>Enter</h1>
+        <div className={styles.inputReg}>
+          <label htmlFor="email" className={styles.label}>
             E-mail
           </label>
           <input
@@ -32,27 +32,31 @@ function LoginPage() {
             name="email"
             value={email}
             id="email"
-            className={s.input}
+            placeholder=" "
+            className={styles.input}
             onChange={handleChangeEmail}
+            required
           />
         </div>
-        <div className={s.inputReg}>
-          <label for="password1" className={s.label}>
+        <div className={styles.inputReg}>
+          <label htmlFor="password1" className={styles.label}>
             Password
           </label>
           <input
             type="password"
             name="password"
             value={password}
+            placeholder=" "
             id="password1"
-            className={s.input}
+            className={styles.input}
             onChange={handleChangePassword}
+            required
           />
         </div>
         <Button type="submit" text="Enter" />
-        <p className={s.linkTo}>
+        <p className={styles.linkTo}>
           No account?
-          <a className={s.linkToRegister} href="/register">
+          <a className={styles.linkToRegister} href="/register">
             Register
           </a>
         </p>

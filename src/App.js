@@ -1,4 +1,3 @@
-
 import RegisterPage from './views/RegisterPage';
 import LoginPage from './views/LoginPage';
 import HeaderWrapper from './components/HeaderWrapper';
@@ -15,20 +14,20 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
+      <RegisterPage />
 
       {/* <Container>
         <Icons />
       </Container>
       </Container> */}
 
-      <Container>
+      {/* <Container>
         <MainPage />
-      </Container>
+      </Container> */}
 
       {/* <ModalProjects /> */}
     </>
   );
 }
-
 
 export default App;

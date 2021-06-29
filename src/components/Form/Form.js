@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function Form({ children, onSubmit }) {
   return (
-    <form className={s.registerForm} onSubmit={onSubmit} autocomplete="off">
+    <form className={s.registerForm} onSubmit={onSubmit} autoComplete="off">
       {children}
     </form>
   );

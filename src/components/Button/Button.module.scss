@@ -14,6 +14,6 @@
   font-size: 18px;
   line-height: 22px;
   color: $text-dark-theme-color;
-  transition: all 0.25s linear;
+  transition: all $transition-duration $timing-function;
   box-shadow: $dark-theme-box-shadow;
 }

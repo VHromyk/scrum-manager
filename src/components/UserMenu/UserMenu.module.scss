@@ -18,12 +18,15 @@
 }
 
 .logoutBtn {
-  background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
 }
 
 .logoutIcon {
   width: 18px;
   height: 18px;
+  fill: currentColor;
 }
 
 @media screen and(min-width: 480px) {
@@ -38,11 +41,16 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: $icon-light-theme-bcg-color;
-  }
 
-  .logoutIcon {
-    fill: $page-bcg-color;
+    color: $page-bcg-color;
+    background-color: $icon-light-theme-bcg-color;
+
+    &:hover,
+    &:focus {
+      color: $icon-dark-theme-color;
+      background-color: $accent-color;
+      box-shadow: $dark-theme-box-shadow;
+    }
   }
 }
 
@@ -51,15 +59,23 @@
     margin-right: 77px;
   }
 
+  .logoutBtn {
+    color: $icon-light-theme-color;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+    }
+  }
+
   .logoutIcon {
     margin-right: 10px;
-    fill: $icon-light-theme-color;
   }
 
   .logoutText {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.21;
-    color: $text-light-theme-color;
   }
 }

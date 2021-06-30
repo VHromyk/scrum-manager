@@ -8,6 +8,7 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
+import OneProjectPage from './views/OneProjectPage';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -33,7 +34,7 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-
+      <OneProjectPage />
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute

@@ -2,7 +2,7 @@ import axios from 'axios';
 import authActions from './auth-actions';
 // import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://'; // TODO вказати на коректний URL
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com'; // TODO вказати на коректний URL
 
 const token = {
   set(token) {

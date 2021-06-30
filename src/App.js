@@ -44,6 +44,7 @@ function App() {
           >
             <RegisterPage />
           </PublicRoute>
+
           <PublicRoute
             path={routes.login}
             restricted
@@ -51,13 +52,16 @@ function App() {
           >
             <LoginPage />
           </PublicRoute>
+
           <PrivateRoute path={routes.projects} redirectTo={routes.signup}>
             <ProjectsPage />
           </PrivateRoute>
+
           <Redirect to={routes.signup} />
         </Switch>
       </Suspense> */}
     </>
+
   );
 }
 

@@ -1,0 +1,150 @@
+@import '../../styles/shared.scss';
+
+.arrowBtn {
+  background-color: transparent;
+}
+
+.arrowIcon {
+  width: 30px;
+  height: 10px;
+  fill: $icon-without-bgc-color;
+}
+
+.asideArrow {
+  display: flex;
+  align-items: center;
+}
+.arrowTitle {
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 21px;
+  font-style: normal;
+  font-weight: normal;
+}
+.aside {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.line {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin-top: 10px;
+  border: none;
+  color: rgba(39, 24, 24, 0.1);
+  background-color: rgba(39, 24, 24, 0.1);
+  height: 1px;
+}
+@media screen and (min-width: 768px) {
+  .aside {
+    width: 216px;
+    // position: sticky;
+    // top: 0;
+    // height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    border-bottom: none;
+    border-right: 1px solid $border-main-color;
+  }
+  .line {
+    display: none;
+  }
+}
+.asideArrow {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media screen and (min-width: 1280px) {
+  .aside {
+    width: 200px;
+  }
+}
+.square {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  background-color: #8c72df;
+}
+.squareName {
+  display: flex;
+  align-items: center;
+  p {
+    margin-left: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.22;
+    width: 119px;
+  }
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: 170px;
+}
+
+.asideList {
+  min-height: 300px;
+}
+.asideListContainer {
+  .scroll::-webkit-scrollbar {
+    overflow: hidden;
+  }
+}
+.asideListContainer:hover {
+  .scroll::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .scroll::-webkit-scrollbar-track {
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    border-radius: 10px;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(
+      45deg,
+      $accent-color,
+      rgb(255, 250, 250) 49%,
+      $accent-color
+    );
+    background: $accent-color;
+  }
+}
+.scroll li:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.createButton {
+  text-align: center;
+}
+.createButtonText {
+  margin-top: 15px;
+}
+.asideListContainer {
+  display: none;
+}
+.createButton {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .asideListContainer {
+    display: block;
+    padding: 77px 0px 504px 0px;
+  }
+  .createButton {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .asideListContainer {
+    padding: 182px 0px 173px 0px;
+  }
+}

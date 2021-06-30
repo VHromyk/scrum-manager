@@ -1,6 +1,6 @@
 @import '../../styles/shared.scss';
 .container {
-  display: flex;
+  display: block;
 }
 
 // Кнопки видалити спринт (корзинка) та змінити назву проекту/спринта
@@ -65,12 +65,13 @@
 }
 .headerProject {
   width: 100%;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 40px;
 }
 
 @media (min-width: 320px) {
   .title {
+    margin-right: 20px;
     font-weight: 500;
     font-size: 26px;
     line-height: 1.23;
@@ -78,16 +79,15 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .sidebar {
-    width: 216px;
-    background-color: blue;
+  .container {
+    display: flex;
   }
+
   .headerProject {
     width: 100%;
     padding: 40px 40px 40px 20px;
   }
   .title {
-    margin-right: 20px;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
@@ -96,10 +96,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .sidebar {
-    width: 200px;
-    background-color: blue;
-  }
   .headerProject {
     width: 100%;
     padding: 40px 75px 44px 80px;

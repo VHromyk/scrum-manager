@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import OneProjectPage from './views/OneProjectPage';
+// import Diagram from './components/Diagram';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -61,7 +62,6 @@ function App() {
         </Switch>
       </Suspense> */}
     </>
-
   );
 }
 

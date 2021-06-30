@@ -4,13 +4,13 @@ import SprintCard from '../../components/SprintCard';
 import Container from '../../components/Container';
 import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
+import Aside from '../../components/Aside';
 
 const OneProjectPage = () => {
   return (
     <Container>
       <div className={styles.container}>
-        <div className={styles.sidebar}></div>
-
+        <Aside createName="Create a project" />
         <div className={styles.headerProject}>
           <div className={styles.titleButtons}>
             <div className={styles.titleContainer}>

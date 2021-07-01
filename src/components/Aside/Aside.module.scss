@@ -1,0 +1,84 @@
+@import '../../styles/shared.scss';
+
+.arrowBtn {
+  background-color: transparent;
+}
+
+.arrowIcon {
+  width: 30px;
+  height: 10px;
+  fill: $icon-without-bgc-color;
+}
+
+.asideArrow {
+  display: flex;
+  align-items: center;
+}
+.arrowTitle {
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 21px;
+  font-style: normal;
+  font-weight: normal;
+}
+.aside {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.line {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin-top: 10px;
+  border: none;
+  color: rgba(39, 24, 24, 0.1);
+  background-color: rgba(39, 24, 24, 0.1);
+  height: 1px;
+}
+@media screen and (min-width: 768px) {
+  .aside {
+    width: 216px;
+    // position: sticky;
+    // top: 0;
+    // height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    border-bottom: none;
+    border-right: 1px solid $border-main-color;
+  }
+  .line {
+    display: none;
+  }
+}
+.asideArrow {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media screen and (min-width: 1280px) {
+  .aside {
+    width: 200px;
+  }
+}
+
+.createButton {
+  text-align: center;
+}
+.createButtonText {
+  margin-top: 15px;
+}
+.asideListContainer {
+  display: none;
+}
+.createButton {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .createButton {
+    display: block;
+  }
+}

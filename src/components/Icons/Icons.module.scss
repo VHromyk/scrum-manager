@@ -2,13 +2,20 @@
 
 // Іконка додати людей
 .addPeopleBtn {
+  color: $icon-without-bgc-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .addPeopleIcon {
   width: 20px;
   height: 20px;
-  fill: $icon-without-bgc-color;
+  fill: currentColor;
 }
 
 // Кнопка з діаграмою
@@ -17,24 +24,43 @@
   height: 44px;
 
   border-radius: 50%;
+
+  color: $icon-dark-theme-color;
   background-color: $accent-color;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
 
 .analyticsIcon {
   width: 22px;
   height: 22px;
-  fill: $icon-dark-theme-color;
+  fill: currentColor;
 }
 
 // Кнопка у вигляді стрілочки (показати проекти)
 .arrowBtn {
+  color: $icon-without-bgc-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .arrowIcon {
   width: 30px;
   height: 10px;
-  fill: $icon-without-bgc-color;
+  fill: currentColor;
 }
 
 // Кнопка у вигляді кружечка (Попередні дні на формі створення спринта)
@@ -55,24 +81,44 @@
 
 // Кнопка закрити вікно створення спринта/задачі/додавання людей
 .closeBtn {
+  color: $icon-without-bgc-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .closeIcon {
   width: 18px;
   height: 18px;
-  fill: $icon-without-bgc-color;
+  fill: currentColor;
 }
 
 // Кнопка видалити проект (корзинка)
 .deleteProjectBtn {
+  border-radius: 50%;
+
+  color: $icon-dark-theme-bcg-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
 
 .deleteProjectIcon {
   width: 30px;
   height: 30px;
-  fill: $icon-dark-theme-bcg-color;
+  fill: currentColor;
 }
 
 @media screen and(min-width: 768px) {
@@ -85,51 +131,80 @@
 // Кнопки видалити спринт (корзинка) та змінити назву проекту/спринта
 .deleteSprintBtn,
 .projectBtn {
+  border-radius: 50%;
+
+  color: $icon-light-theme-bcg-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
 
 .deleteSprintIcon,
 .projectIcon {
   width: 20px;
   height: 20px;
-  fill: $icon-light-theme-bcg-color;
+  fill: currentColor;
 }
 
 // Маленькі стрілки вліво та вправо
 .arrowLeftBtn,
 .arrowRightBtn {
+  color: $icon-without-bgc-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .arrowLeftIcon,
 .arrowRightIcon {
-  width: 8px;
-  height: 12px;
-  fill: $icon-without-bgc-color;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 // Показати/сховати календар (стрілки вверх та вниз)
 .arrowUpBtn,
 .arrowDownBtn {
+  color: $icon-light-theme-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .arrowUpIcon,
 .arrowDownIcon {
   width: 12px;
   height: 10px;
-  fill: $icon-light-theme-color;
+  fill: currentColor;
 }
 
 // Кнопка logout
 .logoutBtn {
-  background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
 }
 
 .logoutIcon {
   width: 18px;
   height: 18px;
-  fill: $icon-without-bgc-color;
+  fill: currentColor;
 }
 
 @media screen and(max-width: 767px) {
@@ -137,21 +212,45 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: $icon-light-theme-bcg-color;
-  }
 
-  .logoutIcon {
-    fill: $page-bcg-color;
+    color: $page-bcg-color;
+    background-color: $icon-light-theme-bcg-color;
+
+    &:hover,
+    &:focus {
+      color: $icon-dark-theme-color;
+      background-color: $accent-color;
+      box-shadow: $dark-theme-box-shadow;
+    }
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .logoutBtn {
+    color: $icon-without-bgc-color;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+    }
   }
 }
 
 // Кнопка пошуку завдання (лупа)
 .searchBtn {
+  color: $icon-light-theme-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .searchIcon {
   width: 20px;
   height: 20px;
-  fill: $icon-light-theme-color;
+  fill: currentColor;
 }

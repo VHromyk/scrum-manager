@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from '../../redux/auth/auth-operations';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
 import Form from '../../components/Form';
-import localStorageService from '../../utils/localStorage/service';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
+  const dispatch = useDispatch();
+  const onRegister = user => dispatch(authOperations.signup(user));
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -31,10 +34,11 @@ const RegisterPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (password === repeatPass) {
-      // onRegister({ email, password });
 
-      localStorageService.saveIn('auth', { email });
+    if (password === repeatPass) {
+      onRegister({ email, password });
+
+      // localStorage.setItem('auth', JSON.stringify({ email }));
     } else if (password !== repeatPass) {
       setPassword('');
       setRepeatPass('');
@@ -44,9 +48,10 @@ const RegisterPage = () => {
     setPassword('');
     setRepeatPass('');
   };
+
   return (
     <Section>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} classes="formRegister">
         <h1 className={styles.title}>Registration</h1>
         <div className={styles.inputReg}>
           <input

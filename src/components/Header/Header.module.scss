@@ -1,14 +1,18 @@
 @import '../../styles/shared.scss';
 
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logoLink {
   display: block;
 }
 
-@media (max-width: 768px) {
-  .logo {
-    height: 30px;
-    width: 100px;
-  }
+.logo {
+  height: 30px;
+  width: 100px;
 }
 
 @media (min-width: 768px) {

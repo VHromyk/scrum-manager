@@ -1,5 +1,4 @@
 @import '../../styles/shared.scss';
-
 .button {
   display: inline-flex;
   align-items: center;
@@ -15,11 +14,22 @@
   outline: none;
   cursor: pointer;
 
+  color: $icon-dark-theme-color;
   background-color: $accent-color;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
 
 .icon {
   width: 18px;
   height: 18px;
-  fill: $icon-dark-theme-color;
+  fill: currentColor;
 }

@@ -1,18 +1,21 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import s from './Button.module.scss';
+import styles from './Button.module.scss';
 
 const Button = ({ type, text }) => {
   return (
-    <button type={type} className={s.btn}>
+    <button type={type} className={styles.btn}>
       {text}
     </button>
   );
 };
 
+Button.defaultProps = {
+  type: 'button',
+};
+
 Button.propTypes = {
   type: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
 };
 
 export default Button;

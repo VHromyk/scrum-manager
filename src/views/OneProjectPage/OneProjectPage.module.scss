@@ -1,0 +1,106 @@
+@import '../../styles/shared.scss';
+.container {
+  display: block;
+}
+
+// Кнопки видалити спринт (корзинка) та змінити назву проекту/спринта
+.deleteSprintBtn,
+.projectBtn {
+  background-color: transparent;
+}
+
+.deleteSprintIcon,
+.projectIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
+}
+// Іконка додати людей
+.addPeopleBtn {
+  background-color: transparent;
+}
+
+.addPeopleIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-without-bgc-color;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+}
+.createSprint {
+  display: flex;
+  align-items: center;
+}
+.titleButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.createTitle {
+  display: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+}
+.addPeopleContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.addPeopleTitle {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+}
+.headerProject {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+@media (min-width: 320px) {
+  .title {
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.23;
+    letter-spacing: 0.04em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+
+  .headerProject {
+    width: 100%;
+    padding: 40px 40px 40px 20px;
+  }
+  .title {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .headerProject {
+    width: 100%;
+    padding: 40px 75px 44px 80px;
+  }
+  .createTitle {
+    display: block;
+  }
+}

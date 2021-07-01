@@ -1,0 +1,81 @@
+@import '../../styles/shared.scss';
+
+.userMenuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userEmail {
+  margin-right: 10px;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.21px;
+  letter-spacing: 0.04em;
+
+  color: $text-main-color;
+}
+
+.logoutBtn {
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+}
+
+.logoutIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+@media screen and(min-width: 480px) {
+  .userEmail {
+    margin-right: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .logoutBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    color: $page-bcg-color;
+    background-color: $icon-light-theme-bcg-color;
+
+    &:hover,
+    &:focus {
+      color: $icon-dark-theme-color;
+      background-color: $accent-color;
+      box-shadow: $dark-theme-box-shadow;
+    }
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .userEmail {
+    margin-right: 77px;
+  }
+
+  .logoutBtn {
+    color: $icon-light-theme-color;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+    }
+  }
+
+  .logoutIcon {
+    margin-right: 10px;
+  }
+
+  .logoutText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

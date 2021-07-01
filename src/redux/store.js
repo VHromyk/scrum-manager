@@ -12,7 +12,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
-// import { projectsReducer } from './projects';
+import { projectsReducer } from './projects';
+// import { sprintsReducer } from './sprints';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,7 +33,8 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // projects: projectsReducer,
+    projects: projectsReducer,
+    // sprints: sprintsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

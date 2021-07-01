@@ -11,7 +11,7 @@ const OneProjectPage = () => {
   return (
     <Container>
       <div className={styles.container}>
-        <Aside createName="Create a project">
+        <Aside createName="Create a project" showName="Show projects">
           <AsideListProject />
         </Aside>
         <div className={styles.headerProject}>

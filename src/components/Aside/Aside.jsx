@@ -5,14 +5,14 @@ import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
 import { Link, withRouter } from 'react-router-dom';
 
-const Aside = ({ createName, children }) => {
+const Aside = ({ createName, showName, children }) => {
   return (
     <div className={styles.aside}>
       <div className={styles.asideArrow}>
         <IconButton classes={styles.arrowBtn} aria-label="show projects button">
           <SvgComponent name="arrow" classes={styles.arrowIcon} />
         </IconButton>
-        <h3 className={styles.arrowTitle}>Show projects</h3>
+        <h3 className={styles.arrowTitle}>{showName}</h3>
       </div>
       {children}
       <div className={styles.createButton}>

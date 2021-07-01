@@ -5,12 +5,15 @@ import Container from '../../components/Container';
 import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
 import Aside from '../../components/Aside';
+import AsideListProject from '../../components/AsideListProject';
 
 const OneProjectPage = () => {
   return (
     <Container>
       <div className={styles.container}>
-        <Aside createName="Create a project" />
+        <Aside createName="Create a project">
+          <AsideListProject />
+        </Aside>
         <div className={styles.headerProject}>
           <div className={styles.titleButtons}>
             <div className={styles.titleContainer}>

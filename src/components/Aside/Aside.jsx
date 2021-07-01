@@ -5,7 +5,7 @@ import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
 import { Link, withRouter } from 'react-router-dom';
 
-const Aside = ({ createName }) => {
+const Aside = ({ createName, children }) => {
   return (
     <div className={styles.aside}>
       <div className={styles.asideArrow}>
@@ -14,42 +14,7 @@ const Aside = ({ createName }) => {
         </IconButton>
         <h3 className={styles.arrowTitle}>Show projects</h3>
       </div>
-      <div className={styles.asideListContainer}>
-        <div className={styles.scroll}>
-          <ul className={styles.asideList}>
-            <li>
-              <div className={styles.squareName}>
-                <div className={styles.square}></div>
-                <p>Project 1</p>
-              </div>
-            </li>
-            <li>
-              <div className={styles.squareName}>
-                <div className={styles.square}></div>
-                <p>Very long project name</p>
-              </div>
-            </li>
-            <li>
-              <div className={styles.squareName}>
-                <div className={styles.square}></div>
-                <p>Project 3</p>
-              </div>
-            </li>
-            <li>
-              <div className={styles.squareName}>
-                <div className={styles.square}></div>
-                <p>Project 1</p>
-              </div>
-            </li>
-            <li>
-              <div className={styles.squareName}>
-                <div className={styles.square}></div>
-                <p>Very long project name</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      {children}
       <div className={styles.createButton}>
         <AddButton />
         <p className={styles.createButtonText}>{createName}</p>

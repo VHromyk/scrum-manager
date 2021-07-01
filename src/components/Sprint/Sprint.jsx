@@ -5,7 +5,7 @@ import Calendar from '../Calendar';
 import SvgComponent from '../SvgComponent';
 // import IconButton from '../IconButton';
 
-const Container = (onCloseModal, onSubmit) => {
+const Sprint = (onCloseModal, onSubmit) => {
   // const onCloseModal = () => {
   //   //Написать закрытие модалки
   // };
@@ -91,13 +91,7 @@ const Container = (onCloseModal, onSubmit) => {
         </div>
         <div className={styles.buttonDiv}>
           <input type="submit" value="Ready" className={styles.ready} />
-          <button
-            className={styles.cancel}
-            onClick={event => {
-              event.preventDefault();
-              // onCloseModal();    //Раскоментить когда появится функция
-            }}
-          >
+          <button className={styles.cancel} onClick={onCloseModal}>
             Cancel
           </button>
         </div>
@@ -106,4 +100,4 @@ const Container = (onCloseModal, onSubmit) => {
   );
 };
 
-export default Container;
+export default Sprint;

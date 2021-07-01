@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import OneProjectPage from './views/OneProjectPage';
+import AddPeople from './components/AddPeople';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <>
+      {/* <AddPeople /> */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>

@@ -13,6 +13,8 @@ import OneProjectPage from './views/OneProjectPage';
 import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
 
+import SprintModal from './components/SprintModal';
+
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
 // );
@@ -39,7 +41,7 @@ function App() {
         <Header />
       </HeaderWrapper>
       {/* <OneProjectPage /> */}
-
+      {/* <SprintModal /> */}
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute

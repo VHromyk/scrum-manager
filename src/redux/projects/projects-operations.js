@@ -24,7 +24,7 @@ const addProject =
     try {
       const respone = await axios.post('/api/projects', project);
 
-      dispatch(projectsActions.addProjectSuccess(respone.data.data));
+      dispatch(projectsActions.addProjectSuccess(respone.data.data.project));
     } catch ({ message }) {
       dispatch(projectsActions.addProjectError(message));
       toast.error('Something went wrong, try again later');
@@ -32,11 +32,12 @@ const addProject =
   };
 
 const deleteProject = projectId => async dispatch => {
+  console.log('projectId:', projectId);
+
   dispatch(projectsActions.deleteProjectRequest());
 
   try {
     await axios.delete(`/api/projects/${projectId}`);
-
     dispatch(projectsActions.deleteProjectSuccess(projectId));
   } catch ({ message }) {
     dispatch(projectsActions.deleteProjectError(message));

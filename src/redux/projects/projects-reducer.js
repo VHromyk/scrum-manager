@@ -14,7 +14,7 @@ const items = createReducer([], {
     ...state,
   ],
   [projectsActions.deleteProjectSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ _id }) => _id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
 });

@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { authOperations } from './redux/auth';
 import Spinner from './components/Spinner';
 import HeaderWrapper from './components/HeaderWrapper';
@@ -10,6 +11,7 @@ import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import OneProjectPage from './views/OneProjectPage';
 import AddPeople from './components/AddPeople';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -36,7 +38,8 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneProjectPage />
+      {/* <OneProjectPage /> */}
+
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
@@ -61,7 +64,19 @@ function App() {
 
           <Redirect to={routes.signup} />
         </Switch>
-      </Suspense> */}
+      </Suspense>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      /> */}
     </>
   );
 }

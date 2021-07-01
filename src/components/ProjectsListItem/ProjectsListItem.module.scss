@@ -31,14 +31,12 @@
 
   color: $icon-dark-theme-bcg-color;
   background-color: transparent;
-  transition: color $transition-duration $timing-function,
-    background-color $transition-duration $timing-function,
+  transition: background-color $transition-duration $timing-function,
     box-shadow $transition-duration $timing-function;
 
   &:hover,
   &:focus {
-    color: $accent-color;
-    background-color: $icon-dark-theme-color;
+    background-color: $accent-color;
     box-shadow: $dark-theme-box-shadow;
   }
 }

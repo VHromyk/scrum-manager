@@ -3,20 +3,19 @@ import { createReducer } from '@reduxjs/toolkit';
 import authActions from './auth-actions';
 
 const initialUserState = {
-  name: null,
   email: null,
 };
 
 const setFalse = () => false;
 const setTrue = () => true;
 const setNull = () => null;
-const setError = (_, { payload }) => payload;
+const setPayload = (_, { payload }) => payload;
 
 const user = createReducer(initialUserState, {
   [authActions.signupSuccess]: (_, { payload }) => payload.user,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => initialUserState,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.getCurrentUserSuccess]: setPayload,
 });
 
 const isAuthenticated = createReducer(false, {
@@ -55,10 +54,10 @@ const isLoading = createReducer(false, {
 });
 
 const error = createReducer(null, {
-  [authActions.signupError]: setError,
-  [authActions.loginError]: setError,
-  [authActions.logoutError]: setError,
-  [authActions.getCurrentUserError]: setError,
+  [authActions.signupError]: setPayload,
+  [authActions.loginError]: setPayload,
+  [authActions.logoutError]: setPayload,
+  [authActions.getCurrentUserError]: setPayload,
 
   [authActions.signupRequest]: setNull,
   [authActions.loginRequest]: setNull,

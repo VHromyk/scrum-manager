@@ -27,14 +27,26 @@
   position: absolute;
   right: 10px;
   bottom: 10px;
+  border-radius: 50%;
 
+  color: $icon-dark-theme-bcg-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
 
 .deleteProjectIcon {
   width: 30px;
   height: 30px;
-  fill: $icon-dark-theme-bcg-color;
+  fill: currentColor;
 }
 
 @media screen and(min-width: 768px) {

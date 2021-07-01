@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
-const Button = ({ type, text }) => {
+const Button = ({ type, text, classes }) => {
+  const buttonClasses = [styles.btn];
+
+  if (classes) {
+    buttonClasses.push(classes);
+  }
+
   return (
-    <button type={type} className={styles.btn}>
+    <button type={type} className={buttonClasses.join(' ')}>
       {text}
     </button>
   );
@@ -11,6 +17,7 @@ const Button = ({ type, text }) => {
 
 Button.defaultProps = {
   type: 'button',
+  classes: '',
 };
 
 Button.propTypes = {

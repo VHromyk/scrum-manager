@@ -3,11 +3,7 @@ import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './ProjectsListItem.module.scss';
 
-export default function ProjectsListItem({
-  name,
-  description,
-  onDeleteProject,
-}) {
+const ProjectsListItem = ({ name, description, onDeleteProject }) => {
   return (
     <>
       <h3 className={styles.projectName}>{name}</h3>
@@ -22,7 +18,7 @@ export default function ProjectsListItem({
       </IconButton>
     </>
   );
-}
+};
 
 ProjectsListItem.defaultProps = {
   description: '',
@@ -33,3 +29,5 @@ ProjectsListItem.propTypes = {
   description: PropTypes.string,
   onDeleteProject: PropTypes.func.isRequired,
 };
+
+export default ProjectsListItem;

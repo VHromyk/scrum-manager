@@ -9,6 +9,7 @@ import styles from './LoginPage.module.scss';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validPassword, setValidPassword] = useState(false);
 
   const dispatch = useDispatch();
   const onLogin = user => dispatch(authOperation.login(user));
@@ -57,6 +58,9 @@ function LoginPage() {
           <label htmlFor="password" className={styles.label}>
             Password
           </label>
+          {validPassword && (
+            <p className={styles.helper}>*Invalid credentials</p>
+          )}
         </div>
         <Button type="submit" text="Enter" />
         <p className={styles.linkTo}>

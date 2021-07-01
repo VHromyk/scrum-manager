@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import AddButton from '../../components/AddButton';
 import styles from './OneProjectPage.module.scss';
 import SprintCard from '../../components/SprintCard';
@@ -6,8 +7,20 @@ import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
 import Aside from '../../components/Aside';
 import AsideListProject from '../../components/AsideListProject';
+import SprintModal from '../../components/SprintModal';
+import ModalProjects from '../../components/ModalProjects';
 
 const OneProjectPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const buttonHandler = () => {
+    setShowModal(true);
+  };
+
+  const buttonCloseHandler = () => {
+    setShowModal(false);
+  };
+
   return (
     <Container>
       <div className={styles.container}>
@@ -27,7 +40,7 @@ const OneProjectPage = () => {
             </div>
 
             <div className={styles.createSprint}>
-              <AddButton />
+              <AddButton onClick={buttonHandler} />
               <h2 className={styles.createTitle}>Create a sprint</h2>
             </div>
           </div>
@@ -42,6 +55,7 @@ const OneProjectPage = () => {
           </div>
           <SprintCard />
         </div>
+        {showModal && <SprintModal onCloseModal={buttonCloseHandler} />}
       </div>
     </Container>
   );

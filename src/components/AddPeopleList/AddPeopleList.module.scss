@@ -1,0 +1,21 @@
+@import '../../styles/shared.scss';
+.addPeopleList {
+  margin-bottom: 60px;
+}
+
+.addPeopleListItem {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: $text-main-color;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .addPeopleListItem {
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../styles/shared.scss';
+@import '../ModalProjects/ModalProjects.module.scss';
+
+.input2 {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 40px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid $input-field-border-color;
+  &::placeholder {
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+    color: $text-light-theme-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
+  }
+  &.invalid {
+    border-bottom: 1px solid red;
+  }
+  &.valid {
+    border-bottom: 1px solid $input-field-border-color;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .input2 {
+    width: 220px;
+  }
+}
+.helperText {
+  position: absolute;
+  color: #ff001b;
+  font-size: 12px;
+  top: 32px;
+}

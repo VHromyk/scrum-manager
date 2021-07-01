@@ -32,7 +32,7 @@ const Icons = () => (
     </IconButton>
 
     {/* Кнопка закрити вікно створення спринта/задачі/додавання людей */}
-    <IconButton classes={styles.closeBtn} aria-label="add people button">
+    <IconButton classes={styles.closeBtn} aria-label="close window">
       <SvgComponent name="close" classes={styles.closeIcon} />
     </IconButton>
 
@@ -55,7 +55,7 @@ const Icons = () => (
     {/* Маленька стрілка вліво */}
     <IconButton
       classes={styles.arrowLeftBtn}
-      aria-label="show previous tasks page button"
+      aria-label="show previous day tasks button"
     >
       <SvgComponent name="arrow-left" classes={styles.arrowLeftIcon} />
     </IconButton>
@@ -63,7 +63,7 @@ const Icons = () => (
     {/* Маленька стрілка вправо */}
     <IconButton
       classes={styles.arrowRightBtn}
-      aria-label="show next tasks page button"
+      aria-label="show next day tasks button"
     >
       <SvgComponent name="arrow-right" classes={styles.arrowRightIcon} />
     </IconButton>

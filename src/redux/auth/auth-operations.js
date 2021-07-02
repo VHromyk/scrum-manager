@@ -1,8 +1,8 @@
 import axios from 'axios';
 import authActions from './auth-actions';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com'; // TODO вказати на коректний URL
+axios.defaults.baseURL = 'https://scrum-manager-24.herokuapp.com';
 
 const token = {
   set(token) {
@@ -17,13 +17,13 @@ const signup = user => async dispatch => {
   dispatch(authActions.signupRequest());
 
   try {
-    const { data } = await axios.post('/signup', user);
+    const { data } = await axios.post('/api/users/signup', user);
 
     token.set(data.token);
     dispatch(authActions.signupSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.signupError(message));
-    // toast.error('Invalid credentials');
+    toast.error('Invalid credentials');
   }
 };
 
@@ -31,13 +31,13 @@ const login = user => async dispatch => {
   dispatch(authActions.loginRequest());
 
   try {
-    const { data } = await axios.post('/login', user);
+    const { data } = await axios.post('/api/users/login', user);
 
     token.set(data.token);
     dispatch(authActions.loginSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.loginError(message));
-    // toast.error('Invalid credentials');
+    toast.error('Invalid credentials');
   }
 };
 
@@ -45,7 +45,7 @@ const logout = () => async dispatch => {
   dispatch(authActions.logoutRequest());
 
   try {
-    await axios.post('/logout');
+    await axios.post('/api/users/logout');
 
     token.unset();
     dispatch(authActions.logoutSuccess());
@@ -67,9 +67,9 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
 
   try {
-    const response = await axios.get('/current');
+    const { data } = await axios.get('/api/users/current');
 
-    dispatch(authActions.getCurrentUserSuccess(response.data));
+    dispatch(authActions.getCurrentUserSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.getCurrentUserError(message));
   }

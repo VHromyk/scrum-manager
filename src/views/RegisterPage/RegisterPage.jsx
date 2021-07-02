@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperation from '../../redux/auth/auth-operations';
+import authOperations from '../../redux/auth/auth-operations';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
 import Form from '../../components/Form';
-import localStorageService from '../../utils/localStorage/service';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
+  const [validPassword, setValidPassword] = useState(false);
 
   const dispatch = useDispatch();
-  const onRegister = user => dispatch(authOperation.signup(user));
+  const onRegister = user => dispatch(authOperations.signup(user));
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -36,19 +36,19 @@ const RegisterPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (password === repeatPass) {
       onRegister({ email, password });
-
-      localStorageService.saveIn('auth', { email });
-    } else if (password !== repeatPass) {
+      setEmail('');
       setPassword('');
       setRepeatPass('');
+      setValidPassword(false);
+      // localStorage.setItem('auth', JSON.stringify({ email }));
+    } else if (password !== repeatPass) {
+      setValidPassword(true);
     }
-
-    setEmail('');
-    setPassword('');
-    setRepeatPass('');
   };
+
   return (
     <Section>
       <Form onSubmit={handleSubmit} classes="formRegister">
@@ -99,6 +99,9 @@ const RegisterPage = () => {
           <label htmlFor="repeatPass" className={styles.label}>
             Repeate password
           </label>
+          {validPassword && (
+            <p className={styles.helper}>*Passwords do not match</p>
+          )}
         </div>
         <Button type="submit" text="Register" />
         <p className={styles.linkTo}>

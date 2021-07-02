@@ -23,23 +23,19 @@
   border: none;
   background-color: transparent;
   border-bottom: 1px solid $input-field-border-color;
-
   &::placeholder {
     font-size: 18px;
     line-height: 1.22;
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
   }
-
   &:focus {
     outline: none;
     border-bottom: 1px solid $accent-color;
   }
-
   &.invalid {
     border-bottom: 1px solid red;
   }
-
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
   }
@@ -54,23 +50,19 @@
   border: none;
   background-color: transparent;
   border-bottom: 1px solid $input-field-border-color;
-
   &::placeholder {
     font-size: 18px;
     line-height: 1.22;
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
   }
-
   &:focus {
     outline: none;
     border-bottom: 1px solid $accent-color;
   }
-
   &.invalid {
     border-bottom: 1px solid red;
   }
-
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
   }
@@ -82,45 +74,73 @@
   align-items: center;
 }
 
-.cancelBtn {
-  width: 154px;
+.button1 {
+  align-items: center;
+  width: 148px;
+  margin-bottom: 20px;
+  padding: 11px 44px;
   border: none;
   outline: none;
-  text-decoration: underline;
-
+  border-radius: 25px;
+  background-color: $accent-color;
   font-size: 18px;
   line-height: 1.22;
   letter-spacing: 0.04em;
+  box-shadow: $dark-theme-box-shadow;
+  color: $text-dark-theme-color;
   cursor: pointer;
+}
+.button1:hover {
+  box-shadow: none;
+  background-color: $text-main-color;
+}
 
-  color: $text-light-theme-color;
+.button2 {
+  width: 154px;
+  border: none;
+  outline: none;
   background-color: transparent;
-  transition: color $transition-duration $timing-function;
-
-  &:hover {
-    color: $accent-color;
-  }
+  text-decoration: underline;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  color: $text-light-theme-color;
+  cursor: pointer;
+}
+.button2:hover {
+  color: $text-main-color;
 }
 
 .closeBtn {
   position: absolute;
   top: 10px;
   right: 10px;
-
-  color: $icon-without-bgc-color;
   background-color: transparent;
-  transition: color $transition-duration $timing-function;
-
-  &:hover,
-  &:focus {
-    color: $accent-color;
-  }
+  cursor: pointer;
 }
 
 .closeIcon {
   width: 18px;
   height: 18px;
-  fill: currentColor;
+  fill: $icon-without-bgc-color;
+  cursor: pointer;
+}
+
+.addedUsersTitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.22px;
+  letter-spacing: 0.04em;
+  color: $text-light-theme-color;
+  margin-bottom: 20px;
+}
+
+.noUsers {
+  margin-bottom: 60px;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: $text-main-color;
 }
 
 @media (min-width: 320px) {
@@ -135,7 +155,6 @@
     background-color: $components-bcg-color;
   }
 }
-
 @media screen and (min-width: 768px) {
   .form {
     position: absolute;
@@ -149,6 +168,11 @@
     width: 512px;
     height: 100%;
     background-color: $components-bcg-color;
+  }
+
+  .noUsers {
+    font-size: 18px;
+    line-height: 1.22;
   }
 }
 
@@ -165,12 +189,9 @@
     background-color: $components-bcg-color;
   }
 }
-
-.containerInput1,
-.containerInput2 {
+.containerInput1 {
   position: relative;
 }
-
 .helper {
   position: absolute;
   color: #ff001b;

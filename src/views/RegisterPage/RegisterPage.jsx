@@ -10,6 +10,8 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
+  const [validPassword, setValidPassword] = useState(false);
+
   const dispatch = useDispatch();
   const onRegister = user => dispatch(authOperations.signup(user));
 
@@ -37,16 +39,14 @@ const RegisterPage = () => {
 
     if (password === repeatPass) {
       onRegister({ email, password });
-
-      // localStorage.setItem('auth', JSON.stringify({ email }));
-    } else if (password !== repeatPass) {
+      setEmail('');
       setPassword('');
       setRepeatPass('');
+      setValidPassword(false);
+      // localStorage.setItem('auth', JSON.stringify({ email }));
+    } else if (password !== repeatPass) {
+      setValidPassword(true);
     }
-
-    setEmail('');
-    setPassword('');
-    setRepeatPass('');
   };
 
   return (
@@ -99,6 +99,9 @@ const RegisterPage = () => {
           <label htmlFor="repeatPass" className={styles.label}>
             Repeate password
           </label>
+          {validPassword && (
+            <p className={styles.helper}>*Passwords do not match</p>
+          )}
         </div>
         <Button type="submit" text="Register" />
         <p className={styles.linkTo}>

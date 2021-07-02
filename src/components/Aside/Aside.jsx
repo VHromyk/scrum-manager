@@ -28,6 +28,7 @@ const Aside = ({ createName, showName, children }) => {
       {children}
       <div className={styles.createButton}>
         <AddButton onClick={buttonHandler} />
+
         <p className={styles.createButtonText}>{createName}</p>
       </div>
       <hr className={styles.line} />

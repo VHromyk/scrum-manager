@@ -6,9 +6,9 @@ const fetchProjects = () => async dispatch => {
   dispatch(projectsActions.fetchProjectsRequest());
 
   try {
-    const respone = await axios.get('/api/projects');
+    const { data } = await axios.get('/api/projects');
 
-    dispatch(projectsActions.fetchProjectsSuccess(respone.data.data.projects));
+    dispatch(projectsActions.fetchProjectsSuccess(data.projects));
   } catch ({ message }) {
     dispatch(projectsActions.fetchProjectsError(message));
     toast.error('Something went wrong, try again later');
@@ -22,9 +22,9 @@ const addProject =
     dispatch(projectsActions.addProjectRequest());
 
     try {
-      const respone = await axios.post('/api/projects', project);
+      const { data } = await axios.post('/api/projects', project);
 
-      dispatch(projectsActions.addProjectSuccess(respone.data.data.project));
+      dispatch(projectsActions.addProjectSuccess(data.project));
     } catch ({ message }) {
       dispatch(projectsActions.addProjectError(message));
       toast.error('Something went wrong, try again later');
@@ -44,20 +44,21 @@ const deleteProject = projectId => async dispatch => {
   }
 };
 
+// Перевірити
 const renameProject =
-  ({ projectId, newName: name }) =>
+  ({ projectId, name }) =>
   async dispatch => {
     const renameProject = { name };
 
     dispatch(projectsActions.renameProjectRequest());
 
     try {
-      const respone = await axios.patch(
+      const { data } = await axios.patch(
         `/api/projects/${projectId}/name`,
         renameProject,
       );
 
-      dispatch(projectsActions.renameProjectSuccess(respone.data.data));
+      dispatch(projectsActions.renameProjectSuccess(data));
     } catch ({ message }) {
       dispatch(projectsActions.renameProjectError(message));
     }

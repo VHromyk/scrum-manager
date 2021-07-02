@@ -9,9 +9,9 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
-import OneProjectPage from './views/OneProjectPage';
 import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
+// import OneProjectPage from './views/OneProjectPage';
 
 // import SprintModal from './components/SprintModal';
 
@@ -25,6 +25,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // const ProjectsPage = lazy(() =>
 //   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
+// );
+
+// const OneProjectPage = lazy(() =>
+//   import(
+//     './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
+//   ),
 // );
 
 function App() {
@@ -60,11 +66,15 @@ function App() {
             <LoginPage />
           </PublicRoute>
 
-          <PrivateRoute path={routes.projects} redirectTo={routes.signup}>
+          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
             <ProjectsPage />
           </PrivateRoute>
 
-          <Redirect to={routes.signup} />
+          <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
+            <OneProjectPage />
+          </PrivateRoute>
+
+          <Redirect to={routes.login} />
         </Switch>
       </Suspense>
 

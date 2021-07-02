@@ -9,22 +9,42 @@ import Aside from '../../components/Aside';
 import AsideListProject from '../../components/AsideListProject';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
+import AddPeople from '../../components/AddPeople';
 
 const OneProjectPage = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [createProject, setCreateProject] = useState(false);
+  const [createSprint, setCreateSprint] = useState(false);
+  const [addPeople, setAddPeople] = useState(false);
 
   const buttonHandler = () => {
-    setShowModal(true);
+    setCreateProject(true);
+  };
+  const buttonCloseHandler = () => {
+    setCreateProject(false);
   };
 
-  const buttonCloseHandler = () => {
-    setShowModal(false);
+  const btnSprint = () => {
+    setCreateSprint(true);
+  };
+  const btnCloseSprint = () => {
+    setCreateSprint(false);
+  };
+
+  const btnAddPeople = () => {
+    setAddPeople(true);
+  };
+  const btnCloseAddPeople = () => {
+    setAddPeople(false);
   };
 
   return (
     <Container>
       <div className={styles.container}>
-        <Aside createName="Create a project" showName="Show projects">
+        <Aside
+          createName="Create a project"
+          showName="Show projects"
+          onClick={buttonHandler}
+        >
           <AsideListProject />
         </Aside>
         <div className={styles.headerProject}>
@@ -40,7 +60,8 @@ const OneProjectPage = () => {
             </div>
 
             <div className={styles.createSprint}>
-              <AddButton onClick={buttonHandler} />
+              <AddButton onClick={btnSprint} />
+
               <h2 className={styles.createTitle}>Create a sprint</h2>
             </div>
           </div>
@@ -48,14 +69,25 @@ const OneProjectPage = () => {
             <IconButton
               classes={styles.addPeopleBtn}
               aria-label="add people button"
+              onClick={btnAddPeople}
             >
               <SvgComponent name="add-people" classes={styles.addPeopleIcon} />
             </IconButton>
             <h3 class={styles.addPeopleTitle}>Add people</h3>
           </div>
+          {/* {sprints.length !== 0 ? (
+            <SprintsList />
+          ) : (
+            <p className={styles.warningMessage}>
+              You don't have any sprints yet
+            </p> 
+          )}  */}
           <SprintCard />
         </div>
-        {showModal && <SprintModal onCloseModal={buttonCloseHandler} />}
+
+        {createProject && <ModalProjects onClick={buttonCloseHandler} />}
+        {createSprint && <SprintModal onClick={btnCloseSprint} />}
+        {addPeople && <AddPeople onClick={btnCloseAddPeople} />}
       </div>
     </Container>
   );

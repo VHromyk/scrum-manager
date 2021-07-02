@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
-const Button = ({ type, text, classes }) => {
+const Button = ({ type, text, classes, onClick }) => {
   const buttonClasses = [styles.btn];
 
   if (classes) {
@@ -9,7 +9,7 @@ const Button = ({ type, text, classes }) => {
   }
 
   return (
-    <button type={type} className={buttonClasses.join(' ')}>
+    <button type={type} className={buttonClasses.join(' ')} onClick={onClick}>
       {text}
     </button>
   );

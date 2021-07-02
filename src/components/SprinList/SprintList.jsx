@@ -16,12 +16,12 @@ const SprintsList = () => {
 
   return (
     <ul className={styles.sprintsList}>
-      {sprints.map(({ _id, name, description }) => (
+      {sprints.map(({ id, name, description }) => (
         <li className={styles.listItem}>
           <SprintCard
             name={name}
             description={description}
-            handleDeleteSprint={() => onDeleteSprint(_id)}
+            handleDeleteSprint={() => onDeleteSprint(id)}
           />
         </li>
       ))}

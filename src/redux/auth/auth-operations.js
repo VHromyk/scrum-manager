@@ -17,10 +17,10 @@ const signup = user => async dispatch => {
   dispatch(authActions.signupRequest());
 
   try {
-    const respone = await axios.post('/api/users/signup', user);
+    const { data } = await axios.post('/api/users/signup', user);
 
-    token.set(respone.data.data.token);
-    dispatch(authActions.signupSuccess(respone.data.data));
+    token.set(data.token);
+    dispatch(authActions.signupSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.signupError(message));
     toast.error('Invalid credentials');
@@ -31,10 +31,10 @@ const login = user => async dispatch => {
   dispatch(authActions.loginRequest());
 
   try {
-    const respone = await axios.post('/api/users/login', user);
+    const { data } = await axios.post('/api/users/login', user);
 
-    token.set(respone.data.data.token);
-    dispatch(authActions.loginSuccess(respone.data.data));
+    token.set(data.token);
+    dispatch(authActions.loginSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.loginError(message));
     toast.error('Invalid credentials');
@@ -67,9 +67,9 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
 
   try {
-    const respone = await axios.get('/api/users/current');
+    const { data } = await axios.get('/api/users/current');
 
-    dispatch(authActions.getCurrentUserSuccess(respone.data.data));
+    dispatch(authActions.getCurrentUserSuccess(data));
   } catch ({ message }) {
     dispatch(authActions.getCurrentUserError(message));
   }

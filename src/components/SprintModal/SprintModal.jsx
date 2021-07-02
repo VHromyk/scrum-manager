@@ -5,7 +5,7 @@ import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 
-const SprintModal = ({ onSubmit, onCloseModal, projectID }) => {
+const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
   // const onCloseModal = () => {
   //   //Написать закрытие модалки
   // };
@@ -24,7 +24,7 @@ const SprintModal = ({ onSubmit, onCloseModal, projectID }) => {
   const [duration, setDuration] = useState('');
   const [checkBox, setCheckBox] = useState(true);
   return (
-    <ModalBackdrop onClose={onCloseModal}>
+    <ModalBackdrop onClose={onClick}>
       <div className={styles.modal}>
         <form
           onSubmit={e => {
@@ -98,7 +98,7 @@ const SprintModal = ({ onSubmit, onCloseModal, projectID }) => {
               // onClick={onCloseModal}
               onClick={e => {
                 e.preventDefault();
-                onCloseModal();
+                onClick();
               }}
             >
               Cancel
@@ -107,7 +107,7 @@ const SprintModal = ({ onSubmit, onCloseModal, projectID }) => {
           <IconButton
             classes={styles.closeBtn}
             aria-label="close window"
-            onClick={onCloseModal}
+            onClick={onClick}
           >
             <SvgComponent name="close" classes={styles.closeIcon} />
           </IconButton>

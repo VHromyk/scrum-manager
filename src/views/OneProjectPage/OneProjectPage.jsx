@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import AddButton from '../../components/AddButton';
 import styles from './OneProjectPage.module.scss';
 import SprintCard from '../../components/SprintCard';
@@ -6,12 +7,44 @@ import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
 import Aside from '../../components/Aside';
 import AsideListProject from '../../components/AsideListProject';
+import ModalProjects from '../../components/ModalProjects';
+import Sprint from '../../components/Sprint';
+import AddPeople from '../../components/AddPeople';
 
 const OneProjectPage = () => {
+  const [createProject, setCreateProject] = useState(false);
+  const [createSprint, setCreateSprint] = useState(false);
+  const [addPeople, setAddPeople] = useState(false);
+
+  const buttonHandler = () => {
+    setCreateProject(true);
+  };
+  const buttonCloseHandler = () => {
+    setCreateProject(false);
+  };
+
+  const btnSprint = () => {
+    setCreateSprint(true);
+  };
+  const btnCloseSprint = () => {
+    setCreateSprint(false);
+  };
+
+  const btnAddPeople = () => {
+    setAddPeople(true);
+  };
+  const btnCloseAddPeople = () => {
+    setAddPeople(false);
+  };
+
   return (
     <Container>
       <div className={styles.container}>
-        <Aside createName="Create a project" showName="Show projects">
+        <Aside
+          createName="Create a project"
+          showName="Show projects"
+          onClick={buttonHandler}
+        >
           <AsideListProject />
         </Aside>
         <div className={styles.headerProject}>
@@ -27,7 +60,7 @@ const OneProjectPage = () => {
             </div>
 
             <div className={styles.createSprint}>
-              <AddButton />
+              <AddButton onClick={btnSprint} />
               <h2 className={styles.createTitle}>Create a sprint</h2>
             </div>
           </div>
@@ -35,13 +68,24 @@ const OneProjectPage = () => {
             <IconButton
               classes={styles.addPeopleBtn}
               aria-label="add people button"
+              onClick={btnAddPeople}
             >
               <SvgComponent name="add-people" classes={styles.addPeopleIcon} />
             </IconButton>
             <h3 class={styles.addPeopleTitle}>Add people</h3>
           </div>
+          {/* {sprints.length !== 0 ? (
+            <SprintsList />
+          ) : (
+            <p className={styles.warningMessage}>
+              You don't have any sprints yet
+            </p> 
+          )}  */}
           <SprintCard />
         </div>
+        {createProject && <ModalProjects onClick={buttonCloseHandler} />}
+        {createSprint && <Sprint onClick={btnCloseSprint} />}
+        {addPeople && <AddPeople onClick={btnCloseAddPeople} />}
       </div>
     </Container>
   );

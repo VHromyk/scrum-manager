@@ -5,7 +5,7 @@ import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
 import { Link, withRouter } from 'react-router-dom';
 
-const Aside = ({ createName, showName, children }) => {
+const Aside = ({ createName, showName, children, onClick }) => {
   return (
     <div className={styles.aside}>
       <div className={styles.asideArrow}>
@@ -16,7 +16,7 @@ const Aside = ({ createName, showName, children }) => {
       </div>
       {children}
       <div className={styles.createButton}>
-        <AddButton />
+        <AddButton onClick={onClick} />
         <p className={styles.createButtonText}>{createName}</p>
       </div>
       <hr className={styles.line} />

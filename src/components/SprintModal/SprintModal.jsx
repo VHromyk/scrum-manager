@@ -4,9 +4,8 @@ import Calendar from '../Calendar';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
-// import IconButton from '../IconButton';
 
-const SprintModal = ({ onSubmit, onCloseModal }) => {
+const SprintModal = ({ onSubmit, onCloseModal, projectID }) => {
   // const onCloseModal = () => {
   //   //Написать закрытие модалки
   // };
@@ -94,7 +93,14 @@ const SprintModal = ({ onSubmit, onCloseModal }) => {
           </div>
           <div className={styles.buttonDiv}>
             <input type="submit" value="Ready" className={styles.ready} />
-            <button className={styles.cancel} onClick={onCloseModal}>
+            <button
+              className={styles.cancel}
+              // onClick={onCloseModal}
+              onClick={e => {
+                e.preventDefault();
+                onCloseModal();
+              }}
+            >
               Cancel
             </button>
           </div>

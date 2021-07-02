@@ -3,11 +3,34 @@
 //   height: 600px;
 //   background-color: aquamarine;
 // }
+@import '../../styles/shared.scss';
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 
+  color: $icon-without-bgc-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
 .modal {
   width: 320px;
-  height: 600px;
-  // background-color: aquamarine;
+  //   height: 600px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  background-color: $text-dark-theme-color;
   padding-top: 63px;
 
   @media screen and (min-width: 768px) {
@@ -55,7 +78,7 @@ label {
   font-style: normal;
   font-weight: normal;
   cursor: text;
-  padding-left: 20px;
+  //   padding-left: 20px;
   font-size: 16px;
   line-height: 20px;
   transform: translateY(-24px);
@@ -73,7 +96,8 @@ label {
   font-size: 16px;
   letter-spacing: 0.04em;
   outline: 0;
-  padding: 5px 20px;
+  //   padding: 5px 20px;
+  padding: 5.5px 0px;
 
   transition: all 0.3s;
 

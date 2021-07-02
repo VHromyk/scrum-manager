@@ -8,7 +8,7 @@ import SvgComponent from '../SvgComponent';
 import Button from '../Button';
 import styles from './ModalProjects.module.scss';
 
-const ModalProjects = ({ onClick }) => {
+const ModalProjects = ({ onClick, onCloseModal }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -107,11 +107,11 @@ const ModalProjects = ({ onClick }) => {
     }
 
     dispatch(projectsOperations.addProject({ name, description }));
-    onClick();
+    onCloseModal();
   };
 
   return (
-    <ModalBackdrop onClose={onClick}>
+    <ModalBackdrop onClose={onCloseModal}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Сreating a project</h2>
         <div className={styles.containerInput1}>
@@ -157,14 +157,14 @@ const ModalProjects = ({ onClick }) => {
 
         <div className={styles.buttons}>
           <Button type="submit" text="Ready" />
-          <button className={styles.cancelBtn} onClick={onClick}>
+          <button className={styles.cancelBtn} onClick={onCloseModal}>
             Cancel
           </button>
         </div>
         <IconButton
           classes={styles.closeBtn}
           aria-label="close window"
-          onClick={onClick}
+          onClick={onCloseModal}
         >
           <SvgComponent name="close" classes={styles.closeIcon} />
         </IconButton>

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Aside.module.scss';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
 import { Link, withRouter } from 'react-router-dom';
+import ModalProjects from '../../components/ModalProjects';
 
-const Aside = ({ createName, showName, children, onClick }) => {
+const Aside = ({ createName, showName, children }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const buttonHandler = () => {
+    setShowModal(true);
+  };
+
+  const buttonCloseHandler = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className={styles.aside}>
       <div className={styles.asideArrow}>
@@ -16,10 +27,12 @@ const Aside = ({ createName, showName, children, onClick }) => {
       </div>
       {children}
       <div className={styles.createButton}>
-        <AddButton onClick={onClick} />
+        <AddButton onClick={buttonHandler} />
+
         <p className={styles.createButtonText}>{createName}</p>
       </div>
       <hr className={styles.line} />
+      {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
     </div>
   );
 };

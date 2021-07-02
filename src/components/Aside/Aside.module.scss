@@ -41,9 +41,9 @@
 @media screen and (min-width: 768px) {
   .aside {
     width: 216px;
-    // position: sticky;
-    // top: 0;
-    // height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     padding-top: 20px;
     padding-bottom: 50px;
     border-bottom: none;
@@ -66,6 +66,8 @@
 
 .createButton {
   text-align: center;
+
+  margin-right: 20px;
 }
 .createButtonText {
   margin-top: 15px;

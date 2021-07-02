@@ -23,42 +23,6 @@ const AsideListSprint = () => {
               </div>
             </li>
           ))}
-          {/* <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 1</p>
-            </div>
-          </li>
-          <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 2</p>
-            </div>
-          </li>
-          <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 3</p>
-            </div>
-          </li>
-          <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 4</p>
-            </div>
-          </li>
-          <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 5</p>
-            </div>
-          </li>
-          <li>
-            <div className={styles.squareName}>
-              <div className={styles.square}></div>
-              <p>Sprint Burndown Chart 6</p>
-            </div>
-          </li> */}
         </ul>
       </div>
     </div>

@@ -1,14 +1,16 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect } from 'react';
+//  Suspense, lazy
 import { useDispatch } from 'react-redux';
-import { Switch, Redirect } from 'react-router-dom';
+// import { Switch, Redirect } from 'react-router-dom';
 import { authOperations } from './redux/auth';
-import Spinner from './components/Spinner';
-import HeaderWrapper from './components/HeaderWrapper';
-import Header from './components/Header';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
-import routes from './routes';
-import OneProjectPage from './views/OneProjectPage';
+// import Spinner from './components/Spinner';
+import HeaderWrapper from './Components/HeaderWrapper';
+import Header from './Components/Header';
+// import PrivateRoute from './components/PrivateRoute';
+// import PublicRoute from './components/PublicRoute';
+// import routes from './routes';
+// import OneProjectPage from './views/OneProjectPage';
+// import Sprint from './Components/SprintPage/SprintPage';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -34,7 +36,8 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneProjectPage />
+      {/* <OneProjectPage /> */}
+      {/* <Sprint /> */}
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
@@ -61,7 +64,6 @@ function App() {
         </Switch>
       </Suspense> */}
     </>
-
   );
 }
 

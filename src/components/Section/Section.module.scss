@@ -3,11 +3,17 @@
 .section {
   position: relative;
   width: 100vw;
-  // height: 100vh;
-  height: 90vh;
+  height: calc(100vh - 61px);
+
   margin: 0 auto;
   background-image: none;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 767px) {
+  .section {
+    height: calc(100vh - 81px);
+  }
 }
 
 @media screen and (max-width: 767px) {

@@ -4,15 +4,15 @@
   width: 36px;
   height: 36px;
   border-radius: 5px;
-  background-color: #8c72df;
+  // background-color: #8c72df;
 }
+
 .squareName {
   display: flex;
   align-items: center;
   p {
     margin-left: 10px;
-    font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.22;
     width: 119px;
@@ -21,12 +21,14 @@
 
 .scroll {
   overflow-y: scroll;
-  height: 294px;
+  // height: 294px;
+  height: 300px;
 }
 
-.asideList {
-  min-height: 300px;
-}
+// .asideList {
+//   min-height: 300px;
+// }
+
 .asideListContainer {
   .scroll::-webkit-scrollbar {
     overflow: hidden;
@@ -53,6 +55,7 @@
     background: $accent-color;
   }
 }
+
 .scroll li:not(:last-child) {
   margin-bottom: 30px;
 }
@@ -65,13 +68,13 @@
   .asideListContainer {
     display: block;
     // padding: 77px 0px 77px 0px;
-    margin: 120px 0 120px;
+    // margin: 120px 0 120px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .asideListContainer {
     // padding: 182px 0px 73px 0px;
-    margin: 120px 0 120px;
+    // margin: 120px 0 120px;
   }
 }

@@ -8,7 +8,7 @@ import SvgComponent from '../SvgComponent';
 import Button from '../Button';
 import styles from './ModalProjects.module.scss';
 
-const ModalProjects = ({ onClick, onCloseModal }) => {
+const ModalProjects = ({ onCloseModal }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 

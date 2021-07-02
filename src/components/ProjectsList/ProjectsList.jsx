@@ -28,10 +28,10 @@ const ProjectsList = () => {
 
   return (
     <ul className={styles.projectsList}>
-      {projects.map(({ _id, name, description }) => (
+      {projects.map(({ id, name, description }) => (
         <li
           className={styles.listItem}
-          key={_id}
+          key={id}
           style={{
             backgroundPositionX: `${getRandomInt(100)}%`,
 
@@ -45,7 +45,7 @@ const ProjectsList = () => {
           <ProjectsListItem
             name={name}
             description={description}
-            onDeleteProject={() => onDeleteProject(_id)}
+            onDeleteProject={() => onDeleteProject(id)}
           />
         </li>
       ))}

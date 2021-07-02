@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './ProjectsListItem.module.scss';
 
-const ProjectsListItem = ({ name, description, onDeleteProject }) => {
+const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
   return (
-    <>
+    <Link to={`/projects/${id}`} className={styles.projectLink}>
       <h3 className={styles.projectName}>{name}</h3>
       <p className={styles.projectDescription}>{description}</p>
 
@@ -16,7 +17,7 @@ const ProjectsListItem = ({ name, description, onDeleteProject }) => {
       >
         <SvgComponent name="delete" classes={styles.deleteProjectIcon} />
       </IconButton>
-    </>
+    </Link>
   );
 };
 

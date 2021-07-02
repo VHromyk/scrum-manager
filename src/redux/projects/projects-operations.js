@@ -44,20 +44,21 @@ const deleteProject = projectId => async dispatch => {
   }
 };
 
+// Перевірити
 const renameProject =
-  ({ projectId, newName: name }) =>
+  ({ projectId, name }) =>
   async dispatch => {
     const renameProject = { name };
 
     dispatch(projectsActions.renameProjectRequest());
 
     try {
-      const respone = await axios.patch(
+      const { data } = await axios.patch(
         `/api/projects/${projectId}/name`,
         renameProject,
       );
 
-      dispatch(projectsActions.renameProjectSuccess(respone.data.data));
+      dispatch(projectsActions.renameProjectSuccess(data));
     } catch ({ message }) {
       dispatch(projectsActions.renameProjectError(message));
     }

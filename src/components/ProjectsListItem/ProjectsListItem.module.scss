@@ -1,12 +1,19 @@
 @import '../../styles/shared.scss';
 
+.projectLink {
+  display: block;
+  height: 136px; // -
+  padding: 10px;
+
+  color: inherit;
+}
+
 .projectName {
   margin-top: 0;
   margin-right: 0;
   margin-left: 0;
   margin-bottom: 6px;
 
-  margin: 0 0 6px 0;
   font-weight: 800;
   font-size: 16px;
   line-height: 1.25; // line-height/font-size
@@ -20,7 +27,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  // opacity: 0;
+  opacity: 0;
+
+  transition: opacity $timing-function $transition-duration;
+
+  .projectLink:hover &,
+  .projectLink:focus & {
+    opacity: 1;
+  }
 }
 
 .deleteProjectBtn {
@@ -48,6 +62,11 @@
 }
 
 @media screen and(min-width: 768px) {
+  .projectLink {
+    height: 216px;
+    padding: 20px;
+  }
+
   .projectName {
     margin-bottom: 10px;
 
@@ -67,6 +86,11 @@
 }
 
 @media screen and(min-width: 1280px) {
+  .projectLink {
+    height: 270px;
+    padding: 30px;
+  }
+
   .projectName {
     margin-bottom: 20px;
   }

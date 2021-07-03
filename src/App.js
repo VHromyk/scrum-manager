@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -76,8 +76,9 @@ function App() {
 
           <Redirect to={routes.login} />
         </Switch>
-      </Suspense>
+      </Suspense> 
 
+  
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -89,6 +90,7 @@ function App() {
         draggable
         pauseOnHover
       /> */}
+
     </>
   );
 }

@@ -19,20 +19,25 @@ const Aside = ({ createName, showName, children }) => {
 
   return (
     <div className={styles.aside}>
-      <div className={styles.asideArrow}>
-        <IconButton classes={styles.arrowBtn} aria-label="show projects button">
-          <SvgComponent name="arrow" classes={styles.arrowIcon} />
-        </IconButton>
-        <h3 className={styles.arrowTitle}>{showName}</h3>
-      </div>
-      {children}
-      <div className={styles.createButton}>
-        <AddButton onClick={buttonHandler} />
+      <div className={styles.asideWrapper}>
+        <div className={styles.asideArrow}>
+          <IconButton
+            classes={styles.arrowBtn}
+            aria-label="show projects button"
+          >
+            <SvgComponent name="arrow" classes={styles.arrowIcon} />
+          </IconButton>
+          <p className={styles.arrowText}>{showName}</p>
+        </div>
+        {children}
+        <div className={styles.createButton}>
+          <AddButton onClick={buttonHandler} />
 
-        <p className={styles.createButtonText}>{createName}</p>
+          <p className={styles.createButtonText}>{createName}</p>
+        </div>
+
+        {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
       </div>
-      <hr className={styles.line} />
-      {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
     </div>
   );
 };

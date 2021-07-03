@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { sprintsOperations, sprintstsSelectors } from '../../redux/sprints';
 import SprintCard from '../SprintCard';
-import styles from './SprintList.module.scss';
+import styles from './SprintsList.module.scss';
 
-const SprintsList = () => {
+const SprintsList = ({ array }) => {
   //   const sprints = useSelector(projectsSelectors.getAllSprints);
 
   //   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const SprintsList = () => {
 
   return (
     <ul className={styles.sprintsList}>
-      {sprints.map(({ id, name, description }) => (
+      {array.map(({ id, name, description, onDeleteSprint }) => (
         <li className={styles.listItem}>
           <SprintCard
             name={name}

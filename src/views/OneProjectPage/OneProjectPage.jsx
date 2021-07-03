@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddButton from '../../components/AddButton';
 import styles from './OneProjectPage.module.scss';
-import SprintCard from '../../components/SprintCard';
+import SprintsList from '../../components/SprintsList';
 import Container from '../../components/Container';
 import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
@@ -10,6 +10,33 @@ import AsideListProject from '../../components/AsideListProject';
 import ModalProjects from '../../components/ModalProjects';
 import Sprint from '../../components/Sprint';
 import AddPeople from '../../components/AddPeople';
+
+const sprints = [
+  {
+    id: 1,
+    sprintName: 'mama',
+    startDate: '02.03.2012',
+    endDate: '02.03.2012',
+    duration: 5,
+    handleDeleteSprint: () => console.log('delete sprint'),
+  },
+  {
+    id: 2,
+    sprintName: 'dsfg',
+    startDate: '02.03.2012',
+    endDate: '02.03.2012',
+    duration: 6,
+    handleDeleteSprint: () => console.log('delete sprint'),
+  },
+  {
+    id: 3,
+    sprintName: 'sdgsg',
+    startDate: '02.03.2012',
+    endDate: '02.03.2012',
+    duration: 7,
+    handleDeleteSprint: () => console.log('delete sprint'),
+  },
+];
 
 const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
@@ -74,14 +101,13 @@ const OneProjectPage = () => {
             </IconButton>
             <h3 class={styles.addPeopleTitle}>Add people</h3>
           </div>
-          {/* {sprints.length !== 0 ? (
-            <SprintsList />
+          {sprints.length !== 0 ? (
+            <SprintsList array={sprints} />
           ) : (
             <p className={styles.warningMessage}>
               You don't have any sprints yet
-            </p> 
-          )}  */}
-          <SprintCard />
+            </p>
+          )}
         </div>
         {createProject && <ModalProjects onClick={buttonCloseHandler} />}
         {createSprint && <Sprint onClick={btnCloseSprint} />}

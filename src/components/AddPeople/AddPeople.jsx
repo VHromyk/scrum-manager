@@ -3,6 +3,7 @@ import ModalBackdrop from '../ModalBackdrop';
 import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
+import Button from '../Button';
 import styles from './AddPeople.module.scss';
 
 const users = [
@@ -75,9 +76,7 @@ function AddPeople({ onClick }) {
           )}
         </div>
         <div className={styles.buttons}>
-          <button className={styles.button1} type="submit">
-            Ready
-          </button>
+          <Button type="submit" className={styles.button1} text="Ready" />
           <button className={styles.button2} onClick={onClick}>
             Cancel
           </button>

@@ -77,9 +77,9 @@ const OneProjectPage = () => {
     setShowIcon(true);
   };
 
-  useEffect(() => {
-    dispatch(sprintsOperations.fetchSprints(projectId));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(sprintsOperations.fetchSprints(projectId));
+  // }, [dispatch]);
 
   const buttonHandler = () => {
     setCreateProject(true);

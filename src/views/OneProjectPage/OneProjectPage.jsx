@@ -52,7 +52,7 @@ const OneProjectPage = () => {
 
   const { projectId } = useParams();
 
-  // const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
   const projects = useSelector(projectsSelectors.getAllProjects);
   const dispatch = useDispatch();
 
@@ -77,9 +77,12 @@ const OneProjectPage = () => {
     setShowIcon(true);
   };
 
-  // useEffect(() => {
-  //   dispatch(sprintsOperations.fetchSprints(projectId));
-  // }, [dispatch]);
+  useEffect(
+    projectId => {
+      dispatch(sprintsOperations.fetchSprints(projectId));
+    },
+    [dispatch],
+  );
 
   const buttonHandler = () => {
     setCreateProject(true);

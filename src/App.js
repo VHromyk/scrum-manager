@@ -10,19 +10,20 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import OneProjectPage from './views/OneProjectPage';
+import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
 
-const RegisterPage = lazy(() =>
-  import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
-);
+// const RegisterPage = lazy(() =>
+//   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
+// );
 
-const LoginPage = lazy(() =>
-  import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
-);
+// const LoginPage = lazy(() =>
+//   import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
+// );
 
-const ProjectsPage = lazy(() =>
-  import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
-);
+// const ProjectsPage = lazy(() =>
+//   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
+// );
 
 function App() {
   const dispatch = useDispatch();
@@ -33,12 +34,13 @@ function App() {
 
   return (
     <>
+      {/* <AddPeople /> */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      {/* <OneProjectPage /> */}
+      <OneProjectPage />
 
-      <Suspense fallback={<Spinner />}>
+      {/* <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
             path={routes.signup}
@@ -55,11 +57,8 @@ function App() {
           >
             <LoginPage />
           </PublicRoute>
-          <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
-            <OneProjectPage />
-          </PrivateRoute>
 
-          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
+          <PrivateRoute path={routes.projects} redirectTo={routes.signup}>
             <ProjectsPage />
           </PrivateRoute>
 
@@ -77,7 +76,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
     </>
   );
 }

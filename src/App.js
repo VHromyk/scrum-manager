@@ -9,12 +9,12 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
-import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
+
+import AddPeople from './components/AddPeople';
 import OneProjectPage from './views/OneProjectPage';
 import OneSprintsPage from './views/OneSprintsPage';
-
-// import SprintModal from './components/SprintModal';
+import SprintModal from './components/SprintModal';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -43,11 +43,9 @@ function App() {
 
   return (
     <>
-      {/* <AddPeople /> */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneProjectPage />
 
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
@@ -67,19 +65,18 @@ function App() {
             <LoginPage />
           </PublicRoute>
 
-          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
-            <ProjectsPage />
-          </PrivateRoute>
-
           <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
             <OneProjectPage />
           </PrivateRoute>
 
+          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
+            <ProjectsPage />
+          </PrivateRoute>
+
           <Redirect to={routes.login} />
         </Switch>
-      </Suspense> 
+      </Suspense>
 
-  
       <ToastContainer
         position="top-right"
         autoClose={3000}

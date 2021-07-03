@@ -1,0 +1,17 @@
+.sprintsList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+// .listItem:not(:nth-last-child(-n + 3)) {
+//   margin-left: 20px;
+// }
+
+.listItem:nth-child(3n + 3) {
+  margin-right: 0px;
+}

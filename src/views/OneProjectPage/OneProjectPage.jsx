@@ -172,7 +172,7 @@ const OneProjectPage = () => {
 
         {createProject && <ModalProjects onClick={buttonCloseHandler} />}
         {createSprint && (
-          <SprintModal onClick={btnCloseSprint} projectID={projectId} />
+          <SprintModal onCloseModal={btnCloseSprint} projectId={projectId} />
         )}
         {addPeople && <AddPeople onClick={btnCloseAddPeople} />}
       </div>

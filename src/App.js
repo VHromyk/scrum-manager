@@ -9,9 +9,12 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
-import OneProjectPage from './views/OneProjectPage';
-import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
+
+import AddPeople from './components/AddPeople';
+import OneProjectPage from './views/OneProjectPage';
+import OneSprintsPage from './views/OneSprintsPage';
+import SprintModal from './components/SprintModal';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -25,6 +28,12 @@ import 'react-toastify/dist/ReactToastify.css';
 //   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
 // );
 
+// const OneProjectPage = lazy(() =>
+//   import(
+//     './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
+//   ),
+// );
+
 function App() {
   const dispatch = useDispatch();
 
@@ -34,11 +43,9 @@ function App() {
 
   return (
     <>
-      {/* <AddPeople /> */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneProjectPage />
 
       {/* <Suspense fallback={<Spinner />}>
         <Switch>
@@ -58,11 +65,15 @@ function App() {
             <LoginPage />
           </PublicRoute>
 
-          <PrivateRoute path={routes.projects} redirectTo={routes.signup}>
+          <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
+            <OneProjectPage />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
             <ProjectsPage />
           </PrivateRoute>
 
-          <Redirect to={routes.signup} />
+          <Redirect to={routes.login} />
         </Switch>
       </Suspense>
 

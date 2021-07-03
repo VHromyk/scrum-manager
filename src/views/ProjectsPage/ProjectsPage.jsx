@@ -38,7 +38,7 @@ const ProjectsPage = () => {
       ) : (
         <p className={styles.warningMessage}>You don't have any projects yet</p>
       )}
-      {showModal && <ModalProjects onClick={buttonCloseHandler} />}
+      {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
     </Container>
   );
 };

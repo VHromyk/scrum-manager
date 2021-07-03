@@ -65,7 +65,7 @@ function LoginPage() {
         <Button type="submit" text="Enter" />
         <p className={styles.linkTo}>
           No account?
-          <a className={styles.linkToRegister} href="/register">
+          <a className={styles.linkToRegister} href="/signup">
             Register
           </a>
         </p>

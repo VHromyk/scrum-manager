@@ -6,10 +6,11 @@ import styles from './ProjectsListItem.module.scss';
 
 const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
   return (
-    <Link to={`/projects/${id}`} className={styles.projectLink}>
-      <h3 className={styles.projectName}>{name}</h3>
-      <p className={styles.projectDescription}>{description}</p>
-
+    <>
+      <Link to={`/projects/${id}`} className={styles.projectLink}>
+        <h3 className={styles.projectName}>{name}</h3>
+        <p className={styles.projectDescription}>{description}</p>
+      </Link>
       <IconButton
         classes={styles.deleteProjectBtn}
         onClick={onDeleteProject}
@@ -17,7 +18,7 @@ const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
       >
         <SvgComponent name="delete" classes={styles.deleteProjectIcon} />
       </IconButton>
-    </Link>
+    </>
   );
 };
 

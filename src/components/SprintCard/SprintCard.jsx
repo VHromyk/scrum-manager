@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
@@ -12,7 +13,11 @@ const SprintCard = ({
   duration,
   handleDeleteSprint,
 }) => (
-  <li key={id} className={styles.SprintCard}>
+  <Link
+    to={`/projects/:projectId/sprints/${id}`}
+    key={id}
+    className={styles.SprintCard}
+  >
     <p className={styles.SprintTitle}>{sprintName}</p>
     <ul className={styles.SprintCardList}>
       <li className={styles.SprintItem}>
@@ -30,12 +35,12 @@ const SprintCard = ({
     </ul>
     <IconButton
       classes={styles.deleteSprintBtn}
-      onClick={() => handleDeleteSprint(id)}
+      onClick={handleDeleteSprint}
       aria-label="delete sprint button"
     >
       <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
     </IconButton>
-  </li>
+  </Link>
 );
 
 SprintCard.propTypes = {

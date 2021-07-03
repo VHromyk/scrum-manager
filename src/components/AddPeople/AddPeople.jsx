@@ -76,7 +76,7 @@ function AddPeople({ onClick }) {
           )}
         </div>
         <div className={styles.buttons}>
-          <Button type="submit" className={styles.button1} text="Ready" />
+          <Button type="submit" text="Ready" />
           <button className={styles.button2} onClick={onClick}>
             Cancel
           </button>

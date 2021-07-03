@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import AddButton from '../../components/AddButton';
 import styles from './OneProjectPage.module.scss';
 import SprintsList from '../../components/SprintsList';
@@ -10,6 +12,7 @@ import AsideListProject from '../../components/AsideListProject';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
+import { useParams } from 'react-router-dom';
 
 const sprints = [
   {
@@ -42,6 +45,16 @@ const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
   const [createSprint, setCreateSprint] = useState(false);
   const [addPeople, setAddPeople] = useState(false);
+
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sprintsOperations.fetchSprints());
+  }, [dispatch]);
+
+  const { projectId } = useParams();
+  console.log(projectId);
 
   const buttonHandler = () => {
     setCreateProject(true);
@@ -103,7 +116,7 @@ const OneProjectPage = () => {
             <h3 class={styles.addPeopleTitle}>Add people</h3>
           </div>
           {sprints.length !== 0 ? (
-            <SprintsList array={sprints} />
+            <SprintsList />
           ) : (
             <p className={styles.warningMessage}>
               You don't have any sprints yet
@@ -112,7 +125,9 @@ const OneProjectPage = () => {
         </div>
 
         {createProject && <ModalProjects onClick={buttonCloseHandler} />}
-        {createSprint && <SprintModal onClick={btnCloseSprint} />}
+        {createSprint && (
+          <SprintModal onClick={btnCloseSprint} projectID={projectId} />
+        )}
         {addPeople && <AddPeople onClick={btnCloseAddPeople} />}
       </div>
     </Container>

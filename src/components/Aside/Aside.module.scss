@@ -2,14 +2,11 @@
 .aside {
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid $border-main-color;
 }
 
 .asideWrapper {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  height: 100%;
 }
 
 .asideArrow {
@@ -45,6 +42,21 @@
   letter-spacing: 0.04em;
 }
 
+.createButton {
+  text-align: center;
+  // margin-right: 20px;
+}
+
+.createButtonText {
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .aside {
+    border-bottom: 1px solid $border-main-color;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .aside {
     position: sticky;
@@ -59,6 +71,12 @@
 
     border-right: 1px solid $border-main-color;
   }
+
+  .asideWrapper {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -66,13 +84,4 @@
     width: 200px;
     padding-right: 30px;
   }
-}
-
-.createButton {
-  text-align: center;
-  // margin-right: 20px;
-}
-
-.createButtonText {
-  margin-top: 15px;
 }

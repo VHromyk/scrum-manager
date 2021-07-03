@@ -12,7 +12,6 @@ import routes from './routes';
 import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
 // import OneProjectPage from './views/OneProjectPage';
-import Diagram from './components/Diagram';
 
 // const RegisterPage = lazy(() =>
 //   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
@@ -45,7 +44,6 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <Diagram />
       {/* <OneProjectPage /> */}
 
       {/* <Suspense fallback={<Spinner />}>

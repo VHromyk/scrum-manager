@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
+import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import AddButton from '../../components/AddButton';
 import styles from './OneProjectPage.module.scss';
 import SprintsList from '../../components/SprintsList';
@@ -45,16 +46,40 @@ const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
   const [createSprint, setCreateSprint] = useState(false);
   const [addPeople, setAddPeople] = useState(false);
-
-  const sprints = useSelector(sprintsSelectors.getAllSprints);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(sprintsOperations.fetchSprints());
-  }, [dispatch]);
+  const [showInput, setShowInput] = useState(true);
+  const [showIcon, setShowIcon] = useState(true);
+  const [newName, setNewName] = useState('');
 
   const { projectId } = useParams();
-  console.log(projectId);
+
+  // const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const projects = useSelector(projectsSelectors.getAllProjects);
+  const dispatch = useDispatch();
+
+  const currentProject = projects.find(({ id }) => id === projectId);
+
+  const onRenameProject = ({ projectId, newName }) =>
+    dispatch(projectsOperations.renameProject({ projectId, newName }));
+
+  const changeIcon = () => {
+    setShowIcon(false);
+    setShowInput(false);
+  };
+
+  const changeInputName = e => {
+    setNewName(e.target.value);
+  };
+
+  const onSubmitRenameNAme = e => {
+    e.preventDefault();
+    onRenameProject(projectId, newName);
+    setShowInput(true);
+    setShowIcon(true);
+  };
+
+  useEffect(() => {
+    dispatch(sprintsOperations.fetchSprints(projectId));
+  }, [dispatch]);
 
   const buttonHandler = () => {
     setCreateProject(true);
@@ -90,13 +115,31 @@ const OneProjectPage = () => {
         <div className={styles.headerProject}>
           <div className={styles.titleButtons}>
             <div className={styles.titleContainer}>
-              <h2 className={styles.title}>Project 1</h2>
-              <IconButton
-                classes={styles.projectBtn}
-                aria-label="edit name button"
-              >
-                <SvgComponent name="project" classes={styles.projectIcon} />
-              </IconButton>
+              {showInput ? (
+                <h2 className={styles.title}>{currentProject.name}</h2>
+              ) : (
+                <form onSubmit={onSubmitRenameNAme}>
+                  <input
+                    value={newName}
+                    name="name"
+                    id="name"
+                    type="name"
+                    onChange={changeInputName}
+                  ></input>
+                  <button onSubmit={onSubmitRenameNAme}></button>
+                </form>
+              )}
+              {showIcon && (
+                <>
+                  <IconButton
+                    classes={styles.projectBtn}
+                    aria-label="edit name button"
+                    onClick={changeIcon}
+                  >
+                    <SvgComponent name="project" classes={styles.projectIcon} />
+                  </IconButton>
+                </>
+              )}
             </div>
 
             <div className={styles.createSprint}>

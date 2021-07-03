@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -9,29 +9,20 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
-import AddPeople from './components/AddPeople';
-import 'react-toastify/dist/ReactToastify.css';
 import OneProjectPage from './views/OneProjectPage';
+import 'react-toastify/dist/ReactToastify.css';
 
-// import SprintModal from './components/SprintModal';
+const RegisterPage = lazy(() =>
+  import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
+);
 
-// const RegisterPage = lazy(() =>
-//   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
-// );
+const LoginPage = lazy(() =>
+  import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
+);
 
-// const LoginPage = lazy(() =>
-//   import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
-// );
-
-// const ProjectsPage = lazy(() =>
-//   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
-// );
-
-// const OneProjectPage = lazy(() =>
-//   import(
-//     './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
-//   ),
-// );
+const ProjectsPage = lazy(() =>
+  import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -42,13 +33,12 @@ function App() {
 
   return (
     <>
-      {/* <AddPeople /> */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneProjectPage />
+      {/* <OneProjectPage /> */}
 
-      {/* <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
             path={routes.signup}
@@ -65,20 +55,18 @@ function App() {
           >
             <LoginPage />
           </PublicRoute>
+          <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
+            <OneProjectPage />
+          </PrivateRoute>
 
           <PrivateRoute path={routes.projects} redirectTo={routes.login}>
             <ProjectsPage />
           </PrivateRoute>
 
-          <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
-            <OneProjectPage />
-          </PrivateRoute>
-
-          <Redirect to={routes.login} />
+          <Redirect to={routes.signup} />
         </Switch>
-      </Suspense> 
+      </Suspense>
 
-  
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -89,8 +77,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      /> */}
-
+      />
     </>
   );
 }

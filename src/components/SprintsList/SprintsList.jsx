@@ -1,27 +1,28 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { sprintsOperations, sprintstsSelectors } from '../../redux/sprints';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import SprintCard from '../SprintCard';
 import styles from './SprintsList.module.scss';
 
-const SprintsList = ({ array }) => {
-  //   const sprints = useSelector(projectsSelectors.getAllSprints);
+const SprintsList = () => {
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
 
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //   const onDeleteSprint = useCallback(
-  //     sprintId => dispatch(sprintsOperations.deleteProject(sprintId)),
-  //     [dispatch],
-  //   );
+  const onDeleteSprint = useCallback(
+    sprintId => dispatch(sprintsOperations.deleteSprint(sprintId)),
+    [dispatch],
+  );
 
   return (
     <ul className={styles.sprintsList}>
-      {array.map(({ id, name, description, onDeleteSprint }) => (
+      {sprints.map(({ sprintId, name, description }) => (
         <li className={styles.listItem}>
           <SprintCard
+            id={sprintId}
             name={name}
             description={description}
-            handleDeleteSprint={() => onDeleteSprint(id)}
+            handleDeleteSprint={() => onDeleteSprint(sprintId)}
           />
         </li>
       ))}

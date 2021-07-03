@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './AsideListProject.module.scss';
 import bcgColors from '../../projectCardBcgColors';
 
@@ -25,16 +26,18 @@ const AsideListProject = () => {
         <ul className={styles.asideList}>
           {projectsList.map(({ id, name }) => (
             <li key={id}>
-              <div className={styles.squareName}>
-                <div
-                  className={styles.square}
-                  style={{
-                    backgroundColor:
-                      bcgColors[`${getRandomInt(colorsNumber - 1)}`],
-                  }}
-                ></div>
-                <p>{name}</p>
-              </div>
+              <Link to={`/projects/${id}`} className={styles.projectLink}>
+                <div className={styles.squareName}>
+                  <div
+                    className={styles.square}
+                    style={{
+                      backgroundColor:
+                        bcgColors[`${getRandomInt(colorsNumber - 1)}`],
+                    }}
+                  ></div>
+                  <p>{name}</p>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>

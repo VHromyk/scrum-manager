@@ -4,27 +4,15 @@ import Calendar from '../Calendar';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
+import { sprintsOperations } from '../../redux/sprints';
 
-const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
-  // const onCloseModal = () => {
-  //   //Написать закрытие модалки
-  // };
-  // useEffect(() => {
-  //   function onKeyup(e) {
-  //     if (e.key === 'Escape') {
-  //       onCloseModal;
-  //     }
-  //   }
-  //   window.addEventListener('keyup', onKeyup);
-  //   return () => window.removeEventListener('keyup', onKeyup);
-  // });
-
+const SprintModal = ({ onCloseModal, projectId }) => {
   const [time, setTime] = useState(new Date());
   const [sprintName, setSprintName] = useState('');
   const [duration, setDuration] = useState('');
   const [checkBox, setCheckBox] = useState(true);
   return (
-    <ModalBackdrop onClose={onClick}>
+    <ModalBackdrop onClose={onCloseModal}>
       <div className={styles.modal}>
         <form
           onSubmit={e => {
@@ -44,11 +32,6 @@ const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
             />
             <div className={styles.labelText}>The name of the sprint</div>
           </label>
-          {/* <label className={styles.radioLabel}>
-          <input className={styles.radioButton} type="radio" checked />
-          <span className={styles.radioSpan}></span>
-          Previous days
-        </label> */}
           <label
             className={styles.labelRadio}
             onClick={() => {
@@ -56,14 +39,6 @@ const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
               else setCheckBox(true);
             }}
           >
-            {/* <IconButton
-            classes={styles.circleBtn}
-            aria-label="show previous days button"
-          >
-            {checkBox && (
-              <SvgComponent name="circle" classes={styles.circleIcon} />
-            )}
-          </IconButton> */}
             <div className={styles.roud}>
               {checkBox && (
                 <SvgComponent name="circle" classes={styles.circleIcon} />
@@ -72,12 +47,15 @@ const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
             Previous days
           </label>
           {/* Время */}
+          {(checkBox && <span className={styles.endDate}>End date</span>) || (
+            <span className={styles.endDate}>Start date</span>
+          )}
+          {/* ////////// */}
           <div className={styles.dataAndDay}>
             <div className={styles.calendar}>
               {Calendar(time, setTime)}
               <div className={styles.line}></div>
             </div>
-
             <label className={styles.labelInput}>
               <input
                 className={styles.sprintName}
@@ -92,13 +70,39 @@ const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
             </label>
           </div>
           <div className={styles.buttonDiv}>
-            <input type="submit" value="Ready" className={styles.ready} />
+            <input
+              type="submit"
+              value="Ready"
+              className={styles.ready}
+              onClick={e => {
+                //Просчитываем новую дату
+                e.preventDefault();
+                const name = sprintName;
+                const startDate = time;
+                const endDate = new Date(startDate);
+
+                if (checkBox) {
+                  endDate.setDate(startDate.getDate() - Number(duration));
+                } else endDate.setDate(startDate.getDate() + Number(duration));
+                // tomorrow.toLocaleDateString();
+
+                sprintsOperations.addSprint(
+                  projectId,
+                  name,
+                  startDate,
+                  endDate,
+                );
+                console.log('start date ', startDate);
+                console.log('end date ', endDate);
+                console.log('duration = ', duration);
+              }}
+            />
             <button
               className={styles.cancel}
               // onClick={onCloseModal}
               onClick={e => {
                 e.preventDefault();
-                onClick();
+                onCloseModal();
               }}
             >
               Cancel
@@ -107,7 +111,7 @@ const SprintModal = ({ onSubmit, onCloseModal, onClick, projectID }) => {
           <IconButton
             classes={styles.closeBtn}
             aria-label="close window"
-            onClick={onClick}
+            onClick={onCloseModal}
           >
             <SvgComponent name="close" classes={styles.closeIcon} />
           </IconButton>

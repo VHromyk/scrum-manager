@@ -11,28 +11,28 @@ import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import 'react-toastify/dist/ReactToastify.css';
 
-import AddPeople from './components/AddPeople';
-import OneProjectPage from './views/OneProjectPage';
-import OneSprintsPage from './views/OneSprintsPage';
-import SprintModal from './components/SprintModal';
+// import AddPeople from './components/AddPeople';
+// import OneProjectPage from './views/OneProjectPage';
+// import OneSprintsPage from './views/OneSprintsPage';
+// import SprintModal from './components/SprintModal';
 
-// const RegisterPage = lazy(() =>
-//   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
-// );
+const RegisterPage = lazy(() =>
+  import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
+);
 
-// const LoginPage = lazy(() =>
-//   import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
-// );
+const LoginPage = lazy(() =>
+  import('./views/LoginPage' /* webpackChunkName: 'login-page' */),
+);
 
-// const ProjectsPage = lazy(() =>
-//   import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
-// );
+const ProjectsPage = lazy(() =>
+  import('./views/ProjectsPage' /* webpackChunkName: 'projects-page' */),
+);
 
-// const OneProjectPage = lazy(() =>
-//   import(
-//     './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
-//   ),
-// );
+const OneProjectPage = lazy(() =>
+  import(
+    './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
+  ),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -46,8 +46,7 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-
-      {/* <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
             path={routes.signup}
@@ -87,7 +86,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      /> */}
+      />
     </>
   );
 }

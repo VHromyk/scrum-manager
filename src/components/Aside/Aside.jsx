@@ -43,6 +43,7 @@ const Aside = ({ createName, showName, children }) => {
 
         {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
       </div>
+      <hr className={styles.line} />
     </div>
   );
 };

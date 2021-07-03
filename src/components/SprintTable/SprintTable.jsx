@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '../../components/IconButton';
-import SvgComponent from '../../components/SvgComponent';
-import styles from './SprintsCard.module.scss';
+import IconButton from '../IconButton';
+import SvgComponent from '../SvgComponent';
+import styles from './SprintTable.module.scss';
 
 const SprintTable = ({ sprintName }) => {
   // const deleteTask = ()=> {

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddButton from '../AddButton';
-import IconButton from '../IconButton/IconButton';
-import SvgComponent from '../SvgComponent/SvgComponent';
+import AddButton from '../../components/AddButton';
+import IconButton from '../../components/IconButton';
+import SvgComponent from '../../components/SvgComponent';
 import styles from './SprintPage.module.scss';
-import Container from '../Container/Container';
+import Container from '../../components/Container';
 
-import Aside from '../Aside';
+import Aside from '../../components/Aside';
 // import AsideListProject from '../Components/Aside';
 import SprintTable from './SprintCard';
 

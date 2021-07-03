@@ -84,11 +84,11 @@ const ModalProjects = ({ onCloseModal }) => {
 
     if (!name) {
       setValidName('invalid');
-      toast.error('Fill the fields correctly');
+      // toast.error('Fill the fields correctly');
       return;
     } else if (!nameLengthLimits) {
       setValidName('invalidLength');
-      toast.error('Fill the fields correctly');
+      // toast.error('Fill the fields correctly');
       return;
     } else {
       setValidName('valid');

@@ -19,10 +19,6 @@
 
   transition: box-shadow $transition-duration $timing-function;
 
-  &:not(:last-child) {
-    margin-bottom: 5px;
-  }
-
   &:hover,
   &:focus {
     box-shadow: $light-theme-box-shadow;
@@ -39,6 +35,15 @@
   .listItem {
     width: calc((100% - (4 * 5px)) / 2);
     margin: 5px;
+    overflow: hidden;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .listItem {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
   }
 }
 

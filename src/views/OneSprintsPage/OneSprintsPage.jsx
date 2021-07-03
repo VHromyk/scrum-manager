@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
 import SvgComponent from '../../components/SvgComponent';
-import styles from './SprintPage.module.scss';
+import styles from './OneSprintsPage.module.scss';
 import Container from '../../components/Container';
-
 import Aside from '../../components/Aside';
-// import AsideListProject from '../Components/Aside';
-import SprintTable from './SprintCard';
+import AsideListSprint from '../../components/AsideListSprint';
+import SprintTable from '../../components/SprintTable';
 
-const Sprint = () => {
+const OneSprintsPage = () => {
   return (
     <>
       <Container>
         <div className={styles.sprintsWrapper}>
-          <Aside />
-          {/* <AsideProjectList /> */}
+          <Aside
+            createName="Create a project"
+            showName="Show sprints"
+            // onClick={buttonHandler}
+          >
+            <AsideListSprint />
+          </Aside>
           <div className={styles.sprintsSideContainer}>
             <div className={styles.formContainer}>
               <div className={styles.pagesContainer}>
@@ -58,13 +62,15 @@ const Sprint = () => {
               </form>
             </div>
             <div className={styles.sprintNameContainer}>
-              <h1 className={styles.sprintName}>Sprint Burndown Chart 1</h1>
-              <IconButton
-                classes={styles.projectBtn}
-                aria-label="edit name button"
-              >
-                <SvgComponent name="project" classes={styles.projectIcon} />
-              </IconButton>
+              <div className={styles.sprintNameEdit}>
+                <h1 className={styles.sprintName}>Sprint Burndown Chart 1</h1>
+                <IconButton
+                  classes={styles.projectBtn}
+                  aria-label="edit name button"
+                >
+                  <SvgComponent name="project" classes={styles.projectIcon} />
+                </IconButton>
+              </div>
               <div className={styles.createNewBtn}>
                 <AddButton />
                 <span className={styles.createTask}>Create a Task</span>
@@ -90,4 +96,4 @@ const Sprint = () => {
     </>
   );
 };
-export default Sprint;
+export default OneSprintsPage;

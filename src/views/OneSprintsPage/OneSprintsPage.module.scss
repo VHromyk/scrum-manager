@@ -18,20 +18,23 @@
 }
 .sprintNameContainer {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   margin-bottom: 30px;
 }
 .sprintName {
   width: 260px;
   margin: 0;
-  font-style: normal;
   font-weight: 500;
   font-size: 26px;
-  line-height: 32px;
+  line-height: 1.2;
   letter-spacing: 0.04em;
   color: $text-main-color;
   display: flex;
   align-items: center;
+}
+.sprintNameEdit {
+  display: flex;
 }
 .currentSprintPages {
   font-style: normal;
@@ -214,7 +217,7 @@
   }
   .sprintName {
     margin-right: 43px;
-    width: 350px;
+    // width: 350px;
   }
   .projectBtn {
     margin-right: 34px;
@@ -251,5 +254,12 @@
   .analyticsBtn {
     left: 1150px;
     bottom: 60px;
+  }
+  .sprintName {
+    width: 337px;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.22;
+    letter-spacing: normal;
   }
 }

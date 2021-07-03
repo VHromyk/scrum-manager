@@ -47,7 +47,7 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneSprintsPage />
+      <OneProjectPage />
 
       {/* <Suspense fallback={<Spinner />}>
         <Switch>

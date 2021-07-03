@@ -12,6 +12,7 @@ import routes from './routes';
 import AddPeople from './components/AddPeople';
 import 'react-toastify/dist/ReactToastify.css';
 import OneProjectPage from './views/OneProjectPage';
+import OneSprintsPage from './views/OneSprintsPage/SprintPage';
 
 // import SprintModal from './components/SprintModal';
 
@@ -90,7 +91,6 @@ function App() {
         draggable
         pauseOnHover
       /> */}
-
     </>
   );
 }

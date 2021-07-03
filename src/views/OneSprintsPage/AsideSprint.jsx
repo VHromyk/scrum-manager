@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '../Components/IconButton/IconButton';
-import SvgComponent from '../Components/SvgComponent/SvgComponent';
-import AddButton from '../Components/AddButton';
+import IconButton from '../../components/IconButton';
+import SvgComponent from '../../components/SvgComponent';
+import AddButton from '../../components/Components/AddButton';
 
 import styles from './AsideSprint.module.scss';
 

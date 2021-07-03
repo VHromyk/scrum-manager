@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '../IconButton/IconButton';
-import SvgComponent from '../SvgComponent/SvgComponent';
+import IconButton from '../../components/IconButton';
+import SvgComponent from '../../components/SvgComponent';
 import styles from './SprintsCard.module.scss';
 
 const SprintTable = ({ sprintName }) => {

@@ -55,7 +55,8 @@
   }
 }
 
-label {
+.labelInput,
+.labelRadio {
   display: block;
   letter-spacing: 0.04em;
   padding-left: 20px;
@@ -190,19 +191,24 @@ label {
   border-radius: 25px;
 }
 
-.cancel {
+.cancelBtn {
+  width: 148px;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+
   font-size: 18px;
-  line-height: 22px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  line-height: 1.22;
   letter-spacing: 0.04em;
-  text-decoration-line: underline;
   cursor: pointer;
 
-  color: rgba(24, 28, 39, 0.6);
-  border: none;
+  color: $text-light-theme-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover {
+    color: $accent-color;
+  }
 }
 
 .buttonDiv {

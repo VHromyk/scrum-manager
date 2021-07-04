@@ -14,9 +14,10 @@ const fetchSprints = projectId => async dispatch => {
 };
 
 const addSprint =
-  ({ projectId, name, startDate, endDate }) =>
+  ({ projectId, name, startDate, endDate, duration }) =>
   async dispatch => {
-    const sprint = { name, startDate, endDate };
+    const sprint = { name, startDate, endDate, duration };
+
     dispatch(sprintsActions.addSprintRequest());
 
     try {

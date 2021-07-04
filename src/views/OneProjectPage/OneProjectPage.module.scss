@@ -129,6 +129,8 @@
     font-size: 36px;
     line-height: 1.22;
     letter-spacing: 0.04em;
+    width: 350px;
+    word-wrap: break-word;
   }
 }
 
@@ -139,5 +141,9 @@
   }
   .createTitle {
     display: block;
+  }
+  .title {
+    width: 550px;
+    word-wrap: break-word;
   }
 }

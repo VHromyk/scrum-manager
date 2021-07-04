@@ -1,5 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
+import { taskOperations, taskSelectors } from '../../redux/tasks';
+
+import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
 import SvgComponent from '../../components/SvgComponent';
@@ -8,16 +13,85 @@ import Container from '../../components/Container';
 import Aside from '../../components/Aside';
 import AsideListSprint from '../../components/AsideListSprint';
 import SprintTable from '../../components/SprintTable';
+import TaskModal from '../../components/TaskModal';
+import Diagram from '../../components/Diagram';
+
+import { useParams } from 'react-router-dom';
 
 const OneSprintsPage = () => {
+  const [createSprint, setCreateSprint] = useState(false);
+  const [createTask, setCreateTask] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [showInput, setShowInput] = useState(true);
+  const [showIcon, setShowIcon] = useState(true);
+  const [showDiagram, setShowDiagram] = useState(false);
+
+  const { projectId } = useParams();
+  const { sprintId } = useParams();
+  const { taskId } = useParams();
+
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const dispatch = useDispatch();
+
+  const tasksFilter = ({ target: { value } }) => {
+    dispatch(taskSelectors.getFilter(value, taskId));
+  };
+
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
+
+  const onRenameSprint = ({ projectId, sprintId, newName }) =>
+    dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
+
+  const changeInputName = e => {
+    setNewName(e.target.value);
+  };
+  const onSubmitRenameName = e => {
+    e.preventDefault();
+    onRenameSprint(projectId, sprintId, newName);
+    setShowInput(true);
+    setShowIcon(true);
+  };
+  useEffect(
+    sprintId => {
+      dispatch(taskOperations.fetchTasks(sprintId));
+    },
+    [dispatch],
+  );
+  const buttonHandler = () => {
+    setCreateSprint(true);
+  };
+
+  const buttonHandlerTask = () => {
+    setCreateTask(true);
+  };
+
+  const buttonHandlerDiagram = () => {
+    setShowDiagram(true);
+  };
+
+  const btnCloseDiagram = () => {
+    setShowDiagram(false);
+  };
+
+  const btnCloseSprint = () => {
+    setCreateSprint(false);
+  };
+
+  const btnCloseTask = () => {
+    setCreateTask(false);
+  };
+  const changeIcon = () => {
+    setShowIcon(false);
+    setShowInput(false);
+  };
   return (
     <>
       <Container>
         <div className={styles.sprintsWrapper}>
           <Aside
-            createName="Create a project"
+            createName="Create a sprint"
             showName="Show sprints"
-            // onClick={buttonHandler}
+            onClick={buttonHandler}
           >
             <AsideListSprint />
           </Aside>
@@ -51,6 +125,7 @@ const OneSprintsPage = () => {
                 <IconButton
                   classes={styles.searchBtn}
                   aria-label="search task button"
+                  onClick={tasksFilter}
                 >
                   <SvgComponent
                     name="search"
@@ -63,16 +138,45 @@ const OneSprintsPage = () => {
             </div>
             <div className={styles.sprintNameContainer}>
               <div className={styles.sprintNameEdit}>
-                <h1 className={styles.sprintName}>Sprint Burndown Chart 1</h1>
-                <IconButton
-                  classes={styles.projectBtn}
-                  aria-label="edit name button"
-                >
-                  <SvgComponent name="project" classes={styles.projectIcon} />
-                </IconButton>
+                {showInput ? (
+                  <h1 className={styles.sprintName}>Hello</h1>
+                ) : (
+                  <form onSubmit={onSubmitRenameName}>
+                    <input
+                      value={newName}
+                      name="name"
+                      id="name"
+                      type="name"
+                      onChange={changeInputName}
+                      className={styles.sprintNameInput}
+                    ></input>
+                    <IconButton
+                      classes={styles.doneBtn}
+                      aria-label="confirm changes"
+                      onSubmit={onSubmitRenameName}
+                    >
+                      <SvgComponent name="done" classes={styles.doneIcon} />
+                    </IconButton>
+                  </form>
+                )}
+                {showIcon && (
+                  <>
+                    <IconButton
+                      classes={styles.projectBtn}
+                      aria-label="edit name button"
+                      onClick={changeIcon}
+                    >
+                      <SvgComponent
+                        name="project"
+                        classes={styles.projectIcon}
+                      />
+                    </IconButton>
+                  </>
+                )}
               </div>
+
               <div className={styles.createNewBtn}>
-                <AddButton />
+                <AddButton onClick={buttonHandlerTask} />
                 <span className={styles.createTask}>Create a Task</span>
               </div>
             </div>
@@ -87,11 +191,19 @@ const OneSprintsPage = () => {
             <IconButton
               classes={styles.analyticsBtn}
               aria-label="open diagram button"
+              onClick={buttonHandlerDiagram}
             >
               <SvgComponent name="analytics" classes={styles.analyticsIcon} />
             </IconButton>
           </div>
         </div>
+        {createSprint && (
+          <SprintModal onCloseModal={btnCloseSprint} projectId={sprintId} />
+        )}
+        {createTask && (
+          <TaskModal onCloseModal={btnCloseTask} projectId={taskId} />
+        )}
+        {showDiagram && <Diagram onCloseModal={btnCloseDiagram} />}
       </Container>
     </>
   );

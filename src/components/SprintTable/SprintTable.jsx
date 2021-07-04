@@ -1,17 +1,9 @@
-
 import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
-
-const SprintTable = ({
-  ptojectId,
-  sprintName,
-  startDate,
-  endDate,
-  duration,
-}) => {
+const SprintTable = ({ sprintId, durationTask, nameTask }) => {
   return (
     <div className={styles.sprintNameContainer}>
       <ul className={styles.sprintHeader}>
@@ -39,11 +31,11 @@ const SprintTable = ({
       <li className={styles.sprintCard}>
         <ul className={styles.sprintCardList}>
           <li className={styles.sprintTitle}>
-            <input className={styles.sprintNameInput}></input>
+            <input className={styles.sprintNameInput}>{nameTask}</input>
           </li>
           <li className={styles.sprintItem}>
             <span className={styles.sprintSpan}>Sheduled hours</span>
-            <span>5</span>
+            <span>{durationTask}</span>
           </li>
           <li className={styles.sprintItem}>
             <span className={styles.sprintSpan}>Spent hour/day</span>

@@ -145,6 +145,10 @@ const OneProjectPage = () => {
               )}
             </div>
 
+            <IconButton classes={styles.doneBtn} aria-label="confirm changes">
+              <SvgComponent name="done" classes={styles.doneIcon} />
+            </IconButton>
+
             <div className={styles.createSprint}>
               <AddButton onClick={btnSprint} />
 

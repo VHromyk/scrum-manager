@@ -88,6 +88,11 @@ const Icons = () => (
       <SvgComponent name="project" classes={styles.projectIcon} />
     </IconButton>
 
+    {/* Підтвердити зміну назви проекту/спринта (поля в інпуті) */}
+    <IconButton classes={styles.doneBtn} aria-label="confirm changes">
+      <SvgComponent name="done" classes={styles.doneIcon} />
+    </IconButton>
+
     {/* Кнопка пошуку завдання (лупа) */}
     <IconButton classes={styles.searchBtn} aria-label="search task button">
       <SvgComponent name="search" classes={styles.searchIcon} />

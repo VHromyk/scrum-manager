@@ -16,13 +16,15 @@ const SprintsList = () => {
 
   return (
     <ul className={styles.sprintsList}>
-      {sprints.map(({ sprintId, name, description }) => (
-        <li className={styles.listItem}>
+      {sprints.map(({ id, name, startDate, endDate, duration }) => (
+        <li className={styles.listItem} key={id}>
           <SprintCard
-            id={sprintId}
+            id={id}
+            startDate={startDate}
+            endDate={endDate}
             name={name}
-            description={description}
-            handleDeleteSprint={() => onDeleteSprint(sprintId)}
+            duration={duration}
+            handleDeleteSprint={() => onDeleteSprint(id)}
           />
         </li>
       ))}

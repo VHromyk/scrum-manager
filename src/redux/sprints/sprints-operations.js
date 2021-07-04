@@ -6,8 +6,7 @@ const fetchSprints = projectId => async dispatch => {
 
   try {
     const { data } = await axios.get(`/api/projects/${projectId}/sprints`);
-
-    dispatch(sprintsActions.fetchSprintsSuccess(data));
+    dispatch(sprintsActions.fetchSprintsSuccess(data.sprints));
   } catch ({ message }) {
     dispatch(sprintsActions.fetchSprintsError(message));
   }

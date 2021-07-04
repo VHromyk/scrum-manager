@@ -9,7 +9,6 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import routes from './routes';
-import OneSprintsPage from './views/OneSprintsPage';
 import 'react-toastify/dist/ReactToastify.css';
 
 // import AddPeople from './components/AddPeople';
@@ -47,8 +46,7 @@ function App() {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <OneSprintsPage />
-      {/* <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
             path={routes.signup}
@@ -76,7 +74,7 @@ function App() {
 
           <Redirect to={routes.login} />
         </Switch>
-      </Suspense> */}
+      </Suspense>
 
       <ToastContainer
         position="top-right"

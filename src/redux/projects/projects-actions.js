@@ -16,6 +16,14 @@ const renameProjectRequest = createAction('projects/renameProjectRequest');
 const renameProjectSuccess = createAction('projects/renameProjectSuccess');
 const renameProjectError = createAction('projects/renameProjectError');
 
+const fetchPeopleRequest = createAction('projects/fetchPeopleRequest');
+const fetchPeopleSuccess = createAction('projects/fetchPeopleSuccess');
+const fetchPeopleError = createAction('projects/fetchPeopleError');
+
+const addPeopleRequest = createAction('projects/addPeopleRequest');
+const addPeopleSuccess = createAction('projects/addPeopleSuccess');
+const addPeopleError = createAction('projects/addPeopleError');
+
 const projectsActions = {
   fetchProjectsRequest,
   fetchProjectsSuccess,
@@ -29,6 +37,12 @@ const projectsActions = {
   renameProjectRequest,
   renameProjectSuccess,
   renameProjectError,
+  fetchPeopleRequest,
+  fetchPeopleSuccess,
+  fetchPeopleError,
+  addPeopleRequest,
+  addPeopleSuccess,
+  addPeopleError,
 };
 
 export default projectsActions;

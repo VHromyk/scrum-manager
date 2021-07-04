@@ -64,11 +64,40 @@ const renameProject =
     }
   };
 
+  //додавання людей до пректу
+  const fetchPeople = (projectId) => async dispatch => {
+  dispatch(projectsActions.fetchPeopleRequest());
+
+  try {
+    const {data} = await axios.get(`/api/projects/${projectId}/owners`);
+
+    dispatch(projectsActions.fetchPeopleSuccess(data));
+  } catch ({ message }) {
+    dispatch(projectsActions.fetchPeopleError(message));
+    toast.error('Something went wrong, try again later');
+  }
+};
+
+const addPeople = ({ projectId, email }) => async dispatch => {
+    const user = { email };
+    dispatch(projectsActions.addPeopleRequest());
+    
+    try {
+        const {data} = await axios.patch(`/api/projects/${projectId}/invite`, user);
+        dispatch(projectsActions.addPeopleSuccess(data));
+    } catch ({ message }) {
+        dispatch(projectsActions.addPeopleError(message));
+        toast.error('Something went wrong, try again later');
+    }
+};
+
 const projectsOperations = {
   fetchProjects,
   addProject,
   deleteProject,
   renameProject,
+  fetchPeople,
+  addPeople,
 };
 
 export default projectsOperations;

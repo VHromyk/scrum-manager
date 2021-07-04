@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import projectsActions from './projects-actions';
-import { peopleActions } from '../people';
 
 const setFalse = () => false;
 const setTrue = () => true;
@@ -18,9 +17,9 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
-  [peopleActions.fetchPeopleSuccess]: (_, { payload }) =>
+  [projectsActions.fetchPeopleSuccess]: (_, { payload }) =>
     payload,
-  [peopleActions.addPeopleSuccess]: (state, { payload }) =>
+  [projectsActions.addPeopleSuccess]: (state, { payload }) =>
     [...state, payload],
 });
 
@@ -29,17 +28,17 @@ const isLoading = createReducer(false, {
   [projectsActions.fetchProjectsSuccess]: setFalse,
   [projectsActions.fetchProjectsError]: setFalse,
 
-  [peopleActions.fetchPeopleRequest]: setTrue,
-  [peopleActions.fetchPeopleSuccess]: setFalse,
-  [peopleActions.fetchPeopleError]: setFalse,
+  [projectsActions.fetchPeopleRequest]: setTrue,
+  [projectsActions.fetchPeopleSuccess]: setFalse,
+  [projectsActions.fetchPeopleError]: setFalse,
 
   [projectsActions.addProjectRequest]: setTrue,
   [projectsActions.addProjectSuccess]: setFalse,
   [projectsActions.addProjectError]: setFalse,
 
-  [peopleActions.addPeopleRequest]: setTrue,
-  [peopleActions.addPeopleSuccess]: setFalse,
-  [peopleActions.addPeopleError]: setFalse,
+  [projectsActions.addPeopleRequest]: setTrue,
+  [projectsActions.addPeopleSuccess]: setFalse,
+  [projectsActions.addPeopleError]: setFalse,
 
   [projectsActions.deleteProjectRequest]: setTrue,
   [projectsActions.deleteProjectSuccess]: setFalse,
@@ -56,16 +55,16 @@ const error = createReducer(null, {
   [projectsActions.deleteProjectError]: setPayload,
   [projectsActions.renameProjectError]: setPayload,
 
-  [peopleActions.fetchPeopleError]: setPayload,
-  [peopleActions.addPeopleError]: setPayload,
+  [projectsActions.fetchPeopleError]: setPayload,
+  [projectsActions.addPeopleError]: setPayload,
 
   [projectsActions.fetchProjectsRequest]: setNull,
   [projectsActions.addProjectRequest]: setNull,
   [projectsActions.deleteProjectRequest]: setNull,
   [projectsActions.renameProjectRequest]: setNull,
 
-  [peopleActions.fetchPeopleRequest]: setNull,
-  [peopleActions.addPeopleRequest]: setNull,
+  [projectsActions.fetchPeopleRequest]: setNull,
+  [projectsActions.addPeopleRequest]: setNull,
 });
 
 export default combineReducers({ items, isLoading, error });

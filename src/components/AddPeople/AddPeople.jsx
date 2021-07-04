@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalBackdrop from '../ModalBackdrop';
 import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import Button from '../Button';
-import { peopleSelectors } from '../../redux/people';
-import { peopleOperations } from '../../redux/people';
+import projectsSelectors from '../../redux/projects/projects-selectors';
+import projectsOperations from '../../redux/projects/projects-operations';
 import styles from './AddPeople.module.scss';
-import { useCallback } from 'react';
 
 function AddPeople({ onClick, projectId }) {  
   const [email, setEmail] = useState('');
@@ -19,7 +18,7 @@ function AddPeople({ onClick, projectId }) {
   };
   
   const dispatch = useDispatch();
-  const people = useSelector(peopleSelectors.getAllPeople);
+  const people = useSelector(projectsSelectors.getAllPeople);
   const reset = () => {
     setEmail('');
   };
@@ -39,12 +38,12 @@ function AddPeople({ onClick, projectId }) {
       alert(`User (${email}) is already in project`); //замінити на toast
       return;
     }
-    dispatch(peopleOperations.addPeople({ projectId, email }));
+    dispatch(projectsOperations.addPeople({ projectId, email }));
     reset();
   }, [dispatch, projectId, email, isInProject]);
   
   useEffect(() => {
-    dispatch(peopleOperations.fetchPeople(projectId));
+    dispatch(projectsOperations.fetchPeople(projectId));
   }, [dispatch, projectId]);
   
   return (

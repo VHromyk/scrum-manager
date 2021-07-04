@@ -10,7 +10,6 @@ const IconButton = ({ children, onClick, classes, ...allyProps }) => {
 
   return (
     <button
-      type="button"
       className={iconButtonClasses.join(' ')}
       onClick={onClick}
       {...allyProps}
@@ -24,6 +23,7 @@ IconButton.defaultProps = {
   children: null,
   onClick: () => null,
   classes: '',
+  type: 'button',
 };
 
 IconButton.propTypes = {

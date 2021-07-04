@@ -126,7 +126,7 @@
   }
 }
 
-// Кнопки видалити спринт (корзинка) та змінити назву проекту/спринта
+// Кнопки видалити спринт (корзинка), змінити назву проекту/спринта, підтвердити зміну назви проекту/спринта
 .deleteSprintBtn,
 .projectBtn {
   border-radius: 50%;
@@ -140,13 +140,36 @@
   &:hover,
   &:focus {
     color: $accent-color;
-    background-color: $icon-dark-theme-color;
+    background-color: $icon-dark-theme-bcg-color;
     box-shadow: $dark-theme-box-shadow;
   }
 }
 
 .deleteSprintIcon,
 .projectIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+// Кнопка підтвердити зміну назви проекту/спринта
+.doneBtn {
+  border-radius: 50%;
+
+  color: $icon-dark-theme-color;
+  background-color: $icon-light-theme-bcg-color;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
+.doneIcon {
   width: 20px;
   height: 20px;
   fill: currentColor;

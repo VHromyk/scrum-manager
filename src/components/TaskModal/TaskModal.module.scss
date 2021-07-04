@@ -37,3 +37,39 @@
   font-size: 12px;
   top: 32px;
 }
+.button1 {
+  align-items: center;
+  width: 148px;
+  margin-bottom: 30px;
+  padding: 11px 44px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  background-color: $accent-color;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  box-shadow: $dark-theme-box-shadow;
+  color: $text-dark-theme-color;
+  cursor: pointer;
+}
+.button1:hover {
+  box-shadow: none;
+  background-color: $text-main-color;
+}
+
+.button2 {
+  width: 154px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  color: $text-light-theme-color;
+  cursor: pointer;
+}
+.button2:hover {
+  color: $text-main-color;
+}

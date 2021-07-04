@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './AsideListProject.module.scss';
 import bcgColors from '../../projectCardBcgColors';
 
@@ -35,7 +35,11 @@ const AsideListProject = () => {
         <ul className={styles.asideList}>
           {projects.map(({ id, name }) => (
             <li key={id}>
-              <Link to={`/projects/${id}`} className={styles.projectLink}>
+              <NavLink
+                to={`/projects/${id}`}
+                className={styles.current}
+                activeClassName={styles.selected}
+              >
                 <div className={styles.squareName}>
                   <div
                     className={styles.square}
@@ -46,7 +50,7 @@ const AsideListProject = () => {
                   ></div>
                   <p>{name}</p>
                 </div>
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

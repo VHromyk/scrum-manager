@@ -23,7 +23,7 @@ const Aside = ({ createName, showName, children }) => {
   return (
     <div className={styles.aside}>
       <div className={styles.asideWrapper}>
-        <div className={styles.asideArrow}>
+        <button className={styles.asideArrow}>
           <IconButton
             classes={styles.arrowBtn}
             aria-label="show projects button"
@@ -31,7 +31,7 @@ const Aside = ({ createName, showName, children }) => {
             <SvgComponent name="arrow" classes={styles.arrowIcon} />
           </IconButton>
           <p className={styles.arrowText}>{showName}</p>
-        </div>
+        </button>
         {children}
         {isWide && (
           <div className={styles.createButton}>

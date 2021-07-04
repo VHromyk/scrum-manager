@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
@@ -13,34 +14,6 @@ import AsideListProject from '../../components/AsideListProject';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
-import { useParams } from 'react-router-dom';
-
-const sprints = [
-  {
-    id: 1,
-    sprintName: 'mama',
-    startDate: '02.03.2012',
-    endDate: '02.03.2012',
-    duration: 5,
-    handleDeleteSprint: () => console.log('delete sprint'),
-  },
-  {
-    id: 2,
-    sprintName: 'dsfg',
-    startDate: '02.03.2012',
-    endDate: '02.03.2012',
-    duration: 6,
-    handleDeleteSprint: () => console.log('delete sprint'),
-  },
-  {
-    id: 3,
-    sprintName: 'sdgsg',
-    startDate: '02.03.2012',
-    endDate: '02.03.2012',
-    duration: 7,
-    handleDeleteSprint: () => console.log('delete sprint'),
-  },
-];
 
 const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
@@ -53,7 +26,12 @@ const OneProjectPage = () => {
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const projects = useSelector(projectsSelectors.getAllProjects);
+
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(sprintsOperations.fetchSprints(projectId));
+  }, [dispatch, projectId]);
+
   const currentProject = projects.find(({ id }) => id === projectId);
 
   const firstProjectName = currentProject.name;
@@ -84,13 +62,6 @@ const OneProjectPage = () => {
     setShowInput(true);
     setShowIcon(true);
   };
-
-  useEffect(
-    projectId => {
-      dispatch(sprintsOperations.fetchSprints(projectId));
-    },
-    [dispatch],
-  );
 
   // const param = useParams();
 

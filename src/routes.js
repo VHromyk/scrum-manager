@@ -3,6 +3,7 @@ const routes = {
   login: '/login',
   projects: '/projects',
   projectDetails: '/projects/:projectId',
+  sprintDetails: '/projects/:projectId/sprints/:sprintId',
 };
 
 export default routes;

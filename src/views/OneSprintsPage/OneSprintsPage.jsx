@@ -180,7 +180,7 @@ const OneSprintsPage = () => {
                 <span className={styles.createTask}>Create a Task</span>
               </div>
             </div>
-            <SprintTable />
+            {/* <SprintTable /> */}
             <button
               type="button"
               aria-label="create new element"

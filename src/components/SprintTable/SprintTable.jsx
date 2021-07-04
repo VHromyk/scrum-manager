@@ -1,13 +1,17 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
-const SprintTable = ({ sprintName }) => {
-  // const deleteTask = ()=> {
-  //      dispatch(deteteTask(value, userToken, tasks));
-  // }
+
+const SprintTable = ({
+  ptojectId,
+  sprintName,
+  startDate,
+  endDate,
+  duration,
+}) => {
   return (
     <div className={styles.sprintNameContainer}>
       <ul className={styles.sprintHeader}>
@@ -61,6 +65,15 @@ const SprintTable = ({ sprintName }) => {
       </li>
     </div>
   );
+};
+
+SprintTable.propTypes = {
+  id: PropTypes.string.isRequired,
+  sprintName: PropTypes.string.isRequired,
+  sprintDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  handleDeleteSprint: PropTypes.func.isRequired,
 };
 
 export default SprintTable;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
-import { taskOperations } from '../../redux/tasks';
+import { taskOperations, taskSelectors } from '../../redux/tasks';
 
 import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
@@ -32,6 +32,10 @@ const OneSprintsPage = () => {
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const dispatch = useDispatch();
+
+  const tasksFilter = ({ target: { value } }) => {
+    dispatch(taskSelectors.getFilter(value, taskId));
+  };
 
   const currentSprint = sprints.find(({ id }) => id === sprintId);
 
@@ -121,6 +125,7 @@ const OneSprintsPage = () => {
                 <IconButton
                   classes={styles.searchBtn}
                   aria-label="search task button"
+                  onClick={tasksFilter}
                 >
                   <SvgComponent
                     name="search"

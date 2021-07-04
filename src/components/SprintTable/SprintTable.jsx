@@ -3,7 +3,7 @@ import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
-const SprintTable = ({ sprintId, durationTask, nameTask }) => {
+const SprintTable = ({ newTask, sprintId, durationTask, nameTask }) => {
   return (
     <div className={styles.sprintNameContainer}>
       <ul className={styles.sprintHeader}>
@@ -27,34 +27,35 @@ const SprintTable = ({ sprintId, durationTask, nameTask }) => {
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />
       </div>
-      {/* {newTask.map((task) => ( */}
-      <li className={styles.sprintCard}>
-        <ul className={styles.sprintCardList}>
-          <li className={styles.sprintTitle}>
-            <input className={styles.sprintNameInput}>{nameTask}</input>
-          </li>
-          <li className={styles.sprintItem}>
-            <span className={styles.sprintSpan}>Sheduled hours</span>
-            <span>{durationTask}</span>
-          </li>
-          <li className={styles.sprintItem}>
-            <span className={styles.sprintSpan}>Spent hour/day</span>
-            <input className={styles.sprintRowInput}></input>
-          </li>
-          <li className={styles.sprintItem}>
-            <span className={styles.sprintSpan}>Hours spent</span>
-            <span>5</span>
-          </li>
-          <li>
-            <IconButton
-              classes={styles.deleteSprintBtn}
-              aria-label="delete sprint button"
-            >
-              <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
-            </IconButton>
-          </li>
-        </ul>
-      </li>
+      {newTask.map(task => (
+        <li className={styles.sprintCard}>
+          <ul className={styles.sprintCardList}>
+            <li className={styles.sprintTitle}>
+              <input className={styles.sprintNameInput}>{nameTask}</input>
+            </li>
+            <li className={styles.sprintItem}>
+              <span className={styles.sprintSpan}>Sheduled hours</span>
+              <span>{durationTask}</span>
+            </li>
+            <li className={styles.sprintItem}>
+              <span className={styles.sprintSpan}>Spent hour/day</span>
+              <input className={styles.sprintRowInput}></input>
+            </li>
+            <li className={styles.sprintItem}>
+              <span className={styles.sprintSpan}>Hours spent</span>
+              <span>5</span>
+            </li>
+            <li>
+              <IconButton
+                classes={styles.deleteSprintBtn}
+                aria-label="delete sprint button"
+              >
+                <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
+              </IconButton>
+            </li>
+          </ul>
+        </li>
+      ))}
     </div>
   );
 };

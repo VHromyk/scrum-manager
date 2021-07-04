@@ -14,6 +14,7 @@ import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
 import { useParams } from 'react-router-dom';
+import TaskModal from '../../components/TaskModal';
 
 const sprints = [
   {
@@ -202,9 +203,10 @@ const OneProjectPage = () => {
           )}
         </div>
 
-        {createProject && <ModalProjects onClick={buttonCloseHandler} />}
+        {createProject && <TaskModal onClick={buttonCloseHandler} />}
+
         {createSprint && (
-          <SprintModal onCloseModal={btnCloseSprint} projectId={projectId} />
+          <TaskModal onCloseModal={btnCloseSprint} projectId={projectId} />
         )}
         {addPeople && <AddPeople onClick={btnCloseAddPeople} />}
       </div>

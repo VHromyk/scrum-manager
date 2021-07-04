@@ -23,17 +23,13 @@
   border: none;
   background-color: transparent;
   border-bottom: 1px solid $input-field-border-color;
-
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
   &::placeholder {
     font-size: 18px;
     line-height: 1.22;
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid $accent-color;
   }
 
   &.invalid {
@@ -42,6 +38,10 @@
 
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
   }
 }
 
@@ -62,17 +62,16 @@
     color: $text-light-theme-color;
   }
 
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid $accent-color;
-  }
-
   &.invalid {
     border-bottom: 1px solid red;
   }
 
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
   }
 }
 

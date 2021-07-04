@@ -4,17 +4,17 @@ const fetchSprintsRequest = createAction('sprints/fetchSprintsRequest');
 const fetchSprintsSuccess = createAction('sprints/fetchSprintsSuccess');
 const fetchSprintsError = createAction('sprints/fetchSprintsError');
 
-const addSprintRequest = createAction('sprints/addSprintsequest');
-const addSprintSuccess = createAction('sprints/addSprintsuccess');
-const addSprintError = createAction('sprints/addSprintsrror');
+const addSprintRequest = createAction('sprints/addSprintRequest');
+const addSprintSuccess = createAction('sprints/addSprintSuccess');
+const addSprintError = createAction('sprints/addSprintError');
 
-const deleteSprintRequest = createAction('sprints/deleteSprintsequest');
-const deleteSprintSuccess = createAction('sprints/deleteSprintsuccess');
-const deleteSprintError = createAction('sprints/deleteSprintsrror');
+const deleteSprintRequest = createAction('sprints/deleteSprintRequest');
+const deleteSprintSuccess = createAction('sprints/deleteSprintSuccess');
+const deleteSprintError = createAction('sprints/deleteSprintError');
 
-const renameSprintRequest = createAction('sprints/renameSprintsequest');
-const renameSprintSuccess = createAction('sprints/renameSprintsuccess');
-const renameSprintError = createAction('sprints/renameSprintsrror');
+const renameSprintRequest = createAction('sprints/renameSprintRequest');
+const renameSprintSuccess = createAction('sprints/renameSprintSuccess');
+const renameSprintError = createAction('sprints/renameSprintError');
 
 const sprintsActions = {
   fetchSprintsRequest,

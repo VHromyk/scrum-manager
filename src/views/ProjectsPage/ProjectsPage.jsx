@@ -8,20 +8,24 @@ import ModalProjects from '../../components/ModalProjects';
 import styles from './ProjectsPage.module.scss';
 
 const ProjectsPage = () => {
-  const [showModal, setShowModal] = useState(false);
-  const buttonHandler = () => {
-    setShowModal(true);
-  };
-  const buttonCloseHandler = () => {
-    setShowModal(false);
-  };
-
+  const isLoading = useSelector(projectsSelectors.getIsLoading);
+  const error = useSelector(projectsSelectors.getError);
   const projects = useSelector(projectsSelectors.getAllProjects);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(projectsOperations.fetchProjects());
   }, [dispatch]);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const buttonHandler = () => {
+    setShowModal(true);
+  };
+
+  const buttonCloseHandler = () => {
+    setShowModal(false);
+  };
 
   return (
     <Container classes={styles.pageContainer}>
@@ -32,12 +36,11 @@ const ProjectsPage = () => {
           <p className={styles.buttonName}>Create a project</p>
         </div>
       </div>
-
-      {projects.length !== 0 ? (
-        <ProjectList />
-      ) : (
+      {!error && !isLoading && projects.length === 0 && (
         <p className={styles.warningMessage}>You don't have any projects yet</p>
       )}
+      {projects.length !== 0 && <ProjectList />}
+
       {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
     </Container>
   );

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import Spinner from '../Spinner';
 import ProjectsListItem from '../ProjectsListItem';
 import bcgColors from '../../projectCardBcgColors';
 import styles from './ProjectsList.module.scss';
@@ -19,7 +18,6 @@ const getRandomInt = max => Math.floor(Math.random() * max);
 
 const ProjectsList = () => {
   const projects = useSelector(projectsSelectors.getAllProjects);
-  const isLoading = useSelector(projectsSelectors.getIsLoading);
 
   const dispatch = useDispatch();
 
@@ -29,33 +27,30 @@ const ProjectsList = () => {
   );
 
   return (
-    <>
-      {isLoading && <Spinner />}
-      <ul className={styles.projectsList}>
-        {projects.map(({ id, name, description }) => (
-          <li
-            className={styles.listItem}
-            key={id}
-            style={{
-              backgroundPositionX: `${getRandomInt(100)}%`,
+    <ul className={styles.projectsList}>
+      {projects.map(({ id, name, description }) => (
+        <li
+          className={styles.listItem}
+          key={id}
+          style={{
+            backgroundPositionX: `${getRandomInt(100)}%`,
 
-              // варіант 1: випадковий вибір кольору з масиву
-              backgroundColor: bcgColors[`${getRandomInt(colorsNumber - 1)}`],
+            // варіант 1: випадковий вибір кольору з масиву
+            backgroundColor: bcgColors[`${getRandomInt(colorsNumber - 1)}`],
 
-              // варіант 2: випадкова генерація кольору
-              // backgroundColor: `#${generateColor()}`,
-            }}
-          >
-            <ProjectsListItem
-              id={id}
-              name={name}
-              description={description}
-              onDeleteProject={() => onDeleteProject(id)}
-            />
-          </li>
-        ))}
-      </ul>
-    </>
+            // варіант 2: випадкова генерація кольору
+            // backgroundColor: `#${generateColor()}`,
+          }}
+        >
+          <ProjectsListItem
+            id={id}
+            name={name}
+            description={description}
+            onDeleteProject={() => onDeleteProject(id)}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
-import ModalProjects from '../../components/ModalProjects';
+import ModalProjects from '../ModalProjects';
 import styles from './Aside.module.scss';
 
 const Aside = ({ createName, showName, children }) => {

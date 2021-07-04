@@ -1,5 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
+
+import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
 import SvgComponent from '../../components/SvgComponent';
@@ -8,16 +12,65 @@ import Container from '../../components/Container';
 import Aside from '../../components/Aside';
 import AsideListSprint from '../../components/AsideListSprint';
 import SprintTable from '../../components/SprintTable';
+import TaskModal from '../../components/TaskModal';
+
+import { useParams } from 'react-router-dom';
 
 const OneSprintsPage = () => {
+  const [createSprint, setCreateSprint] = useState(false);
+  const [addTask, setAddTask] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [showInput, setShowInput] = useState(true);
+  const [showIcon, setShowIcon] = useState(true);
+  const { projectId } = useParams();
+  const { sprintId } = useParams();
+  const { taskId } = useParams();
+
+  const dispatch = useDispatch();
+
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
+
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
+
+  const onRenameSprint = ({ projectId, sprintId, newName }) =>
+    dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
+
+  const buttonHandler = () => {
+    setCreateSprint(true);
+  };
+
+  const buttonHandlerTask = () => {
+    setAddTask(true);
+  };
+  const btnCloseSprint = () => {
+    setCreateSprint(false);
+  };
+
+  const btnCloseTask = () => {
+    setAddTask(false);
+  };
+  const changeIcon = () => {
+    setShowIcon(false);
+    setShowInput(false);
+  };
+
+  const changeInputName = e => {
+    setNewName(e.target.value);
+  };
+  const onSubmitRenameName = e => {
+    e.preventDefault();
+    onRenameSprint(projectId, sprintId, newName);
+    setShowInput(true);
+    setShowIcon(true);
+  };
   return (
     <>
       <Container>
         <div className={styles.sprintsWrapper}>
           <Aside
-            createName="Create a project"
+            createName="Create a sprint"
             showName="Show sprints"
-            // onClick={buttonHandler}
+            onClick={buttonHandler}
           >
             <AsideListSprint />
           </Aside>
@@ -63,16 +116,38 @@ const OneSprintsPage = () => {
             </div>
             <div className={styles.sprintNameContainer}>
               <div className={styles.sprintNameEdit}>
-                <h1 className={styles.sprintName}>Sprint Burndown Chart 1</h1>
-                <IconButton
-                  classes={styles.projectBtn}
-                  aria-label="edit name button"
-                >
-                  <SvgComponent name="project" classes={styles.projectIcon} />
-                </IconButton>
+                {showInput ? (
+                  <h1 className={styles.sprintName}>{currentSprint.name}</h1>
+                ) : (
+                  <form onSubmit={onSubmitRenameName}>
+                    <input
+                      value={newName}
+                      name="name"
+                      id="name"
+                      type="name"
+                      onChange={changeInputName}
+                    ></input>
+                    <button onSubmit={onSubmitRenameName}></button>
+                  </form>
+                )}
+                )
+                {showIcon && (
+                  <>
+                    <IconButton
+                      classes={styles.projectBtn}
+                      aria-label="edit name button"
+                      onClick={changeIcon}
+                    >
+                      <SvgComponent
+                        name="project"
+                        classes={styles.projectIcon}
+                      />
+                    </IconButton>
+                  </>
+                )}
               </div>
               <div className={styles.createNewBtn}>
-                <AddButton />
+                <AddButton onClick={buttonHandlerTask} />
                 <span className={styles.createTask}>Create a Task</span>
               </div>
             </div>
@@ -92,6 +167,12 @@ const OneSprintsPage = () => {
             </IconButton>
           </div>
         </div>
+        {createSprint && (
+          <SprintModal onCloseModal={btnCloseSprint} projectId={projectId} />
+        )}
+        {addTask && (
+          <TaskModal onCloseModal={btnCloseTask} projectId={taskId} />
+        )}
       </Container>
     </>
   );

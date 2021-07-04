@@ -50,6 +50,13 @@
   line-height: 1.1876em;
   letter-spacing: 0.00938em;
   background-color: transparent;
+  outline: none;
+  margin: 1px;
+}
+
+.input:focus {
+  outline: 3px solid orange;
+  outline-offset: -3px;
 }
 
 .label {

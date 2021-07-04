@@ -8,7 +8,7 @@ const AddPeopleList = () => {
         <ul className={styles.addPeopleList}>
             {people.map(user => (
                 <li
-                    key={new Date.now()}
+                    key={user.id}
                     className={styles.addPeopleListItem}
                 >
                     {user.email}

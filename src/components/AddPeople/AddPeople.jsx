@@ -23,9 +23,9 @@ function AddPeople({ onClick, projectId }) {
     setEmail('');
   };
   
-  const isInProject = people.find(
-    newUser => newUser.email.toLowerCase() === email.toLowerCase(),
-  );
+  // const isInProject = people.find(
+  //   newUser => newUser.email.toLowerCase() === email.toLowerCase(),
+  // );
   
   const handleSubmit = useCallback(event => {
     event.preventDefault();
@@ -34,13 +34,13 @@ function AddPeople({ onClick, projectId }) {
     } else {
       setValidEmail('valid');
     }
-    if (isInProject) {
-      alert(`User (${email}) is already in project`); //замінити на toast
-      return;
-    }
+    // if (isInProject) {
+    //   alert(`User (${email}) is already in project`); //замінити на toast
+    //   return;
+    // }
     dispatch(projectsOperations.addPeople({ projectId, email }));
     reset();
-  }, [dispatch, projectId, email, isInProject]);
+  }, [dispatch, projectId, email]);
   
   useEffect(() => {
     dispatch(projectsOperations.fetchPeople(projectId));
@@ -69,7 +69,7 @@ function AddPeople({ onClick, projectId }) {
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {!people || people.length === 0 ? (
+          {(!people || people.length === 0) ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
             <AddPeopleList people={people} />

@@ -15,7 +15,6 @@ import { authReducer } from './auth';
 import { projectsReducer } from './projects';
 import { sprintsReducer } from './sprints';
 import { taskReducers } from './tasks';
-import { peopleReducer } from './people';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -38,7 +37,6 @@ export const store = configureStore({
     projects: projectsReducer,
     sprints: sprintsReducer,
     tasks: taskReducers,
-    people: peopleReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

@@ -1,21 +1,14 @@
+import { useSelector } from 'react-redux';
+import { peopleSelectors } from '../../redux/people';
 import styles from './AddPeopleList.module.scss';
 
-const users = [
-    { id: 'id-1', email: 'vitaly@gmail.com' },
-    { id: 'id-2', email: 'lena@gmail.com' },
-    { id: 'id-3', email: 'nataly@gmail.com' },
-    { id: 'id-4', email: 'halyna@gmail.com' },
-    { id: 'id-5', email: 'dima@gmail.com' },
-]
-
-// const users = [];
-
 const AddPeopleList = () => {
+    const people = useSelector(peopleSelectors.getAllPeople)
     return (
         <ul className={styles.addPeopleList}>
-            {users.map(user => (
+            {people.map(user => (
                 <li
-                    key={user.id}
+                    key={new Date().getUTCMilliseconds()}
                     className={styles.addPeopleListItem}
                 >
                     {user.email}

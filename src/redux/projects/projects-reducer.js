@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import projectsActions from './projects-actions';
+import { peopleActions } from '../people';
 
 const setFalse = () => false;
 const setTrue = () => true;
@@ -17,6 +18,10 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
+  [peopleActions.fetchPeopleSuccess]: (_, { payload }) =>
+    payload,
+  [peopleActions.addPeopleSuccess]: (state, { payload }) =>
+    [...state, payload],
 });
 
 const isLoading = createReducer(false, {
@@ -24,9 +29,17 @@ const isLoading = createReducer(false, {
   [projectsActions.fetchProjectsSuccess]: setFalse,
   [projectsActions.fetchProjectsError]: setFalse,
 
+  [peopleActions.fetchPeopleRequest]: setTrue,
+  [peopleActions.fetchPeopleSuccess]: setFalse,
+  [peopleActions.fetchPeopleError]: setFalse,
+
   [projectsActions.addProjectRequest]: setTrue,
   [projectsActions.addProjectSuccess]: setFalse,
   [projectsActions.addProjectError]: setFalse,
+
+  [peopleActions.addPeopleRequest]: setTrue,
+  [peopleActions.addPeopleSuccess]: setFalse,
+  [peopleActions.addPeopleError]: setFalse,
 
   [projectsActions.deleteProjectRequest]: setTrue,
   [projectsActions.deleteProjectSuccess]: setFalse,
@@ -43,10 +56,16 @@ const error = createReducer(null, {
   [projectsActions.deleteProjectError]: setPayload,
   [projectsActions.renameProjectError]: setPayload,
 
+  [peopleActions.fetchPeopleError]: setPayload,
+  [peopleActions.addPeopleError]: setPayload,
+
   [projectsActions.fetchProjectsRequest]: setNull,
   [projectsActions.addProjectRequest]: setNull,
   [projectsActions.deleteProjectRequest]: setNull,
   [projectsActions.renameProjectRequest]: setNull,
+
+  [peopleActions.fetchPeopleRequest]: setNull,
+  [peopleActions.addPeopleRequest]: setNull,
 });
 
 export default combineReducers({ items, isLoading, error });

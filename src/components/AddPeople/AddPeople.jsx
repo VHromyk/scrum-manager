@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ModalBackdrop from '../ModalBackdrop';
 import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import Button from '../Button';
+import { peopleSelectors } from '../../redux/people';
+import { peopleOperations } from '../../redux/people';
 import styles from './AddPeople.module.scss';
+import { useCallback } from 'react';
 
-const users = [
-  { id: 'id-1', email: 'vitaly@gmail.com' },
-  { id: 'id-2', email: 'lena@gmail.com' },
-  { id: 'id-3', email: 'nataly@gmail.com' },
-  { id: 'id-4', email: 'halyna@gmail.com' },
-  { id: 'id-5', email: 'dima@gmail.com' },
-];
-
-// const users = [];
-
-function AddPeople({ onClick }) {
+function AddPeople({ onClick, projectId }) {  
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState('valid');
-
+  
   const handleInputChange = event => {
     setEmail(event.currentTarget.value);
   };
-
-  const isInProject = users.find(
+  
+  const dispatch = useDispatch();
+  const people = useSelector(peopleSelectors.getAllPeople);
+  const reset = () => {
+    setEmail('');
+  };
+  
+  const isInProject = people.find(
     newUser => newUser.email.toLowerCase() === email.toLowerCase(),
   );
-
-  const handleSubmit = event => {
+  
+  const handleSubmit = useCallback(event => {
     event.preventDefault();
     if (!email) {
       setValidEmail('invalid');
@@ -36,16 +36,17 @@ function AddPeople({ onClick }) {
       setValidEmail('valid');
     }
     if (isInProject) {
-      alert(`User (${email}) is already in project`);
+      alert(`User (${email}) is already in project`); //замінити на toast
       return;
     }
+    dispatch(peopleOperations.addPeople({ projectId, email }));
     reset();
-  };
-
-  const reset = () => {
-    setEmail('');
-  };
-
+  }, [dispatch, projectId, email, isInProject]);
+  
+  useEffect(() => {
+    dispatch(peopleOperations.fetchPeople(projectId));
+  }, [dispatch, projectId]);
+  
   return (
     <ModalBackdrop onClose={onClick}>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -69,10 +70,10 @@ function AddPeople({ onClick }) {
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {!users || users.length === 0 ? (
+          {!people || people.length === 0 ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
-            <AddPeopleList users={users} />
+            <AddPeopleList people={people} />
           )}
         </div>
         <div className={styles.buttons}>

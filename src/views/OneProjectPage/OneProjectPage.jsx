@@ -53,25 +53,11 @@ const OneProjectPage = () => {
 
     const name = newName;
 
-    if (currentProject.name === name) {
-      return;
-    } else {
-      onRenameProject(projectId, name);
-    }
+    onRenameProject(projectId, name);
 
     setShowInput(true);
     setShowIcon(true);
   };
-
-  // const param = useParams();
-
-  // useEffect(prevState => {
-  //   if (prevState.newName !== param.newName) {
-  //     setNewName(newName);
-  //   } else {
-  //     return;
-  //   }
-  // });
 
   const buttonHandler = () => {
     setCreateProject(true);
@@ -108,7 +94,9 @@ const OneProjectPage = () => {
           <div className={styles.titleButtons}>
             <div className={styles.titleContainer}>
               {showInput ? (
-                <h2 className={styles.title}>{currentProject.name}</h2>
+                <h2 className={styles.title}>
+                  {newName || currentProject.name}
+                </h2>
               ) : (
                 <form
                   onSubmit={onSubmitRenameNAme}

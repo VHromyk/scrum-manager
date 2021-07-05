@@ -79,9 +79,19 @@
 
 .arrowLeftBtn {
   margin-right: 20px;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 .arrowRightBtn {
   margin-right: 69px;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 .arrowRightBtn,
 .arrowLeftBtn {
@@ -95,7 +105,7 @@
   background: transparent;
   width: 15px;
   height: 15px;
-  fill: $icon-without-bgc-color;
+  // fill: $icon-without-bgc-color;
 }
 .formContainer {
   padding-top: 20px;
@@ -158,11 +168,28 @@
   fill: $icon-light-theme-color;
 }
 
-.projectIcon,
+.projectIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
+  transition: all $transition-duration $timing-function;
+  border-radius: 50%;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
 .searchIcon {
   width: 20px;
   height: 20px;
   fill: $icon-light-theme-bcg-color;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 
 .analyticsBtn,

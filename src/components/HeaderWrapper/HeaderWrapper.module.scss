@@ -5,11 +5,24 @@
   padding-bottom: 15px;
 
   border-bottom: 1px solid $border-main-color;
+  position: sticky;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  height: 60px;
+  background-color: $page-bcg-color;
 }
 
 @media (min-width: 768px) {
   .wrapper {
+    height: 80px;
     padding-top: 19px;
     padding-bottom: 19px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    height: 81px;
   }
 }

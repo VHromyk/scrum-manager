@@ -16,8 +16,8 @@ const SprintCard = ({
 }) => {
   return (
     <>
-      <Link to={`/projects/${projectId}/sprints/${id}`} key={id}>
-        <div className={styles.SprintCard}>
+      <div className={styles.SprintCard}>
+        <Link to={`/projects/${projectId}/sprints/${id}`} key={id}>
           <p className={styles.SprintTitle}>{name}</p>
           <ul className={styles.SprintCardList}>
             <li className={styles.SprintItem}>
@@ -33,15 +33,16 @@ const SprintCard = ({
               <span>{duration}</span>
             </li>
           </ul>
-        </div>
-      </Link>
-      <IconButton
-        classes={styles.deleteSprintBtn}
-        onClick={handleDeleteSprint}
-        aria-label="delete sprint button"
-      >
-        <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
-      </IconButton>
+        </Link>
+
+        <IconButton
+          classes={styles.deleteSprintBtn}
+          onClick={handleDeleteSprint}
+          aria-label="delete sprint button"
+        >
+          <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
+        </IconButton>
+      </div>
     </>
   );
 };

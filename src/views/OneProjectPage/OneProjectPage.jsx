@@ -24,8 +24,8 @@ const OneProjectPage = () => {
   const [showIcon, setShowIcon] = useState(true);
 
   const { projectId } = useParams();
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  // console.log(location);
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const projects = useSelector(projectsSelectors.getAllProjects);
@@ -35,9 +35,9 @@ const OneProjectPage = () => {
     dispatch(sprintsOperations.fetchSprints(projectId));
   }, [dispatch, projectId]);
 
-  useEffect(() => {
-    ga.send(['pageview', location.pathname]);
-  }, []);
+  // useEffect(() => {
+  //   ga.send(['pageview', location.pathname]);
+  // }, []);
 
   const currentProject = projects.find(({ id }) => id === projectId);
 

@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const fetchTaskRequest = createAction('tasks/fetchTaskRequest');
-const fetchTaskSuccess = createAction('tasks/fetchTaskSuccess');
-const fetchTaskError = createAction('tasks/fetchTaskError');
+const fetchTasksRequest = createAction('tasks/fetchTasksRequest');
+const fetchTasksSuccess = createAction('tasks/fetchTasksSuccess');
+const fetchTasksError = createAction('tasks/fetchTasksError');
 
 const addTaskRequest = createAction('tasks/addTaskRequest');
 const addTaskSuccess = createAction('tasks/addTaskSuccess');
@@ -19,10 +19,10 @@ const changeTaskError = createAction('tasks/changeTaskError');
 const changeFilter = createAction('tasks/changeFilter');
 const changeCurrentDay = createAction('tasks/changeCurrentDay');
 
-const taskActions = {
-  fetchTaskRequest,
-  fetchTaskSuccess,
-  fetchTaskError,
+const tasksActions = {
+  fetchTasksRequest,
+  fetchTasksSuccess,
+  fetchTasksError,
   addTaskRequest,
   addTaskSuccess,
   addTaskError,
@@ -36,4 +36,4 @@ const taskActions = {
   changeCurrentDay,
 };
 
-export default taskActions;
+export default tasksActions;

@@ -1,4 +1,4 @@
-export { default as taskActions } from './task-actions';
-export { default as taskOperations } from './task-operations';
-export { default as taskReducers } from './task-reducers';
-export { default as taskSelectors } from './task-selectors';
+export { default as tasksActions } from './tasks-actions';
+export { default as tasksOperations } from './tasks-operations';
+export { default as tasksReducer } from './tasks-reducers';
+export { default as tasksSelectors } from './tasks-selectors';

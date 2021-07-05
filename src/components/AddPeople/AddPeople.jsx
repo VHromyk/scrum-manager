@@ -8,10 +8,13 @@ import Button from '../Button';
 import projectsSelectors from '../../redux/projects/projects-selectors';
 import projectsOperations from '../../redux/projects/projects-operations';
 import styles from './AddPeople.module.scss';
+import { useParams } from 'react-router-dom';
 
-function AddPeople({ onClick, projectId }) {  
+function AddPeople({ onClick }) {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState('valid');
+
+  const { projectId } = useParams();
   
   const handleInputChange = event => {
     setEmail(event.currentTarget.value);
@@ -31,6 +34,7 @@ function AddPeople({ onClick, projectId }) {
     event.preventDefault();
     if (!email) {
       setValidEmail('invalid');
+      return;
     } else {
       setValidEmail('valid');
     }
@@ -38,13 +42,13 @@ function AddPeople({ onClick, projectId }) {
     //   alert(`User (${email}) is already in project`); //замінити на toast
     //   return;
     // }
-    dispatch(projectsOperations.addPeople({ projectId, email }));
+    dispatch(projectsOperations.addPeople(projectId, {email}));
     reset();
   }, [dispatch, projectId, email]);
   
-  useEffect(() => {
-    dispatch(projectsOperations.fetchPeople(projectId));
-  }, [dispatch, projectId]);
+  // useEffect(() => {
+  //   dispatch(projectsOperations.fetchPeople(projectId));
+  // }, [dispatch, projectId]);
   
   return (
     <ModalBackdrop onClose={onClick}>

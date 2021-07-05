@@ -78,13 +78,12 @@ const renameProject =
   }
 };
 
-const addPeople = ({ projectId, email }) => async dispatch => {
-    const user = { email };
-    dispatch(projectsActions.addPeopleRequest());
+const addPeople = (projectId, email) => async dispatch => {
+  dispatch(projectsActions.addPeopleRequest());
     
     try {
-        const {data} = await axios.patch(`/api/projects/${projectId}/invite`, user);
-        dispatch(projectsActions.addPeopleSuccess(data));
+        const { data } = await axios.patch(`/api/projects/${projectId}/invite`, email);
+        dispatch(projectsActions.addPeopleSuccess(data.project.owners));
     } catch ({ message }) {
         dispatch(projectsActions.addPeopleError(message));
         toast.error('Something went wrong, try again later');

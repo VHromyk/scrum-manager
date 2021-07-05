@@ -20,6 +20,25 @@
   height: 18px;
   fill: currentColor;
 }
+// Показати/сховати календар (стрілки вверх та вниз)
+.arrowUpBtn,
+.arrowDownBtn {
+  color: $icon-light-theme-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+}
+
+.arrowUpIcon,
+.arrowDownIcon {
+  width: 12px;
+  height: 10px;
+  fill: currentColor;
+}
 
 .modal {
   position: absolute;
@@ -293,4 +312,9 @@
 
   color: $text-light-theme-color;
   margin-bottom: 20px;
+}
+.smallButtons {
+  margin-left: -15px;
+  display: inline-block;
+  margin-top: -20px;
 }

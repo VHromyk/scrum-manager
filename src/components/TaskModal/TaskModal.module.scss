@@ -1,5 +1,8 @@
 @import '../../styles/shared.scss';
 @import '../ModalProjects/ModalProjects.module.scss';
+.form {
+  z-index: 100000000;
+}
 
 .input2 {
   width: 100%;

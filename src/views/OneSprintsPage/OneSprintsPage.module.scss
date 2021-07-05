@@ -19,11 +19,11 @@
 .sprintNameContainer {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  // flex-direction: row;
   margin-bottom: 30px;
 }
 .sprintName {
-  width: 260px;
+  max-width: 260px;
   margin: 0;
   font-weight: 500;
   font-size: 26px;
@@ -110,6 +110,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  margin-left: 20px;
 }
 
 .searchSprint {
@@ -236,10 +237,10 @@
   .searchSprint {
     width: 214px;
   }
-  .sprintName {
-    margin-right: 43px;
-    // width: 350px;
-  }
+  // .sprintName {
+  //   margin-right: 43px;
+  //   // width: 350px;
+  // }
   .projectBtn {
     margin-right: 34px;
   }
@@ -248,7 +249,7 @@
   }
 
   .createNewBtn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -277,10 +278,14 @@
     bottom: 60px;
   }
   .sprintName {
-    width: 337px;
+    // width: 337px;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
     letter-spacing: normal;
+  }
+  .sprintNameContainer {
+    display: flex;
+    justify-content: space-between;
   }
 }

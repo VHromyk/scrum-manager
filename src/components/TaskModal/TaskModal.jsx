@@ -6,7 +6,7 @@ import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
 import React, { useState } from 'react';
 
-function TaskModal() {
+function TaskModal({ onCloseModal }) {
   const [nameTask, setNameTask] = useState('');
   const [durationTask, setDuration] = useState('');
 
@@ -48,7 +48,7 @@ function TaskModal() {
   };
 
   return (
-    <ModalBackdrop>
+    <ModalBackdrop onClose={onCloseModal}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Creating a task</h2>
         <div className={styles.containerInput1}>
@@ -86,9 +86,15 @@ function TaskModal() {
           <button className={styles.button1} type="submit">
             Ready
           </button>
-          <button className={styles.button2}>Cancel</button>
+          <button className={styles.button2} onClick={onCloseModal}>
+            Cancel
+          </button>
         </div>
-        <IconButton classes={styles.closeBtn} aria-label="add people button">
+        <IconButton
+          classes={styles.closeBtn}
+          aria-label="add people button"
+          onClick={onCloseModal}
+        >
           <SvgComponent name="close" classes={styles.closeIcon} />
         </IconButton>
       </form>

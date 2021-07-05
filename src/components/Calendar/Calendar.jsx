@@ -11,7 +11,7 @@ const Calendar = (value, onChange) => {
         onChange={onChange}
         value={value}
         locale="en-EN"
-        format="dd MM"
+        format="dd MM y"
       />
     </div>
   );

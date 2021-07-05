@@ -26,6 +26,7 @@ const Aside = ({ createName, showName, children }) => {
 
   const buttonCloseHandler = () => {
     setShowModal(false);
+    setShowModalSprint(false);
   };
 
   const isWide = useMedia('(min-width: 768px)');

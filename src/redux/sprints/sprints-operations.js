@@ -25,7 +25,7 @@ const addSprint =
         sprint,
       );
 
-      dispatch(sprintsActions.addSprintSuccess(data));
+      dispatch(sprintsActions.addSprintSuccess(data.sprint));
     } catch ({ message }) {
       dispatch(sprintsActions.addSprintError(message));
     }

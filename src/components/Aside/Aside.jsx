@@ -16,10 +16,10 @@ const Aside = ({ createName, showName, children }) => {
   const { projectId } = useParams();
 
   const buttonHandler = () => {
-    if ((createName = 'Create a project')) {
+    if (createName === 'Create a project') {
       setShowModal(true);
     }
-    if ((createName = 'Create a sprint')) {
+    if (createName === 'Create a sprint') {
       setShowModalSprint(true);
     }
   };

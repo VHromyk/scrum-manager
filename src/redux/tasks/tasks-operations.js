@@ -8,11 +8,9 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
     const { data } = await axios.get(
       `/api/projects/${projectId}/sprints/${sprintId}/tasks`,
     );
-    dispatch(
-      tasksActions.fetchTasksSuccess(
-        data.constructor.name === 'Array' ? data : [],
-      ),
-    );
+
+    console.log('data:', data);
+    dispatch(tasksActions.fetchTasksSuccess(data.tasks));
   } catch (error) {
     dispatch(tasksActions.fetchTasksError(error?.message));
   }

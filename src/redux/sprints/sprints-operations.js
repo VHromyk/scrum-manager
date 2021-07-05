@@ -38,7 +38,7 @@ const deleteSprint =
 
     try {
       await axios.delete(`/api/projects/${projectId}/sprints/${sprintId}`);
-      dispatch(sprintsActions.deleteSprintSuccess(sprintId));
+      dispatch(sprintsActions.deleteSprintSuccess(projectId, sprintId));
     } catch ({ message }) {
       dispatch(sprintsActions.deleteSprintError(message));
     }

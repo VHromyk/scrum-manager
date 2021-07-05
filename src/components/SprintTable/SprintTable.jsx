@@ -1,9 +1,17 @@
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
-const SprintTable = ({ newTask, sprintId, durationTask, nameTask }) => {
+const SprintTable = ({ durationTask, nameTask }) => {
+  const { sprintId } = useParams();
+  const { taskId } = useParams();
+
+  const tasks = useSelector(tasksSelectors.getTasks);
+
   return (
     <div className={styles.sprintNameContainer}>
       <ul className={styles.sprintHeader}>
@@ -27,7 +35,7 @@ const SprintTable = ({ newTask, sprintId, durationTask, nameTask }) => {
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />
       </div>
-      {newTask.map(task => (
+      {tasks.map(task => (
         <li className={styles.sprintCard}>
           <ul className={styles.sprintCardList}>
             <li className={styles.sprintTitle}>

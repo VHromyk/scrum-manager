@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from '@reach/router';
+// import { useLocation } from '@reach/router';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import AddButton from '../../components/AddButton';

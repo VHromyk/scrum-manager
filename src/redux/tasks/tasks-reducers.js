@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import tasksActions from './tasks-actions.js';
 
-const tasks = createReducer([], {
+const items = createReducer([], {
   [tasksActions.fetchTaskSuccess]: (_, { payload }) => payload,
   [tasksActions.addTaskSuccess]: (state, { payload }) => [...state, payload],
   [tasksActions.deleteTaskSuccess]: (state, { payload }) => [
@@ -66,7 +66,7 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  tasks,
+  items,
   filter,
   currentDay,
   loading,

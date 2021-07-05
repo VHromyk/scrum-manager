@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
-
 import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
@@ -15,8 +14,6 @@ import AsideListSprint from '../../components/AsideListSprint';
 import SprintTable from '../../components/SprintTable';
 import TaskModal from '../../components/TaskModal';
 import Diagram from '../../components/Diagram';
-
-import { useParams } from 'react-router-dom';
 
 const OneSprintsPage = () => {
   const [createSprint, setCreateSprint] = useState(false);
@@ -45,7 +42,7 @@ const OneSprintsPage = () => {
     dispatch(tasksSelectors.getFilter(value, taskId));
   };
 
-  const currentTask = tasks.find(({ id }) => id === sprintId);
+  // const currentTask = tasks.find(({ id }) => id === sprintId);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
@@ -186,7 +183,7 @@ const OneSprintsPage = () => {
                 <span className={styles.createTask}>Create a Task</span>
               </div>
             </div>
-            {/* <SprintTable /> */}
+            <SprintTable />
             <button
               type="button"
               aria-label="create new element"

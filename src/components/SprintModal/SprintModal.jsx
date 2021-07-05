@@ -57,11 +57,11 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             />
             <div className={styles.labelText}>The name of the sprint</div>
           </label>
+
           <label
             className={styles.labelRadio}
             onClick={() => {
-              if (checkBox) setCheckBox(false);
-              else setCheckBox(true);
+              checkBox ? setCheckBox(false) : setCheckBox(true);
             }}
           >
             <div className={styles.roud}>
@@ -71,6 +71,7 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             </div>
             Previous days
           </label>
+
           {/* Время */}
           {(checkBox && <span className={styles.endDate}>End date</span>) || (
             <span className={styles.endDate}>Start date</span>

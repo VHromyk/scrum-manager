@@ -1,4 +1,5 @@
 @import '../../styles/shared.scss';
+
 .closeBtn {
   position: absolute;
   top: 10px;
@@ -19,49 +20,54 @@
   height: 18px;
   fill: currentColor;
 }
+
 .modal {
+  position: absolute;
+  right: 0px;
+  padding-top: 63px;
+
   width: 320px;
   //   height: 600px;
   height: 100%;
-  position: absolute;
-  right: 0px;
   background-color: $text-dark-theme-color;
-  padding-top: 63px;
 
   @media screen and (min-width: 768px) {
     width: 512px;
   }
+
   @media screen and (min-width: 1280px) {
     width: 530px;
   }
 }
 
 .heading {
-  font-family: Montserrat;
-  font-style: normal;
+  margin-bottom: 30px;
+
   font-weight: 500;
   font-size: 26px;
-  line-height: 32px;
+  letter-spacing: 0.04em;
+  line-height: 1.23;
   align-items: center;
   text-align: center;
-  color: #181c27;
-  margin-bottom: 30px;
-  letter-spacing: 0.04em;
+
+  color: $text-main-color;
 
   @media screen and (min-width: 768px) {
-    font-size: 36px;
-    line-height: 44px;
     margin-bottom: 50px;
+
+    font-size: 36px;
+    line-height: 1.22;
   }
 }
 
 .labelInput,
 .labelRadio {
   display: block;
-  letter-spacing: 0.04em;
   padding-left: 20px;
   padding-right: 20px;
+  letter-spacing: 0.04em;
   // text-align: center;
+
   @media screen and (min-width: 768px) {
     padding-left: 32px;
     padding-right: 50px;
@@ -69,44 +75,45 @@
 }
 
 .labelText {
-  color: rgba(24, 28, 39, 0.6);
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  cursor: text;
   //   padding-left: 20px;
+  font-weight: 400;
   font-size: 16px;
-  line-height: 20px;
-  transform: translateY(-24px);
-  transition: all 0.3s;
+  line-height: 1.25;
+  cursor: text;
   user-select: none;
+
+  color: $text-light-theme-color;
+
+  transform: translateY(-24px);
+  transition: color $transition-duration $timing-function;
 }
 
 .sprintName {
-  background-color: transparent;
-  border: 0;
+  padding: 5.5px 0px;
+  //   padding: 5px 20px;
   width: 100%;
-
-  border-bottom: 1px solid #181c27;
-
   font-size: 16px;
   letter-spacing: 0.04em;
-  outline: 0;
-  //   padding: 5px 20px;
-  padding: 5.5px 0px;
 
-  transition: all 0.3s;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid $input-field-border-color;
+
+  transition: all $transition-duration $timing-function;
 
   &:focus {
-    border-bottom: 1px solid #ff6b08;
+    border-bottom: 1px solid $accent-color;
+
     & + .labelText {
-      color: #ff6b08;
+      color: $accent-color;
       font-size: 13px;
       transform: translateY(-44px);
     }
   }
+
   &:valid:not(:focus) + .labelText {
-    color: rgba(24, 28, 39, 0.6);
+    color: $text-light-theme-color;
     font-size: 13px;
     transform: translateY(-44px);
   }
@@ -115,6 +122,7 @@
 //стили первого лейбла
 .labelInput {
   margin-bottom: 40px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
   }
@@ -122,44 +130,49 @@
 
 //стили кнопки
 .circleBtn {
+  margin-right: 10px;
   width: 34px;
   height: 34px;
-  background-color: transparent;
-  border: 1px solid #d1d2d4;
+
+  border: 1px solid $icon-circle-border-color;
   border-radius: 50%;
-  margin-right: 10px;
+  background-color: transparent;
 }
+
 .circleIcon {
   width: 16px;
   height: 16px;
-  fill: #ff6b08;
-  // padding-left: 4px;
+  fill: $accent-color;
+  // padding-left: 4p;
 }
+
 .labelRadio {
-  color: rgba(24, 28, 39, 0.6);
-  padding-bottom: 40px;
+  color: $text-light-theme-color;
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
 }
 
 .roud {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid #d1d2d4;
-  margin-right: 10px;
   display: flex;
   align-items: center;
   padding-left: 8px;
+  margin-right: 10px;
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+  border: 1px solid $icon-circle-border-color;
 }
 
 //календарь
 .calendar {
-  margin-bottom: 58px;
   display: block;
+  margin-bottom: 58px;
   padding-left: 20px;
   padding-right: 20px;
 }
+
 //общий див, дата и календарь
 .dataAndDay {
   @media screen and (min-width: 768px) {
@@ -169,7 +182,7 @@
 }
 
 .line {
-  border-bottom: 1px solid #181c27;
+  border-bottom: 1px solid $input-field-border-color;
 
   padding: 5px;
 }
@@ -179,15 +192,16 @@
   // display: flex;
   // flex-direction: row;
   align-items: center;
+  margin-bottom: 20px;
   padding: 11px 44px;
   cursor: pointer;
-  background: #ff6b08;
-  margin-bottom: 20px;
+
+  background: $accent-color;
   border: none;
   outline: none;
   /* orange */
 
-  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+  box-shadow: 0px 3px 4px $dark-theme-box-shadow;
   border-radius: 25px;
 }
 
@@ -220,16 +234,15 @@
 
 ///data
 .endDate {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  /* identical to box height */
-
   display: flex;
   align-items: center;
-  letter-spacing: 0.04em;
   padding-left: 20px;
-  color: rgba(24, 28, 39, 0.6);
+  margin-bottom: 8px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21px;
+  letter-spacing: 0.04em;
+
+  color: $text-light-theme-color;
 }

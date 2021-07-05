@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from '@reach/router';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import AddButton from '../../components/AddButton';
@@ -23,6 +24,8 @@ const OneProjectPage = () => {
   const [showIcon, setShowIcon] = useState(true);
 
   const { projectId } = useParams();
+  const location = useLocation();
+  console.log(location);
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const projects = useSelector(projectsSelectors.getAllProjects);
@@ -31,6 +34,10 @@ const OneProjectPage = () => {
   useEffect(() => {
     dispatch(sprintsOperations.fetchSprints(projectId));
   }, [dispatch, projectId]);
+
+  useEffect(() => {
+    ga.send(['pageview', location.pathname]);
+  }, []);
 
   const currentProject = projects.find(({ id }) => id === projectId);
 

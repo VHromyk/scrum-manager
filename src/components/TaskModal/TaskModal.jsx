@@ -1,10 +1,12 @@
 // TaskModal.jsx;
-
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { tasksOperations } from '../../redux/tasks';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
-import React, { useState } from 'react';
 
 function TaskModal({ onCloseModal }) {
   const [nameTask, setNameTask] = useState('');
@@ -12,6 +14,11 @@ function TaskModal({ onCloseModal }) {
 
   const [validTask, setValidTask] = useState('valid');
   const [validDuration, setValidDuration] = useState('valid');
+
+  const { projectId } = useParams();
+  const { sprintId } = useParams();
+
+  const dispatch = useDispatch();
 
   const handleInputChange = event => {
     const valueInput = event.currentTarget.name;
@@ -40,11 +47,19 @@ function TaskModal({ onCloseModal }) {
     } else {
       setValidTask('valid');
     }
+
     if (!durationTask) {
       setValidDuration('invalid');
     } else {
       setValidDuration('valid');
     }
+
+    const name = nameTask;
+    const scheduledHours = durationTask;
+    const task = { name, scheduledHours };
+
+    dispatch(tasksOperations.addTask(task, projectId, sprintId));
+    onCloseModal();
   };
 
   return (

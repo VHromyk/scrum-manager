@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
-import { taskOperations, taskSelectors } from '../../redux/tasks';
+import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 
 import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
@@ -31,13 +31,21 @@ const OneSprintsPage = () => {
   const { taskId } = useParams();
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const tasks = useSelector(tasksSelectors.getTasks);
+
   const dispatch = useDispatch();
+  useEffect(
+    (projectId, sprintId) => {
+      dispatch(tasksOperations.fetchTasks(projectId, sprintId));
+    },
+    [dispatch],
+  );
 
   const tasksFilter = ({ target: { value } }) => {
-    dispatch(taskSelectors.getFilter(value, taskId));
+    dispatch(tasksSelectors.getFilter(value, taskId));
   };
 
-  const currentSprint = sprints.find(({ id }) => id === sprintId);
+  const currentTask = tasks.find(({ id }) => id === sprintId);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
@@ -45,18 +53,14 @@ const OneSprintsPage = () => {
   const changeInputName = e => {
     setNewName(e.target.value);
   };
+
   const onSubmitRenameName = e => {
     e.preventDefault();
     onRenameSprint(projectId, sprintId, newName);
     setShowInput(true);
     setShowIcon(true);
   };
-  useEffect(
-    sprintId => {
-      dispatch(taskOperations.fetchTasks(sprintId));
-    },
-    [dispatch],
-  );
+
   const buttonHandler = () => {
     setCreateSprint(true);
   };
@@ -210,4 +214,5 @@ const OneSprintsPage = () => {
     </>
   );
 };
+
 export default OneSprintsPage;

@@ -6,17 +6,17 @@ const fetchSprints = projectId => async dispatch => {
 
   try {
     const { data } = await axios.get(`/api/projects/${projectId}/sprints`);
-
-    dispatch(sprintsActions.fetchSprintsSuccess(data));
+    dispatch(sprintsActions.fetchSprintsSuccess(data.sprints));
   } catch ({ message }) {
     dispatch(sprintsActions.fetchSprintsError(message));
   }
 };
 
 const addSprint =
-  ({ projectId, name, startDate, endDate }) =>
+  ({ projectId, name, startDate, endDate, duration }) =>
   async dispatch => {
-    const sprint = { name, startDate, endDate };
+    const sprint = { name, startDate, endDate, duration };
+
     dispatch(sprintsActions.addSprintRequest());
 
     try {
@@ -25,7 +25,7 @@ const addSprint =
         sprint,
       );
 
-      dispatch(sprintsActions.addSprintSuccess(data));
+      dispatch(sprintsActions.addSprintSuccess(data.sprint));
     } catch ({ message }) {
       dispatch(sprintsActions.addSprintError(message));
     }

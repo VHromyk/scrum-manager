@@ -3,15 +3,33 @@
   flex-wrap: wrap;
 }
 
-.listItem {
-  margin-right: 20px;
-  margin-bottom: 30px;
-}
-
-// .listItem:not(:nth-last-child(-n + 3)) {
-//   margin-left: 20px;
+// .listItem {
+//   margin-right: 20px;
 // }
 
-.listItem:nth-child(3n + 3) {
-  margin-right: 0px;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .listItem {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .listItem:nth-child(2n + 2) {
+    margin-right: 0px;
+  }
+  .listItem {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .listItem:nth-child(3n + 3) {
+    margin-right: 0px;
+  }
+  .listItem {
+    margin-right: 20px;
+    margin-bottom: 30px;
+  }
 }

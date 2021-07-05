@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import taskSelectors from '../../redux/tasks/task-selectors';
+import tasksSelectors from '../../redux/tasks/tasks-selectors';
 import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
 function Diagram() {
-  const getAll = useSelector(taskSelectors.getTasks);
+  const getAll = useSelector(tasksSelectors.getTasks);
   const months = ['JUL', 'AUG'];
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {

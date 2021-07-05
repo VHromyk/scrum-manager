@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import AddPeople from './components/AddPeople';
 // import OneProjectPage from './views/OneProjectPage';
-// import OneSprintsPage from './views/OneSprintsPage';
 // import SprintModal from './components/SprintModal';
 
 const RegisterPage = lazy(() =>
@@ -31,6 +30,12 @@ const ProjectsPage = lazy(() =>
 const OneProjectPage = lazy(() =>
   import(
     './views/OneProjectPage' /* webpackChunkName: 'project-details-page' */
+  ),
+);
+
+const OneSprintsPage = lazy(() =>
+  import(
+    './views/OneSprintsPage' /* webpackChunkName: 'project-details-page' */
   ),
 );
 
@@ -64,11 +69,15 @@ function App() {
             <LoginPage />
           </PublicRoute>
 
+          <PrivateRoute path={routes.sprintDetails} redirectTo={routes.login}>
+            <OneSprintsPage />
+          </PrivateRoute>
+
           <PrivateRoute path={routes.projectDetails} redirectTo={routes.login}>
             <OneProjectPage />
           </PrivateRoute>
 
-          <PrivateRoute path={routes.projects} redirectTo={routes.login}>
+          <PrivateRoute path={routes.projects} redirectTo={routes.login} exact>
             <ProjectsPage />
           </PrivateRoute>
 

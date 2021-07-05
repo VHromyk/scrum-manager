@@ -1,5 +1,13 @@
 @import '../../styles/shared.scss';
 
+.current {
+  font-weight: 400;
+  color: $text-main-color;
+}
+.selected {
+  font-weight: 700;
+  color: $text-main-color;
+}
 .square {
   width: 36px;
   height: 36px;
@@ -12,7 +20,7 @@
   align-items: center;
   p {
     margin-left: 10px;
-    font-weight: 400;
+    // font-weight: 400;
     font-size: 14px;
     line-height: 1.22;
     width: 100px;
@@ -23,6 +31,9 @@
   overflow-y: scroll;
   // height: 294px;
   height: 300px;
+}
+.asideList li {
+  word-wrap: break-word;
 }
 
 // .asideList {
@@ -40,7 +51,7 @@
   }
 
   .scroll::-webkit-scrollbar-track {
-    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    // box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
     border-radius: 10px;
   }
 

@@ -1,17 +1,24 @@
 // TaskModal.jsx;
-
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { tasksOperations } from '../../redux/tasks';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
-import React, { useState } from 'react';
 
-function TaskModal() {
+function TaskModal({ onCloseModal }) {
   const [nameTask, setNameTask] = useState('');
   const [durationTask, setDuration] = useState('');
 
   const [validTask, setValidTask] = useState('valid');
   const [validDuration, setValidDuration] = useState('valid');
+
+  const { projectId } = useParams();
+  const { sprintId } = useParams();
+
+  const dispatch = useDispatch();
 
   const handleInputChange = event => {
     const valueInput = event.currentTarget.name;
@@ -40,15 +47,23 @@ function TaskModal() {
     } else {
       setValidTask('valid');
     }
+
     if (!durationTask) {
       setValidDuration('invalid');
     } else {
       setValidDuration('valid');
     }
+
+    const name = nameTask;
+    const scheduledHours = durationTask;
+    const task = { name, scheduledHours };
+
+    dispatch(tasksOperations.addTask(task, projectId, sprintId));
+    onCloseModal();
   };
 
   return (
-    <ModalBackdrop>
+    <ModalBackdrop onClose={onCloseModal}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Creating a task</h2>
         <div className={styles.containerInput1}>
@@ -86,9 +101,15 @@ function TaskModal() {
           <button className={styles.button1} type="submit">
             Ready
           </button>
-          <button className={styles.button2}>Cancel</button>
+          <button className={styles.button2} onClick={onCloseModal}>
+            Cancel
+          </button>
         </div>
-        <IconButton classes={styles.closeBtn} aria-label="add people button">
+        <IconButton
+          classes={styles.closeBtn}
+          aria-label="add people button"
+          onClick={onCloseModal}
+        >
           <SvgComponent name="close" classes={styles.closeIcon} />
         </IconButton>
       </form>

@@ -7,7 +7,11 @@ import styles from './ProjectsListItem.module.scss';
 const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
   return (
     <>
-      <Link to={`/projects/${id}`} className={styles.projectLink}>
+      <Link
+        to={`/projects/${id}`}
+        className={styles.projectLink}
+        label="project-details"
+      >
         <h3 className={styles.projectName}>{name}</h3>
         <p className={styles.projectDescription}>{description}</p>
       </Link>

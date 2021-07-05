@@ -1,5 +1,7 @@
 import styles from './SprintModal.module.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Button from '../Button';
 import Calendar from '../Calendar';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
@@ -7,19 +9,42 @@ import SvgComponent from '../SvgComponent';
 import { sprintsOperations } from '../../redux/sprints';
 
 const SprintModal = ({ onCloseModal, projectId }) => {
-  const [time, setTime] = useState(new Date());
+  const [currentTime, setcurrentTime] = useState(new Date());
   const [sprintName, setSprintName] = useState('');
   const [duration, setDuration] = useState('');
   const [checkBox, setCheckBox] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const name = sprintName;
+
+    const startTime = new Date();
+    const endTime = new Date();
+
+    if (checkBox) {
+      const endTime = currentTime;
+      startTime.setDate(endTime.getDate() - Number(duration));
+    } else {
+      const startTime = currentTime;
+      endTime.setDate(startTime.getDate() + Number(duration));
+    }
+
+    const startDate = startTime.toString().slice(4, 15);
+    const endDate = endTime.toString().slice(4, 15);
+
+    const sprint = { projectId, name, startDate, endDate, duration };
+    dispatch(sprintsOperations.addSprint(sprint));
+
+    onCloseModal();
+  };
+
   return (
     <ModalBackdrop onClose={onCloseModal}>
       <div className={styles.modal}>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            console.log(e);
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <h2 className={styles.heading}>Creating a sprint</h2>
           <label className={styles.labelInput}>
             <input
@@ -32,11 +57,11 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             />
             <div className={styles.labelText}>The name of the sprint</div>
           </label>
+
           <label
             className={styles.labelRadio}
             onClick={() => {
-              if (checkBox) setCheckBox(false);
-              else setCheckBox(true);
+              checkBox ? setCheckBox(false) : setCheckBox(true);
             }}
           >
             <div className={styles.roud}>
@@ -46,14 +71,15 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             </div>
             Previous days
           </label>
+
           {/* Время */}
           {(checkBox && <span className={styles.endDate}>End date</span>) || (
             <span className={styles.endDate}>Start date</span>
           )}
-          {/* ////////// */}
+
           <div className={styles.dataAndDay}>
             <div className={styles.calendar}>
-              {Calendar(time, setTime)}
+              {Calendar(currentTime, setcurrentTime)}
               <div className={styles.line}></div>
             </div>
             <label className={styles.labelInput}>
@@ -70,41 +96,8 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             </label>
           </div>
           <div className={styles.buttonDiv}>
-            <input
-              type="submit"
-              value="Ready"
-              className={styles.ready}
-              onClick={e => {
-                //Просчитываем новую дату
-                e.preventDefault();
-                const name = sprintName;
-                const startDate = time;
-                const endDate = new Date(startDate);
-
-                if (checkBox) {
-                  endDate.setDate(startDate.getDate() - Number(duration));
-                } else endDate.setDate(startDate.getDate() + Number(duration));
-                // tomorrow.toLocaleDateString();
-
-                sprintsOperations.addSprint(
-                  projectId,
-                  name,
-                  startDate,
-                  endDate,
-                );
-                console.log('start date ', startDate);
-                console.log('end date ', endDate);
-                console.log('duration = ', duration);
-              }}
-            />
-            <button
-              className={styles.cancel}
-              // onClick={onCloseModal}
-              onClick={e => {
-                e.preventDefault();
-                onCloseModal();
-              }}
-            >
+            <Button type="submit" text="Ready" />
+            <button className={styles.cancelBtn} onClick={onCloseModal}>
               Cancel
             </button>
           </div>

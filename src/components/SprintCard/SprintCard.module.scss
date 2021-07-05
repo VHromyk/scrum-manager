@@ -2,7 +2,7 @@
 
 .SprintCard {
   position: relative;
-  background: $text-dark-theme-color;
+  background: $components-bcg-color;
   box-shadow: $light-theme-box-shadow;
   border-radius: 5px;
 }
@@ -56,6 +56,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  z-index: 10;
 }
 
 .deleteSprintIcon {
@@ -76,9 +77,9 @@
 }
 
 @media screen and (max-width: 767px) {
-  // .SprintCard {
-  //   width: 280px;
-  // }
+  .SprintCard {
+    width: 280px;
+  }
   .SprintTitle {
     font-size: 16px;
     line-height: 20px;
@@ -109,5 +110,22 @@
   .SprintItem {
     padding-left: 30px;
     padding-right: 30px;
+  }
+}
+
+.deleteSprintBtn {
+  border-radius: 50%;
+
+  color: $icon-light-theme-bcg-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $dark-theme-box-shadow;
   }
 }

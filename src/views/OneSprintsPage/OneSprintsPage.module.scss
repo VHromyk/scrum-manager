@@ -19,11 +19,11 @@
 .sprintNameContainer {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  // flex-direction: row;
   margin-bottom: 30px;
 }
 .sprintName {
-  width: 260px;
+  max-width: 260px;
   margin: 0;
   font-weight: 500;
   font-size: 26px;
@@ -35,6 +35,27 @@
 }
 .sprintNameEdit {
   display: flex;
+}
+.doneBtn {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.doneIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
+}
+.sprintNameInput {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  color: rgba(24, 28, 39, 0.6);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  outline: 0;
+  padding: 5px 30px;
 }
 .currentSprintPages {
   font-style: normal;
@@ -58,9 +79,19 @@
 
 .arrowLeftBtn {
   margin-right: 20px;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 .arrowRightBtn {
   margin-right: 69px;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 .arrowRightBtn,
 .arrowLeftBtn {
@@ -74,29 +105,28 @@
   background: transparent;
   width: 15px;
   height: 15px;
-  fill: $icon-without-bgc-color;
+  // fill: $icon-without-bgc-color;
 }
 .formContainer {
   padding-top: 20px;
 }
 .pagesContainer {
   display: flex;
-  justify-content: baseline;
+  justify-content: space-between;
   margin-bottom: 32px;
+  align-items: center;
 }
 .projectBtn {
   background: transparent;
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  margin-left: 20px;
 }
 
 .searchSprint {
   width: 100%;
   margin-bottom: 8px;
-}
-.searchSprint {
-  max-width: 280px;
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid rgba(24, 28, 39, 0.1);
@@ -104,7 +134,7 @@
   font-size: 16px;
   letter-spacing: 0.04em;
   outline: 0;
-  padding: 5px 30px;
+  padding: 5px 30px 5px 30px;
 
   font-style: normal;
   font-weight: normal;
@@ -115,6 +145,9 @@
   color: $sprint-cart-text-color;
 
   transition: all 0.3s;
+  &:focus {
+    border-bottom: 1px solid $accent-color;
+  }
   &:valid:not(:focus) + .labelText {
     color: rgba(24, 28, 39, 0.6);
     font-size: 13px;
@@ -135,11 +168,28 @@
   fill: $icon-light-theme-color;
 }
 
-.projectIcon,
+.projectIcon {
+  width: 20px;
+  height: 20px;
+  fill: $icon-light-theme-bcg-color;
+  transition: all $transition-duration $timing-function;
+  border-radius: 50%;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
 .searchIcon {
   width: 20px;
   height: 20px;
   fill: $icon-light-theme-bcg-color;
+  transition: all $transition-duration $timing-function;
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
 }
 
 .analyticsBtn,
@@ -190,6 +240,9 @@
   bottom: 20px;
   z-index: 9999;
 }
+.sprintsSideContainer {
+  width: 100%;
+}
 
 @media screen and (min-width: 768px) {
   .sprintsSideContainer {
@@ -206,7 +259,7 @@
     margin-right: 39px;
   }
   .searchForm {
-    margin-left: 12px;
+    margin-left: 35px;
   }
   .searchBtn {
     transform: translateX(180px);
@@ -214,11 +267,12 @@
 
   .searchSprint {
     width: 214px;
+    padding: 5px 30px 5px 0px;
   }
-  .sprintName {
-    margin-right: 43px;
-    // width: 350px;
-  }
+  // .sprintName {
+  //   margin-right: 43px;
+  //   // width: 350px;
+  // }
   .projectBtn {
     margin-right: 34px;
   }
@@ -227,7 +281,7 @@
   }
 
   .createNewBtn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -256,10 +310,14 @@
     bottom: 60px;
   }
   .sprintName {
-    width: 337px;
+    // width: 337px;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
     letter-spacing: normal;
+  }
+  .sprintNameContainer {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
+import { projectsSelectors } from '../../redux/projects';
 import styles from './AsideListSprint.module.scss';
+import { useParams } from 'react-router-dom';
 
 const sprintsList = [
   { id: 'id-1', name: 'Sprint Burndown Chart' },
@@ -11,11 +15,20 @@ const sprintsList = [
 ];
 
 const AsideListSprint = () => {
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const { projectId } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sprintsOperations.fetchSprints(projectId));
+  }, [dispatch, projectId]);
+
   return (
     <div className={styles.asideListContainer}>
       <div className={styles.scroll}>
         <ul className={styles.asideList}>
-          {sprintsList.map(({ id, name }) => (
+          {sprints.map(({ id, name }) => (
             <li key={id}>
               <div className={styles.squareName}>
                 <div className={styles.square}></div>

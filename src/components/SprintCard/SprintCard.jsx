@@ -7,48 +7,52 @@ import styles from './SprintCard.module.scss';
 
 const SprintCard = ({
   id,
-  sprintName,
+  name,
   startDate,
   endDate,
   duration,
   handleDeleteSprint,
-}) => (
-  <Link
-    to={`/projects/:projectId/sprints/${id}`}
-    key={id}
-    className={styles.SprintCard}
-  >
-    <p className={styles.SprintTitle}>{sprintName}</p>
-    <ul className={styles.SprintCardList}>
-      <li className={styles.SprintItem}>
-        <span>Start date</span>
-        <span>{startDate}</span>
-      </li>
-      <li className={styles.SprintItem}>
-        <span>End date</span>
-        <span>{endDate}</span>
-      </li>
-      <li className={styles.SprintItem}>
-        <span>Duration</span>
-        <span>{duration}</span>
-      </li>
-    </ul>
-    <IconButton
-      classes={styles.deleteSprintBtn}
-      onClick={handleDeleteSprint}
-      aria-label="delete sprint button"
-    >
-      <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
-    </IconButton>
-  </Link>
-);
+  projectId,
+}) => {
+  return (
+    <>
+      <div className={styles.SprintCard}>
+        <Link to={`/projects/${projectId}/sprints/${id}`} key={id}>
+          <p className={styles.SprintTitle}>{name}</p>
+          <ul className={styles.SprintCardList}>
+            <li className={styles.SprintItem}>
+              <span>Start date</span>
+              <span>{startDate}</span>
+            </li>
+            <li className={styles.SprintItem}>
+              <span>End date</span>
+              <span>{endDate}</span>
+            </li>
+            <li className={styles.SprintItem}>
+              <span>Duration</span>
+              <span>{duration}</span>
+            </li>
+          </ul>
+        </Link>
+
+        <IconButton
+          classes={styles.deleteSprintBtn}
+          onClick={handleDeleteSprint}
+          aria-label="delete sprint button"
+        >
+          <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
+        </IconButton>
+      </div>
+    </>
+  );
+};
 
 SprintCard.propTypes = {
   id: PropTypes.string.isRequired,
-  sprintName: PropTypes.string.isRequired,
-  sprintDate: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
   handleDeleteSprint: PropTypes.func.isRequired,
 };
 

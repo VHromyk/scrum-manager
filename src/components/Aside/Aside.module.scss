@@ -84,7 +84,7 @@
 @media screen and (min-width: 768px) {
   .aside {
     position: sticky;
-    top: 0px;
+    top: 80px;
 
     width: 216px;
     height: calc(100vh - 81px);
@@ -110,5 +110,6 @@
   .aside {
     width: 200px;
     // padding-right: 30px;
+    top: 81px;
   }
 }

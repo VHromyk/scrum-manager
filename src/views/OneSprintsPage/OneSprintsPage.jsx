@@ -98,27 +98,29 @@ const OneSprintsPage = () => {
           <div className={styles.sprintsSideContainer}>
             <div className={styles.formContainer}>
               <div className={styles.pagesContainer}>
-                <IconButton
-                  classes={styles.arrowLeftBtn}
-                  aria-label="show previous day tasks button"
-                >
-                  <SvgComponent
-                    name="arrow-left"
-                    classes={styles.arrowLeftIcon}
-                  />
-                </IconButton>
-                <span className={styles.currentSprintPages}>10</span>
-                <span className={styles.sprintPages}>/12</span>
+                <div className={styles.containerPages}>
+                  <IconButton
+                    classes={styles.arrowLeftBtn}
+                    aria-label="show previous day tasks button"
+                  >
+                    <SvgComponent
+                      name="arrow-left"
+                      classes={styles.arrowLeftIcon}
+                    />
+                  </IconButton>
+                  <span className={styles.currentSprintPages}>10</span>
+                  <span className={styles.sprintPages}>/12</span>
 
-                <IconButton
-                  classes={styles.arrowRightBtn}
-                  aria-label="show next day tasks button"
-                >
-                  <SvgComponent
-                    name="arrow-right"
-                    classes={styles.arrowRightIcon}
-                  />
-                </IconButton>
+                  <IconButton
+                    classes={styles.arrowRightBtn}
+                    aria-label="show next day tasks button"
+                  >
+                    <SvgComponent
+                      name="arrow-right"
+                      classes={styles.arrowRightIcon}
+                    />
+                  </IconButton>
+                </div>
                 <span className={styles.sprintDate}>08.08.2021</span>
               </div>
               <form className={styles.searchForm}>

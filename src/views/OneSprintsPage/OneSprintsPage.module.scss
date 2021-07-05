@@ -102,8 +102,9 @@
 }
 .pagesContainer {
   display: flex;
-  justify-content: baseline;
+  justify-content: space-between;
   margin-bottom: 32px;
+  align-items: center;
 }
 .projectBtn {
   background: transparent;
@@ -116,9 +117,6 @@
 .searchSprint {
   width: 100%;
   margin-bottom: 8px;
-}
-.searchSprint {
-  max-width: 280px;
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid rgba(24, 28, 39, 0.1);
@@ -126,7 +124,7 @@
   font-size: 16px;
   letter-spacing: 0.04em;
   outline: 0;
-  padding: 5px 30px;
+  padding: 5px 30px 5px 30px;
 
   font-style: normal;
   font-weight: normal;
@@ -137,6 +135,9 @@
   color: $sprint-cart-text-color;
 
   transition: all 0.3s;
+  &:focus {
+    border-bottom: 1px solid $accent-color;
+  }
   &:valid:not(:focus) + .labelText {
     color: rgba(24, 28, 39, 0.6);
     font-size: 13px;
@@ -231,7 +232,7 @@
     margin-right: 39px;
   }
   .searchForm {
-    margin-left: 12px;
+    margin-left: 35px;
   }
   .searchBtn {
     transform: translateX(180px);
@@ -239,6 +240,7 @@
 
   .searchSprint {
     width: 214px;
+    padding: 5px 30px 5px 0px;
   }
   // .sprintName {
   //   margin-right: 43px;

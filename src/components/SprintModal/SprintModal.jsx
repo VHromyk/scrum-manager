@@ -60,6 +60,7 @@ const SprintModal = ({ onCloseModal, projectId }) => {
             value={sprintName}
             required
             autoComplete="off"
+            placeholder="The name of the sprint"
           />
           {/* <div className={styles.labelText}>The name of the sprint</div>
           </label> */}
@@ -84,32 +85,37 @@ const SprintModal = ({ onCloseModal, projectId }) => {
           )}
 
           <div className={styles.dataAndDay}>
-            <div className={styles.calendar}>
-              {Calendar(currentTime, setcurrentTime)}
+            <div className={styles.buttonInputData}>
+              <div className={styles.calendar}>
+                {Calendar(currentTime, setcurrentTime)}
 
-              <div className={styles.line}></div>
-            </div>
-
-            <div className={styles.smallButtons}>
-              <div className={styles.smallButtonsUp} onClick={showCalendar}>
-                <IconButton
-                  classes={styles.arrowUpBtn}
-                  aria-label="show calendar button"
-                >
-                  <SvgComponent name="arrow-up" classes={styles.arrowUpIcon} />
-                </IconButton>
+                <div className={styles.line}></div>
               </div>
-              {/* Сховати календар (стрілка вниз) */}
-              <div className={styles.smallButtonsUp}>
-                <IconButton
-                  classes={styles.arrowDownBtn}
-                  aria-label="hide calendar button"
-                >
-                  <SvgComponent
-                    name="arrow-down"
-                    classes={styles.arrowDownIcon}
-                  />
-                </IconButton>
+
+              <div className={styles.smallButtons}>
+                <div className={styles.smallButtonsUp} onClick={showCalendar}>
+                  <IconButton
+                    classes={styles.arrowUpBtn}
+                    aria-label="show calendar button"
+                  >
+                    <SvgComponent
+                      name="arrow-up"
+                      classes={styles.arrowUpIcon}
+                    />
+                  </IconButton>
+                </div>
+                {/* Сховати календар (стрілка вниз) */}
+                <div className={styles.smallButtonsUp}>
+                  <IconButton
+                    classes={styles.arrowDownBtn}
+                    aria-label="hide calendar button"
+                  >
+                    <SvgComponent
+                      name="arrow-down"
+                      classes={styles.arrowDownIcon}
+                    />
+                  </IconButton>
+                </div>
               </div>
             </div>
             {/* <label className={styles.labelInput}> */}
@@ -122,6 +128,7 @@ const SprintModal = ({ onCloseModal, projectId }) => {
               min="0"
               required
               autoComplete="off"
+              placeholder="Duration"
             />
             {/* <div className={styles.labelText}>Duration</div>
             </label> */}

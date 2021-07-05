@@ -6,19 +6,27 @@ import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import AddButton from '../AddButton';
 import ModalProjects from '../ModalProjects';
+import SprintModal from '../SprintModal';
 import styles from './Aside.module.scss';
 
 const Aside = ({ createName, showName, children }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalSprint, setShowModalSprint] = useState(false);
 
   const { projectId } = useParams();
 
   const buttonHandler = () => {
-    setShowModal(true);
+    if ((createName = 'Create a project')) {
+      setShowModal(true);
+    }
+    if ((createName = 'Create a sprint')) {
+      setShowModalSprint(true);
+    }
   };
 
   const buttonCloseHandler = () => {
     setShowModal(false);
+    setShowModalSprint(false);
   };
 
   const isWide = useMedia('(min-width: 768px)');
@@ -61,6 +69,7 @@ const Aside = ({ createName, showName, children }) => {
         )}
 
         {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
+        {showModalSprint && <SprintModal onCloseModal={buttonCloseHandler} />}
       </div>
       <hr className={styles.line} />
     </div>

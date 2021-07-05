@@ -1,21 +1,15 @@
+import { useSelector } from 'react-redux';
+import projectsSelectors from '../../redux/projects/projects-selectors';
 import styles from './AddPeopleList.module.scss';
-
-const users = [
-    { id: 'id-1', email: 'vitaly@gmail.com' },
-    { id: 'id-2', email: 'lena@gmail.com' },
-    { id: 'id-3', email: 'nataly@gmail.com' },
-    { id: 'id-4', email: 'halyna@gmail.com' },
-    { id: 'id-5', email: 'dima@gmail.com' },
-]
-
-// const users = [];
+// import { uuid } from 'uuidv4';
 
 const AddPeopleList = () => {
+    const people = useSelector(projectsSelectors.getAllPeople);
     return (
         <ul className={styles.addPeopleList}>
-            {users.map(user => (
+            {people.map(user => (
                 <li
-                    key={user.id}
+                    // key={uuid()}
                     className={styles.addPeopleListItem}
                 >
                     {user.email}

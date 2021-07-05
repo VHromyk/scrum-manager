@@ -1,51 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ModalBackdrop from '../ModalBackdrop';
 import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import Button from '../Button';
+import projectsSelectors from '../../redux/projects/projects-selectors';
+import projectsOperations from '../../redux/projects/projects-operations';
 import styles from './AddPeople.module.scss';
-
-const users = [
-  { id: 'id-1', email: 'vitaly@gmail.com' },
-  { id: 'id-2', email: 'lena@gmail.com' },
-  { id: 'id-3', email: 'nataly@gmail.com' },
-  { id: 'id-4', email: 'halyna@gmail.com' },
-  { id: 'id-5', email: 'dima@gmail.com' },
-];
-
-// const users = [];
+import { useParams } from 'react-router-dom';
 
 function AddPeople({ onClick }) {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState('valid');
 
+  const { projectId } = useParams();
+  
   const handleInputChange = event => {
     setEmail(event.currentTarget.value);
   };
-
-  const isInProject = users.find(
-    newUser => newUser.email.toLowerCase() === email.toLowerCase(),
-  );
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    if (!email) {
-      setValidEmail('invalid');
-    } else {
-      setValidEmail('valid');
-    }
-    if (isInProject) {
-      alert(`User (${email}) is already in project`);
-      return;
-    }
-    reset();
-  };
-
+  
+  const dispatch = useDispatch();
+  const people = useSelector(projectsSelectors.getAllPeople);
   const reset = () => {
     setEmail('');
   };
-
+  
+  // const isInProject = people.find(
+  //   newUser => newUser.email.toLowerCase() === email.toLowerCase(),
+  // );
+  
+  const handleSubmit = useCallback(event => {
+    event.preventDefault();
+    if (!email) {
+      setValidEmail('invalid');
+      return;
+    } else {
+      setValidEmail('valid');
+    }
+    // if (isInProject) {
+    //   alert(`User (${email}) is already in project`); //замінити на toast
+    //   return;
+    // }
+    dispatch(projectsOperations.addPeople(projectId, {email}));
+    reset();
+  }, [dispatch, projectId, email]);
+  
+  // useEffect(() => {
+  //   dispatch(projectsOperations.fetchPeople(projectId));
+  // }, [dispatch, projectId]);
+  
   return (
     <ModalBackdrop onClose={onClick}>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -69,10 +73,10 @@ function AddPeople({ onClick }) {
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {!users || users.length === 0 ? (
+          {(!people || people.length === 0) ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
-            <AddPeopleList users={users} />
+            <AddPeopleList people={people} />
           )}
         </div>
         <div className={styles.buttons}>

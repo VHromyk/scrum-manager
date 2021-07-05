@@ -17,6 +17,10 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
+  [projectsActions.fetchPeopleSuccess]: (_, { payload }) =>
+    payload,
+  [projectsActions.addPeopleSuccess]: (_, { payload }) =>
+    payload,
 });
 
 const isLoading = createReducer(false, {
@@ -24,9 +28,17 @@ const isLoading = createReducer(false, {
   [projectsActions.fetchProjectsSuccess]: setFalse,
   [projectsActions.fetchProjectsError]: setFalse,
 
+  [projectsActions.fetchPeopleRequest]: setTrue,
+  [projectsActions.fetchPeopleSuccess]: setFalse,
+  [projectsActions.fetchPeopleError]: setFalse,
+
   [projectsActions.addProjectRequest]: setTrue,
   [projectsActions.addProjectSuccess]: setFalse,
   [projectsActions.addProjectError]: setFalse,
+
+  [projectsActions.addPeopleRequest]: setTrue,
+  [projectsActions.addPeopleSuccess]: setFalse,
+  [projectsActions.addPeopleError]: setFalse,
 
   [projectsActions.deleteProjectRequest]: setTrue,
   [projectsActions.deleteProjectSuccess]: setFalse,
@@ -43,10 +55,16 @@ const error = createReducer(null, {
   [projectsActions.deleteProjectError]: setPayload,
   [projectsActions.renameProjectError]: setPayload,
 
+  [projectsActions.fetchPeopleError]: setPayload,
+  [projectsActions.addPeopleError]: setPayload,
+
   [projectsActions.fetchProjectsRequest]: setNull,
   [projectsActions.addProjectRequest]: setNull,
   [projectsActions.deleteProjectRequest]: setNull,
   [projectsActions.renameProjectRequest]: setNull,
+
+  [projectsActions.fetchPeopleRequest]: setNull,
+  [projectsActions.addPeopleRequest]: setNull,
 });
 
 export default combineReducers({ items, isLoading, error });

@@ -31,12 +31,30 @@ const authPersistConfig = {
   whitelist: ['token', 'isAuthenticated'],
 };
 
+const projectsPersistConfig = {
+  key: 'projects',
+  storage,
+  whitelist: ['items'],
+};
+
+const sprintsPersistConfig = {
+  key: 'sprints',
+  storage,
+  whitelist: ['items'],
+};
+
+const tasksPersistConfig = {
+  key: 'tasks',
+  storage,
+  whitelist: ['items'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    projects: projectsReducer,
-    sprints: sprintsReducer,
-    tasks: tasksReducer,
+    projects: persistReducer(projectsPersistConfig, projectsReducer),
+    sprints: persistReducer(sprintsPersistConfig, sprintsReducer),
+    tasks: persistReducer(tasksPersistConfig, tasksReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import TaskCard from '../TaskCard';
@@ -7,10 +8,13 @@ import styles from './TasksList.module.scss';
 const TasksList = () => {
   const tasks = useSelector(tasksSelectors.getTasks);
 
+  const { projectId, sprintId } = useParams();
+
   const dispatch = useDispatch();
 
   const onDeleteTask = useCallback(
-    projectId => dispatch(tasksOperations.deleteProject(projectId)),
+    (projectId, sprintId, id) =>
+      dispatch(tasksOperations.deleteTask(projectId, sprintId, id)),
     [dispatch],
   );
 
@@ -21,7 +25,7 @@ const TasksList = () => {
           <TaskCard
             name={name}
             scheduledHours={scheduledHours}
-            onDeleteTask={() => onDeleteTask(id)}
+            handleDeleteTask={() => onDeleteTask(projectId, sprintId, id)}
           />
         </li>
       ))}

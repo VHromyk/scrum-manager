@@ -23,8 +23,7 @@ const OneSprintsPage = () => {
   const [showIcon, setShowIcon] = useState(true);
   const [showDiagram, setShowDiagram] = useState(false);
 
-  const { projectId } = useParams();
-  const { sprintId } = useParams();
+  const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);

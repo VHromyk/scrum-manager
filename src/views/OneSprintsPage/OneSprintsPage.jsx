@@ -157,6 +157,7 @@ const OneSprintsPage = () => {
                     <IconButton
                       classes={styles.doneBtn}
                       aria-label="confirm changes"
+                      type="submit"
                       onSubmit={onSubmitRenameName}
                     >
                       <SvgComponent name="done" classes={styles.doneIcon} />

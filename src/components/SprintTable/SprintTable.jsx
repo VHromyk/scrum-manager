@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import TasksList from '../TasksList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
 const SprintTable = ({ durationTask, nameTask }) => {
   const { sprintId } = useParams();
-  const { taskId } = useParams();
-
   const tasks = useSelector(tasksSelectors.getTasks);
 
   return (
@@ -19,11 +18,24 @@ const SprintTable = ({ durationTask, nameTask }) => {
         <li className={styles.sprintFieldName}>Sheduled hours</li>
         <li className={styles.sprintFieldName}>Spent hour/day</li>
         <li className={styles.sprintFieldName}>Hours spent</li>
+        <li className={styles.sprintSearcHeaderBtn}>
+          <IconButton
+            classes={styles.searchBtnHeader}
+            aria-label="search task button"
+          >
+            <SvgComponent
+              name="search"
+              classes={styles.searchIconHeader}
+              type="submit"
+            />
+          </IconButton>
+        </li>
       </ul>
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />
       </div>
-      {tasks.map(task => (
+      <TasksList />
+      {/* {tasks.map(task => (
         <li className={styles.sprintCard}>
           <ul className={styles.sprintCardList}>
             <li className={styles.sprintTitle}>
@@ -50,8 +62,8 @@ const SprintTable = ({ durationTask, nameTask }) => {
               </IconButton>
             </li>
           </ul>
-        </li>
-      ))}
+        </li> 
+      ))} */}
     </div>
   );
 };

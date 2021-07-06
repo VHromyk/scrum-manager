@@ -5,44 +5,44 @@
   display: none;
 }
 
-.sprintCard {
-  width: 100%;
-}
-.sprintNameInput {
-  padding: 8px, 0px;
-}
+// .sprintCard {
+//   width: 100%;
+// }
+// .sprintNameInput {
+//   padding: 8px, 0px;
+// }
 
-.sprintRowInput {
-  width: 60px;
-}
+// .sprintRowInput {
+//   width: 60px;
+// }
 
 .sprintHeader {
   display: none;
 }
 
-.sprintCard {
-  position: relative;
-  width: 280px;
-  height: 214px;
-  background: $text-dark-theme-color;
-  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-  border-radius: 5px;
-  list-style: none;
-  padding-bottom: 10px;
-}
+// .sprintCard {
+//   position: relative;
+//   width: 280px;
+//   height: 214px;
+//   background: $text-dark-theme-color;
+//   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+//   border-radius: 5px;
+//   list-style: none;
+//   padding-bottom: 10px;
+// }
 
-.sprintCardList {
-  list-style: none;
-  padding: 0;
-}
-.sprintRowInput {
-  text-align: right;
-}
-.sprintNameInput {
-  padding-bottom: 5px;
-}
+// .sprintCardList {
+//   list-style: none;
+//   padding: 0;
+// }
+// .sprintRowInput {
+//   text-align: right;
+// }
+// .sprintNameInput {
+//   padding-bottom: 5px;
+// }
 
-.sprintRowInput,
+// .sprintRowInput,
 .sprintNameInput {
   background-color: transparent;
   border: 0;
@@ -65,83 +65,83 @@
     font-size: 13px;
   }
 }
-.sprintNameInput {
-  width: 240px;
-}
-.sprintItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+// .sprintNameInput {
+//   width: 240px;
+// }
+// .sprintItem {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: baseline;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   padding-bottom: 20px;
 
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 10px;
+//   line-height: 12px;
 
-  align-items: center;
-  letter-spacing: 0.04em;
+//   align-items: center;
+//   letter-spacing: 0.04em;
 
-  color: $sprint-cart-text-color;
+//   color: $sprint-cart-text-color;
 
-  &:last-child {
-    padding-bottom: 40px;
-  }
-}
-.sprintTitle {
-  width: 240px;
-  align-items: center;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  align-items: center;
-  color: $text-main-color;
-}
+//   &:last-child {
+//     padding-bottom: 40px;
+//   }
+// }
+// .sprintTitle {
+//   width: 240px;
+//   align-items: center;
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 18px;
+//   line-height: 22px;
+//   letter-spacing: 0.04em;
+//   margin-bottom: 20px;
+//   align-items: center;
+//   color: $text-main-color;
+// }
 
-.deleteSprintBtn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: transparent;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-.deleteSprintIcon {
-  width: 20px;
-  height: 20px;
-  fill: $icon-light-theme-bcg-color;
-}
+// .deleteSprintBtn {
+//   position: absolute;
+//   bottom: 10px;
+//   right: 10px;
+//   background: transparent;
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+// }
+// .deleteSprintIcon {
+//   width: 20px;
+//   height: 20px;
+//   fill: $icon-light-theme-bcg-color;
+// }
 
-@media screen and (min-width: 480px) {
-  .SprintCard {
-    width: 440px;
-  }
-}
+// @media screen and (min-width: 480px) {
+//   .SprintCard {
+//     width: 440px;
+//   }
+// }
 
-@media screen and (max-width: 767px) {
-  .sprintTitle {
-    width: 240px;
-    font-size: 36px;
-    line-height: 44px;
-    padding-top: 17px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-  }
-  .sprintItem {
-    font-size: 10px;
-    padding-bottom: 10px;
-  }
-  .sprintItem:last-child {
-    padding-bottom: 39px;
-  }
-}
+// @media screen and (max-width: 767px) {
+//   .sprintTitle {
+//     width: 240px;
+//     font-size: 36px;
+//     line-height: 44px;
+//     padding-top: 17px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+//     padding-bottom: 20px;
+//   }
+//   .sprintItem {
+//     font-size: 10px;
+//     padding-bottom: 10px;
+//   }
+//   .sprintItem:last-child {
+//     padding-bottom: 39px;
+//   }
+// }
 
 @media screen and (min-width: 768px) {
   .headerLine {
@@ -167,42 +167,42 @@
     line-height: 17px;
     color: $text-main-color;
   }
-  .sprintCard {
-    width: 216px;
-    height: 284px;
-    margin-bottom: 20px;
-  }
+  // .sprintCard {
+  //   width: 216px;
+  //   height: 284px;
+  //   margin-bottom: 20px;
+  // }
 
-  .sprintTitle {
-    width: 176px;
+  // .sprintTitle {
+  //   width: 176px;
 
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-  }
-  .sprintNameInput {
-    width: 176px;
-  }
-  .sprintItem {
-    align-items: flex-end;
-    font-size: 14px;
-    line-height: 17px;
-  }
-  .sprintSpan {
-    width: 98px;
-  }
+  //   padding-left: 20px;
+  //   padding-right: 20px;
+  //   padding-top: 20px;
+  //   margin-bottom: 20px;
+  // }
+  // .sprintNameInput {
+  //   width: 176px;
+  // }
+  // .sprintItem {
+  //   align-items: flex-end;
+  //   font-size: 14px;
+  //   line-height: 17px;
+  // }
+  // .sprintSpan {
+  //   width: 98px;
+  // }
   .sprintFieldNameTask {
     display: none;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .sprintCard:nth-child(even) {
-    width: 216px;
-    height: 306px;
-  }
-}
+// @media screen and (min-width: 768px) and (max-width: 1279px) {
+//   .sprintCard:nth-child(even) {
+//     width: 216px;
+//     height: 306px;
+//   }
+// }
 @media screen and (min-width: 1280px) {
   .sprintHeader {
     display: flex;
@@ -243,39 +243,39 @@
     line-height: 17px;
     color: $text-main-color;
   }
-  .sprintNameInput {
-    width: 170px;
-  }
+  // .sprintNameInput {
+  //   width: 170px;
+  // }
 
-  .sprintCard {
-    width: 869px;
-    height: 95px;
+  // .sprintCard {
+  //   width: 869px;
+  //   height: 95px;
 
-    padding-top: 20px;
-    padding-bottom: 23px;
-    padding-left: 50px;
-    padding-right: 30px;
-  }
-  .sprintSpan {
-    display: none;
-  }
-  .sprintCardList {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  //   padding-top: 20px;
+  //   padding-bottom: 23px;
+  //   padding-left: 50px;
+  //   padding-right: 30px;
+  // }
+  // .sprintSpan {
+  //   display: none;
+  // }
+  // .sprintCardList {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
 
-    margin: 0;
-  }
-  .sprintItem,
-  .sprintTitle,
-  .sprintRowInput {
-    margin: 0;
-    padding: 0;
-  }
-  .sprintItem,
-  .sprintTitle {
-    width: 100px;
-  }
+  //   margin: 0;
+  // }
+  // .sprintItem,
+  // .sprintTitle,
+  // .sprintRowInput {
+  //   margin: 0;
+  //   padding: 0;
+  // }
+  // .sprintItem,
+  // .sprintTitle {
+  //   width: 100px;
+  // }
   .sprintSearchHeaderBtn {
     justify-content: center;
   }
@@ -302,11 +302,11 @@
     height: 20px;
     fill: $icon-light-theme-bcg-color;
   }
-  .deleteSprintBtn {
-    position: relative;
-    align-items: center;
+  // .deleteSprintBtn {
+  //   position: relative;
+  //   align-items: center;
 
-    top: 15px;
-    bottom: 51px;
-  }
+  //   top: 15px;
+  //   bottom: 51px;
+  // }
 }

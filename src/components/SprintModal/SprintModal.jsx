@@ -1,20 +1,22 @@
-import styles from './SprintModal.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Button from '../Button';
 import Calendar from '../Calendar';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import { sprintsOperations } from '../../redux/sprints';
+import styles from './SprintModal.module.scss';
 
-const SprintModal = ({ onCloseModal, projectId }) => {
+const SprintModal = ({ onCloseModal }) => {
   const [currentTime, setcurrentTime] = useState(new Date());
   const [sprintName, setSprintName] = useState('');
   const [duration, setDuration] = useState('');
   const [checkBox, setCheckBox] = useState(true);
 
   const dispatch = useDispatch();
+  const { projectId } = useParams();
 
   const handleSubmit = e => {
     e.preventDefault();

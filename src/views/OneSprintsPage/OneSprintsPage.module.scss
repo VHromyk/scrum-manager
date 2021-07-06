@@ -57,6 +57,11 @@
   outline: 0;
   padding: 5px 30px;
 }
+
+.sprintNameInput:focus {
+  outline: none;
+  border-bottom: 1px solid $accent-color;
+}
 .currentSprintPages {
   font-style: normal;
   font-weight: normal;

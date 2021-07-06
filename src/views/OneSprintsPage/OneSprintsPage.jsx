@@ -40,6 +40,7 @@ const OneSprintsPage = () => {
     dispatch(tasksSelectors.getFilter(value, taskId));
   };
 
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
   // const currentTask = tasks.find(({ id }) => id === sprintId);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
@@ -140,7 +141,9 @@ const OneSprintsPage = () => {
             <div className={styles.sprintNameContainer}>
               <div className={styles.sprintNameEdit}>
                 {showInput ? (
-                  <h1 className={styles.sprintName}>Hello</h1>
+                  <h1 className={styles.sprintName}>
+                    {newName || currentSprint.name}
+                  </h1>
                 ) : (
                   <form onSubmit={onSubmitRenameName}>
                     <input

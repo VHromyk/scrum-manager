@@ -204,8 +204,8 @@
 }
 
 .inputTitle:focus {
-  outline: 3px solid orange;
-  outline-offset: -3px;
+  outline: none;
+  border-bottom: 1px solid $accent-color;
 }
 
 .formChangeName {

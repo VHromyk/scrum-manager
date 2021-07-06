@@ -56,7 +56,12 @@ const OneProjectPage = () => {
 
     setShowInput(true);
     setShowIcon(true);
-    setNewName('');
+    setNewName(newName);
+  };
+
+  const onChangeName = e => {
+    e.preventDefault();
+    setNewName(currentProject.name);
   };
 
   const buttonHandler = () => {
@@ -88,7 +93,7 @@ const OneProjectPage = () => {
           showName="Show projects"
           onClick={buttonHandler}
         >
-          <AsideListProject />
+          <AsideListProject onClick={onChangeName} />
         </Aside>
         <div className={styles.headerProject}>
           <div className={styles.titleButtons}>

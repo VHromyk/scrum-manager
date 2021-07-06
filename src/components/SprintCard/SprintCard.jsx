@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintCard.module.scss';
@@ -12,8 +12,9 @@ const SprintCard = ({
   endDate,
   duration,
   handleDeleteSprint,
-  projectId,
 }) => {
+  const { projectId } = useParams();
+
   return (
     <>
       <div className={styles.SprintCard}>

@@ -33,18 +33,16 @@ const addSprint =
     }
   };
 
-const deleteSprint =
-  ({ projectId, sprintId }) =>
-  async dispatch => {
-    dispatch(sprintsActions.deleteSprintRequest());
+const deleteSprint = (projectId, sprintId) => async dispatch => {
+  dispatch(sprintsActions.deleteSprintRequest());
 
-    try {
-      await axios.delete(`/api/projects/${projectId}/sprints/${sprintId}`);
-      dispatch(sprintsActions.deleteSprintSuccess(projectId, sprintId));
-    } catch ({ message }) {
-      dispatch(sprintsActions.deleteSprintError(message));
-    }
-  };
+  try {
+    await axios.delete(`/api/projects/${projectId}/sprints/${sprintId}`);
+    dispatch(sprintsActions.deleteSprintSuccess(sprintId));
+  } catch ({ message }) {
+    dispatch(sprintsActions.deleteSprintError(message));
+  }
+};
 
 const renameSprint =
   ({ projectId, sprintId, newName: name }) =>

@@ -12,7 +12,7 @@ const SprintsList = () => {
   const dispatch = useDispatch();
 
   const onDeleteSprint = useCallback(
-    sprintId => dispatch(sprintsOperations.deleteSprint(projectId, sprintId)),
+    (projectId, id) => dispatch(sprintsOperations.deleteSprint(projectId, id)),
     [dispatch],
   );
 
@@ -22,12 +22,11 @@ const SprintsList = () => {
         <li className={styles.listItem} key={id}>
           <SprintCard
             id={id}
+            name={name}
             startDate={startDate}
             endDate={endDate}
-            name={name}
             duration={duration}
-            handleDeleteSprint={() => onDeleteSprint(id)}
-            projectId={projectId}
+            handleDeleteSprint={() => onDeleteSprint(projectId, id)}
           />
         </li>
       ))}

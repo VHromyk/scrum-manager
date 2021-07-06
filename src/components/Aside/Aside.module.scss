@@ -62,7 +62,8 @@
 
 .createButton {
   text-align: center;
-  // margin-right: 20px;
+  // margin: 0 auto;
+  margin-right: 30px;
 }
 
 .createButtonText {
@@ -95,8 +96,8 @@
     height: calc(100vh - 81px);
 
     padding-top: 20px;
-    // padding-right: 27px;
-    padding-bottom: 50px;
+
+    padding-bottom: 30px;
 
     border-right: 1px solid $border-main-color;
   }
@@ -114,7 +115,6 @@
 @media screen and (min-width: 1280px) {
   .aside {
     width: 200px;
-    // padding-right: 30px;
     top: 81px;
   }
 }

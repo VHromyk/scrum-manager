@@ -19,11 +19,11 @@
   display: flex;
   align-items: center;
   p {
-    margin-left: 10px;
+    margin-left: 15px;
     // font-weight: 400;
     font-size: 14px;
     line-height: 1.22;
-    width: 100px;
+    width: 110px;
   }
 }
 
@@ -31,6 +31,14 @@
   overflow-y: scroll;
   // height: 294px;
   height: 300px;
+}
+
+.asideList {
+  padding-right: 30px;
+  max-width: 216px;
+  @media screen and (min-width: 1280px) {
+    max-width: 200px;
+  }
 }
 .asideList li {
   word-wrap: break-word;
@@ -78,14 +86,5 @@
 @media screen and (min-width: 768px) {
   .asideListContainer {
     display: block;
-    // padding: 77px 0px 77px 0px;
-    // margin: 120px 0 120px;
   }
 }
-
-// @media screen and (min-width: 1280px) {
-//   .asideListContainer {
-//     // padding: 182px 0px 73px 0px;
-//     // margin: 120px 0 120px;
-//   }
-// }

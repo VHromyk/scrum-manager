@@ -183,6 +183,7 @@ const OneSprintsPage = () => {
             </div>
             <SprintTable />
             <button
+              onClick={buttonHandlerTask}
               type="button"
               aria-label="create new element"
               className={styles.addButton}

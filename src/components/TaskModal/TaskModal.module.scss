@@ -17,15 +17,16 @@
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
   }
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid $accent-color;
-  }
+
   &.invalid {
     border-bottom: 1px solid red;
   }
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
   }
 }
 
@@ -56,10 +57,10 @@
   color: $text-dark-theme-color;
   cursor: pointer;
 }
-.button1:hover {
-  box-shadow: none;
-  background-color: $text-main-color;
-}
+// .button1:hover {
+//   box-shadow: none;
+//   background-color: $text-main-color;
+// }
 
 .button2 {
   width: 154px;
@@ -74,5 +75,5 @@
   cursor: pointer;
 }
 .button2:hover {
-  color: $text-main-color;
+  color: $accent-color;
 }

@@ -65,6 +65,8 @@
 
 .titleContainer {
   display: flex;
+  width: 300px;
+  height: 100px;
   align-items: center;
 }
 .createSprint {
@@ -115,13 +117,14 @@
     letter-spacing: 0.04em;
     max-width: 180px;
     word-wrap: break-word;
+    width: 250px;
   }
 
   .inputTitle {
-    font-size: 26px;
+    font-size: 18px;
     line-height: 1.23;
     letter-spacing: 0.04em;
-    width: 200px;
+    width: 210px;
   }
   .descriptionProject {
     // max-width: 280px;
@@ -151,13 +154,15 @@
     letter-spacing: 0.04em;
     max-width: 290px;
     word-wrap: break-word;
+    width: 250px;
   }
 
   .inputTitle {
     font-weight: 500;
-    font-size: 36px;
+    font-size: 26px;
     line-height: 1.22;
     letter-spacing: 0.04em;
+    width: 250px;
   }
   .descriptionProject {
     width: 452px;
@@ -176,7 +181,7 @@
   }
 
   .inputTitle {
-    width: 300px;
+    width: 250px;
   }
   .descriptionProject {
     width: 400px;

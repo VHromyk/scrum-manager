@@ -22,27 +22,21 @@ const OneProjectPage = () => {
   const [addPeople, setAddPeople] = useState(false);
   const [showInput, setShowInput] = useState(true);
   const [showIcon, setShowIcon] = useState(true);
+  const [newName, setNewName] = useState('');
 
   const { projectId } = useParams();
-  // const location = useLocation();
-  // console.log(location);
-
-  const sprints = useSelector(sprintsSelectors.getAllSprints);
-  const projects = useSelector(projectsSelectors.getAllProjects);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(sprintsOperations.fetchSprints(projectId));
   }, [dispatch, projectId]);
 
-  // useEffect(() => {
-  //   ga.send(['pageview', location.pathname]);
-  // }, []);
+  const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const projects = useSelector(projectsSelectors.getAllProjects);
 
   const currentProject = projects.find(({ id }) => id === projectId);
 
-  const firstProjectName = currentProject.name;
-  const [newName, setNewName] = useState(firstProjectName);
   const onRenameProject = (projectId, name) =>
     dispatch(projectsOperations.renameProject({ projectId, name }));
 
@@ -58,12 +52,11 @@ const OneProjectPage = () => {
   const onSubmitRenameNAme = e => {
     e.preventDefault();
 
-    const name = newName;
-
-    onRenameProject(projectId, name);
+    onRenameProject(projectId, newName);
 
     setShowInput(true);
     setShowIcon(true);
+    setNewName('');
   };
 
   const buttonHandler = () => {
@@ -112,7 +105,7 @@ const OneProjectPage = () => {
                   <input
                     autoFocus
                     className={styles.inputTitle}
-                    value={newName}
+                    value={newName === '' ? currentProject.name : newName}
                     name="name"
                     id="name"
                     type="name"

@@ -3,7 +3,7 @@ import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskCard.module.scss';
 
-const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
+const TaskCard = ({ name, scheduledHours, handleDeleteTask }) => {
   return (
     <div className={styles.sprintCard}>
       <ul className={styles.sprintCardList}>
@@ -26,7 +26,7 @@ const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
         <li>
           <IconButton
             classes={styles.deleteSprintBtn}
-            onClick={onDeleteTask}
+            onClick={handleDeleteTask}
             aria-label="delete sprint button"
           >
             <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
@@ -40,7 +40,7 @@ const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
 TaskCard.propTypes = {
   name: PropTypes.string.isRequired,
   scheduledHours: PropTypes.number.isRequired,
-  onDeleteTask: PropTypes.func.isRequired,
+  handleDeleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskCard;

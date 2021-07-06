@@ -97,6 +97,14 @@ const Icons = () => (
     <IconButton classes={styles.searchBtn} aria-label="search task button">
       <SvgComponent name="search" classes={styles.searchIcon} />
     </IconButton>
+
+    <IconButton classes={styles.searchBtn} aria-label="show password button">
+      <SvgComponent name="show-password" classes={styles.searchIcon} />
+    </IconButton>
+
+    <IconButton classes={styles.searchBtn} aria-label="hide password button">
+      <SvgComponent name="hide-password" classes={styles.searchIcon} />
+    </IconButton>
   </>
 );
 

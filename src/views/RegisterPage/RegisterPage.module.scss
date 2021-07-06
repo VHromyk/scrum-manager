@@ -95,7 +95,40 @@
 
 .helper {
   position: absolute;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
   top: 32px;
+}
+
+.passwordVisibilityBtn {
+  position: absolute;
+  bottom: 204px;
+  right: 20px;
+  z-index: 100;
+
+  color: $icon-light-theme-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.passwordVisibilityIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 768px) {
+  .passwordVisibilityBtn {
+    bottom: 214px;
+    right: 70px;
+  }
+
+  .passwordVisibilityIcon {
+    width: 24px;
+    height: 24px;
+  }
 }

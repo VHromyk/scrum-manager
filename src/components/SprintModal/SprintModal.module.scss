@@ -328,13 +328,13 @@
 }
 .helper {
   position: absolute;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
   top: 25px;
 }
 .helper2 {
   position: absolute;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
   @media screen and (min-width: 768px) {
     top: 22px;

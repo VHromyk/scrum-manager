@@ -15,41 +15,45 @@ function AddPeople({ onClick }) {
   const [validEmail, setValidEmail] = useState('valid');
 
   const { projectId } = useParams();
-  
+
   const handleInputChange = event => {
     setEmail(event.currentTarget.value);
   };
-  
+
   const dispatch = useDispatch();
   const people = useSelector(projectsSelectors.getAllPeople);
+
   const reset = () => {
     setEmail('');
   };
-  
+
   // const isInProject = people.find(
   //   newUser => newUser.email.toLowerCase() === email.toLowerCase(),
   // );
-  
-  const handleSubmit = useCallback(event => {
-    event.preventDefault();
-    if (!email) {
-      setValidEmail('invalid');
-      return;
-    } else {
-      setValidEmail('valid');
-    }
-    // if (isInProject) {
-    //   alert(`User (${email}) is already in project`); //замінити на toast
-    //   return;
-    // }
-    dispatch(projectsOperations.addPeople(projectId, {email}));
-    reset();
-  }, [dispatch, projectId, email]);
-  
+
+  const handleSubmit = useCallback(
+    event => {
+      event.preventDefault();
+      if (!email) {
+        setValidEmail('invalid');
+        return;
+      } else {
+        setValidEmail('valid');
+      }
+      // if (isInProject) {
+      //   alert(`User (${email}) is already in project`); //замінити на toast
+      //   return;
+      // }
+      dispatch(projectsOperations.addPeople(projectId, { email }));
+      reset();
+    },
+    [dispatch, projectId, email],
+  );
+
   // useEffect(() => {
   //   dispatch(projectsOperations.fetchPeople(projectId));
   // }, [dispatch, projectId]);
-  
+
   return (
     <ModalBackdrop onClose={onClick}>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -73,10 +77,10 @@ function AddPeople({ onClick }) {
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {(!people || people.length === 0) ? (
+          {!people || people.length === 0 ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
-            <AddPeopleList people={people} />
+            <AddPeopleList people={people} projectId={projectId} />
           )}
         </div>
         <div className={styles.buttons}>

@@ -85,7 +85,7 @@ const addPeople = (projectId, email) => async dispatch => {
       `/api/projects/${projectId}/invite`,
       email,
     );
-    dispatch(projectsActions.addPeopleSuccess(data.project.owners));
+    dispatch(projectsActions.addPeopleSuccess(data.user.email));
   } catch ({ message }) {
     dispatch(projectsActions.addPeopleError(message));
     toast.error('Something went wrong, try again later');

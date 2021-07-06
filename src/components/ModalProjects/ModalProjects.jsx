@@ -96,11 +96,11 @@ const ModalProjects = ({ onCloseModal }) => {
 
     if (!description) {
       setValidText('invalid');
-      toast.error('Fill the fields correctly');
+      // toast.error('Fill the fields correctly');
       return;
     } else if (description && !descriptionLengthLimits) {
       setValidText('invalidLength');
-      toast.error('Fill the fields correctly');
+      // toast.error('Fill the fields correctly');
       return;
     } else {
       setValidText('valid');

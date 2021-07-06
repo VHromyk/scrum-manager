@@ -20,6 +20,25 @@
   height: 18px;
   fill: currentColor;
 }
+// Показати/сховати календар (стрілки вверх та вниз)
+.arrowUpBtn,
+.arrowDownBtn {
+  color: $icon-light-theme-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+}
+
+.arrowUpIcon,
+.arrowDownIcon {
+  width: 12px;
+  height: 10px;
+  fill: currentColor;
+}
 
 .modal {
   position: absolute;
@@ -29,14 +48,17 @@
   width: 320px;
   //   height: 600px;
   height: 100%;
+  padding: 63px 20px 0px 20px;
   background-color: $text-dark-theme-color;
 
   @media screen and (min-width: 768px) {
     width: 512px;
+    padding: 121px 50px 0px 32px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 530px;
+    padding: 121px 50px 0px 51px;
   }
 }
 
@@ -63,15 +85,15 @@
 .labelInput,
 .labelRadio {
   display: block;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
   letter-spacing: 0.04em;
   // text-align: center;
 
-  @media screen and (min-width: 768px) {
-    padding-left: 32px;
-    padding-right: 50px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   padding-left: 32px;
+  //   padding-right: 50px;
+  // }
 }
 
 .labelText {
@@ -89,12 +111,55 @@
 }
 
 .sprintName {
-  padding: 5.5px 0px;
+  // padding: 5.5px 0px;
   //   padding: 5px 20px;
   width: 100%;
   font-size: 16px;
   letter-spacing: 0.04em;
+  margin-bottom: 53px;
 
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid $input-field-border-color;
+
+  transition: all $transition-duration $timing-function;
+
+  &:focus {
+    border-bottom: 1px solid $accent-color;
+
+    & + .labelText {
+      color: $accent-color;
+      font-size: 13px;
+      transform: translateY(-44px);
+    }
+  }
+
+  &:valid:not(:focus) + .labelText {
+    color: $text-light-theme-color;
+    font-size: 13px;
+    transform: translateY(-44px);
+  }
+}
+
+.sprintDuration {
+  @media screen and (min-width: 320px) {
+    margin-left: 0px;
+    margin-top: 58px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 30px;
+    margin-top: 0px;
+  }
+}
+.sprintDuration {
+  padding: 0.5px;
+  //   padding: 5px 20px;
+  // margin-left: 30px;
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  // margin-top: 0px;
   background-color: transparent;
   border: 0;
   outline: 0;
@@ -148,7 +213,7 @@
 
 .labelRadio {
   color: $text-light-theme-color;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
   display: flex;
   align-items: center;
 }
@@ -167,10 +232,11 @@
 
 //календарь
 .calendar {
-  display: block;
-  margin-bottom: 58px;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 100%;
+  // display: block;
+  // // margin-bottom: 58px;
+  // padding-left: 20px;
+  // padding-right: 20px;
 }
 
 //общий див, дата и календарь
@@ -184,7 +250,7 @@
 .line {
   border-bottom: 1px solid $input-field-border-color;
 
-  padding: 5px;
+  // padding: 5px;
 }
 
 // Кнопки
@@ -192,7 +258,7 @@
   // display: flex;
   // flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding: 11px 44px;
   cursor: pointer;
 
@@ -230,19 +296,29 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 50px;
 }
 
 ///data
 .endDate {
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  margin-bottom: 8px;
-
+  // display: flex;
+  // align-items: center;
+  // padding-left: 20px;
+  // margin-bottom: 8px;
+  display: block;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21px;
   letter-spacing: 0.04em;
 
   color: $text-light-theme-color;
+  margin-bottom: 20px;
+}
+.smallButtons {
+  margin-left: -15px;
+  display: inline-block;
+  margin-top: -20px;
+}
+.buttonInputData {
+  display: flex;
 }

@@ -17,15 +17,16 @@
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
   }
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid $accent-color;
-  }
+
   &.invalid {
     border-bottom: 1px solid red;
   }
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accent-color;
   }
 }
 

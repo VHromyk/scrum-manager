@@ -10,17 +10,15 @@ const setPayload = (_, { payload }) => payload;
 const items = createReducer([], {
   [projectsActions.fetchProjectsSuccess]: setPayload,
   [projectsActions.addProjectSuccess]: (state, { payload }) => [
-    payload,
     ...state,
+    payload,
   ],
   [projectsActions.deleteProjectSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
-  [projectsActions.fetchPeopleSuccess]: (_, { payload }) =>
-    payload,
-  [projectsActions.addPeopleSuccess]: (_, { payload }) =>
-    payload,
+  [projectsActions.fetchPeopleSuccess]: (_, { payload }) => payload,
+  [projectsActions.addPeopleSuccess]: (_, { payload }) => payload,
 });
 
 const isLoading = createReducer(false, {

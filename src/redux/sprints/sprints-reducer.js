@@ -10,8 +10,8 @@ const setPayload = (_, { payload }) => payload;
 const items = createReducer([], {
   [sprintsActions.fetchSprintsSuccess]: setPayload,
   [sprintsActions.addSprintSuccess]: (state, { payload }) => [
-    payload,
     ...state,
+    payload,
   ],
   [sprintsActions.deleteSprintSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),

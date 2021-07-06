@@ -1,6 +1,6 @@
 import axios from 'axios';
-import projectsActions from './projects-actions';
 import { toast } from 'react-toastify';
+import projectsActions from './projects-actions';
 
 const fetchProjects = () => async dispatch => {
   dispatch(projectsActions.fetchProjectsRequest());
@@ -25,6 +25,7 @@ const addProject =
       const { data } = await axios.post('/api/projects', project);
 
       dispatch(projectsActions.addProjectSuccess(data.project));
+      toast.success('Project added successfully');
     } catch ({ message }) {
       dispatch(projectsActions.addProjectError(message));
       toast.error('Something went wrong, try again later');

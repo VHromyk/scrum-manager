@@ -41,9 +41,7 @@ const SprintModal = ({ onCloseModal, projectId }) => {
     onCloseModal();
   };
   const showCalendar = () => {
-    {
-      Calendar(currentTime, setcurrentTime);
-    }
+    Calendar(currentTime, setcurrentTime);
   };
 
   return (

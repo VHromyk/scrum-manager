@@ -44,6 +44,8 @@ function TaskModal({ onCloseModal }) {
     event.preventDefault();
     const nameLengthLimits = nameTask.length > 3 && nameTask.length < 41;
     let durationNumber = Number(durationTask);
+    let expression = /^\d+/;
+
     if (!nameTask) {
       setValidTask('invalid');
       return;
@@ -57,7 +59,11 @@ function TaskModal({ onCloseModal }) {
     if (!durationTask) {
       setValidDuration('invalid');
       return;
-    } else if (durationNumber === 0) {
+    } else if (
+      durationNumber === 0 ||
+      durationNumber >= 24 ||
+      expression.test(durationNumber) === false
+    ) {
       setValidDuration('invalidNumber');
       return;
     } else {
@@ -102,7 +108,7 @@ function TaskModal({ onCloseModal }) {
             )}
             name="duration-task"
             placeholder="Scheduled hours"
-            type="number"
+            type="text"
             value={durationTask}
             onChange={handleInputChange}
             autoComplete="off"
@@ -113,7 +119,7 @@ function TaskModal({ onCloseModal }) {
           {validDuration === 'invalidNumber' && (
             <p
               className={styles.helperText}
-            >{`*Enter duration more then 0.`}</p>
+            >{`*Please enter a number from 1 to 24`}</p>
           )}
         </div>
         <div className={styles.buttons}>

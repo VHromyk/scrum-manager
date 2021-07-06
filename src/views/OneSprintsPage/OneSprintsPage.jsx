@@ -25,18 +25,16 @@ const OneSprintsPage = () => {
 
   const { projectId } = useParams();
   const { sprintId } = useParams();
-  const { taskId } = useParams();
+  const { taskId } = useParams(); // undefined
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const tasks = useSelector(tasksSelectors.getTasks);
 
   const dispatch = useDispatch();
-  useEffect(
-    (projectId, sprintId) => {
-      dispatch(tasksOperations.fetchTasks(projectId, sprintId));
-    },
-    [dispatch],
-  );
+
+  useEffect(() => {
+    dispatch(tasksOperations.fetchTasks(projectId, sprintId));
+  }, [dispatch, projectId, sprintId]);
 
   const tasksFilter = ({ target: { value } }) => {
     dispatch(tasksSelectors.getFilter(value, taskId));

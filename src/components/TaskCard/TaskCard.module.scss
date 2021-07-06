@@ -1,0 +1,241 @@
+@import '../../styles/shared.scss';
+
+.sprintCard {
+  width: 100%; // TODO дублюється клас
+}
+
+.sprintCard {
+  // TODO дублюється клас
+  position: relative;
+  width: 280px;
+  height: 214px;
+  background: $text-dark-theme-color;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  list-style: none;
+  padding-bottom: 10px;
+}
+
+.sprintCardList {
+  list-style: none;
+  padding: 0;
+}
+
+.sprintTitle {
+  width: 240px;
+  align-items: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+  align-items: center;
+  color: $text-main-color;
+}
+
+.sprintNameInput {
+  padding: 8px, 0px; // TODO дублюється клас
+}
+
+.sprintNameInput {
+  padding-bottom: 5px; // TODO дублюється клас
+}
+
+.sprintNameInput {
+  width: 240px; // TODO дублюється клас
+}
+
+.sprintItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: $sprint-cart-text-color;
+
+  &:last-child {
+    padding-bottom: 40px;
+  }
+}
+
+.sprintRowInput {
+  // TODO дублюється клас
+  width: 60px;
+  text-align: right;
+}
+
+.sprintRowInput {
+  // TODO дублюється клас
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  color: rgba(24, 28, 39, 0.6);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  outline: 0;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: $sprint-cart-text-color;
+
+  transition: all 0.3s;
+  &:valid:not(:focus) + .labelText {
+    color: rgba(24, 28, 39, 0.6);
+    font-size: 13px;
+  }
+}
+
+.deleteSprintBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  border-radius: 50%;
+
+  color: $icon-light-theme-bcg-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
+.deleteSprintIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media screen and (min-width: 480px) {
+  .SprintCard {
+    width: 440px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sprintTitle {
+    width: 240px;
+    font-size: 36px;
+    line-height: 44px;
+    padding-top: 17px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+  .sprintItem {
+    font-size: 10px;
+    padding-bottom: 10px;
+  }
+
+  .sprintItem:last-child {
+    padding-bottom: 39px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sprintCard {
+    width: 216px;
+    height: 284px;
+    margin-bottom: 20px;
+  }
+
+  .sprintTitle {
+    width: 176px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sprintNameInput {
+    width: 176px;
+  }
+
+  .sprintItem {
+    align-items: flex-end;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .sprintSpan {
+    width: 98px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .sprintCard:nth-child(even) {
+    width: 216px;
+    height: 306px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sprintCard {
+    width: 869px;
+    height: 95px;
+
+    padding-top: 20px;
+    padding-bottom: 23px;
+    padding-left: 50px;
+    padding-right: 30px;
+  }
+
+  .sprintCardList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0;
+  }
+
+  .sprintItem,
+  .sprintTitle {
+    width: 100px;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .sprintNameInput {
+    width: 170px;
+  }
+
+  .sprintSpan {
+    display: none;
+  }
+
+  .sprintRowInput {
+    margin: 0;
+    padding: 0;
+  }
+
+  .deleteSprintBtn {
+    position: relative;
+    align-items: center;
+
+    top: 15px;
+    bottom: 51px;
+  }
+}

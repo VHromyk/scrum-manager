@@ -3,9 +3,9 @@ import { createReducer } from '@reduxjs/toolkit';
 import tasksActions from './tasks-actions.js';
 
 const items = createReducer([], {
-  [tasksActions.fetchTaskSuccess]: (_, { payload }) => payload,
-  [tasksActions.addTaskSuccess]: (state, { payload }) => [...state, payload],
-  [tasksActions.deleteTaskSuccess]: (state, { payload }) => [
+  [tasksActions.fetchTasksSuccess]: (_, { payload }) => payload,
+  [tasksActions.addTasksSuccess]: (state, { payload }) => [...state, payload],
+  [tasksActions.deleteTasksSuccess]: (state, { payload }) => [
     ...state.filter(item => item._id !== payload),
   ],
 

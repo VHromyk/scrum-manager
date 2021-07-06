@@ -15,6 +15,9 @@ const SprintModal = ({ onCloseModal }) => {
   const [duration, setDuration] = useState('');
   const [checkBox, setCheckBox] = useState(true);
 
+  const [validName, setValidName] = useState('valid');
+  const [validDuration, setValidDuration] = useState('valid');
+
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
@@ -25,6 +28,33 @@ const SprintModal = ({ onCloseModal }) => {
 
     const startTime = new Date();
     const endTime = new Date();
+
+    const nameLengthLimits = name.length > 3 && name.length < 41;
+
+    let durationNumber = Number(duration);
+
+    if (!name) {
+      setValidName('invalid');
+      return;
+    } else if (!nameLengthLimits) {
+      setValidName('invalidLength');
+      return;
+    } else {
+      setValidName('valid');
+    }
+
+    if (!duration) {
+      setValidDuration('invalid');
+      return;
+    } else if (
+      durationNumber === 0 ||
+      Number.isInteger(durationNumber) === false
+    ) {
+      setValidDuration('invalidNumber');
+      return;
+    } else {
+      setValidDuration('valid');
+    }
 
     if (checkBox) {
       const endTime = currentTime;
@@ -51,19 +81,26 @@ const SprintModal = ({ onCloseModal }) => {
       <div className={styles.modal}>
         <form onSubmit={handleSubmit}>
           <h2 className={styles.heading}>Creating a sprint</h2>
-          {/* <label className={styles.labelInput}> */}
-          <input
-            className={styles.sprintName}
-            type="text"
-            name="sprintName"
-            onChange={e => setSprintName(e.target.value)}
-            value={sprintName}
-            required
-            autoComplete="off"
-            placeholder="The name of the sprint"
-          />
-          {/* <div className={styles.labelText}>The name of the sprint</div>
-          </label> */}
+
+          <div className={styles.containerInput1}>
+            <input
+              className={styles.sprintName}
+              type="text"
+              name="sprintName"
+              onChange={e => setSprintName(e.target.value)}
+              value={sprintName}
+              autoComplete="off"
+              placeholder="The name of the sprint"
+            />
+            {validName === 'invalid' && (
+              <p className={styles.helper}>*This field is required</p>
+            )}
+            {validName === 'invalidLength' && (
+              <p
+                className={styles.helper}
+              >{`*Enter name between 4 and 40 characters long. Current length is ${sprintName.length} characters`}</p>
+            )}
+          </div>
 
           <label
             className={styles.labelRadio}
@@ -118,20 +155,26 @@ const SprintModal = ({ onCloseModal }) => {
                 </div>
               </div>
             </div>
-            {/* <label className={styles.labelInput}> */}
-            <input
-              className={styles.sprintDuration}
-              type="number"
-              name="Duration"
-              onChange={e => setDuration(e.target.value)}
-              value={duration}
-              min="0"
-              required
-              autoComplete="off"
-              placeholder="Duration"
-            />
-            {/* <div className={styles.labelText}>Duration</div>
-            </label> */}
+            <div className={styles.containerInput2}>
+              <input
+                className={styles.sprintDuration}
+                type="number"
+                // name="Duration"
+                onChange={e => setDuration(e.target.value)}
+                value={duration}
+                min="0"
+                autoComplete="off"
+                placeholder="Duration"
+              />
+              {validDuration === 'invalid' && (
+                <p className={styles.helper2}>*This field is required</p>
+              )}
+              {validDuration === 'invalidNumber' && (
+                <p
+                  className={styles.helper2}
+                >{`*Enter duration more then 0.`}</p>
+              )}
+            </div>
           </div>
           <div className={styles.buttonDiv}>
             <Button type="submit" text="Ready" />

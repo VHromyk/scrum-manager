@@ -322,3 +322,22 @@
 .buttonInputData {
   display: flex;
 }
+.containerInput1,
+.containerInput2 {
+  position: relative;
+}
+.helper {
+  position: absolute;
+  color: #ff001b;
+  font-size: 12px;
+  top: 25px;
+}
+.helper2 {
+  position: absolute;
+  color: #ff001b;
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    top: 22px;
+    left: 30px;
+  }
+}

@@ -28,6 +28,9 @@
 .asideList {
   min-height: 200px;
 }
+.asideList li {
+  word-wrap: break-word;
+}
 .asideListContainer {
   .scroll::-webkit-scrollbar {
     overflow: hidden;

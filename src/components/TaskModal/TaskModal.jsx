@@ -7,6 +7,7 @@ import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
+import Button from '../Button';
 
 function TaskModal({ onCloseModal }) {
   const [nameTask, setNameTask] = useState('');
@@ -41,15 +42,24 @@ function TaskModal({ onCloseModal }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    const nameLengthLimits = nameTask.length > 3 && nameTask.length < 41;
+    let durationNumber = Number(durationTask);
     if (!nameTask) {
       setValidTask('invalid');
+      return;
+    } else if (!nameLengthLimits) {
+      setValidTask('invalidLength');
+      return;
     } else {
       setValidTask('valid');
     }
 
     if (!durationTask) {
       setValidDuration('invalid');
+      return;
+    } else if (durationNumber === 0) {
+      setValidDuration('invalidNumber');
+      return;
     } else {
       setValidDuration('valid');
     }
@@ -79,16 +89,20 @@ function TaskModal({ onCloseModal }) {
           {validTask === 'invalid' && (
             <p className={styles.helper}>*This field is required</p>
           )}
+          {validTask === 'invalidLength' && (
+            <p
+              className={styles.helper}
+            >{`*Enter name between 4 and 40 characters long. Current length is ${nameTask.length} characters`}</p>
+          )}
         </div>
         <div className={styles.containerInput2}>
           <input
             className={[`${styles.input2}`, `${styles[validDuration]}`].join(
               ' ',
             )}
-            // className={styles.input2}
             name="duration-task"
             placeholder="Scheduled hours"
-            type="text"
+            type="number"
             value={durationTask}
             onChange={handleInputChange}
             autoComplete="off"
@@ -96,11 +110,14 @@ function TaskModal({ onCloseModal }) {
           {validDuration === 'invalid' && (
             <p className={styles.helperText}>*This field is required</p>
           )}
+          {validDuration === 'invalidNumber' && (
+            <p
+              className={styles.helperText}
+            >{`*Enter duration more then 0.`}</p>
+          )}
         </div>
         <div className={styles.buttons}>
-          <button className={styles.button1} type="submit">
-            Ready
-          </button>
+          <Button type="submit" text="Ready" />
           <button className={styles.button2} onClick={onCloseModal}>
             Cancel
           </button>

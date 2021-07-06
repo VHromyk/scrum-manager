@@ -144,19 +144,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .sprintHeader {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-
-    width: 100%;
-    height: 50px;
-    padding-top: 7px;
-    padding-bottom: 9px;
-    padding-left: 38px;
-    padding-right: 20px;
-    margin: 0;
-  }
   .headerLine {
     display: inline-block;
     width: 100%;
@@ -218,6 +205,9 @@
 }
 @media screen and (min-width: 1280px) {
   .sprintHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     width: 869px;
     height: 60px;
     padding-left: 50px;

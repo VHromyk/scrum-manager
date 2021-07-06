@@ -19,18 +19,6 @@ const SprintTable = ({ durationTask, nameTask }) => {
         <li className={styles.sprintFieldName}>Sheduled hours</li>
         <li className={styles.sprintFieldName}>Spent hour/day</li>
         <li className={styles.sprintFieldName}>Hours spent</li>
-        <li className={styles.sprintSearcHeaderBtn}>
-          <IconButton
-            classes={styles.searchBtnHeader}
-            aria-label="search task button"
-          >
-            <SvgComponent
-              name="search"
-              classes={styles.searchIconHeader}
-              type="submit"
-            />
-          </IconButton>
-        </li>
       </ul>
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />

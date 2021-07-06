@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import sprintsActions from './sprints-actions';
 
 const fetchSprints = projectId => async dispatch => {
@@ -26,6 +27,7 @@ const addSprint =
       );
 
       dispatch(sprintsActions.addSprintSuccess(data.sprint));
+      toast.success('Sprint added successfully');
     } catch ({ message }) {
       dispatch(sprintsActions.addSprintError(message));
     }

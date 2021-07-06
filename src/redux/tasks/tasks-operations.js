@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import tasksActions from './tasks-actions';
 
 const fetchTasks = (projectId, sprintId) => async dispatch => {
@@ -9,7 +10,6 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
       `/api/projects/${projectId}/sprints/${sprintId}/tasks`,
     );
 
-    console.log('data:', data);
     dispatch(tasksActions.fetchTasksSuccess(data.tasks));
   } catch (error) {
     dispatch(tasksActions.fetchTasksError(error?.message));
@@ -24,6 +24,7 @@ const addTask = (task, projectId, sprintId) => async dispatch => {
       task,
     );
     dispatch(tasksActions.addTaskSuccess(data.task));
+    toast.success('Task added successfully');
   } catch (error) {
     dispatch(tasksActions.addTaskError(error?.message));
   }

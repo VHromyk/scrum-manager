@@ -32,6 +32,7 @@ const SprintModal = ({ onCloseModal }) => {
     const nameLengthLimits = name.length > 3 && name.length < 41;
 
     let durationNumber = Number(duration);
+    let expression = /^\d+/;
 
     if (!name) {
       setValidName('invalid');
@@ -48,7 +49,8 @@ const SprintModal = ({ onCloseModal }) => {
       return;
     } else if (
       durationNumber === 0 ||
-      Number.isInteger(durationNumber) === false
+      Number.isInteger(durationNumber) === false ||
+      expression.test(durationNumber) === false
     ) {
       setValidDuration('invalidNumber');
       return;
@@ -158,7 +160,7 @@ const SprintModal = ({ onCloseModal }) => {
             <div className={styles.containerInput2}>
               <input
                 className={styles.sprintDuration}
-                type="number"
+                type="text"
                 // name="Duration"
                 onChange={e => setDuration(e.target.value)}
                 value={duration}
@@ -172,7 +174,7 @@ const SprintModal = ({ onCloseModal }) => {
               {validDuration === 'invalidNumber' && (
                 <p
                   className={styles.helper2}
-                >{`*Enter duration more then 0.`}</p>
+                >{`*Please enter an integer greater than 0.`}</p>
               )}
             </div>
           </div>

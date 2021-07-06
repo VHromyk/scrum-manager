@@ -17,6 +17,11 @@
   outline: none;
   background-color: $page-bcg-color;
   cursor: pointer;
+  font-size: 14px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+
+  color: #181c27;
 }
 .asideArrow:hover {
   color: $accent-color;

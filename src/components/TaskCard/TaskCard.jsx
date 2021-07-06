@@ -5,7 +5,7 @@ import styles from './TaskCard.module.scss';
 
 const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
   return (
-    <li className={styles.sprintCard}>
+    <div className={styles.sprintCard}>
       <ul className={styles.sprintCardList}>
         <li className={styles.sprintTitle}>
           {name}
@@ -33,18 +33,14 @@ const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
           </IconButton>
         </li>
       </ul>
-    </li>
+    </div>
   );
-};
-
-TaskCard.defaultProps = {
-  description: '',
 };
 
 TaskCard.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  onDeleteProject: PropTypes.func.isRequired,
+  scheduledHours: PropTypes.number.isRequired,
+  onDeleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskCard;

@@ -48,7 +48,7 @@ const Aside = ({ createName, showName, children }) => {
           </Link>
         ) : (
           <Link to={`/projects/${projectId}`}>
-            <button className={styles.asideArrow}>
+            <div className={styles.asideArrow}>
               <IconButton
                 classes={styles.arrowBtn}
                 aria-label="show projects button"
@@ -56,7 +56,7 @@ const Aside = ({ createName, showName, children }) => {
                 <SvgComponent name="arrow" classes={styles.arrowIcon} />
               </IconButton>
               <p className={styles.arrowText}>{showName}</p>
-            </button>
+            </div>
           </Link>
         )}
         {children}

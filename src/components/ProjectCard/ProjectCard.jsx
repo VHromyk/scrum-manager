@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
-import styles from './ProjectsListItem.module.scss';
+import styles from './ProjectCard.module.scss';
 
-const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
+const ProjectCard = ({ id, name, description, onDeleteProject }) => {
   return (
     <>
       <Link
@@ -26,14 +26,14 @@ const ProjectsListItem = ({ id, name, description, onDeleteProject }) => {
   );
 };
 
-ProjectsListItem.defaultProps = {
+ProjectCard.defaultProps = {
   description: '',
 };
 
-ProjectsListItem.propTypes = {
+ProjectCard.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
   onDeleteProject: PropTypes.func.isRequired,
 };
 
-export default ProjectsListItem;
+export default ProjectCard;

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import ProjectsListItem from '../ProjectsListItem';
+import ProjectCard from '../ProjectCard';
 import bcgColors from '../../projectCardBcgColors';
 import styles from './ProjectsList.module.scss';
 
@@ -42,7 +42,7 @@ const ProjectsList = () => {
             // backgroundColor: `#${generateColor()}`,
           }}
         >
-          <ProjectsListItem
+          <ProjectCard
             id={id}
             name={name}
             description={description}

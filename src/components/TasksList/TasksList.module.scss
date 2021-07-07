@@ -82,7 +82,11 @@
   @media screen and(min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    // margin: -15px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+
+    // margin-left: 0px;
   }
 }
 .sprintCard {
@@ -112,6 +116,11 @@
 }
 
 .sprintCard {
+  width: 100%;
+  position: relative;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
   @media screen and(min-width: 440px) {
     width: 440px;
   }
@@ -120,18 +129,29 @@
     height: 284px;
     margin: 15px;
   }
-}
-
-@media screen and (min-width: 1280px) {
-  .sprintCard {
+  @media screen and (min-width: 1280px) {
     width: 100%;
     height: 95px;
-
     padding-top: 20px;
     padding-bottom: 23px;
     padding-left: 50px;
     padding-right: 30px;
-    // margin-right: 0px;
-    // margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
   }
 }
+
+// @media screen and (min-width: 1280px) {
+//   .sprintCard {
+//     width: 100%;
+//     height: 95px;
+
+//     padding-top: 20px;
+//     padding-bottom: 23px;
+//     padding-left: 50px;
+//     padding-right: 30px;
+//     // margin-right: 0px;
+//     // margin-left: 0px;
+//   }
+// }

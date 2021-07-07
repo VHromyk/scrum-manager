@@ -22,15 +22,18 @@ const OneSprintsPage = () => {
   const [showInput, setShowInput] = useState(true);
   const [showIcon, setShowIcon] = useState(true);
   const [showDiagram, setShowDiagram] = useState(false);
+  const [arrayDate, setArrayDate] = useState([]);
+  const [currentDate, setCurrentDate] = useState('');
 
   const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const tasks = useSelector(tasksSelectors.getTasks);
-
   const dispatch = useDispatch();
-
+  // if (tasks.length !== 0) {
+  //   const dateTasks = tasks.map(item => item.startDate);
+  // }
   useEffect(() => {
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
@@ -41,6 +44,7 @@ const OneSprintsPage = () => {
 
   const currentSprint = sprints.find(({ id }) => id === sprintId);
   // const currentTask = tasks.find(({ id }) => id === sprintId);
+  console.log(tasks);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
@@ -120,7 +124,7 @@ const OneSprintsPage = () => {
                     />
                   </IconButton>
                 </div>
-                <span className={styles.sprintDate}>08.08.2021</span>
+                <span className={styles.sprintDate}>{currentDate}</span>
               </div>
               <form className={styles.searchForm}>
                 <IconButton

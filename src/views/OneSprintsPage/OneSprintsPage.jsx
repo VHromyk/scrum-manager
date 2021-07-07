@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { authOperations } from '../../redux/auth';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
 import SvgComponent from '../../components/SvgComponent';
-import styles from './OneSprintsPage.module.scss';
 import Container from '../../components/Container';
 import Aside from '../../components/Aside';
 import AsideListSprint from '../../components/AsideListSprint';
 import SprintTable from '../../components/SprintTable';
 import TaskModal from '../../components/TaskModal';
 import Diagram from '../../components/Diagram';
+import styles from './OneSprintsPage.module.scss';
 
 const OneSprintsPage = () => {
   const [createSprint, setCreateSprint] = useState(false);
@@ -35,6 +36,7 @@ const OneSprintsPage = () => {
   //   const dateTasks = tasks.map(item => item.startDate);
   // }
   useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
 

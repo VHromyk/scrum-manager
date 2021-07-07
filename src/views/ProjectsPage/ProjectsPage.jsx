@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import Container from '../../components/Container';
 import ProjectList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
 import ModalProjects from '../../components/ModalProjects';
-import styles from './ProjectsPage.module.scss';
 import Footer from '../../components/Footer';
+import styles from './ProjectsPage.module.scss';
 
 const ProjectsPage = () => {
   const isLoading = useSelector(projectsSelectors.getIsLoading);
@@ -15,6 +16,7 @@ const ProjectsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
     dispatch(projectsOperations.fetchProjects());
   }, [dispatch]);
 

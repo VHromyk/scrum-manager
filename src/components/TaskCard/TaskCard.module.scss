@@ -1,8 +1,8 @@
 @import '../../styles/shared.scss';
 
-// .sprintCard {
-//   width: 100%; // TODO дублюється клас
-// }
+.sprintCard {
+  width: 100%; // TODO дублюється клас
+}
 
 // .sprintCard {
 //   // TODO дублюється клас
@@ -26,12 +26,12 @@
 }
 
 .sprintTitle {
-  width: 240px;
+  // width: 240px;
+  width: 100%;
   align-items: center;
-  font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 1.22;
   letter-spacing: 0.04em;
   margin-bottom: 20px;
   align-items: center;
@@ -121,7 +121,7 @@
   &:focus {
     color: $accent-color;
     background-color: $icon-dark-theme-bcg-color;
-    box-shadow: $dark-theme-box-shadow;
+    // box-shadow: $dark-theme-box-shadow;
   }
 }
 
@@ -139,7 +139,7 @@
 
 @media screen and (max-width: 767px) {
   .sprintTitle {
-    width: 240px;
+    // width: 240px;
     font-size: 36px;
     line-height: 44px;
     padding-top: 17px;
@@ -199,50 +199,97 @@
 // }
 
 @media screen and (min-width: 1280px) {
+  .sprintTitle {
+    padding: 0px;
+    margin: 0px;
+  }
+  .sprintSpan {
+    padding: 0px;
+    margin: 0px;
+    display: none;
+  }
+  .sprintItem {
+    padding: 0px;
+    margin: 0px;
+  }
+  .sprintCardList {
+    display: flex;
+    position: relative;
+    // flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    height: 55px;
+    li:not(:last-child) {
+      display: block;
+      width: 100px;
+    }
+  }
+
   // .sprintCard {
-  //   width: 869px;
+  //   // width: 869px;
+  //   align-items: center;
   //   height: 95px;
 
-  //   padding-top: 20px;
-  //   padding-bottom: 23px;
+  //   padding-top: 25px;
+  //   padding-bottom: 25px;
   //   padding-left: 50px;
   //   padding-right: 30px;
   // }
+  // .sprintItem1 {
+  //   position: absolute;
+  //   margin-top: 0;
+  //   right: 0px;
+  //   // padding: 0px;
+  // }
+  // .sprintCardList {
+  //   display: flex;
+  //   // flex-direction: row;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   // margin: 0;
+  //   // padding: 0px;
+  //   li {
+  //     // margin: 0;
+  //     padding: 15px;
+  //     align-items: center;
+  //   }
+  // }
 
-  .sprintCardList {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  // .sprintItem,
+  // .sprintTitle {
+  //   width: 100px;
 
-    margin: 0;
-  }
+  //   margin: 0;
+  //   padding: 0;
+  // }
 
-  .sprintItem,
-  .sprintTitle {
-    width: 100px;
+  // .sprintNameInput {
+  //   width: 170px;
+  // }
 
-    margin: 0;
-    padding: 0;
-  }
+  // .sprintSpan {
+  //   display: none;
+  // }
 
-  .sprintNameInput {
-    width: 170px;
-  }
+  // .sprintRowInput {
+  //   margin: 0;
+  //   padding: 0;
+  // }
 
-  .sprintSpan {
-    display: none;
-  }
+  // .deleteSprintBtn {
+  //   position: relative;
+  //   align-items: center;
 
-  .sprintRowInput {
-    margin: 0;
-    padding: 0;
-  }
-
+  //   top: 15px;
+  //   bottom: 51px;
+  // }
   .deleteSprintBtn {
-    position: relative;
-    align-items: center;
-
-    top: 15px;
-    bottom: 51px;
+    position: absolute;
+    top: 0px;
+    height: 55px;
+    // top: -50%;
+    // border-radius: 50%;
   }
 }

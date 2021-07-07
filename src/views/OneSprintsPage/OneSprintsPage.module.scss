@@ -27,7 +27,6 @@
   margin-bottom: 30px;
 }
 .sprintName {
-  max-width: 260px;
   margin: 0;
   font-weight: 500;
   font-size: 26px;
@@ -39,18 +38,33 @@
 }
 .sprintNameEdit {
   display: flex;
+  width: 300px;
+  height: 100px;
+  align-items: center;
 }
+
 .doneBtn {
-  background: transparent;
-  width: 20px;
-  height: 20px;
   border-radius: 50%;
+
+  color: $icon-dark-theme-color;
+  background-color: $icon-light-theme-bcg-color;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
 }
+
 .doneIcon {
   width: 20px;
   height: 20px;
-  fill: $icon-light-theme-bcg-color;
+  fill: currentColor;
 }
+
 .sprintNameInput {
   background-color: transparent;
   border: 0;
@@ -259,17 +273,18 @@
   z-index: 9999;
 }
 
-
-
-
-
-
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .analyticsBtn {
     position: absolute;
     left: 20px;
     top: calc(100% - 125px);
     z-index: 9999;
+  }
+  .sprintNameInput {
+    width: 210px;
+  }
+  .sprintName {
+    width: 200px;
   }
 }
 
@@ -335,6 +350,12 @@
     right: 55px;
     top: calc(100% - 100px);
   }
+  .sprintNameInput {
+    width: 250px;
+  }
+  .sprintName {
+    width: 250px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -353,6 +374,7 @@
   }
   .sprintName {
     // width: 337px;
+    width: 250px;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
@@ -362,4 +384,11 @@
     display: flex;
     justify-content: space-between;
   }
+  .sprintNameInput {
+    width: 250px;
+  }
+}
+
+.sprintsSideContainer {
+  width: 100%;
 }

@@ -43,16 +43,31 @@
 
 .modal {
   position: absolute;
-  right: 0px;
-  padding-top: 63px;
 
-  width: 320px;
-  //   height: 600px;
-  height: 100%;
-  padding: 63px 20px 0px 20px;
   background-color: $text-dark-theme-color;
+  @media (min-width: 320px) {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 63px 20px 0px 20px;
+    width: 320px;
+    height: 100%;
+    background-color: $components-bcg-color;
+  }
 
   @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: auto;
+    padding-top: 63px;
+    transform: none;
+    transform: translate(0, 0);
+    width: 320px;
+    //   height: 600px;
+    height: 100%;
+    padding: 63px 20px 0px 20px;
     width: 512px;
     padding: 121px 50px 0px 32px;
   }

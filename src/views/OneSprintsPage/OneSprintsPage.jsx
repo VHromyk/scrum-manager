@@ -134,7 +134,11 @@ const OneSprintsPage = () => {
                     type="submit"
                   />
                 </IconButton>
-                <input className={styles.searchSprint} type="search"></input>
+                <input
+                  className={styles.searchSprint}
+                  type="search"
+                  placeholder="Search task"
+                ></input>
               </form>
             </div>
             <div className={styles.sprintNameContainer}>

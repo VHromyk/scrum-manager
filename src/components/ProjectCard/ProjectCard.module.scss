@@ -39,20 +39,28 @@
 }
 
 .deleteProjectBtn {
+  border: none;
+  outline: none;
   position: absolute;
   right: 10px;
   bottom: 10px;
   border-radius: 50%;
-
   color: $icon-dark-theme-bcg-color;
   background-color: transparent;
-  transition: background-color $transition-duration $timing-function,
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
     box-shadow $transition-duration $timing-function;
 
+  // &:hover,
+  // &:focus {
+  //   background-color: $accent-color;
+  //   box-shadow: $dark-theme-box-shadow;
+  // }
   &:hover,
   &:focus {
-    background-color: $accent-color;
-    box-shadow: $dark-theme-box-shadow;
+    color: $accent-color;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px #ffffff;
   }
 }
 

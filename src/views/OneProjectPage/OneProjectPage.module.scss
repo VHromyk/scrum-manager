@@ -110,14 +110,14 @@
 
 @media (min-width: 320px) {
   .title {
-    margin-right: 20px;
+    margin-right: 5px;
     font-weight: 500;
     font-size: 26px;
     line-height: 1.23;
     letter-spacing: 0.04em;
-    max-width: 180px;
-    word-wrap: break-word;
-    width: 250px;
+    // max-width: 180px;
+    // word-wrap: break-word;
+    // width: 250px;
   }
 
   .inputTitle {
@@ -145,14 +145,14 @@
 
   .headerProject {
     width: 100%;
-    padding: 40px 40px 40px 20px;
+    padding: 40px 0px 40px 40px;
   }
   .title {
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
     letter-spacing: 0.04em;
-    max-width: 290px;
+    // max-width: 290px;
     word-wrap: break-word;
     width: 250px;
   }
@@ -174,7 +174,7 @@
 @media screen and (min-width: 1280px) {
   .headerProject {
     width: 100%;
-    padding: 40px 15px 44px 30px;
+    padding: 40px 30px 44px 80px;
   }
   .createTitle {
     display: block;
@@ -187,10 +187,10 @@
     width: 400px;
     height: 66px;
   }
-  .title {
-    max-width: 600px;
-    word-wrap: break-word;
-  }
+  // .title {
+  //   max-width: 600px;
+  //   word-wrap: break-word;
+  // }
 }
 
 .inputTitle {

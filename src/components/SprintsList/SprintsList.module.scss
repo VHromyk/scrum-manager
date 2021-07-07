@@ -1,35 +1,67 @@
 .sprintsList {
   display: flex;
   flex-wrap: wrap;
+  // margin: -15px;
+  @media screen and(min-width: 768px) {
+    margin: -15px;
+  }
 }
 
 // .listItem {
 //   margin-right: 20px;
 // }
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .listItem {
-    margin-right: 0px;
-    margin-bottom: 10px;
+.listItem {
+  &:hover,
+  &:focus {
+    box-shadow: 0px 0px 15px 1px #606264;
+  }
+  &:not(:last-child) {
+    @media screen and(max-width: 768px) {
+      margin-bottom: 10px;
+    }
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .listItem:nth-child(2n + 2) {
-    margin-right: 0px;
+.listItem {
+  width: 100%;
+  // margin: 15px;
+  @media screen and(min-width: 440px) {
+    width: 440px;
+    margin: 0 auto;
   }
-  .listItem {
-    margin-right: 20px;
-    margin-bottom: 20px;
+  @media screen and(min-width: 768px) {
+    margin: 10px;
+    width: calc((100% - (4 * 10px)) / 2);
+  }
+  @media screen and(min-width: 1280px) {
+    margin: 15px;
+    width: calc((100% - (6 * 15px)) / 3);
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .listItem:nth-child(3n + 3) {
-    margin-right: 0px;
-  }
-  .listItem {
-    margin-right: 20px;
-    margin-bottom: 30px;
-  }
-}
+// @media screen and (min-width: 320px) and (max-width: 767px) {
+//   .listItem {
+//     margin-right: 0px;
+//     margin-bottom: 10px;
+//   }
+// }
+
+// @media screen and (min-width: 768px) and (max-width: 1279px) {
+//   .listItem:nth-child(2n + 2) {
+//     margin-right: 0px;
+//   }
+//   .listItem {
+//     margin-right: 20px;
+//     margin-bottom: 20px;
+//   }
+// }
+
+// @media screen and (min-width: 1280px) {
+//   .listItem:nth-child(3n + 3) {
+//     margin-right: 0px;
+//   }
+//   .listItem {
+//     margin-right: 20px;
+//     margin-bottom: 30px;
+//   }
+// }

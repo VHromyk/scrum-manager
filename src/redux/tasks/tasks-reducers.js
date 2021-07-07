@@ -8,23 +8,15 @@ const items = createReducer([], {
   [tasksActions.deleteTaskSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 
-  [tasksActions.changeTaskSuccess]: (state, { payload }) => [
-    ...state.map(task =>
-      task._id === payload.taskId
+  [tasksActions.changeTaskSuccess]: (state, { payload }) =>
+    state.map(task =>
+      task.id === payload.id
         ? {
             ...task,
-            hoursWasted: payload.hoursWasted,
-            hoursWastedPerDay: [
-              ...task.hoursWastedPerDay.map(item =>
-                item.currentDay === payload.currentDay
-                  ? { ...item, singleHoursWasted: payload.singleHoursWasted }
-                  : item,
-              ),
-            ],
+            spentTime: payload.spentTime,
           }
         : task,
     ),
-  ],
 });
 
 const loading = createReducer(false, {

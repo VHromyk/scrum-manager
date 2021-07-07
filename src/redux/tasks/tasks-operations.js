@@ -45,24 +45,21 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
 };
 
 const changeTask =
-  (hoursWasted, projectId, taskId, currentDay) => async dispatch => {
+  // (projectId, sprintId, taskId, spentTime, currentDay) =>
+  (projectId, sprintId, taskId, spentTime) => async dispatch => {
+    console.log('projectId:', projectId);
+    console.log('sprintId:', sprintId);
+    console.log('taskId:', taskId);
+    console.log('spentTime:', spentTime);
     dispatch(tasksActions.changeTaskRequest());
+
     try {
       const { data } = await axios.patch(
-        `/api/projects/${projectId}/tasks/${taskId}`,
-        {
-          date: currentDay,
-          hours: hoursWasted,
-        },
+        `/api/projects/${projectId}/sprints/${sprintId}/tasks/${taskId}/time`,
+        { spentTime },
       );
-      dispatch(
-        tasksActions.changeTaskSuccess({
-          currentDay: data.day.currentDay,
-          singleHoursWasted: data.day.singleHoursWasted,
-          hoursWasted: data.newWastedHours,
-          taskId,
-        }),
-      );
+
+      dispatch(tasksActions.changeTaskSuccess(data.task));
     } catch (error) {
       dispatch(tasksActions.changeTaskError(error?.message));
     }

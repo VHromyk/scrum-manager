@@ -1,12 +1,34 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { tasksOperations } from '../../redux/tasks';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskCard.module.scss';
 
-const TaskCard = ({ name, scheduledHours, handleDeleteTask }) => {
+const TaskCard = ({
+  id,
+  name,
+  scheduledHours,
+  hoursSpent,
+  spentTime,
+  handleDeleteTask,
+}) => {
+  const [time, setTime] = useState(spentTime);
+
+  const dispatch = useDispatch();
+  const { projectId, sprintId } = useParams();
+
+  const handleInputChange = e => setTime(e.target.value);
+
+  const handleSubmit = (e, projectId, sprintId, taskId) => {
+    e.preventDefault();
+    dispatch(tasksOperations.changeTask(projectId, sprintId, taskId, time));
+  };
+
   return (
     // <div className={styles.sprintCard}>
-
     <ul className={styles.sprintCardList}>
       <li className={styles.sprintTitle}>
         {name}
@@ -18,11 +40,23 @@ const TaskCard = ({ name, scheduledHours, handleDeleteTask }) => {
       </li>
       <li className={styles.sprintItem}>
         <span className={styles.sprintSpan}>Spent hour/day</span>
-        <input className={styles.sprintRowInput}></input>
+        <form
+          onSubmit={e => {
+            handleSubmit(e, projectId, sprintId, id);
+          }}
+        >
+          <input
+            className={styles.sprintRowInput}
+            type="text"
+            name="time"
+            value={time}
+            onChange={handleInputChange}
+          />
+        </form>
       </li>
       <li className={styles.sprintItem}>
         <span className={styles.sprintSpan}>Hours spent</span>
-        <span>5</span>
+        <span>{hoursSpent}</span>
       </li>
       <li className={styles.sprintItem}>
         <IconButton
@@ -39,6 +73,7 @@ const TaskCard = ({ name, scheduledHours, handleDeleteTask }) => {
 };
 
 TaskCard.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   scheduledHours: PropTypes.number.isRequired,
   handleDeleteTask: PropTypes.func.isRequired,

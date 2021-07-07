@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
+import { authOperations } from '../../redux/auth';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';

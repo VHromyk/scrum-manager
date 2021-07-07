@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperation from '../../redux/auth/auth-operations';
+import { authOperations } from '../../redux/auth';
 import Section from '../../components/Section';
 import Form from '../../components/Form';
 import Button from '../../components/Button';
@@ -15,7 +15,7 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
-  const onLogin = user => dispatch(authOperation.login(user));
+  const onLogin = user => dispatch(authOperations.login(user));
 
   const handleShowPassword = useCallback(() => {
     setShowPassword(prevShowPassword => !prevShowPassword);

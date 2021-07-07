@@ -74,9 +74,10 @@ const SprintModal = ({ onCloseModal }) => {
 
     onCloseModal();
   };
-  const showCalendar = () => {
-    Calendar(currentTime, setcurrentTime);
-  };
+
+  // const showCalendar = () => {
+  //   Calendar(currentTime, setcurrentTime);
+  // };
 
   return (
     <ModalBackdrop onClose={onCloseModal}>
@@ -131,31 +132,25 @@ const SprintModal = ({ onCloseModal }) => {
                 <div className={styles.line}></div>
               </div>
 
-              <div className={styles.smallButtons}>
-                <div className={styles.smallButtonsUp} onClick={showCalendar}>
-                  <IconButton
-                    classes={styles.arrowUpBtn}
-                    aria-label="show calendar button"
-                  >
+              {/* <div className={styles.smallButtons}>
+                <IconButton
+                  classes={styles.arrowUpBtn}
+                  aria-label="toggle calendar button"
+                  onClick={handleShowCalendar}
+                >
+                  {showCalendar ? (
                     <SvgComponent
                       name="arrow-up"
                       classes={styles.arrowUpIcon}
                     />
-                  </IconButton>
-                </div>
-                {/* Сховати календар (стрілка вниз) */}
-                <div className={styles.smallButtonsUp}>
-                  <IconButton
-                    classes={styles.arrowDownBtn}
-                    aria-label="hide calendar button"
-                  >
+                  ) : (
                     <SvgComponent
                       name="arrow-down"
                       classes={styles.arrowDownIcon}
                     />
-                  </IconButton>
-                </div>
-              </div>
+                  )}
+                </IconButton>
+              </div> */}
             </div>
             <div className={styles.containerInput2}>
               <input

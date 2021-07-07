@@ -5,7 +5,8 @@ import styles from './TaskCard.module.scss';
 
 const TaskCard = ({ name, scheduledHours, onDeleteTask }) => {
   return (
-    <div className={styles.sprintCard}>
+    // <div className={styles.sprintCard}>
+    <div>
       <ul className={styles.sprintCardList}>
         <li className={styles.sprintTitle}>
           {name}

@@ -81,7 +81,10 @@
 .sprintPages {
   margin-right: 20px;
 }
-
+.sprintDate {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .arrowLeftBtn {
   margin-right: 20px;
   transition: all $transition-duration $timing-function;
@@ -91,7 +94,7 @@
   }
 }
 .arrowRightBtn {
-  margin-right: 69px;
+  // margin-right: 69px;
   transition: all $transition-duration $timing-function;
   &:hover,
   &:focus {
@@ -113,13 +116,25 @@
   // fill: $icon-without-bgc-color;
 }
 .formContainer {
-  padding-top: 20px;
+  // padding-top: 20px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+
+  display: block;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 }
 .pagesContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
   align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.containerPages {
+  width: 110px;
 }
 .projectBtn {
   background: transparent;
@@ -245,26 +260,28 @@
   bottom: 20px;
   z-index: 9999;
 }
-.sprintsSideContainer {
-  width: 100%;
-}
 
 @media screen and (min-width: 768px) {
+  .pagesContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 0px;
+  }
   .sprintsSideContainer {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
   }
   .formContainer {
     display: flex;
     flex-direction: row;
-
-    padding-top: 19px;
+    justify-content: space-between;
+    // padding-top: 19px;
   }
-  .arrowRightBtn {
-    margin-right: 39px;
-  }
+  // .arrowRightBtn {
+  //   margin-right: 39px;
+  // }
   .searchForm {
-    margin-left: 35px;
+    margin-left: 15px;
   }
   .searchBtn {
     transform: translateX(180px);
@@ -303,6 +320,10 @@
   }
 }
 @media screen and (min-width: 1280px) {
+  .sprintsSideContainer {
+    // width: 100%;
+    padding: 19px 20px 20px 70px;
+  }
   .createTask {
     display: inline-block;
     margin-left: 20px;

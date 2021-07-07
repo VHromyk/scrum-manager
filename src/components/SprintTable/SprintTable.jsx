@@ -18,16 +18,12 @@ const SprintTable = () => {
         <li className={styles.sprintFieldName}>Spent hour/day</li>
         <li className={styles.sprintFieldName}>Hours spent</li>
         <li className={styles.sprintSearcHeaderBtn}>
-          <IconButton
-            classes={styles.searchBtnHeader}
-            aria-label="search task button"
+          {/* <IconButton
+            classes={styles.deleteSprintBtn}
+            aria-label="delete sprint button"
           >
-            <SvgComponent
-              name="search"
-              classes={styles.searchIconHeader}
-              type="submit"
-            />
-          </IconButton>
+            <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
+          </IconButton> */}
         </li>
       </ul>
       <div className={styles.headerLineWrapper}>

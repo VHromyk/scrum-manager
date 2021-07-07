@@ -26,6 +26,9 @@
     line-height: 1.22;
     width: 110px;
   }
+  &:hover {
+    color: $accent-color;
+  }
 }
 
 .scroll {

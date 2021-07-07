@@ -18,6 +18,7 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
 
 const addTask = (task, projectId, sprintId) => async dispatch => {
   dispatch(tasksActions.addTaskRequest());
+
   try {
     const { data } = await axios.post(
       `/api/projects/${projectId}/sprints/${sprintId}/tasks`,
@@ -30,17 +31,18 @@ const addTask = (task, projectId, sprintId) => async dispatch => {
   }
 };
 
-const deleteTask =
-  ({ projectId, taskId }) =>
-  async dispatch => {
-    dispatch(tasksActions.deleteTaskRequest());
-    try {
-      await axios.delete(`/api/projects/${projectId}/tasks/${taskId}`);
-      dispatch(tasksActions.deleteTaskSuccess(taskId));
-    } catch (error) {
-      dispatch(tasksActions.deleteTaskError(error?.message));
-    }
-  };
+const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
+  dispatch(tasksActions.deleteTaskRequest());
+
+  try {
+    await axios.delete(
+      `/api/projects/${projectId}/sprints/${sprintId}/tasks/${taskId}`,
+    );
+    dispatch(tasksActions.deleteTaskSuccess(taskId));
+  } catch (error) {
+    dispatch(tasksActions.deleteTaskError(error?.message));
+  }
+};
 
 const changeTask =
   (hoursWasted, projectId, taskId, currentDay) => async dispatch => {

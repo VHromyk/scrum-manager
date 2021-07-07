@@ -32,7 +32,7 @@
   }
 
   &.invalid {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid $error-border-color;
   }
 
   &.valid {
@@ -62,7 +62,7 @@
   }
 
   &.invalid {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid $error-border-color;
   }
 
   &.valid {
@@ -171,7 +171,7 @@
 
 .helper {
   position: absolute;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
   top: 32px;
 }
@@ -179,6 +179,6 @@
 .helper2 {
   position: absolute;
   top: 82px;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
 }

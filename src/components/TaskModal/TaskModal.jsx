@@ -16,8 +16,7 @@ function TaskModal({ onCloseModal }) {
   const [validTask, setValidTask] = useState('valid');
   const [validDuration, setValidDuration] = useState('valid');
 
-  const { projectId } = useParams();
-  const { sprintId } = useParams();
+  const { projectId, sprintId } = useParams();
 
   const dispatch = useDispatch();
 

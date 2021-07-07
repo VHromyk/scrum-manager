@@ -23,8 +23,7 @@ const OneSprintsPage = () => {
   const [showIcon, setShowIcon] = useState(true);
   const [showDiagram, setShowDiagram] = useState(false);
 
-  const { projectId } = useParams();
-  const { sprintId } = useParams();
+  const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
@@ -86,7 +85,7 @@ const OneSprintsPage = () => {
   };
   return (
     <>
-      <Container>
+      <Container classes={styles.container}>
         <div className={styles.sprintsWrapper}>
           <Aside
             createName="Create a sprint"
@@ -190,21 +189,6 @@ const OneSprintsPage = () => {
               </div>
             </div>
             <SprintTable />
-            <button
-              onClick={buttonHandlerTask}
-              type="button"
-              aria-label="create new element"
-              className={styles.addButton}
-            >
-              <SvgComponent name="create-btn" classes={styles.addIcon} />
-            </button>
-            <IconButton
-              classes={styles.analyticsBtn}
-              aria-label="open diagram button"
-              onClick={buttonHandlerDiagram}
-            >
-              <SvgComponent name="analytics" classes={styles.analyticsIcon} />
-            </IconButton>
           </div>
         </div>
         {createSprint && (
@@ -214,6 +198,23 @@ const OneSprintsPage = () => {
           <TaskModal onCloseModal={btnCloseTask} projectId={taskId} />
         )}
         {showDiagram && <Diagram onCloseModal={btnCloseDiagram} />}
+        {/* Кнопка додати проект */}
+        <button
+          onClick={buttonHandlerTask}
+          type="button"
+          aria-label="create new element"
+          className={styles.addButton}
+        >
+          <SvgComponent name="create-btn" classes={styles.addIcon} />
+        </button>
+        {/* Кнопка аналітки */}
+        <IconButton
+          classes={styles.analyticsBtn}
+          aria-label="open diagram button"
+          onClick={buttonHandlerDiagram}
+        >
+          <SvgComponent name="analytics" classes={styles.analyticsIcon} />
+        </IconButton>
       </Container>
     </>
   );

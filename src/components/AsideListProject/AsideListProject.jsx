@@ -17,12 +17,16 @@ const AsideListProject = ({ onClick }) => {
     dispatch(projectsOperations.fetchProjects());
   }, [dispatch]);
 
+  const changeName = name => {
+    onClick(name);
+  };
+
   return (
     <div className={styles.asideListContainer}>
       <div className={styles.scroll}>
         <ul className={styles.asideList}>
           {projects.map(({ id, name }) => (
-            <li key={id} onClick={onClick}>
+            <li key={id} onClick={() => changeName(name)}>
               <NavLink
                 to={`/projects/${id}`}
                 className={styles.current}

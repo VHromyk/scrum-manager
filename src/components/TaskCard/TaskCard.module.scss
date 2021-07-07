@@ -26,7 +26,8 @@
 }
 
 .sprintTitle {
-  width: 240px;
+  // width: 240px;
+  width: 100%;
   align-items: center;
   font-weight: 500;
   font-size: 18px;
@@ -138,7 +139,7 @@
 
 @media screen and (max-width: 767px) {
   .sprintTitle {
-    width: 240px;
+    // width: 240px;
     font-size: 36px;
     line-height: 44px;
     padding-top: 17px;

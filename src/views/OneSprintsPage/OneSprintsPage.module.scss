@@ -27,6 +27,7 @@
   margin-bottom: 30px;
 }
 .sprintName {
+  display: block;
   margin: 0;
   font-weight: 500;
   font-size: 26px;
@@ -35,10 +36,11 @@
   color: $text-main-color;
   display: flex;
   align-items: center;
+  word-wrap: break-word;
 }
 .sprintNameEdit {
   display: flex;
-  width: 300px;
+  // width: 300px;
   height: 100px;
   align-items: center;
 }
@@ -159,7 +161,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  margin-left: 20px;
+  margin-bottom: 10px;
+  // margin-left: 20px;
 }
 
 .searchSprint {
@@ -267,24 +270,36 @@
   fill: currentColor;
 }
 .addButton {
-  position: absolute;
-  right: 20px;
-  top: calc(100% - 125px);
-  z-index: 9999;
+  position: fixed;
+  right: 10%;
+  // top: 0%;
+  transform: translateX(-10%);
+  // right: 20px;
+  // top: calc(100% - 125px);
+  // z-index: 9999;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .analyticsBtn {
-    position: absolute;
-    left: 20px;
-    top: calc(100% - 125px);
-    z-index: 9999;
+    position: fixed;
+    // left: 20px;
+    left: 10%;
+    // top: 0%;
+    transform: translateX(-10%);
+    // top: calc(100% - 125px);
+    // z-index: 9999;
+    // padding: 2em;
+    // left: 50%;
+    // bottom: 0%;
+    // transform: translateX(-50%);
   }
   .sprintNameInput {
     width: 210px;
   }
   .sprintName {
-    width: 200px;
+    display: block;
+    width: 210px;
+    word-wrap: break-word;
   }
 }
 
@@ -346,15 +361,23 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .analyticsBtn {
-    position: absolute;
-    right: 55px;
-    top: calc(100% - 100px);
+    // position: absolute;
+    // right: 55px;
+    // top: calc(100% - 100px);
+    right: 10%;
+    left: auto;
+    position: fixed;
+    bottom: 60px;
+
+    transform: translateX(-10%);
   }
   .sprintNameInput {
     width: 250px;
   }
   .sprintName {
+    display: block;
     width: 250px;
+    word-wrap: break-word;
   }
 }
 
@@ -368,17 +391,25 @@
     margin-left: 20px;
   }
   .analyticsBtn {
-    position: absolute;
-    right: 75px;
-    top: calc(100% - 115px);
+    // position: absolute;
+    // right: 75px;
+    // top: calc(100% - 115px);
+    right: 10%;
+    left: auto;
+    position: fixed;
+    bottom: 60px;
+
+    transform: translateX(-10%);
   }
   .sprintName {
     // width: 337px;
+    display: block;
     width: 250px;
     font-weight: 500;
     font-size: 36px;
     line-height: 1.22;
     letter-spacing: normal;
+    word-wrap: break-word;
   }
   .sprintNameContainer {
     display: flex;

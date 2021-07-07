@@ -23,14 +23,35 @@ const OneSprintsPage = () => {
   const [showInput, setShowInput] = useState(true);
   const [showIcon, setShowIcon] = useState(true);
   const [showDiagram, setShowDiagram] = useState(false);
+  const [arrayDate, setArrayDate] = useState([]);
+  const [currentDate, setCurrentDate] = useState('');
 
   const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const tasks = useSelector(tasksSelectors.getTasks);
-
   const dispatch = useDispatch();
+  // Робимо масив дат з наявних тасків і записуємо початкову дату в state
+  // if (tasks.length !== 0) {
+  // tasks.map(item => {
+  //   if (arrayDate.find(item.startDate)) {
+  // return } else { setArrayDate(prevstate => prevstate.push(item.taskDate))
+  // });
+  // const sortByDate = (a, b) => new Date(a) - new Date(b);
+  // const setArrayDate(prevstate => prevstate.sort(sortByDate));
+  // setCurrentDate(arrayDate[0].toLocaleDateString());
+  // }
+
+  // const increment = (e) => {
+  //   e.preventDefault();
+  //   setCurrentDate(arrayDate[0 + 1].toLocaleDateString());
+  // };
+
+  //  const decrement = e => {
+  //    e.preventDefault();
+  //    setCurrentDate(arrayDate[0 - 1].toLocaleDateString());
+  //  };
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
@@ -43,6 +64,7 @@ const OneSprintsPage = () => {
 
   const currentSprint = sprints.find(({ id }) => id === sprintId);
   // const currentTask = tasks.find(({ id }) => id === sprintId);
+  console.log(tasks);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
@@ -103,6 +125,7 @@ const OneSprintsPage = () => {
                   <IconButton
                     classes={styles.arrowLeftBtn}
                     aria-label="show previous day tasks button"
+                    // onClick={decrement}
                   >
                     <SvgComponent
                       name="arrow-left"
@@ -115,6 +138,7 @@ const OneSprintsPage = () => {
                   <IconButton
                     classes={styles.arrowRightBtn}
                     aria-label="show next day tasks button"
+                    // onClick={increment}
                   >
                     <SvgComponent
                       name="arrow-right"
@@ -122,7 +146,7 @@ const OneSprintsPage = () => {
                     />
                   </IconButton>
                 </div>
-                <span className={styles.sprintDate}>08.08.2021</span>
+                {/* <span className={styles.sprintDate}>{currentDate}</span> */}
               </div>
               <form className={styles.searchForm}>
                 <IconButton

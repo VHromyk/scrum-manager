@@ -8,24 +8,35 @@ function Diagram() {
   const getAll = useSelector(tasksSelectors.getTasks);
   const months = ['JUL', 'AUG'];
 
+  console.log('Взять все таски:', getAll); //Массив всіх тасок
+
+  const countDayForSprints = 12; //Захардкожена кількість днів спринта
+
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
-    return cnt + getAll.hoursPlanned;
-  }, 0);
+    return cnt + getAll.scheduledHours;
+  }, 0); // Вирахування суми всіх годин запланованих на виконання тасок
+
+  console.log('Сумма всіх годин:', sumRedLine); //Сумма всіх годин запланованих на виконання тасок
 
   const DaysRedLine = () => {
     let arr = [];
-    let sumAllRedLine = sumRedLine;
 
-    for (let i = 0; i <= getAll[0].hoursWastedPerDay.length; i++) {
-      sumAllRedLine -= sumRedLine / getAll[0].hoursWastedPerDay.length;
-      arr.push(sumAllRedLine);
+    for (let i = 0; i <= getAll.length; i += 1) {
+      let sumAllRedLine = sumRedLine / countDayForSprints;
+      let typeToNumber = Math.floor(sumAllRedLine * 100) / 100;
+      console.log(typeToNumber);
+      arr.push(typeToNumber);
     }
+    console.log(arr);
     return arr;
   };
 
+  console.log(DaysRedLine());
+
   const DaysBlueLine = () => {
     let arrBlueLine = [];
-    let multipleHoursWasted = _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
+    let multipleHoursWasted = [5, 8, 13, 24];
+    // _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
     multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');
     arrBlueLine = _.map(multipleHoursWasted, i => {
       return _.sumBy(i, i => i.singleHoursWasted);
@@ -33,7 +44,7 @@ function Diagram() {
     return arrBlueLine;
   };
 
-  const labelsDate = getAll[0].hoursWastedPerDay.map(i => i.currentDay);
+  const labelsDate = getAll.map(i => i.currentDay);
 
   const result = labelsDate.map(day => {
     const arr = day.split('-');

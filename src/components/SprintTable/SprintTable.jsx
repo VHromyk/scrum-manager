@@ -6,7 +6,7 @@ import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
-const SprintTable = () => {
+const SprintTable = ({ currentDate }) => {
   const { sprintId } = useParams();
   const tasks = useSelector(tasksSelectors.getTasks);
 
@@ -29,7 +29,7 @@ const SprintTable = () => {
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />
       </div>
-      <TasksList />
+      <TasksList currentDate={currentDate} />
     </div>
   );
 };

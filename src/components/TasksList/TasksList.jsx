@@ -5,8 +5,9 @@ import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import TaskCard from '../TaskCard';
 import styles from './TasksList.module.scss';
 
-const TasksList = () => {
+const TasksList = ({ currentDate }) => {
   const tasks = useSelector(tasksSelectors.getVisibleTasks);
+  const taskList = tasks.filter(item => item.taskDate === currentDate);
 
   const hoursSpent = tasks.reduce(
     (totalHours, task) => totalHours + task.spentTime,
@@ -24,7 +25,7 @@ const TasksList = () => {
 
   return (
     <ul className={styles.CardList}>
-      {tasks.map(({ id, name, scheduledHours, spentTime }) => (
+      {taskList.map(({ id, name, scheduledHours, spentTime }) => (
         <li className={styles.sprintCard} key={id}>
           <TaskCard
             id={id}

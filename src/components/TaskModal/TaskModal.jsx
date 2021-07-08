@@ -71,7 +71,9 @@ function TaskModal({ onCloseModal }) {
 
     const name = nameTask;
     const scheduledHours = durationTask;
-    const task = { name, scheduledHours };
+
+    const taskDate = 'Jul 07 2021'; // TODO: замінити на динамічі дані
+    const task = { name, scheduledHours, taskDate };
 
     dispatch(tasksOperations.addTask(task, projectId, sprintId));
     onCloseModal();

@@ -75,12 +75,16 @@ const OneSprintsPage = () => {
 
   const [arrayDate, setArrayDate] = useState(doArrayOfDate());
   const [currentDate, setCurrentDate] = useState(arrayDate[0]);
+
   const increment = e => {
     e.preventDefault();
 
     const currentIndex = arrayDate.indexOf(currentDate);
-    setCurrentDate(arrayDate[currentIndex + 1]);
-
+    if (currentIndex === arrayDate.length - 1) {
+      return;
+    } else {
+      setCurrentDate(arrayDate[currentIndex + 1]);
+    }
     if (count > 0 && count < arrayDate.length) {
       setCount(prevstate => prevstate + 1);
     }
@@ -89,8 +93,12 @@ const OneSprintsPage = () => {
   const decrement = e => {
     e.preventDefault();
     const currentIndex = arrayDate.indexOf(currentDate);
-    setCurrentDate(arrayDate[currentIndex - 1]);
-
+    console.log(currentDate);
+    if (currentIndex === 0) {
+      setCurrentDate(arrayDate[0]);
+    } else {
+      setCurrentDate(arrayDate[currentIndex - 1]);
+    }
     if ((count > 1 && count < arrayDate.length) || count === arrayDate.length) {
       setCount(prevstate => prevstate - 1);
     }

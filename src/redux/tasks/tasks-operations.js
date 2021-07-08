@@ -13,6 +13,10 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
     dispatch(tasksActions.fetchTasksSuccess(data.tasks));
   } catch (error) {
     dispatch(tasksActions.fetchTasksError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
@@ -28,6 +32,10 @@ const addTask = (task, projectId, sprintId) => async dispatch => {
     toast.success('Task added successfully');
   } catch (error) {
     dispatch(tasksActions.addTaskError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
@@ -41,16 +49,15 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
     dispatch(tasksActions.deleteTaskSuccess(taskId));
   } catch (error) {
     dispatch(tasksActions.deleteTaskError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
 const changeTask =
-  // (projectId, sprintId, taskId, spentTime, currentDay) =>
   (projectId, sprintId, taskId, spentTime) => async dispatch => {
-    console.log('projectId:', projectId);
-    console.log('sprintId:', sprintId);
-    console.log('taskId:', taskId);
-    console.log('spentTime:', spentTime);
     dispatch(tasksActions.changeTaskRequest());
 
     try {
@@ -62,6 +69,10 @@ const changeTask =
       dispatch(tasksActions.changeTaskSuccess(data.task));
     } catch (error) {
       dispatch(tasksActions.changeTaskError(error?.message));
+
+      if (error.code !== 401) {
+        toast.error('Something went wrong, try again later');
+      }
     }
   };
 

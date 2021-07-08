@@ -9,9 +9,12 @@ const fetchProjects = () => async dispatch => {
     const { data } = await axios.get('/api/projects');
 
     dispatch(projectsActions.fetchProjectsSuccess(data.projects));
-  } catch ({ message }) {
-    dispatch(projectsActions.fetchProjectsError(message));
-    toast.error('Something went wrong, try again later');
+  } catch (error) {
+    dispatch(projectsActions.fetchProjectsError(error.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
@@ -26,9 +29,12 @@ const addProject =
 
       dispatch(projectsActions.addProjectSuccess(data.project));
       toast.success('Project added successfully');
-    } catch ({ message }) {
-      dispatch(projectsActions.addProjectError(message));
-      toast.error('Something went wrong, try again later');
+    } catch (error) {
+      dispatch(projectsActions.fetchProjectsError(error.message));
+
+      if (error.code !== 401) {
+        toast.error('Something went wrong, try again later');
+      }
     }
   };
 
@@ -38,8 +44,12 @@ const deleteProject = projectId => async dispatch => {
   try {
     await axios.delete(`/api/projects/${projectId}`);
     dispatch(projectsActions.deleteProjectSuccess(projectId));
-  } catch ({ message }) {
-    dispatch(projectsActions.deleteProjectError(message));
+  } catch (error) {
+    dispatch(projectsActions.deleteProjectError(error.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
@@ -58,8 +68,12 @@ const renameProject =
       );
 
       dispatch(projectsActions.renameProjectSuccess(data));
-    } catch ({ message }) {
-      dispatch(projectsActions.renameProjectError(message));
+    } catch (error) {
+      dispatch(projectsActions.renameProjectError(error.message));
+
+      if (error.code !== 401) {
+        toast.error('Something went wrong, try again later');
+      }
     }
   };
 

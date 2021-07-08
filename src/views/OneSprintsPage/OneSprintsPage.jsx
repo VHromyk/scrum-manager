@@ -27,16 +27,15 @@ const OneSprintsPage = () => {
   const [showInput, setShowInput] = useState(true);
   const [showIcon, setShowIcon] = useState(true);
   const [showDiagram, setShowDiagram] = useState(false);
-  const [arrayDate, setArrayDate] = useState([]);
-  const [currentDate, setCurrentDate] = useState('');
-
   const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
+  const [count, setCount] = useState(Number(1));
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const tasks = useSelector(tasksSelectors.getTasks);
 
   const dispatch = useDispatch();
+
   const filter = useSelector(tasksSelectors.getFilter);
 
   // Робимо масив дат з наявних тасків і записуємо початкову дату в state
@@ -60,6 +59,44 @@ const OneSprintsPage = () => {
   //    setCurrentDate(arrayDate[0 - 1].toLocaleDateString());
   //  };
 
+
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
+
+  const doArrayOfDate = () => {
+    let start = new Date(currentSprint.startDate),
+      end = new Date(currentSprint.endDate),
+      array = [];
+
+    for (let q = start; q <= end; q.setDate(q.getDate() + 1)) {
+      array.push(q.toLocaleDateString());
+    }
+    return array;
+  };
+
+  const [arrayDate, setArrayDate] = useState(doArrayOfDate());
+  const [currentDate, setCurrentDate] = useState(arrayDate[0]);
+  const increment = e => {
+    e.preventDefault();
+
+    const currentIndex = arrayDate.indexOf(currentDate);
+    setCurrentDate(arrayDate[currentIndex + 1]);
+
+    if (count > 0 && count < arrayDate.length) {
+      setCount(prevstate => prevstate + 1);
+    }
+  };
+
+  const decrement = e => {
+    e.preventDefault();
+    const currentIndex = arrayDate.indexOf(currentDate);
+    setCurrentDate(arrayDate[currentIndex - 1]);
+
+    if ((count > 1 && count < arrayDate.length) || count === arrayDate.length) {
+      setCount(prevstate => prevstate - 1);
+    }
+  };
+
+
   // -------------
   //   const dispatch = useDispatch();
   // const filter = useSelector(tasksSelectors.getFilter);
@@ -71,16 +108,17 @@ const OneSprintsPage = () => {
     [dispatch],
   );
 
-  //  ------------------
+
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
 
+
   const currentSprint = sprints.find(({ id }) => id === sprintId);
+
   // const currentTask = tasks.find(({ id }) => id === sprintId);
-  console.log(tasks);
 
   const onRenameSprint = ({ projectId, sprintId, newName }) =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
@@ -141,20 +179,22 @@ const OneSprintsPage = () => {
                   <IconButton
                     classes={styles.arrowLeftBtn}
                     aria-label="show previous day tasks button"
-                    // onClick={decrement}
+                    onClick={decrement}
                   >
                     <SvgComponent
                       name="arrow-left"
                       classes={styles.arrowLeftIcon}
                     />
                   </IconButton>
-                  <span className={styles.currentSprintPages}>10</span>
-                  <span className={styles.sprintPages}>/12</span>
+                  <span className={styles.currentSprintPages}>{count}</span>
+                  <span className={styles.sprintPages}>
+                    /{arrayDate.length}
+                  </span>
 
                   <IconButton
                     classes={styles.arrowRightBtn}
                     aria-label="show next day tasks button"
-                    // onClick={increment}
+                    onClick={increment}
                   >
                     <SvgComponent
                       name="arrow-right"
@@ -162,7 +202,7 @@ const OneSprintsPage = () => {
                     />
                   </IconButton>
                 </div>
-                {/* <span className={styles.sprintDate}>{currentDate}</span> */}
+                <span className={styles.sprintDate}>{currentDate}</span>
               </div>
               <form className={styles.searchForm}>
                 {/* <IconButton

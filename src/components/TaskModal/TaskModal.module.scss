@@ -19,7 +19,7 @@
   }
 
   &.invalid {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid $error-border-color;
   }
   &.valid {
     border-bottom: 1px solid $input-field-border-color;
@@ -37,7 +37,7 @@
 }
 .helperText {
   position: absolute;
-  color: #ff001b;
+  color: $error-text-color;
   font-size: 12px;
   top: 32px;
 }

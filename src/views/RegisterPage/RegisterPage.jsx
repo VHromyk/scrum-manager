@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
+import { authOperations } from '../../redux/auth';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
+import IconButton from '../../components/IconButton';
+import SvgComponent from '../../components/SvgComponent';
 import Form from '../../components/Form';
 import styles from './RegisterPage.module.scss';
 
@@ -11,9 +13,14 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
   const [validPassword, setValidPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const onRegister = user => dispatch(authOperations.signup(user));
+
+  const handleShowPassword = useCallback(() => {
+    setShowPassword(prevShowPassword => !prevShowPassword);
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -43,7 +50,6 @@ const RegisterPage = () => {
       setPassword('');
       setRepeatPass('');
       setValidPassword(false);
-      // localStorage.setItem('auth', JSON.stringify({ email }));
     } else if (password !== repeatPass) {
       setValidPassword(true);
     }
@@ -71,7 +77,7 @@ const RegisterPage = () => {
         <div className={styles.inputReg}>
           <input
             id="password1"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             minLength="5"
             name="password"
             placeholder=" "
@@ -84,10 +90,28 @@ const RegisterPage = () => {
             Password
           </label>
         </div>
+        <IconButton
+          classes={styles.passwordVisibilityBtn}
+          aria-label="toggle password button"
+          onClick={handleShowPassword}
+        >
+          {showPassword ? (
+            <SvgComponent
+              name="show-password"
+              classes={styles.passwordVisibilityIcon}
+            />
+          ) : (
+            <SvgComponent
+              name="hide-password"
+              classes={styles.passwordVisibilityIcon}
+            />
+          )}
+        </IconButton>
+
         <div className={styles.inputReg}>
           <input
             id="repeatPass"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder=" "
             className={styles.input}
             minLength="5"

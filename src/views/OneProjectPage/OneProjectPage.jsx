@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useLocation } from '@reach/router';
+import { authOperations } from '../../redux/auth';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import AddButton from '../../components/AddButton';
-import styles from './OneProjectPage.module.scss';
 import SprintsList from '../../components/SprintsList';
 import Container from '../../components/Container';
 import SvgComponent from '../../components/SvgComponent';
@@ -15,6 +15,7 @@ import AsideListProject from '../../components/AsideListProject';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
+import styles from './OneProjectPage.module.scss';
 
 const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
@@ -29,6 +30,7 @@ const OneProjectPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
     dispatch(sprintsOperations.fetchSprints(projectId));
   }, [dispatch, projectId]);
 
@@ -59,9 +61,8 @@ const OneProjectPage = () => {
     setNewName(newName);
   };
 
-  const onChangeName = e => {
-    e.preventDefault();
-    setNewName(currentProject.name);
+  const onChangeName = name => {
+    setNewName(name);
   };
 
   const buttonHandler = () => {

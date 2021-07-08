@@ -13,11 +13,16 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
     dispatch(tasksActions.fetchTasksSuccess(data.tasks));
   } catch (error) {
     dispatch(tasksActions.fetchTasksError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
 const addTask = (task, projectId, sprintId) => async dispatch => {
   dispatch(tasksActions.addTaskRequest());
+
   try {
     const { data } = await axios.post(
       `/api/projects/${projectId}/sprints/${sprintId}/tasks`,
@@ -27,42 +32,47 @@ const addTask = (task, projectId, sprintId) => async dispatch => {
     toast.success('Task added successfully');
   } catch (error) {
     dispatch(tasksActions.addTaskError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
+    }
   }
 };
 
-const deleteTask =
-  ({ projectId, taskId }) =>
-  async dispatch => {
-    dispatch(tasksActions.deleteTaskRequest());
-    try {
-      await axios.delete(`/api/projects/${projectId}/tasks/${taskId}`);
-      dispatch(tasksActions.deleteTaskSuccess(taskId));
-    } catch (error) {
-      dispatch(tasksActions.deleteTaskError(error?.message));
+const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
+  dispatch(tasksActions.deleteTaskRequest());
+
+  try {
+    await axios.delete(
+      `/api/projects/${projectId}/sprints/${sprintId}/tasks/${taskId}`,
+    );
+    dispatch(tasksActions.deleteTaskSuccess(taskId));
+  } catch (error) {
+    dispatch(tasksActions.deleteTaskError(error?.message));
+
+    if (error.code !== 401) {
+      toast.error('Something went wrong, try again later');
     }
-  };
+  }
+};
 
 const changeTask =
-  (hoursWasted, projectId, taskId, currentDay) => async dispatch => {
+  (projectId, sprintId, taskId, spentTime) => async dispatch => {
     dispatch(tasksActions.changeTaskRequest());
+
     try {
       const { data } = await axios.patch(
-        `/api/projects/${projectId}/tasks/${taskId}`,
-        {
-          date: currentDay,
-          hours: hoursWasted,
-        },
+        `/api/projects/${projectId}/sprints/${sprintId}/tasks/${taskId}/time`,
+        { spentTime },
       );
-      dispatch(
-        tasksActions.changeTaskSuccess({
-          currentDay: data.day.currentDay,
-          singleHoursWasted: data.day.singleHoursWasted,
-          hoursWasted: data.newWastedHours,
-          taskId,
-        }),
-      );
+
+      dispatch(tasksActions.changeTaskSuccess(data.task));
     } catch (error) {
       dispatch(tasksActions.changeTaskError(error?.message));
+
+      if (error.code !== 401) {
+        toast.error('Something went wrong, try again later');
+      }
     }
   };
 

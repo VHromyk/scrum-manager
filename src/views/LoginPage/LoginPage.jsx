@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperation from '../../redux/auth/auth-operations';
+import { authOperations } from '../../redux/auth';
 import Section from '../../components/Section';
 import Form from '../../components/Form';
 import Button from '../../components/Button';
+import IconButton from '../../components/IconButton';
+import SvgComponent from '../../components/SvgComponent';
 import styles from './LoginPage.module.scss';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validPassword, setValidPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
-  const onLogin = user => dispatch(authOperation.login(user));
+  const onLogin = user => dispatch(authOperations.login(user));
+
+  const handleShowPassword = useCallback(() => {
+    setShowPassword(prevShowPassword => !prevShowPassword);
+  }, []);
 
   const handleChangeEmail = e => setEmail(e.target.value);
   const handleChangePassword = e => setPassword(e.target.value);
@@ -25,6 +32,7 @@ function LoginPage() {
     setEmail('');
     setPassword('');
   };
+
   return (
     <Section>
       <Form onSubmit={handleSubmit} classes="formlogin">
@@ -46,7 +54,7 @@ function LoginPage() {
         </div>
         <div className={styles.inputReg}>
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={password}
             placeholder=" "
@@ -62,6 +70,24 @@ function LoginPage() {
             <p className={styles.helper}>*Invalid credentials</p>
           )}
         </div>
+        <IconButton
+          classes={styles.passwordVisibilityBtn}
+          aria-label="toggle password button"
+          onClick={handleShowPassword}
+        >
+          {showPassword ? (
+            <SvgComponent
+              name="show-password"
+              classes={styles.passwordVisibilityIcon}
+            />
+          ) : (
+            <SvgComponent
+              name="hide-password"
+              classes={styles.passwordVisibilityIcon}
+            />
+          )}
+        </IconButton>
+
         <Button type="submit" text="Enter" />
         <p className={styles.linkTo}>
           No account?

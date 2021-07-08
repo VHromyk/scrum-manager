@@ -9,15 +9,14 @@ import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
 import Button from '../Button';
 
-function TaskModal({ onCloseModal }) {
+function TaskModal({ onCloseModal, dateTask }) {
   const [nameTask, setNameTask] = useState('');
   const [durationTask, setDuration] = useState('');
 
   const [validTask, setValidTask] = useState('valid');
   const [validDuration, setValidDuration] = useState('valid');
 
-  const { projectId } = useParams();
-  const { sprintId } = useParams();
+  const { projectId, sprintId } = useParams();
 
   const dispatch = useDispatch();
 
@@ -72,7 +71,10 @@ function TaskModal({ onCloseModal }) {
 
     const name = nameTask;
     const scheduledHours = durationTask;
-    const task = { name, scheduledHours };
+
+    const taskDate = dateTask; // TODO: замінити на динамічі дані
+
+    const task = { name, scheduledHours, taskDate };
 
     dispatch(tasksOperations.addTask(task, projectId, sprintId));
     onCloseModal();

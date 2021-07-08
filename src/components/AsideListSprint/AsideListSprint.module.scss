@@ -21,10 +21,13 @@
   display: flex;
   align-items: center;
   p {
-    margin-left: 10px;
+    margin-left: 15px;
     font-size: 14px;
     line-height: 1.22;
-    width: 100px;
+    width: 110px;
+  }
+  &:hover {
+    color: $accent-color;
   }
 }
 
@@ -35,7 +38,13 @@
 
 .asideList {
   min-height: 200px;
+  padding-right: 30px;
+  max-width: 216px;
+  @media screen and (min-width: 1280px) {
+    max-width: 200px;
+  }
 }
+
 .asideList li {
   word-wrap: break-word;
 }
@@ -76,14 +85,5 @@
 @media screen and (min-width: 768px) {
   .asideListContainer {
     display: block;
-    // padding: 77px 0px 380px 0px;
-    margin: 120px 0 120px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .asideListContainer {
-    // padding: 120px 0px 111px 0px;
-    margin: 120px 0 120px;
   }
 }

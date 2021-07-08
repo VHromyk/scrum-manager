@@ -3,7 +3,7 @@
 .SprintCard {
   position: relative;
   background: $components-bcg-color;
-  box-shadow: $light-theme-box-shadow;
+  // box-shadow: $light-theme-box-shadow;
   border-radius: 5px;
 }
 
@@ -60,28 +60,25 @@
   border-radius: 50%;
   z-index: 10;
 }
-
 .deleteSprintIcon {
   width: 20px;
   height: 20px;
-  fill: $icon-light-theme-bcg-color;
+  fill: currentColor;
 }
-// @media screen and (min-width: 320px) {
 
+// .SprintCard {
+//   width: 100%;
 // }
-.SprintCard {
-  width: 100%;
-}
-@media screen and (min-width: 480px) {
-  .SprintCard {
-    width: 440px;
-  }
-}
+// @media screen and (min-width: 480px) {
+//   .SprintCard {
+//     width: 440px;
+//   }
+// }
 
 @media screen and (max-width: 767px) {
-  .SprintCard {
-    width: 280px;
-  }
+  // .SprintCard {
+  //   width: 280px;
+  // }
   .SprintTitle {
     font-size: 16px;
     line-height: 20px;
@@ -124,10 +121,16 @@
     background-color $transition-duration $timing-function,
     box-shadow $transition-duration $timing-function;
 
+  // &:hover,
+  // &:focus {
+  //   color: $accent-color;
+  //   background-color: $icon-dark-theme-bcg-color;
+  //   box-shadow: $dark-theme-box-shadow;
+  // }
   &:hover,
   &:focus {
     color: $accent-color;
-    background-color: $icon-dark-theme-bcg-color;
-    box-shadow: $dark-theme-box-shadow;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px #ffffff;
   }
 }

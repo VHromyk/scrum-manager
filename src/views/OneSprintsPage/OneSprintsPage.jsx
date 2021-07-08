@@ -270,7 +270,12 @@ const OneSprintsPage = () => {
         {createTask && (
           <TaskModal onCloseModal={btnCloseTask} taskDate={currentDate} />
         )}
-        {showDiagram && <Diagram onCloseModal={btnCloseDiagram} />}
+        {showDiagram && (
+          <Diagram
+            onCloseModal={btnCloseDiagram}
+            duration={currentSprint.duration}
+          />
+        )}
         {/* Кнопка додати проект */}
         <button
           onClick={buttonHandlerTask}

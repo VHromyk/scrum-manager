@@ -1,37 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import tasksSelectors from '../../redux/tasks/tasks-selectors';
-import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram() {
+function Diagram({ onCloseModal, duration }) {
   const getAll = useSelector(tasksSelectors.getTasks);
-  const getSprints = useSelector(sprintsSelectors.getAllSprints);
-
-  const { sprintId } = useParams();
-  console.log();
-
-  console.log('Взять все таски:', getAll);
-  //Массив всіх тасок
-
-  // console.log('Взять все спринты:', getSprints);
-
-  const getIdTask = getAll[0].mainSprint.id;
-  console.log('Id задач:', getIdTask);
-  // получаем Id таски и они для каждого спринта разные
-
-  let countDayForSprints = null;
-
-  if (getSprints.length > 0) {
-    let filterArr = getSprints.filter(item => item.id === getIdTask); //Берем количество дней для каждого спринта
-    countDayForSprints = filterArr[0].duration;
-    console.log('Массив отфильтрированых элементов:', filterArr);
-  }
-
-  console.log('Взять количество дней на спринт:', countDayForSprints);
-
   const months = ['JUL', 'AUG'];
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
@@ -44,8 +19,8 @@ function Diagram() {
     let arr = [];
     let firstIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
     arr.push(firstIndex); // создаем первый индекс массива;
-    let sumAllRedLine = sumRedLine / countDayForSprints; // делим общее количество запланированых часов на кол-во дней спринта
-    for (let i = 0; i <= countDayForSprints; i += 1) {
+    let sumAllRedLine = sumRedLine / duration; // делим общее количество запланированых часов на кол-во дней спринта
+    for (let i = 0; i <= duration; i += 1) {
       firstIndex = firstIndex - sumAllRedLine;
       let typeToNumber = Math.floor(firstIndex * 100) / 100; // обрезаем число до двух знаков после запятой;
       if (typeToNumber >= 0) {
@@ -57,10 +32,11 @@ function Diagram() {
     return arr;
   };
 
-  DaysRedLine();
+  // DaysRedLine();
 
   const DaysBlueLine = () => {
     let arrBlueLine = [];
+
     let multipleHoursWasted = [5, 8, 13, 24];
     // _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
     multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');

@@ -1,5 +1,5 @@
 const getAllProjects = state => state.projects.items;
-const getAllPeople = state => state.projects.items.owners;
+const getAllPeople = state => state.projects.items;
 const getIsLoading = state => state.projects.isLoading;
 const getError = state => state.projects.error;
 

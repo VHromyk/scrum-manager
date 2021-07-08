@@ -261,14 +261,18 @@ const OneSprintsPage = () => {
                 <span className={styles.createTask}>Create a Task</span>
               </div>
             </div>
-            <SprintTable />
+            <SprintTable currentDate={currentDate} />
           </div>
         </div>
         {createSprint && (
           <SprintModal onCloseModal={btnCloseSprint} projectId={sprintId} />
         )}
         {createTask && (
-          <TaskModal onCloseModal={btnCloseTask} taskDate={currentDate} />
+          <TaskModal
+            onCloseModal={btnCloseTask}
+            projectId={taskId}
+            dateTask={currentDate}
+          />
         )}
         {showDiagram && (
           <Diagram

@@ -38,8 +38,7 @@ const OneProjectPage = () => {
   const projects = useSelector(projectsSelectors.getAllProjects);
 
   const currentProject = projects.find(({ id }) => id === projectId);
-  console.log(currentProject.name);
-  console.log(newName);
+
   const onRenameProject = (projectId, name) =>
     dispatch(projectsOperations.renameProject({ projectId, name }));
 

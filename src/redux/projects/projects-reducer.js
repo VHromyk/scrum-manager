@@ -17,14 +17,20 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
   [projectsActions.renameProjectSuccess]: (state, { payload }) =>
     state.map(project => (project.id === payload.id ? payload : project)),
-  [projectsActions.fetchPeopleSuccess]: (state, { payload }) => [
-    ...state,
-    payload,
-  ],
-  [projectsActions.addPeopleSuccess]: (state, { payload }) => [
-    ...state,
-    payload,
-  ],
+  [projectsActions.fetchPeopleSuccess]: (state, { payload }) => {
+    state.map(obj => {
+      if (obj.id === payload.id) {
+        obj.owners = payload.owners;
+      }
+    });
+  },
+  [projectsActions.addPeopleSuccess]: (state, { payload }) => {
+    state.map(obj => {
+      if (obj.id === payload.id) {
+        obj.owners = [...obj.owners, payload.email];
+      }
+    });
+  },
 });
 
 const isLoading = createReducer(false, {

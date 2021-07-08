@@ -5,6 +5,7 @@ import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import Button from '../Button';
+import authSelectors from '../../redux/auth/auth-selectors';
 import projectsSelectors from '../../redux/projects/projects-selectors';
 import projectsOperations from '../../redux/projects/projects-operations';
 import styles from './AddPeople.module.scss';
@@ -21,15 +22,20 @@ function AddPeople({ onClick }) {
   };
 
   const dispatch = useDispatch();
-  const people = useSelector(projectsSelectors.getAllPeople);
+
+  const data = useSelector(projectsSelectors.getAllPeople);
+  const people = data.map(obj => {
+    if (obj.id === projectId) {
+      return obj.owners;
+    }
+  });
+
+  const currentUser = useSelector(authSelectors.getUserEmail);
+  const subscribers = people.flat().filter(user => user !== currentUser);
 
   const reset = () => {
     setEmail('');
   };
-
-  // const isInProject = people.find(
-  //   newUser => newUser.email.toLowerCase() === email.toLowerCase(),
-  // );
 
   const handleSubmit = useCallback(
     event => {
@@ -45,14 +51,15 @@ function AddPeople({ onClick }) {
       //   return;
       // }
       dispatch(projectsOperations.addPeople(projectId, { email }));
+
       reset();
     },
     [dispatch, projectId, email],
   );
 
-  // useEffect(() => {
-  //   dispatch(projectsOperations.fetchPeople(projectId));
-  // }, [dispatch, projectId]);
+  useEffect(() => {
+    dispatch(projectsOperations.fetchPeople(projectId));
+  }, [dispatch, projectId, email]);
 
   return (
     <ModalBackdrop onClose={onClick}>
@@ -77,10 +84,10 @@ function AddPeople({ onClick }) {
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {!people || people.length === 0 ? (
+          {!subscribers || subscribers.length === 1 ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
-            <AddPeopleList people={people} projectId={projectId} />
+            <AddPeopleList subscribers={subscribers} projectId={projectId} />
           )}
         </div>
         <div className={styles.buttons}>

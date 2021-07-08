@@ -69,6 +69,7 @@ const fetchPeople = projectId => async dispatch => {
 
   try {
     const { data } = await axios.get(`/api/projects/${projectId}/owners`);
+    data.id = projectId;
 
     dispatch(projectsActions.fetchPeopleSuccess(data));
   } catch ({ message }) {

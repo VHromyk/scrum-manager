@@ -1,10 +1,5 @@
 const getAllProjects = state => state.projects.items;
-const getAllPeople = state => {
-  const arr = state.projects.items;
-  const result = arr[arr.length - 1].owners;
-
-  return result;
-};
+const getAllPeople = state => state.projects.items;
 const getIsLoading = state => state.projects.isLoading;
 const getError = state => state.projects.error;
 

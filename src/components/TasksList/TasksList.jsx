@@ -6,7 +6,7 @@ import TaskCard from '../TaskCard';
 import styles from './TasksList.module.scss';
 
 const TasksList = () => {
-  const tasks = useSelector(tasksSelectors.getTasks);
+  const tasks = useSelector(tasksSelectors.getVisibleTasks);
 
   const hoursSpent = tasks.reduce(
     (totalHours, task) => totalHours + task.spentTime,

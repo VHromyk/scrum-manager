@@ -32,6 +32,7 @@ const OneSprintsPage = () => {
   const [count, setCount] = useState(Number(1));
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
+
   const dispatch = useDispatch();
 
   const filter = useSelector(tasksSelectors.getFilter);
@@ -267,11 +268,15 @@ const OneSprintsPage = () => {
           <SprintModal onCloseModal={btnCloseSprint} projectId={sprintId} />
         )}
         {createTask && (
+
           <TaskModal
             onCloseModal={btnCloseTask}
             projectId={taskId}
             dateTask={currentDate}
           />
+
+          <TaskModal onCloseModal={btnCloseTask} taskDate={currentDate} />
+
         )}
         {showDiagram && <Diagram onCloseModal={btnCloseDiagram} />}
         {/* Кнопка додати проект */}

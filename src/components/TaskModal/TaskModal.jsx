@@ -9,7 +9,11 @@ import SvgComponent from '../SvgComponent';
 import styles from './TaskModal.module.scss';
 import Button from '../Button';
 
+
 function TaskModal({ onCloseModal, dateTask }) {
+
+function TaskModal({ onCloseModal, taskDate }) {
+
   const [nameTask, setNameTask] = useState('');
   const [durationTask, setDuration] = useState('');
 
@@ -72,7 +76,9 @@ function TaskModal({ onCloseModal, dateTask }) {
     const name = nameTask;
     const scheduledHours = durationTask;
 
+
     const taskDate = dateTask; // TODO: замінити на динамічі дані
+
     const task = { name, scheduledHours, taskDate };
 
     dispatch(tasksOperations.addTask(task, projectId, sprintId));

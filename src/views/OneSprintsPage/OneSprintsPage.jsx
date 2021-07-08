@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
-import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import {
+  tasksOperations,
+  tasksSelectors,
+  tasksActions,
+} from '../../redux/tasks';
 import SprintModal from '../../components/SprintModal';
 import AddButton from '../../components/AddButton';
 import IconButton from '../../components/IconButton';
@@ -31,7 +35,10 @@ const OneSprintsPage = () => {
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const tasks = useSelector(tasksSelectors.getTasks);
+
   const dispatch = useDispatch();
+  const filter = useSelector(tasksSelectors.getFilter);
+
   // Робимо масив дат з наявних тасків і записуємо початкову дату в state
   // if (tasks.length !== 0) {
   // tasks.map(item => {
@@ -53,14 +60,23 @@ const OneSprintsPage = () => {
   //    setCurrentDate(arrayDate[0 - 1].toLocaleDateString());
   //  };
 
+  // -------------
+  //   const dispatch = useDispatch();
+  // const filter = useSelector(tasksSelectors.getFilter);
+
+  const onHandleInputSearch = useCallback(
+    e => {
+      dispatch(tasksActions.changeFilter(e.currentTarget.value));
+    },
+    [dispatch],
+  );
+
+  //  ------------------
+
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
-
-  const tasksFilter = ({ target: { value } }) => {
-    dispatch(tasksSelectors.getFilter(value, taskId));
-  };
 
   const currentSprint = sprints.find(({ id }) => id === sprintId);
   // const currentTask = tasks.find(({ id }) => id === sprintId);
@@ -149,10 +165,28 @@ const OneSprintsPage = () => {
                 {/* <span className={styles.sprintDate}>{currentDate}</span> */}
               </div>
               <form className={styles.searchForm}>
+                {/* <IconButton
+                  classes={styles.searchBtn}
+                  aria-label="search task button"
+                >
+                  <SvgComponent
+                    name="search"
+                    classes={styles.searchIcon}
+                    type="submit"
+                  />
+                </IconButton> */}
+                <input
+                  className={styles.searchSprint}
+                  name="filter"
+                  type="text"
+                  placeholder="Search task"
+                  value={filter}
+                  onChange={onHandleInputSearch}
+                  autoComplete="off"
+                ></input>
                 <IconButton
                   classes={styles.searchBtn}
                   aria-label="search task button"
-                  onClick={tasksFilter}
                 >
                   <SvgComponent
                     name="search"
@@ -160,11 +194,6 @@ const OneSprintsPage = () => {
                     type="submit"
                   />
                 </IconButton>
-                <input
-                  className={styles.searchSprint}
-                  type="search"
-                  placeholder="Search task"
-                ></input>
               </form>
             </div>
             <div className={styles.sprintNameContainer}>

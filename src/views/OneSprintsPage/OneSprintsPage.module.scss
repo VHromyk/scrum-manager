@@ -191,8 +191,13 @@
     font-size: 13px;
   }
 }
+.searchForm {
+  position: relative;
+}
 
 .searchBtn {
+  top: 5px;
+  left: 0px;
   position: absolute;
   border: none;
   cursor: pointer;
@@ -219,15 +224,21 @@
   }
 }
 
+.searchSprint:focus + .searchBtn .searchIcon {
+  fill: $accent-color;
+}
+
 .searchIcon {
+  // fill: $accent-color;
   width: 20px;
   height: 20px;
   fill: $icon-light-theme-bcg-color;
+
   transition: all $transition-duration $timing-function;
-  &:hover,
-  &:focus {
-    fill: $accent-color;
-  }
+  // &:hover,
+  // &:focus {
+  //   fill: $accent-color;
+  // }
 }
 
 .analyticsBtn,

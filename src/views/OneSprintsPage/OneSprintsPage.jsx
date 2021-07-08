@@ -38,28 +38,6 @@ const OneSprintsPage = () => {
 
   const filter = useSelector(tasksSelectors.getFilter);
 
-  // Робимо масив дат з наявних тасків і записуємо початкову дату в state
-  // if (tasks.length !== 0) {
-  // tasks.map(item => {
-  //   if (arrayDate.find(item.startDate)) {
-  // return } else { setArrayDate(prevstate => prevstate.push(item.taskDate))
-  // });
-  // const sortByDate = (a, b) => new Date(a) - new Date(b);
-  // const setArrayDate(prevstate => prevstate.sort(sortByDate));
-  // setCurrentDate(arrayDate[0].toLocaleDateString());
-  // }
-
-  // const increment = (e) => {
-  //   e.preventDefault();
-  //   setCurrentDate(arrayDate[0 + 1].toLocaleDateString());
-  // };
-
-  //  const decrement = e => {
-  //    e.preventDefault();
-  //    setCurrentDate(arrayDate[0 - 1].toLocaleDateString());
-  //  };
-
-
   const currentSprint = sprints.find(({ id }) => id === sprintId);
 
   const doArrayOfDate = () => {
@@ -93,9 +71,8 @@ const OneSprintsPage = () => {
   const decrement = e => {
     e.preventDefault();
     const currentIndex = arrayDate.indexOf(currentDate);
-    console.log(currentDate);
     if (currentIndex === 0) {
-      setCurrentDate(arrayDate[0]);
+      return;
     } else {
       setCurrentDate(arrayDate[currentIndex - 1]);
     }
@@ -103,7 +80,6 @@ const OneSprintsPage = () => {
       setCount(prevstate => prevstate - 1);
     }
   };
-
 
   // -------------
   //   const dispatch = useDispatch();
@@ -116,15 +92,10 @@ const OneSprintsPage = () => {
     [dispatch],
   );
 
-
-
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
-
-
-  const currentSprint = sprints.find(({ id }) => id === sprintId);
 
   // const currentTask = tasks.find(({ id }) => id === sprintId);
 

@@ -11,6 +11,9 @@ const fetchSprints = projectId => async dispatch => {
   } catch (error) {
     dispatch(sprintsActions.fetchSprintsError(error.message));
 
+    console.log('error in fetchSprints:', error);
+    console.log('error.code in fetchSprints:', error.code);
+
     if (error.code !== 401) {
       toast.error('Something went wrong, try again later');
     }
@@ -35,6 +38,9 @@ const addSprint =
     } catch (error) {
       dispatch(sprintsActions.addSprintError(error.message));
 
+      console.log('error in addSprint:', error);
+      console.log('error.code in addSprint:', error.code);
+
       if (error.code !== 401) {
         toast.error('Something went wrong, try again later');
       }
@@ -49,6 +55,9 @@ const deleteSprint = (projectId, sprintId) => async dispatch => {
     dispatch(sprintsActions.deleteSprintSuccess(sprintId));
   } catch (error) {
     dispatch(sprintsActions.deleteSprintError(error.message));
+
+    console.log('error in deleteSprint:', error);
+    console.log('error.code in deleteSprint:', error.code);
 
     if (error.code !== 401) {
       toast.error('Something went wrong, try again later');
@@ -72,6 +81,9 @@ const renameSprint =
       dispatch(sprintsActions.renameSprintSuccess(data));
     } catch (error) {
       dispatch(sprintsActions.renameSprintError(error.message));
+
+      console.log('error in renameSprint:', error);
+      console.log('error.code in renameSprint:', error.code);
 
       if (error.code !== 401) {
         toast.error('Something went wrong, try again later');

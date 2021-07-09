@@ -6,6 +6,7 @@ import { tasksOperations } from '../../redux/tasks';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import styles from './TaskCard.module.scss';
+import { toast } from 'react-toastify';
 
 const TaskCard = ({
   id,
@@ -24,7 +25,12 @@ const TaskCard = ({
 
   const handleSubmit = (e, projectId, sprintId, taskId) => {
     e.preventDefault();
-    dispatch(tasksOperations.changeTask(projectId, sprintId, taskId, time));
+
+    if (time <= 0 || time > 24) {
+      toast.warning('Enter a number greater than 0 and less than 24');
+    } else {
+      dispatch(tasksOperations.changeTask(projectId, sprintId, taskId, time));
+    }
   };
 
   return (
@@ -42,6 +48,9 @@ const TaskCard = ({
         <span className={styles.sprintSpan}>Spent hour/day</span>
         <form
           onSubmit={e => {
+            handleSubmit(e, projectId, sprintId, id);
+          }}
+          onBlur={e => {
             handleSubmit(e, projectId, sprintId, id);
           }}
         >

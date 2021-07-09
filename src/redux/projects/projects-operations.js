@@ -66,7 +66,10 @@ const renameProject =
         renameProject,
       );
 
-      dispatch(projectsActions.renameProjectSuccess(data));
+      const newProjectName = data.project.name;
+      dispatch(
+        projectsActions.renameProjectSuccess({ newProjectName, projectId }),
+      );
     } catch (error) {
       dispatch(projectsActions.renameProjectError(error.message));
 

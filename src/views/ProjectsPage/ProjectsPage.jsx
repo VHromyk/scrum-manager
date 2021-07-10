@@ -31,7 +31,7 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div>
+    <>
       <Container classes={styles.pageContainer}>
         <div className={styles.containerTitle}>
           <h1>Projects</h1>
@@ -50,7 +50,7 @@ const ProjectsPage = () => {
         {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
       </Container>
       <Footer />
-    </div>
+    </>
   );
 };
 

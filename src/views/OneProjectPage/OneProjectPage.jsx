@@ -25,6 +25,8 @@ const OneProjectPage = () => {
   const [showIcon, setShowIcon] = useState(true);
   const [newName, setNewName] = useState('');
 
+  const [validNewName, setValidNewName] = useState('valid');
+
   const { projectId } = useParams();
 
   const dispatch = useDispatch();
@@ -51,18 +53,23 @@ const OneProjectPage = () => {
     setNewName(e.target.value);
   };
 
-  const onSubmitRenameNAme = e => {
+  const onSubmitRenameProject = e => {
     e.preventDefault();
 
-    onRenameProject(projectId, newName);
+    const newNameLengthLimits = newName.length >= 4 && newName.length <= 35;
+
+    if (!newNameLengthLimits) {
+      setValidNewName('invalidLength');
+
+      return;
+    } else if (newName !== currentProject.name) {
+      setValidNewName('valid');
+      onRenameProject(projectId, newName);
+    }
 
     setShowInput(true);
     setShowIcon(true);
     setNewName(newName);
-  };
-
-  const onChangeName = name => {
-    setNewName(name);
   };
 
   const buttonHandler = () => {
@@ -94,7 +101,7 @@ const OneProjectPage = () => {
           showName="Show projects"
           onClick={buttonHandler}
         >
-          <AsideListProject onClick={onChangeName} />
+          <AsideListProject />
         </Aside>
         <div className={styles.headerProject}>
           <div className={styles.titleButtons}>
@@ -105,13 +112,15 @@ const OneProjectPage = () => {
                 </h2>
               ) : (
                 <form
-                  onSubmit={onSubmitRenameNAme}
+                  onSubmit={onSubmitRenameProject}
+                  onBlur={onSubmitRenameProject}
                   className={styles.formChangeName}
                 >
                   <input
                     autoFocus
                     className={styles.inputTitle}
                     value={newName === '' ? currentProject.name : newName}
+                    // value={newName}
                     name="name"
                     id="name"
                     type="name"
@@ -121,10 +130,15 @@ const OneProjectPage = () => {
                     classes={styles.doneBtn}
                     aria-label="confirm changes"
                     type="submit"
-                    onSubmit={onSubmitRenameNAme}
+                    onSubmit={onSubmitRenameProject}
                   >
                     <SvgComponent name="done" classes={styles.doneIcon} />
                   </IconButton>
+                  {validNewName === 'invalidLength' && (
+                    <p
+                      className={styles.helper}
+                    >{`*Enter name between 4 and 40 characters long. Current length is ${newName.length} characters`}</p>
+                  )}
                 </form>
               )}
               {showIcon && (

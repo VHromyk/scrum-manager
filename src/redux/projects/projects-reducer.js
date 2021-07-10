@@ -9,27 +9,29 @@ const setPayload = (_, { payload }) => payload;
 
 const items = createReducer([], {
   [projectsActions.fetchProjectsSuccess]: setPayload,
+
   [projectsActions.addProjectSuccess]: (state, { payload }) => [
     ...state,
     payload,
   ],
+
   [projectsActions.deleteProjectSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [projectsActions.renameProjectSuccess]: (state, { payload }) =>
-    state.map(project => (project.id === payload.id ? payload : project)),
-  [projectsActions.fetchPeopleSuccess]: (state, { payload }) => {
-    state.map(obj => {
-      if (obj.id === payload.id) {
-        obj.owners = payload.owners;
-      }
-    });
+
+  [projectsActions.renameProjectSuccess]: (state, { payload }) => {
+    state.map(project =>
+      project.id === payload.projectId
+        ? (project.name = payload.newProjectName)
+        : project,
+    );
   },
+
   [projectsActions.addPeopleSuccess]: (state, { payload }) => {
-    state.map(obj => {
-      if (obj.id === payload.id) {
-        obj.owners = [...obj.owners, payload.email];
-      }
-    });
+    state.map(project =>
+      project.id === payload.projectId
+        ? (project.owners = [...project.owners, payload.newTeamMember])
+        : project,
+    );
   },
 });
 
@@ -37,10 +39,6 @@ const isLoading = createReducer(false, {
   [projectsActions.fetchProjectsRequest]: setTrue,
   [projectsActions.fetchProjectsSuccess]: setFalse,
   [projectsActions.fetchProjectsError]: setFalse,
-
-  [projectsActions.fetchPeopleRequest]: setTrue,
-  [projectsActions.fetchPeopleSuccess]: setFalse,
-  [projectsActions.fetchPeopleError]: setFalse,
 
   [projectsActions.addProjectRequest]: setTrue,
   [projectsActions.addProjectSuccess]: setFalse,
@@ -64,16 +62,12 @@ const error = createReducer(null, {
   [projectsActions.addProjectError]: setPayload,
   [projectsActions.deleteProjectError]: setPayload,
   [projectsActions.renameProjectError]: setPayload,
-
-  [projectsActions.fetchPeopleError]: setPayload,
   [projectsActions.addPeopleError]: setPayload,
 
   [projectsActions.fetchProjectsRequest]: setNull,
   [projectsActions.addProjectRequest]: setNull,
   [projectsActions.deleteProjectRequest]: setNull,
   [projectsActions.renameProjectRequest]: setNull,
-
-  [projectsActions.fetchPeopleRequest]: setNull,
   [projectsActions.addPeopleRequest]: setNull,
 });
 

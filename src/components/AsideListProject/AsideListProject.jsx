@@ -9,7 +9,7 @@ const colorsNumber = bcgColors.length;
 
 const getRandomInt = max => Math.floor(Math.random() * max);
 
-const AsideListProject = ({ onClick }) => {
+const AsideListProject = () => {
   const projects = useSelector(projectsSelectors.getAllProjects);
   const dispatch = useDispatch();
 
@@ -17,16 +17,12 @@ const AsideListProject = ({ onClick }) => {
     dispatch(projectsOperations.fetchProjects());
   }, [dispatch]);
 
-  const changeName = name => {
-    onClick(name);
-  };
-
   return (
     <div className={styles.asideListContainer}>
       <div className={styles.scroll}>
         <ul className={styles.asideList}>
           {projects.map(({ id, name }) => (
-            <li key={id} onClick={() => changeName(name)}>
+            <li key={id}>
               <NavLink
                 to={`/projects/${id}`}
                 className={styles.current}

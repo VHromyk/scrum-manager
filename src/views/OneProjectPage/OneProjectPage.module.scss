@@ -108,6 +108,13 @@
   padding-bottom: 40px;
 }
 
+.helper {
+  position: absolute;
+  color: $error-text-color;
+  font-size: 12px;
+  top: 120px;
+}
+
 @media (min-width: 320px) {
   .title {
     margin-right: 5px;

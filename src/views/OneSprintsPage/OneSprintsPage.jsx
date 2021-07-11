@@ -154,6 +154,7 @@ const OneSprintsPage = () => {
             <div className={styles.formContainer}>
               <div className={styles.pagesContainer}>
                 <div className={styles.containerPages}>
+                  {/* Стрелка влево */}
                   <IconButton
                     classes={styles.arrowLeftBtn}
                     aria-label="show previous day tasks button"
@@ -168,6 +169,7 @@ const OneSprintsPage = () => {
                   <span className={styles.sprintPages}>
                     /{arrayDate.length}
                   </span>
+                  {/* Стрелка вправо */}
 
                   <IconButton
                     classes={styles.arrowRightBtn}
@@ -278,6 +280,8 @@ const OneSprintsPage = () => {
           <Diagram
             onCloseModal={btnCloseDiagram}
             duration={currentSprint.duration}
+            currentDate={currentDate}
+            arrayOfDate={doArrayOfDate}
           />
         )}
         {/* Кнопка додати проект */}

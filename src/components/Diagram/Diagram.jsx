@@ -5,9 +5,19 @@ import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram({ onCloseModal, duration }) {
+function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
   const months = ['JUL', 'AUG'];
+
+  console.log(getAll);
+
+  const arrOfDate = arrayOfDate();
+
+  for (let i = 0; i <= arrOfDate.length; i += 1) {
+    console.log(arrOfDate[i]);
+  }
+
+  console.log('Текущая дата:', currentDate);
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
     return cnt + getAll.scheduledHours;
@@ -15,7 +25,7 @@ function Diagram({ onCloseModal, duration }) {
 
   console.log('Сумма всіх годин:', sumRedLine); //Сумма всіх годин запланованих на виконання тасок
 
-  const DaysRedLine = () => {
+  const daysRedLine = () => {
     let arr = [];
     let firstIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
     arr.push(firstIndex); // создаем первый индекс массива;
@@ -32,19 +42,39 @@ function Diagram({ onCloseModal, duration }) {
     return arr;
   };
 
-  // DaysRedLine();
+  // daysRedLine();
 
-  const DaysBlueLine = () => {
+  const daysBlueLine = () => {
     let arrBlueLine = [];
+    let firstIndex = sumRedLine;
+    arrBlueLine.push(firstIndex);
+    const tasksForCurrentDay = getAll.filter(
+      item => item.taskDate === currentDate,
+    );
+    const spentTimeForCurrentDay = tasksForCurrentDay.reduce(function (
+      cnt,
+      getAll,
+    ) {
+      return cnt + getAll.spentTime;
+    },
+    0);
+    console.log('Сумма потраченого времени:', spentTimeForCurrentDay);
+    for (let i = 0; i <= tasksForCurrentDay.length; i += 1) {
+      firstIndex = firstIndex - spentTimeForCurrentDay;
+      arrBlueLine.push(firstIndex);
+    }
 
-    let multipleHoursWasted = [5, 8, 13, 24];
+    // let multipleHoursWasted = [5, 8, 13, 24];
     // _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
-    multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');
-    arrBlueLine = _.map(multipleHoursWasted, i => {
-      return _.sumBy(i, i => i.singleHoursWasted);
-    });
+    // multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');
+    // arrBlueLine = _.map(multipleHoursWasted, i => {
+    //   return _.sumBy(i, i => i.singleHoursWasted);
+    // });
+    console.log('Массив чисел для синей линии:', arrBlueLine);
     return arrBlueLine;
   };
+
+  daysBlueLine();
 
   const labelsDate = getAll.map(i => i.currentDay);
 
@@ -74,7 +104,7 @@ function Diagram({ onCloseModal, duration }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: [sumRedLine, ...DaysBlueLine()],
+        // data: [sumRedLine, ...daysBlueLine()],
       },
       {
         label: 'Planned remaining work in hours',
@@ -95,7 +125,7 @@ function Diagram({ onCloseModal, duration }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: [sumRedLine, ...DaysRedLine()],
+        data: daysRedLine(),
       },
     ],
   };

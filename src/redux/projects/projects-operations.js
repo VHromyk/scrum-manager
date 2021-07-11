@@ -9,12 +9,8 @@ const fetchProjects = () => async dispatch => {
     const { data } = await axios.get('/api/projects');
 
     dispatch(projectsActions.fetchProjectsSuccess(data.projects));
-  } catch (error) {
-    dispatch(projectsActions.fetchProjectsError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(projectsActions.fetchProjectsError(message));
   }
 };
 
@@ -29,12 +25,8 @@ const addProject =
 
       dispatch(projectsActions.addProjectSuccess(data.project));
       toast.success('Project added successfully');
-    } catch (error) {
-      dispatch(projectsActions.fetchProjectsError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+    } catch ({ message }) {
+      dispatch(projectsActions.fetchProjectsError(message));
     }
   };
 
@@ -44,17 +36,13 @@ const deleteProject = projectId => async dispatch => {
   try {
     await axios.delete(`/api/projects/${projectId}`);
     dispatch(projectsActions.deleteProjectSuccess(projectId));
-  } catch (error) {
-    dispatch(projectsActions.deleteProjectError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(projectsActions.deleteProjectError(message));
   }
 };
 
 const renameProject =
-  ({ projectId, name }) =>
+  ({ projectId, newName: name }) =>
   async dispatch => {
     const renameProject = { name };
 
@@ -70,12 +58,8 @@ const renameProject =
       dispatch(
         projectsActions.renameProjectSuccess({ newProjectName, projectId }),
       );
-    } catch (error) {
-      dispatch(projectsActions.renameProjectError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+    } catch ({ message }) {
+      dispatch(projectsActions.renameProjectError(message));
     }
   };
 
@@ -97,8 +81,6 @@ const addPeople = (projectId, email) => async dispatch => {
       toast.error('User with such email does not exist');
       return;
     }
-
-    toast.error('Something went wrong, try again later');
   }
 };
 

@@ -42,7 +42,8 @@ const ProjectsPage = () => {
         </div>
         {!error && !isLoading && projects.length === 0 && (
           <p className={styles.warningMessage}>
-            You don't have any projects yet
+            You don't have any projects yet. To create a project, use the button
+            above
           </p>
         )}
         {projects.length !== 0 && <ProjectList />}

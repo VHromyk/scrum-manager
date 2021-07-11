@@ -35,7 +35,7 @@ const Aside = ({ createName, showName, children }) => {
     <div className={styles.aside}>
       <div className={styles.asideWrapper}>
         {showName === 'Show projects' ? (
-          <Link to="/projects">
+          <Link to="/projects" label="show-projects">
             <div className={styles.asideArrow}>
               <IconButton
                 classes={styles.arrowBtn}
@@ -47,11 +47,11 @@ const Aside = ({ createName, showName, children }) => {
             </div>
           </Link>
         ) : (
-          <Link to={`/projects/${projectId}`}>
+          <Link to={`/projects/${projectId}`} label="show-sprints">
             <div className={styles.asideArrow}>
               <IconButton
                 classes={styles.arrowBtn}
-                aria-label="show projects button"
+                aria-label="show sprints button"
               >
                 <SvgComponent name="arrow" classes={styles.arrowIcon} />
               </IconButton>

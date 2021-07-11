@@ -78,7 +78,8 @@ const RegisterPage = () => {
           <input
             id="password1"
             type={showPassword ? 'text' : 'password'}
-            minLength="5"
+            minLength="3"
+            maxLength="15"
             name="password"
             placeholder=" "
             value={password}

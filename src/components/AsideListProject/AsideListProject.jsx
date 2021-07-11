@@ -25,6 +25,7 @@ const AsideListProject = () => {
             <li key={id}>
               <NavLink
                 to={`/projects/${id}`}
+                label="project-details"
                 className={styles.current}
                 activeClassName={styles.selected}
               >

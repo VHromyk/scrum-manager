@@ -1,13 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import { useSelector } from 'react-redux';
+import { tasksSelectors } from '../../redux/tasks';
 import TasksList from '../TasksList';
-import IconButton from '../IconButton';
-import SvgComponent from '../SvgComponent';
 import styles from './SprintTable.module.scss';
 
 const SprintTable = ({ currentDate }) => {
-  const { sprintId } = useParams();
   const tasks = useSelector(tasksSelectors.getTasks);
 
   return (
@@ -29,7 +25,13 @@ const SprintTable = ({ currentDate }) => {
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />
       </div>
-      <TasksList currentDate={currentDate} />
+      {tasks.length !== 0 ? (
+        <TasksList currentDate={currentDate} />
+      ) : (
+        <p className={styles.warningMessage}>
+          This sprint has no tasks yet. To create a task, use the button above
+        </p>
+      )}
     </div>
   );
 };

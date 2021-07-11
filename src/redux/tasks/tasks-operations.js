@@ -11,12 +11,8 @@ const fetchTasks = (projectId, sprintId) => async dispatch => {
     );
 
     dispatch(tasksActions.fetchTasksSuccess(data.tasks));
-  } catch (error) {
-    dispatch(tasksActions.fetchTasksError(error?.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(tasksActions.fetchTasksError(message));
   }
 };
 
@@ -30,12 +26,8 @@ const addTask = (task, projectId, sprintId) => async dispatch => {
     );
     dispatch(tasksActions.addTaskSuccess(data.task));
     toast.success('Task added successfully');
-  } catch (error) {
-    dispatch(tasksActions.addTaskError(error?.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(tasksActions.addTaskError(message));
   }
 };
 
@@ -47,12 +39,8 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
       `/api/projects/${projectId}/sprints/${sprintId}/tasks/${taskId}`,
     );
     dispatch(tasksActions.deleteTaskSuccess(taskId));
-  } catch (error) {
-    dispatch(tasksActions.deleteTaskError(error?.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ([message]) {
+    dispatch(tasksActions.deleteTaskError(message));
   }
 };
 
@@ -67,12 +55,8 @@ const changeTask =
       );
 
       dispatch(tasksActions.changeTaskSuccess(data.task));
-    } catch (error) {
-      dispatch(tasksActions.changeTaskError(error?.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+    } catch ({ message }) {
+      dispatch(tasksActions.changeTaskError(message));
     }
   };
 

@@ -1,46 +1,33 @@
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import tasksSelectors from '../../redux/tasks/tasks-selectors';
 import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
+function Diagram({ onCloseModal, duration, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
-  const months = ['JUL', 'AUG'];
 
   console.log('Возьми все даты:', getAll);
-
-  // for (let i = 0; i <= arrOfDate.length; i += 1) {
-  //   console.log(arrOfDate[i]);
-  // }
-
-  console.log('Текущая дата:', currentDate);
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
     return cnt + getAll.scheduledHours;
   }, 0); // Вирахування суми всіх годин запланованих на виконання тасок
 
-  console.log('Сумма всіх годин:', sumRedLine); //Сумма всіх годин запланованих на виконання тасок
-
   const daysRedLine = () => {
-    let arr = [];
-    let firstIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
-    arr.push(firstIndex); // создаем первый индекс массива;
+    let arrRedLine = [];
+    arrRedLine.push(sumRedLine); // создаем первый индекс массива;
+    let currentIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
     let sumAllRedLine = sumRedLine / duration; // делим общее количество запланированых часов на кол-во дней спринта
     for (let i = 0; i <= duration; i += 1) {
-      firstIndex = firstIndex - sumAllRedLine;
-      let typeToNumber = Math.floor(firstIndex * 100) / 100; // обрезаем число до двух знаков после запятой;
+      currentIndex = currentIndex - sumAllRedLine;
+      let typeToNumber = Math.floor(currentIndex * 100) / 100; // обрезаем число до двух знаков после запятой;
       if (typeToNumber >= 0) {
-        arr.push(typeToNumber);
+        arrRedLine.push(typeToNumber);
         // пока первый индекс больше 0 пушим в массив числа;
       }
     }
-    console.log('Массив для красной линии:', arr);
-    return arr;
+    return arrRedLine;
   };
-
-  daysRedLine();
 
   const daysBlueLine = () => {
     let arrBlueLine = [];
@@ -48,7 +35,6 @@ function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
     let firstIndex = sumRedLine;
 
     let multipleHoursWasted = _.groupBy(getAll, 'taskDate');
-    console.log('По текущему дню:', multipleHoursWasted);
 
     const arrOfDate = arrayOfDate();
 
@@ -63,20 +49,11 @@ function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
         arrBlueLine.push(firstIndex);
       }
     }
-    console.log('Массив для синей линии:', arrBlueLine);
     return arrBlueLine;
   };
 
-  daysBlueLine();
-
-  // const labelsDate = getAll.map(i => i.currentDay);
-
-  // const result = labelsDate.map(day => {
-  //   const arr = day.split('-');
-  //   return `${arr[2]} ${months[arr[1].replace(/(^|\s)0/g, '$1')]}`;
-  // });
   const data = {
-    labels: currentDate,
+    labels: arrayOfDate(),
     datasets: [
       {
         label: 'Actual remaining labor in hours',

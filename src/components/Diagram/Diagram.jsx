@@ -4,43 +4,56 @@ import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram() {
+function Diagram({ onCloseModal, duration, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
-  const months = ['JUL', 'AUG'];
+
+  console.log('Возьми все даты:', getAll);
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
-    return cnt + getAll.hoursPlanned;
-  }, 0);
+    return cnt + getAll.scheduledHours;
+  }, 0); // Вирахування суми всіх годин запланованих на виконання тасок
 
-  const DaysRedLine = () => {
-    let arr = [];
-    let sumAllRedLine = sumRedLine;
-
-    for (let i = 0; i <= getAll[0].hoursWastedPerDay.length; i++) {
-      sumAllRedLine -= sumRedLine / getAll[0].hoursWastedPerDay.length;
-      arr.push(sumAllRedLine);
+  const daysRedLine = () => {
+    let arrRedLine = [];
+    arrRedLine.push(sumRedLine); // создаем первый индекс массива;
+    let currentIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
+    let sumAllRedLine = sumRedLine / duration; // делим общее количество запланированых часов на кол-во дней спринта
+    for (let i = 0; i <= duration; i += 1) {
+      currentIndex = currentIndex - sumAllRedLine;
+      let typeToNumber = Math.floor(currentIndex * 100) / 100; // обрезаем число до двух знаков после запятой;
+      if (typeToNumber >= 0) {
+        arrRedLine.push(typeToNumber);
+        // пока первый индекс больше 0 пушим в массив числа;
+      }
     }
-    return arr;
+    return arrRedLine;
   };
 
-  const DaysBlueLine = () => {
+  const daysBlueLine = () => {
     let arrBlueLine = [];
-    let multipleHoursWasted = _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
-    multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');
-    arrBlueLine = _.map(multipleHoursWasted, i => {
-      return _.sumBy(i, i => i.singleHoursWasted);
-    });
+    arrBlueLine.push(sumRedLine);
+    let firstIndex = sumRedLine;
+
+    let multipleHoursWasted = _.groupBy(getAll, 'taskDate');
+
+    const arrOfDate = arrayOfDate();
+
+    for (let i = 0; i <= arrOfDate.length; i += 1) {
+      if (arrOfDate[i] in multipleHoursWasted) {
+        let date = arrOfDate[i];
+        const totalNumber = multipleHoursWasted[date].reduce(
+          (acc, value) => acc + value.spentTime,
+          0,
+        );
+        firstIndex = firstIndex - totalNumber;
+        arrBlueLine.push(firstIndex);
+      }
+    }
     return arrBlueLine;
   };
 
-  const labelsDate = getAll[0].hoursWastedPerDay.map(i => i.currentDay);
-
-  const result = labelsDate.map(day => {
-    const arr = day.split('-');
-    return `${arr[2]} ${months[arr[1].replace(/(^|\s)0/g, '$1')]}`;
-  });
   const data = {
-    labels: result,
+    labels: arrayOfDate(),
     datasets: [
       {
         label: 'Actual remaining labor in hours',
@@ -61,7 +74,7 @@ function Diagram() {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: [sumRedLine, ...DaysBlueLine()],
+        data: daysBlueLine(),
       },
       {
         label: 'Planned remaining work in hours',
@@ -82,7 +95,7 @@ function Diagram() {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: [sumRedLine, ...DaysRedLine()],
+        data: daysRedLine(),
       },
     ],
   };

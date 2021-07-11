@@ -1,5 +1,5 @@
 import styles from './Sprint.module.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Calendar from '../Calendar';
 
 import SvgComponent from '../SvgComponent';

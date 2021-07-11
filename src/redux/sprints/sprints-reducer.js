@@ -9,14 +9,22 @@ const setPayload = (_, { payload }) => payload;
 
 const items = createReducer([], {
   [sprintsActions.fetchSprintsSuccess]: setPayload,
+
   [sprintsActions.addSprintSuccess]: (state, { payload }) => [
     ...state,
     payload,
   ],
+
   [sprintsActions.deleteSprintSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [sprintsActions.renameSprintSuccess]: (state, { payload }) =>
-    state.map(sprint => (sprint.id === payload.id ? payload : sprint)),
+
+  [sprintsActions.renameSprintSuccess]: (state, { payload }) => {
+    state.map(sprint =>
+      sprint.id === payload.sprintId
+        ? (sprint.name = payload.newSprintName)
+        : sprint,
+    );
+  },
 });
 
 const isLoading = createReducer(false, {

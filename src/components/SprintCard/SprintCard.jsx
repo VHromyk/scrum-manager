@@ -18,7 +18,11 @@ const SprintCard = ({
   return (
     <>
       <div className={styles.SprintCard}>
-        <Link to={`/projects/${projectId}/sprints/${id}`} key={id}>
+        <Link
+          to={`/projects/${projectId}/sprints/${id}`}
+          label="sprint-details"
+          key={id}
+        >
           <p className={styles.SprintTitle}>{name}</p>
           <ul className={styles.SprintCardList}>
             <li className={styles.SprintItem}>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useMedia } from 'react-use';
 import { authOperations } from '../../redux/auth';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import {
@@ -15,6 +16,7 @@ import SvgComponent from '../../components/SvgComponent';
 import Container from '../../components/Container';
 import Aside from '../../components/Aside';
 import AsideListSprint from '../../components/AsideListSprint';
+import EditNameForm from '../../components/EditNameForm';
 import SprintTable from '../../components/SprintTable';
 import TaskModal from '../../components/TaskModal';
 import Diagram from '../../components/Diagram';
@@ -23,21 +25,19 @@ import styles from './OneSprintsPage.module.scss';
 const OneSprintsPage = () => {
   const [createSprint, setCreateSprint] = useState(false);
   const [createTask, setCreateTask] = useState(false);
-  const [newName, setNewName] = useState('');
-  const [showInput, setShowInput] = useState(true);
-  const [showIcon, setShowIcon] = useState(true);
+
   const [showDiagram, setShowDiagram] = useState(false);
-  const { projectId, sprintId } = useParams();
-  const { taskId } = useParams(); // undefined
   const [count, setCount] = useState(Number(1));
 
+  const { projectId, sprintId } = useParams();
+  const { taskId } = useParams(); // undefined
+
   const sprints = useSelector(sprintsSelectors.getAllSprints);
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
 
   const dispatch = useDispatch();
 
   const filter = useSelector(tasksSelectors.getFilter);
-
-  const currentSprint = sprints.find(({ id }) => id === sprintId);
 
   const doArrayOfDate = () => {
     let start = new Date(currentSprint.startDate),
@@ -98,19 +98,9 @@ const OneSprintsPage = () => {
 
   // const currentTask = tasks.find(({ id }) => id === sprintId);
 
-  const onRenameSprint = ({ projectId, sprintId, newName }) =>
+  // Зміна назви спринта
+  const onRenameSprint = newName =>
     dispatch(sprintsOperations.renameSprint({ projectId, sprintId, newName }));
-
-  const changeInputName = e => {
-    setNewName(e.target.value);
-  };
-
-  const onSubmitRenameName = e => {
-    e.preventDefault();
-    onRenameSprint(projectId, sprintId, newName);
-    setShowInput(true);
-    setShowIcon(true);
-  };
 
   const buttonHandler = () => {
     setCreateSprint(true);
@@ -135,10 +125,9 @@ const OneSprintsPage = () => {
   const btnCloseTask = () => {
     setCreateTask(false);
   };
-  const changeIcon = () => {
-    setShowIcon(false);
-    setShowInput(false);
-  };
+
+  const isWide = useMedia('(min-width: 768px)');
+
   return (
     <>
       <Container classes={styles.container}>
@@ -217,51 +206,16 @@ const OneSprintsPage = () => {
               </form>
             </div>
             <div className={styles.sprintNameContainer}>
-              <div className={styles.sprintNameEdit}>
-                {showInput ? (
-                  <h1 className={styles.sprintName}>
-                    {newName || currentSprint.name}
-                  </h1>
-                ) : (
-                  <form onSubmit={onSubmitRenameName}>
-                    <input
-                      value={newName}
-                      name="name"
-                      id="name"
-                      type="name"
-                      onChange={changeInputName}
-                      className={styles.sprintNameInput}
-                    ></input>
-                    <IconButton
-                      classes={styles.doneBtn}
-                      aria-label="confirm changes"
-                      type="submit"
-                      onSubmit={onSubmitRenameName}
-                    >
-                      <SvgComponent name="done" classes={styles.doneIcon} />
-                    </IconButton>
-                  </form>
-                )}
-                {showIcon && (
-                  <>
-                    <IconButton
-                      classes={styles.projectBtn}
-                      aria-label="edit name button"
-                      onClick={changeIcon}
-                    >
-                      <SvgComponent
-                        name="project"
-                        classes={styles.projectIcon}
-                      />
-                    </IconButton>
-                  </>
-                )}
-              </div>
-
-              <div className={styles.createNewBtn}>
-                <AddButton onClick={buttonHandlerTask} />
-                <span className={styles.createTask}>Create a Task</span>
-              </div>
+              <EditNameForm
+                currentName={currentSprint.name}
+                onChangeName={onRenameSprint}
+              />
+              {isWide && (
+                <div className={styles.createTaskBtn}>
+                  <AddButton onClick={buttonHandlerTask} />
+                  <p className={styles.createTaskTitle}>Create a task</p>
+                </div>
+              )}
             </div>
             <SprintTable currentDate={currentDate} />
           </div>

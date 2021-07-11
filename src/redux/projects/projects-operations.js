@@ -9,12 +9,8 @@ const fetchProjects = () => async dispatch => {
     const { data } = await axios.get('/api/projects');
 
     dispatch(projectsActions.fetchProjectsSuccess(data.projects));
-  } catch (error) {
-    dispatch(projectsActions.fetchProjectsError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(projectsActions.fetchProjectsError(message));
   }
 };
 
@@ -29,12 +25,8 @@ const addProject =
 
       dispatch(projectsActions.addProjectSuccess(data.project));
       toast.success('Project added successfully');
-    } catch (error) {
-      dispatch(projectsActions.fetchProjectsError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+    } catch ({ message }) {
+      dispatch(projectsActions.fetchProjectsError(message));
     }
   };
 
@@ -44,18 +36,13 @@ const deleteProject = projectId => async dispatch => {
   try {
     await axios.delete(`/api/projects/${projectId}`);
     dispatch(projectsActions.deleteProjectSuccess(projectId));
-  } catch (error) {
-    dispatch(projectsActions.deleteProjectError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(projectsActions.deleteProjectError(message));
   }
 };
 
-// Перевірити
 const renameProject =
-  ({ projectId, name }) =>
+  ({ projectId, newName: name }) =>
   async dispatch => {
     const renameProject = { name };
 
@@ -67,30 +54,14 @@ const renameProject =
         renameProject,
       );
 
-      dispatch(projectsActions.renameProjectSuccess(data));
-    } catch (error) {
-      dispatch(projectsActions.renameProjectError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+      const newProjectName = data.project.name;
+      dispatch(
+        projectsActions.renameProjectSuccess({ newProjectName, projectId }),
+      );
+    } catch ({ message }) {
+      dispatch(projectsActions.renameProjectError(message));
     }
   };
-
-//додавання людей до пректу
-const fetchPeople = projectId => async dispatch => {
-  dispatch(projectsActions.fetchPeopleRequest());
-
-  try {
-    const { data } = await axios.get(`/api/projects/${projectId}/owners`);
-    data.id = projectId;
-
-    dispatch(projectsActions.fetchPeopleSuccess(data));
-  } catch ({ message }) {
-    dispatch(projectsActions.fetchPeopleError(message));
-    toast.error('Something went wrong, try again later');
-  }
-};
 
 const addPeople = (projectId, email) => async dispatch => {
   dispatch(projectsActions.addPeopleRequest());
@@ -100,10 +71,16 @@ const addPeople = (projectId, email) => async dispatch => {
       `/api/projects/${projectId}/invite`,
       email,
     );
-    dispatch(projectsActions.addPeopleSuccess(data.user.email));
+
+    const newTeamMember = data.user.email;
+    dispatch(projectsActions.addPeopleSuccess({ newTeamMember, projectId }));
   } catch ({ message }) {
     dispatch(projectsActions.addPeopleError(message));
-    toast.error('Something went wrong, try again later');
+
+    if (message === 'Request failed with status code 404') {
+      toast.error('User with such email does not exist');
+      return;
+    }
   }
 };
 
@@ -112,7 +89,6 @@ const projectsOperations = {
   addProject,
   deleteProject,
   renameProject,
-  fetchPeople,
   addPeople,
 };
 

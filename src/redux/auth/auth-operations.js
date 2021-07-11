@@ -72,6 +72,11 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserSuccess(data.user));
   } catch ({ message }) {
     dispatch(authActions.getCurrentUserError(message));
+
+    if (message === 'Request failed with status code 401') {
+      toast.error('Please, log in');
+      return;
+    }
   }
 };
 

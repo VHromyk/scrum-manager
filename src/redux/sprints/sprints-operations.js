@@ -8,12 +8,8 @@ const fetchSprints = projectId => async dispatch => {
   try {
     const { data } = await axios.get(`/api/projects/${projectId}/sprints`);
     dispatch(sprintsActions.fetchSprintsSuccess(data.sprints));
-  } catch (error) {
-    dispatch(sprintsActions.fetchSprintsError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(sprintsActions.fetchSprintsError(message));
   }
 };
 
@@ -32,12 +28,8 @@ const addSprint =
 
       dispatch(sprintsActions.addSprintSuccess(data.sprint));
       toast.success('Sprint added successfully');
-    } catch (error) {
-      dispatch(sprintsActions.addSprintError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+    } catch ({ message }) {
+      dispatch(sprintsActions.addSprintError(message));
     }
   };
 
@@ -47,12 +39,8 @@ const deleteSprint = (projectId, sprintId) => async dispatch => {
   try {
     await axios.delete(`/api/projects/${projectId}/sprints/${sprintId}`);
     dispatch(sprintsActions.deleteSprintSuccess(sprintId));
-  } catch (error) {
-    dispatch(sprintsActions.deleteSprintError(error.message));
-
-    if (error.code !== 401) {
-      toast.error('Something went wrong, try again later');
-    }
+  } catch ({ message }) {
+    dispatch(sprintsActions.deleteSprintError(message));
   }
 };
 
@@ -69,13 +57,10 @@ const renameSprint =
         renameSprint,
       );
 
-      dispatch(sprintsActions.renameSprintSuccess(data));
-    } catch (error) {
-      dispatch(sprintsActions.renameSprintError(error.message));
-
-      if (error.code !== 401) {
-        toast.error('Something went wrong, try again later');
-      }
+      const newSprintName = data.sprint.name;
+      dispatch(sprintsActions.renameSprintSuccess({ newSprintName, sprintId }));
+    } catch ({ message }) {
+      dispatch(sprintsActions.renameSprintError(message));
     }
   };
 

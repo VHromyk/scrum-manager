@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { useLocation } from '@reach/router';
+import { useParams } from 'react-router-dom';
+import { useMedia } from 'react-use';
 import { authOperations } from '../../redux/auth';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
@@ -12,6 +12,7 @@ import SvgComponent from '../../components/SvgComponent';
 import IconButton from '../../components/IconButton';
 import Aside from '../../components/Aside';
 import AsideListProject from '../../components/AsideListProject';
+import EditNameForm from '../../components/EditNameForm';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
@@ -21,9 +22,6 @@ const OneProjectPage = () => {
   const [createProject, setCreateProject] = useState(false);
   const [createSprint, setCreateSprint] = useState(false);
   const [addPeople, setAddPeople] = useState(false);
-  const [showInput, setShowInput] = useState(true);
-  const [showIcon, setShowIcon] = useState(true);
-  const [newName, setNewName] = useState('');
 
   const { projectId } = useParams();
 
@@ -35,35 +33,13 @@ const OneProjectPage = () => {
   }, [dispatch, projectId]);
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
-  const projects = useSelector(projectsSelectors.getAllProjects);
 
+  const projects = useSelector(projectsSelectors.getAllProjects);
   const currentProject = projects.find(({ id }) => id === projectId);
 
-  const onRenameProject = (projectId, name) =>
-    dispatch(projectsOperations.renameProject({ projectId, name }));
-
-  const changeIcon = () => {
-    setShowIcon(false);
-    setShowInput(false);
-  };
-
-  const changeInputName = e => {
-    setNewName(e.target.value);
-  };
-
-  const onSubmitRenameNAme = e => {
-    e.preventDefault();
-
-    onRenameProject(projectId, newName);
-
-    setShowInput(true);
-    setShowIcon(true);
-    setNewName(newName);
-  };
-
-  const onChangeName = name => {
-    setNewName(name);
-  };
+  // Зміна назви проекту
+  const onRenameProject = newName =>
+    dispatch(projectsOperations.renameProject({ projectId, newName }));
 
   const buttonHandler = () => {
     setCreateProject(true);
@@ -86,6 +62,8 @@ const OneProjectPage = () => {
     setAddPeople(false);
   };
 
+  const isWide = useMedia('(min-width: 768px)');
+
   return (
     <Container>
       <div className={styles.container}>
@@ -94,59 +72,23 @@ const OneProjectPage = () => {
           showName="Show projects"
           onClick={buttonHandler}
         >
-          <AsideListProject onClick={onChangeName} />
+          <AsideListProject />
         </Aside>
         <div className={styles.headerProject}>
-          <div className={styles.titleButtons}>
-            <div className={styles.titleContainer}>
-              {showInput ? (
-                <h2 className={styles.title}>
-                  {newName || currentProject.name}
-                </h2>
-              ) : (
-                <form
-                  onSubmit={onSubmitRenameNAme}
-                  className={styles.formChangeName}
-                >
-                  <input
-                    autoFocus
-                    className={styles.inputTitle}
-                    value={newName === '' ? currentProject.name : newName}
-                    name="name"
-                    id="name"
-                    type="name"
-                    onChange={changeInputName}
-                  ></input>
-                  <IconButton
-                    classes={styles.doneBtn}
-                    aria-label="confirm changes"
-                    type="submit"
-                    onSubmit={onSubmitRenameNAme}
-                  >
-                    <SvgComponent name="done" classes={styles.doneIcon} />
-                  </IconButton>
-                </form>
-              )}
-              {showIcon && (
-                <>
-                  <IconButton
-                    classes={styles.projectBtn}
-                    aria-label="edit name button"
-                    onClick={changeIcon}
-                  >
-                    <SvgComponent name="project" classes={styles.projectIcon} />
-                  </IconButton>
-                </>
-              )}
-            </div>
-
-            <div className={styles.createSprint}>
+          <div className={styles.titleContainer}>
+            <EditNameForm
+              currentName={currentProject.name}
+              onChangeName={onRenameProject}
+            />
+            <div className={styles.createSprintBtn}>
               <AddButton onClick={btnSprint} />
-
-              <h2 className={styles.createTitle}>Create a sprint</h2>
+              {isWide && (
+                <p className={styles.createSprintTitle}>Create a sprint</p>
+              )}
             </div>
           </div>
-          <p className={styles.descriptionProject}>
+
+          <p className={styles.projectDescription}>
             {currentProject.description}
           </p>
 
@@ -157,13 +99,16 @@ const OneProjectPage = () => {
               onClick={btnAddPeople}
             >
               <SvgComponent name="add-people" classes={styles.addPeopleIcon} />
-              <h3 className={styles.addPeopleTitle}>Add people</h3>
+              <p className={styles.addPeopleTitle}>Add people</p>
             </IconButton>
           </div>
           {sprints.length !== 0 ? (
             <SprintsList />
           ) : (
-            <p className={styles.warningMessage}>Please, add some sprints</p>
+            <p className={styles.warningMessage}>
+              This project has no sprints yet. To create a sprint, use the
+              button above
+            </p>
           )}
         </div>
 

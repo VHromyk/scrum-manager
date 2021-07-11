@@ -1,65 +1,57 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { authSelectors } from '../../redux/auth';
+import { projectsSelectors, projectsOperations } from '../../redux/projects';
 import ModalBackdrop from '../ModalBackdrop';
 import AddPeopleList from '../AddPeopleList';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
 import Button from '../Button';
-import authSelectors from '../../redux/auth/auth-selectors';
-import projectsSelectors from '../../redux/projects/projects-selectors';
-import projectsOperations from '../../redux/projects/projects-operations';
 import styles from './AddPeople.module.scss';
-import { useParams } from 'react-router-dom';
 
 function AddPeople({ onClick }) {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState('valid');
 
   const { projectId } = useParams();
-
-  const handleInputChange = event => {
-    setEmail(event.currentTarget.value);
-  };
-
   const dispatch = useDispatch();
 
-  const data = useSelector(projectsSelectors.getAllPeople);
-  const people = data.map(obj => {
-    if (obj.id === projectId) {
-      return obj.owners;
-    }
-  });
+  const handleInputChange = event => setEmail(event.currentTarget.value);
 
+  const projects = useSelector(projectsSelectors.getAllProjects);
   const currentUser = useSelector(authSelectors.getUserEmail);
-  const subscribers = people.flat().filter(user => user !== currentUser);
+
+  // Витягуємо масив owners поточного проекту
+  const owners = projects.find(({ id }) => id === projectId).owners;
+
+  // Фільтруємо масив owners, залишаємо тільки команду (видаляємо поточного користувача)
+  const team = owners.filter(owner => owner !== currentUser);
 
   const reset = () => {
     setEmail('');
   };
 
-  const handleSubmit = useCallback(
-    event => {
-      event.preventDefault();
-      if (!email) {
-        setValidEmail('invalid');
-        return;
-      } else {
-        setValidEmail('valid');
-      }
-      // if (isInProject) {
-      //   alert(`User (${email}) is already in project`); //замінити на toast
-      //   return;
-      // }
-      dispatch(projectsOperations.addPeople(projectId, { email }));
+  const handleSubmit = event => {
+    event.preventDefault();
 
-      reset();
-    },
-    [dispatch, projectId, email],
-  );
+    const alreadyExist = team.includes(email);
 
-  useEffect(() => {
-    dispatch(projectsOperations.fetchPeople(projectId));
-  }, [dispatch, projectId, email]);
+    if (!email) {
+      setValidEmail('noEmail');
+
+      return;
+    } else if (alreadyExist) {
+      setValidEmail('alreadyExist');
+
+      return;
+    } else {
+      setValidEmail('valid');
+    }
+
+    dispatch(projectsOperations.addPeople(projectId, { email }));
+    reset();
+  };
 
   return (
     <ModalBackdrop onClose={onClick}>
@@ -81,17 +73,24 @@ function AddPeople({ onClick }) {
           {validEmail === 'invalid' && (
             <p className={styles.helper}>*This field is required</p>
           )}
+          {validEmail === 'alreadyExist' && (
+            <p className={styles.helper}>*User is already in project</p>
+          )}
         </div>
         <div>
           <p className={styles.addedUsersTitle}>Added users:</p>
-          {!subscribers || subscribers.length === 1 ? (
+          {team.length === 0 ? (
             <p className={styles.noUsers}>You have not added any users yet</p>
           ) : (
-            <AddPeopleList subscribers={subscribers} projectId={projectId} />
+            <AddPeopleList subscribers={team} projectId={projectId} />
           )}
         </div>
         <div className={styles.buttons}>
-          <Button type="submit" text="Ready" />
+          <Button
+            type="submit"
+            text="Ready"
+            aria-label="add user to the team"
+          />
           <button className={styles.button2} onClick={onClick}>
             Cancel
           </button>

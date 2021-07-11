@@ -1,7 +1,6 @@
 @import '../../styles/shared.scss';
 
 .pageContainer {
-  // position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -48,18 +47,13 @@
   text-align: center;
 
   font-weight: 700;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 1.22;
   letter-spacing: 0.04em;
-  color: $text-light-theme-color;
+  color: $warning-text-color;
 }
 
-@media (min-width: 480px) {
-  // .containerButton {
-  //   position: absolute;
-  //   right: 0px;
-  //   bottom: 20px;
-  // }
-
+@media screen and (min-width: 480px) {
   .pageContainer {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -74,13 +68,10 @@
   }
 
   .warningMessage {
-    text-align: center;
-
-    font-weight: 700;
-    font-size: 20px;
-    color: $text-light-theme-color;
+    font-size: 18px;
   }
 }
+
 @media screen and (min-width: 768px) {
   // .containerButton {
   //   position: static;
@@ -103,7 +94,7 @@
   }
 
   .warningMessage {
-    font-size: 30px;
+    font-size: 26px;
   }
 }
 

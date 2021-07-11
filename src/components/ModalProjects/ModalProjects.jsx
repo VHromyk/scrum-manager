@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
 import { projectsOperations } from '../../redux/projects';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
@@ -19,8 +18,8 @@ const ModalProjects = ({ onCloseModal }) => {
 
   const handleInputChange = event => {
     const valueInput = event.currentTarget.name;
-    console.log('name.length:', name.length);
-    console.log('description.length:', description.length);
+    // console.log('name.length:', name.length);
+    // console.log('description.length:', description.length);
 
     // const nameLengthLimits = name.length > 3 && name.length < 41;
     // const descriptionLengthLimits = description.length > 3;
@@ -79,16 +78,17 @@ const ModalProjects = ({ onCloseModal }) => {
     //   setValidText('valid');
     // }
 
-    const nameLengthLimits = name.length > 3 && name.length < 41;
-    const descriptionLengthLimits = description.length > 3;
+    const nameLengthLimits = name.length >= 4 && name.length <= 35;
+    const descriptionLengthLimits =
+      description.length >= 4 && description.length <= 100;
 
     if (!name) {
       setValidName('invalid');
-      // toast.error('Fill the fields correctly');
+
       return;
     } else if (!nameLengthLimits) {
       setValidName('invalidLength');
-      // toast.error('Fill the fields correctly');
+
       return;
     } else {
       setValidName('valid');
@@ -96,11 +96,11 @@ const ModalProjects = ({ onCloseModal }) => {
 
     if (!description) {
       setValidText('invalid');
-      // toast.error('Fill the fields correctly');
+
       return;
     } else if (description && !descriptionLengthLimits) {
       setValidText('invalidLength');
-      // toast.error('Fill the fields correctly');
+
       return;
     } else {
       setValidText('valid');

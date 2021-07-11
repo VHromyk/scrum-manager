@@ -22,6 +22,7 @@ const AsideListSprint = () => {
             <li key={id}>
               <NavLink
                 to={`/projects/${projectId}/sprints/${id}`}
+                label="sprint-details"
                 className={styles.current}
                 activeClassName={styles.selected}
               >

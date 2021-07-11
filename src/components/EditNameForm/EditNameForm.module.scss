@@ -1,0 +1,151 @@
+@import '../../styles/shared.scss';
+
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currentName {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  word-wrap: break-word;
+
+  color: $text-main-color;
+}
+
+.currentName,
+.currentNameInput {
+  min-width: 180px;
+  margin-right: 20px;
+}
+
+.currentNameInput {
+  padding-bottom: 5px;
+
+  font-size: 16px;
+  letter-spacing: 0.04em;
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  color: rgba(24, 28, 39, 0.6);
+  background-color: transparent;
+
+  &:focus {
+    border-bottom: 1px solid $accent-color;
+  }
+}
+
+.editNameBtn,
+.doneBtn {
+  border-radius: 50%;
+
+  color: $icon-light-theme-bcg-color;
+  background-color: transparent;
+  transition: color $transition-duration $timing-function,
+    background-color $transition-duration $timing-function,
+    box-shadow $transition-duration $timing-function;
+}
+
+.editNameBtn {
+  color: $icon-light-theme-bcg-color;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
+.doneBtn {
+  color: $icon-dark-theme-color;
+  background-color: $icon-light-theme-bcg-color;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+    box-shadow: $dark-theme-box-shadow;
+  }
+}
+
+.editNameIcon,
+.doneIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.warningMessage {
+  position: absolute;
+  top: 32px;
+
+  font-size: 12px;
+  color: $error-text-color;
+}
+
+@media screen and (max-width: 319px) {
+  .form {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .currentName,
+  .currentNameInput {
+    width: 220px;
+  }
+
+  .currentName {
+    font-size: 26px;
+  }
+
+  .currentNameInput {
+    font-size: 22px;
+  }
+
+  .warningMessage {
+    top: 38px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .currentName,
+  .currentNameInput {
+    width: 300px;
+  }
+
+  .currentName {
+    font-size: 36px;
+  }
+
+  .currentNameInput {
+    font-size: 22px;
+  }
+
+  .form,
+  .editNameBtn {
+    margin-right: 85px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .currentName,
+  .currentNameInput {
+    width: 350px;
+    margin-right: 40px;
+  }
+
+  .currentName {
+    font-size: 36px;
+  }
+
+  .form,
+  .editNameBtn {
+    margin-right: 230px;
+  }
+}

@@ -4,19 +4,6 @@
   position: relative;
 }
 
-.showSprintsTitle {
-  position: absolute;
-  margin-left: 50px;
-
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-
-  letter-spacing: 0.04em;
-
-  color: $text-main-color;
-}
 .sprintNameContainer {
   display: flex;
   // justify-content: space-between;
@@ -36,6 +23,7 @@
   line-height: 22px;
   letter-spacing: 0.04em;
 }
+
 .sprintPages,
 .sprintDate {
   font-style: normal;
@@ -45,15 +33,18 @@
   letter-spacing: 0.04em;
   color: $text-light-theme-color;
 }
+
 .sprintPages {
   margin-right: 20px;
 }
+
 .sprintDate {
   display: inline-block;
   width: 70px;
   margin-left: 30px;
   margin-right: 30px;
 }
+
 .arrowLeftBtn {
   margin-right: 20px;
   transition: all $transition-duration $timing-function;
@@ -62,6 +53,7 @@
     fill: $accent-color;
   }
 }
+
 .arrowRightBtn {
   // margin-right: 69px;
   transition: all $transition-duration $timing-function;
@@ -70,12 +62,14 @@
     fill: $accent-color;
   }
 }
+
 .arrowRightBtn,
 .arrowLeftBtn {
   background: transparent;
   width: 15px;
   height: 15px;
 }
+
 .arrowLeftIcon,
 .arrowRightIcon {
   position: absolute;
@@ -84,6 +78,7 @@
   height: 15px;
   // fill: $icon-without-bgc-color;
 }
+
 .formContainer {
   // padding-top: 20px;
   // display: flex;
@@ -95,6 +90,7 @@
     margin-bottom: 20px;
   }
 }
+
 .pagesContainer {
   display: flex;
   justify-content: space-between;
@@ -102,6 +98,7 @@
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
 .containerPages {
   width: 110px;
 }
@@ -126,15 +123,18 @@
   letter-spacing: 0.04em;
   color: $sprint-cart-text-color;
 
-  transition: all 0.3s;
+  transition: all $transition-duration $timing-function;
+
   &:focus {
     border-bottom: 1px solid $accent-color;
   }
+
   &:valid:not(:focus) + .labelText {
     color: rgba(24, 28, 39, 0.6);
     font-size: 13px;
   }
 }
+
 .searchForm {
   position: relative;
 }
@@ -147,25 +147,13 @@
   cursor: pointer;
   background: transparent;
 }
+
 .searchIcon:before {
   position: absolute;
   background: transparent;
   width: 20px;
   height: 20px;
   fill: $icon-light-theme-color;
-}
-
-.projectIcon {
-  width: 20px;
-  height: 20px;
-  fill: $icon-light-theme-bcg-color;
-  transition: all $transition-duration $timing-function;
-  border-radius: 50%;
-  &:hover,
-  &:focus {
-    fill: $accent-color;
-    box-shadow: $dark-theme-box-shadow;
-  }
 }
 
 .searchSprint:focus + .searchBtn .searchIcon {
@@ -215,12 +203,14 @@
     box-shadow: $dark-theme-box-shadow;
   }
 }
+
 .analyticsIcon,
 .addIcon {
   width: 18px;
   height: 18px;
   fill: currentColor;
 }
+
 .addButton {
   position: fixed;
   right: 10%;
@@ -263,21 +253,26 @@
     align-items: center;
     margin-top: 0px;
   }
+
   .sprintsSideContainer {
     padding: 20px;
   }
+
   .formContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     // padding-top: 19px;
   }
+
   // .arrowRightBtn {
   //   margin-right: 39px;
   // }
+
   .searchForm {
     margin-left: 15px;
   }
+
   .searchBtn {
     transform: translateX(180px);
   }
@@ -286,12 +281,13 @@
     width: 214px;
     padding: 5px 30px 5px 0px;
   }
+
   // .sprintName {
   //   margin-right: 43px;
   //   // width: 350px;
   // }
 
-  .createTask {
+  .createTaskTitle {
     display: none;
     font-weight: 500;
     font-size: 18px;
@@ -301,11 +297,12 @@
     color: $text-main-color;
   }
 
-  .createNewBtn {
+  .createTaskBtn {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .sprintsWrapper {
     display: flex;
     // justify-content: baseline;
@@ -324,7 +321,7 @@
     right: 10%;
     left: auto;
     position: fixed;
-    bottom: 60px;
+    bottom: 64px;
 
     transform: translateX(-10%);
   }
@@ -335,10 +332,12 @@
     // width: 100%;
     padding: 19px 20px 20px 70px;
   }
-  .createTask {
+
+  .createTaskTitle {
     display: inline-block;
     margin-left: 20px;
   }
+
   .analyticsBtn {
     // position: absolute;
     // right: 75px;
@@ -346,7 +345,7 @@
     right: 10%;
     left: auto;
     position: fixed;
-    bottom: 60px;
+    bottom: 64px;
 
     transform: translateX(-10%);
   }

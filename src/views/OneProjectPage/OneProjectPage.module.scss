@@ -3,55 +3,6 @@
   display: block;
 }
 
-// Кнопки видалити спринт (корзинка), змінити назву проекту/спринта, підтвердити зміну назви проекту/спринта
-.deleteSprintBtn,
-.projectBtn {
-  border-radius: 50%;
-
-  color: $icon-light-theme-bcg-color;
-  background-color: transparent;
-  transition: color $transition-duration $timing-function,
-    background-color $transition-duration $timing-function,
-    box-shadow $transition-duration $timing-function;
-
-  &:hover,
-  &:focus {
-    color: $accent-color;
-    background-color: $icon-dark-theme-color;
-    box-shadow: $dark-theme-box-shadow;
-  }
-}
-
-.deleteSprintIcon,
-.projectIcon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-// Кнопка підтвердити зміну назви проекту/спринта
-.doneBtn {
-  border-radius: 50%;
-
-  color: $icon-dark-theme-color;
-  background-color: $icon-light-theme-bcg-color;
-  transition: color $transition-duration $timing-function,
-    background-color $transition-duration $timing-function,
-    box-shadow $transition-duration $timing-function;
-
-  &:hover,
-  &:focus {
-    background-color: $accent-color;
-    box-shadow: $dark-theme-box-shadow;
-  }
-}
-
-.doneIcon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
 .titleContainer {
   display: flex;
   align-items: center;
@@ -104,25 +55,13 @@
   text-decoration-line: underline;
 }
 
-.createSprint {
-  display: flex;
-  align-items: center;
-}
-
-.titleButtons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.createTitle {
+.createSprintTitle {
   display: none;
-  margin-left: 20px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.22;
   letter-spacing: 0.04em;
+
   color: $text-main-color;
 }
 
@@ -157,26 +96,18 @@
     margin-bottom: 30px;
   }
 
-  .title {
-    margin-right: 5px;
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 1.23;
-    letter-spacing: 0.04em;
-    // max-width: 180px;
-    // word-wrap: break-word;
-    // width: 250px;
-  }
-
-  .inputTitle {
-    font-size: 18px;
-    line-height: 1.23;
-    letter-spacing: 0.04em;
-    width: 210px;
-  }
-
   .warningMessage {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .createSprintBtn {
+    position: fixed;
+    right: 10%;
+    bottom: 20px;
+    z-index: 1000;
+    transform: translateX(-10%);
   }
 }
 
@@ -190,26 +121,14 @@
     padding: 40px 0px 40px 40px;
   }
 
+  .createSprintBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .titleContainer {
     min-height: 130px;
-  }
-
-  .title {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 1.22;
-    letter-spacing: 0.04em;
-    // max-width: 290px;
-    word-wrap: break-word;
-    width: 250px;
-  }
-
-  .inputTitle {
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 1.22;
-    letter-spacing: 0.04em;
-    width: 250px;
   }
 
   .projectDescription {
@@ -226,36 +145,9 @@
     width: 100%;
     padding: 40px 30px 30px 70px;
   }
-  .createTitle {
-    display: block;
+
+  .createSprintTitle {
+    display: inline-block;
+    margin-left: 20px;
   }
-
-  .inputTitle {
-    width: 250px;
-  }
-
-  // .title {
-  //   max-width: 600px;
-  //   word-wrap: break-word;
-  // }
-}
-
-.inputTitle {
-  cursor: text;
-  border: none;
-  padding: 0;
-  box-sizing: border-box;
-  align-items: center;
-  background-color: transparent;
-  margin-right: 5px;
-}
-
-.inputTitle:focus {
-  outline: none;
-  border-bottom: 1px solid $accent-color;
-}
-
-.formChangeName {
-  margin: 0;
-  padding: 0;
 }

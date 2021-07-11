@@ -80,12 +80,12 @@ const OneProjectPage = () => {
               currentName={currentProject.name}
               onChangeName={onRenameProject}
             />
-            {isWide && (
-              <div className={styles.createSprint}>
-                <AddButton onClick={btnSprint} />
-                <h2 className={styles.createTitle}>Create a sprint</h2>
-              </div>
-            )}
+            <div className={styles.createSprintBtn}>
+              <AddButton onClick={btnSprint} />
+              {isWide && (
+                <p className={styles.createSprintTitle}>Create a sprint</p>
+              )}
+            </div>
           </div>
 
           <p className={styles.projectDescription}>

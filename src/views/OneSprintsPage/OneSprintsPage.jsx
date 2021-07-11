@@ -209,9 +209,9 @@ const OneSprintsPage = () => {
                 onChangeName={onRenameSprint}
               />
               {isWide && (
-                <div className={styles.createNewBtn}>
+                <div className={styles.createTaskBtn}>
                   <AddButton onClick={buttonHandlerTask} />
-                  <span className={styles.createTask}>Create a task</span>
+                  <p className={styles.createTaskTitle}>Create a task</p>
                 </div>
               )}
             </div>

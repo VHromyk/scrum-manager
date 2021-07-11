@@ -52,27 +52,63 @@
   fill: currentColor;
 }
 
-// Іконка додати людей
+.titleContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  min-height: 80px;
+}
+
+.projectDescription {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  word-wrap: break-word;
+
+  color: $text-main-color;
+}
+
+.addPeopleContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .addPeopleBtn {
+  color: $icon-without-bgc-color;
   background-color: transparent;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .addPeopleIcon {
+  margin-right: 10px;
   width: 20px;
   height: 20px;
-  fill: $icon-without-bgc-color;
+  fill: currentColor;
 }
 
-.titleContainer {
-  display: flex;
-  width: 300px;
-  height: 100px;
-  align-items: center;
+.addPeopleTitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
 }
+
 .createSprint {
   display: flex;
   align-items: center;
 }
+
 .titleButtons {
   display: flex;
   justify-content: space-between;
@@ -82,40 +118,45 @@
 
 .createTitle {
   display: none;
-  margin-right: 20px;
   margin-left: 20px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.22;
   letter-spacing: 0.04em;
+  color: $text-main-color;
 }
-.addPeopleContainer {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-}
-.addPeopleTitle {
-  margin-left: 10px;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.22;
-  letter-spacing: 0.04em;
-  text-decoration-line: underline;
-}
+
 .headerProject {
   width: 100%;
   padding-top: 30px;
   padding-bottom: 40px;
 }
 
-.helper {
-  position: absolute;
-  color: $error-text-color;
+.warningMessage {
+  text-align: center;
+
+  font-weight: 700;
   font-size: 12px;
-  top: 120px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  color: $warning-text-color;
 }
 
-@media (min-width: 320px) {
+@media screen and (min-width: 480px) {
+  .titleContainer {
+    min-height: 94px;
+    justify-content: flex-start;
+  }
+
+  .projectDescription {
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  .addPeopleContainer {
+    margin-bottom: 30px;
+  }
+
   .title {
     margin-right: 5px;
     font-weight: 500;
@@ -133,18 +174,12 @@
     letter-spacing: 0.04em;
     width: 210px;
   }
-  .descriptionProject {
-    // max-width: 280px;
-    width: 100%;
-    height: 52px;
-    font-size: 14px;
-    word-wrap: break-word;
-    font-size: 18px;
-    line-height: 1.22;
-    letter-spacing: 0.04em;
-    font-weight: 500;
+
+  .warningMessage {
+    font-size: 16px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .container {
     display: flex;
@@ -154,6 +189,11 @@
     width: 100%;
     padding: 40px 0px 40px 40px;
   }
+
+  .titleContainer {
+    min-height: 130px;
+  }
+
   .title {
     font-weight: 500;
     font-size: 36px;
@@ -171,17 +211,20 @@
     letter-spacing: 0.04em;
     width: 250px;
   }
-  .descriptionProject {
-    width: 452px;
-    height: 44px;
+
+  .projectDescription {
     font-size: 18px;
+  }
+
+  .warningMessage {
+    font-size: 22px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .headerProject {
     width: 100%;
-    padding: 40px 30px 44px 80px;
+    padding: 40px 30px 30px 70px;
   }
   .createTitle {
     display: block;
@@ -190,10 +233,7 @@
   .inputTitle {
     width: 250px;
   }
-  .descriptionProject {
-    width: 400px;
-    height: 66px;
-  }
+
   // .title {
   //   max-width: 600px;
   //   word-wrap: break-word;
@@ -218,13 +258,4 @@
 .formChangeName {
   margin: 0;
   padding: 0;
-}
-
-.warningMessage {
-  text-align: center;
-
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: $text-light-theme-color;
 }

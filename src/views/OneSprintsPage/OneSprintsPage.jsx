@@ -211,7 +211,7 @@ const OneSprintsPage = () => {
               {isWide && (
                 <div className={styles.createNewBtn}>
                   <AddButton onClick={buttonHandlerTask} />
-                  <span className={styles.createTask}>Create a Task</span>
+                  <span className={styles.createTask}>Create a task</span>
                 </div>
               )}
             </div>

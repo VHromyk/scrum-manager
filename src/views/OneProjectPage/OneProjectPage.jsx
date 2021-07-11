@@ -32,6 +32,7 @@ const OneProjectPage = () => {
     dispatch(sprintsOperations.fetchSprints(projectId));
   }, [dispatch, projectId]);
 
+  const isLoadingSprints = useSelector(sprintsSelectors.getIsLoading);
   const sprints = useSelector(sprintsSelectors.getAllSprints);
 
   const projects = useSelector(projectsSelectors.getAllProjects);
@@ -102,14 +103,14 @@ const OneProjectPage = () => {
               <p className={styles.addPeopleTitle}>Add people</p>
             </IconButton>
           </div>
-          {sprints.length !== 0 ? (
-            <SprintsList />
-          ) : (
+
+          {!isLoadingSprints && sprints.length === 0 && (
             <p className={styles.warningMessage}>
               This project has no sprints yet. To create a sprint, use the
               button above
             </p>
           )}
+          {sprints.length !== 0 && <SprintsList />}
         </div>
 
         {createProject && <ModalProjects onClick={buttonCloseHandler} />}

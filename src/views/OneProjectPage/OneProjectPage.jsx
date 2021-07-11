@@ -106,8 +106,8 @@ const OneProjectPage = () => {
             <SprintsList />
           ) : (
             <p className={styles.warningMessage}>
-              The project has no sprints yet. To create a sprint, use the button
-              above
+              This project has no sprints yet. To create a sprint, use the
+              button above
             </p>
           )}
         </div>

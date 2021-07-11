@@ -11,10 +11,6 @@ import PublicRoute from './components/PublicRoute';
 import routes from './routes';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import AddPeople from './components/AddPeople';
-// import OneProjectPage from './views/OneProjectPage';
-// import SprintModal from './components/SprintModal';
-
 const RegisterPage = lazy(() =>
   import('./views/RegisterPage' /* webpackChunkName: 'register-page' */),
 );

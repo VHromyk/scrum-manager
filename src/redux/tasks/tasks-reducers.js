@@ -19,7 +19,7 @@ const items = createReducer([], {
     ),
 });
 
-const loading = createReducer(false, {
+const isLoading = createReducer(false, {
   [tasksActions.fetchTasksRequest]: () => true,
   [tasksActions.fetchTasksSuccess]: () => false,
   [tasksActions.fetchTasksError]: () => false,
@@ -66,6 +66,6 @@ export default combineReducers({
   items,
   filter,
   currentDay,
-  loading,
+  isLoading,
   error,
 });

@@ -75,13 +75,9 @@
 }
 
 .sprintRowInput {
-  // TODO дублюється клас
   width: 60px;
   text-align: right;
-}
 
-.sprintRowInput {
-  // TODO дублюється клас
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid rgba(24, 28, 39, 0.1);
@@ -98,6 +94,7 @@
   color: $sprint-cart-text-color;
 
   transition: all 0.3s;
+
   &:valid:not(:focus) + .labelText {
     color: rgba(24, 28, 39, 0.6);
     font-size: 13px;
@@ -202,6 +199,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .sprintRowInput {
+    text-align: left;
+  }
   .sprintTitle {
     padding: 0px;
     margin: 0px;

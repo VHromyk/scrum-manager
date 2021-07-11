@@ -9,13 +9,11 @@ function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
   const months = ['JUL', 'AUG'];
 
-  console.log(getAll);
+  console.log('Возьми все даты:', getAll);
 
-  const arrOfDate = arrayOfDate();
-
-  for (let i = 0; i <= arrOfDate.length; i += 1) {
-    console.log(arrOfDate[i]);
-  }
+  // for (let i = 0; i <= arrOfDate.length; i += 1) {
+  //   console.log(arrOfDate[i]);
+  // }
 
   console.log('Текущая дата:', currentDate);
 
@@ -38,52 +36,47 @@ function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
         // пока первый индекс больше 0 пушим в массив числа;
       }
     }
-    console.log('Массив элементов для красной линии:', arr);
+    console.log('Массив для красной линии:', arr);
     return arr;
   };
 
-  // daysRedLine();
+  daysRedLine();
 
   const daysBlueLine = () => {
     let arrBlueLine = [];
+    arrBlueLine.push(sumRedLine);
     let firstIndex = sumRedLine;
-    arrBlueLine.push(firstIndex);
-    const tasksForCurrentDay = getAll.filter(
-      item => item.taskDate === currentDate,
-    );
-    const spentTimeForCurrentDay = tasksForCurrentDay.reduce(function (
-      cnt,
-      getAll,
-    ) {
-      return cnt + getAll.spentTime;
-    },
-    0);
-    console.log('Сумма потраченого времени:', spentTimeForCurrentDay);
-    for (let i = 0; i <= tasksForCurrentDay.length; i += 1) {
-      firstIndex = firstIndex - spentTimeForCurrentDay;
-      arrBlueLine.push(firstIndex);
-    }
 
-    // let multipleHoursWasted = [5, 8, 13, 24];
-    // _.flattenDeep(_.map(getAll, 'hoursWastedPerDay'));
-    // multipleHoursWasted = _.groupBy(multipleHoursWasted, 'currentDay');
-    // arrBlueLine = _.map(multipleHoursWasted, i => {
-    //   return _.sumBy(i, i => i.singleHoursWasted);
-    // });
-    console.log('Массив чисел для синей линии:', arrBlueLine);
+    let multipleHoursWasted = _.groupBy(getAll, 'taskDate');
+    console.log('По текущему дню:', multipleHoursWasted);
+
+    const arrOfDate = arrayOfDate();
+
+    for (let i = 0; i <= arrOfDate.length; i += 1) {
+      if (arrOfDate[i] in multipleHoursWasted) {
+        let date = arrOfDate[i];
+        const totalNumber = multipleHoursWasted[date].reduce(
+          (acc, value) => acc + value.spentTime,
+          0,
+        );
+        firstIndex = firstIndex - totalNumber;
+        arrBlueLine.push(firstIndex);
+      }
+    }
+    console.log('Массив для синей линии:', arrBlueLine);
     return arrBlueLine;
   };
 
   daysBlueLine();
 
-  const labelsDate = getAll.map(i => i.currentDay);
+  // const labelsDate = getAll.map(i => i.currentDay);
 
-  const result = labelsDate.map(day => {
-    const arr = day.split('-');
-    return `${arr[2]} ${months[arr[1].replace(/(^|\s)0/g, '$1')]}`;
-  });
+  // const result = labelsDate.map(day => {
+  //   const arr = day.split('-');
+  //   return `${arr[2]} ${months[arr[1].replace(/(^|\s)0/g, '$1')]}`;
+  // });
   const data = {
-    labels: result,
+    labels: currentDate,
     datasets: [
       {
         label: 'Actual remaining labor in hours',
@@ -104,7 +97,7 @@ function Diagram({ onCloseModal, duration, currentDate, arrayOfDate }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        // data: [sumRedLine, ...daysBlueLine()],
+        data: daysBlueLine(),
       },
       {
         label: 'Planned remaining work in hours',

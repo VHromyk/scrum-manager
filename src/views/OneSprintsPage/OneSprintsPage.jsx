@@ -232,7 +232,7 @@ const OneSprintsPage = () => {
           />
         )}
         {showDiagram && (
-          <ModalBackdrop onClose={btnCloseDiagram}>
+          <ModalBackdrop onClose={btnCloseDiagram} styles="overflowX: scroll">
             <Diagram
               duration={currentSprint.duration}
               currentDate={currentDate}

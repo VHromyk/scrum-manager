@@ -4,10 +4,8 @@ import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram({ onCloseModal, duration, arrayOfDate }) {
+function Diagram({ duration, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
-
-  console.log('Возьми все даты:', getAll);
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
     return cnt + getAll.scheduledHours;

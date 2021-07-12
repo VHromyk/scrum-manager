@@ -20,6 +20,7 @@ import EditNameForm from '../../components/EditNameForm';
 import SprintTable from '../../components/SprintTable';
 import TaskModal from '../../components/TaskModal';
 import Diagram from '../../components/Diagram';
+import ModalBackdrop from '../../components/ModalBackdrop';
 import styles from './OneSprintsPage.module.scss';
 
 const OneSprintsPage = () => {
@@ -231,12 +232,13 @@ const OneSprintsPage = () => {
           />
         )}
         {showDiagram && (
-          <Diagram
-            onCloseModal={btnCloseDiagram}
-            duration={currentSprint.duration}
-            currentDate={currentDate}
-            arrayOfDate={doArrayOfDate}
-          />
+          <ModalBackdrop onClose={btnCloseDiagram}>
+            <Diagram
+              duration={currentSprint.duration}
+              currentDate={currentDate}
+              arrayOfDate={doArrayOfDate}
+            />
+          </ModalBackdrop>
         )}
         {/* Кнопка додати проект */}
         <button

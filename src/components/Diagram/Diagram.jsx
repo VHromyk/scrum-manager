@@ -4,10 +4,19 @@ import styles from './Diagram.module.css';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
-function Diagram({ onCloseModal, duration, arrayOfDate }) {
+function Diagram({ duration, arrayOfDate }) {
   const getAll = useSelector(tasksSelectors.getTasks);
 
-  console.log('Возьми все даты:', getAll);
+  const datesArr = arrayOfDate();
+
+  const cutDatesArr = arr => {
+    let transformDatesArr = [];
+    for (let i = 0; i < arr.length; i += 1) {
+      let transformDate = arr[i];
+      transformDatesArr.push(transformDate.slice(0, 5));
+    }
+    return transformDatesArr;
+  };
 
   const sumRedLine = getAll.reduce(function (cnt, getAll) {
     return cnt + getAll.scheduledHours;
@@ -53,7 +62,7 @@ function Diagram({ onCloseModal, duration, arrayOfDate }) {
   };
 
   const data = {
-    labels: arrayOfDate(),
+    labels: cutDatesArr(datesArr),
     datasets: [
       {
         label: 'Actual remaining labor in hours',

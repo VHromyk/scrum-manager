@@ -1,11 +1,26 @@
-.chartContainer {
-  background-color: white;
-  padding: 20px;
-  width: 100%;
-}
-
 @media screen and (max-width: 767px) {
   .chartContainer {
-    width: 1000px;
+    width: 830px;
+    height: auto;
+    margin: auto;
+    padding-top: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .chartContainer {
+    width: 600px;
+    height: auto;
+    margin: auto;
+    padding-top: 5px;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .chartContainer {
+    width: 900px;
+    height: auto;
+    margin: auto;
+    padding-top: 5px;
   }
 }

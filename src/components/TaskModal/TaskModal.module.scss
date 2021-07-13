@@ -12,8 +12,8 @@
   background-color: transparent;
   border-bottom: 1px solid $input-field-border-color;
   &::placeholder {
-    font-size: 18px;
-    line-height: 1.22;
+    font-size: 16px;
+    line-height: 1.25;
     letter-spacing: 0.04em;
     color: $text-light-theme-color;
   }
@@ -30,11 +30,6 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .input2 {
-    width: 220px;
-  }
-}
 .helperText {
   position: absolute;
   color: $error-text-color;
@@ -57,10 +52,6 @@
   color: $text-dark-theme-color;
   cursor: pointer;
 }
-// .button1:hover {
-//   box-shadow: none;
-//   background-color: $text-main-color;
-// }
 
 .button2 {
   width: 154px;
@@ -76,4 +67,11 @@
 }
 .button2:hover {
   color: $accent-color;
+}
+
+@media screen and(min-width: 768px) {
+  .input2::placeholder {
+    font-size: 18px;
+    line-height: 1.22;
+  }
 }

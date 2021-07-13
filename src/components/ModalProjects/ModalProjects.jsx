@@ -35,7 +35,7 @@ const ModalProjects = ({ onCloseModal }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const nameLengthLimits = name.length >= 4 && name.length <= 35;
+    const nameLengthLimits = name.length >= 4 && name.length <= 30;
     const descriptionLengthLimits =
       description.length >= 4 && description.length <= 100;
 
@@ -88,7 +88,7 @@ const ModalProjects = ({ onCloseModal }) => {
           {validName === 'invalidLength' && (
             <p
               className={styles.helper}
-            >{`*Enter name between 4 and 40 characters long. Current length is ${name.length} characters`}</p>
+            >{`*Enter name between 4 and 30 characters long. Current length is ${name.length} characters`}</p>
           )}
         </div>
 
@@ -107,7 +107,8 @@ const ModalProjects = ({ onCloseModal }) => {
           )}
           {validText === 'invalidLength' && (
             <p className={styles.helper2}>
-              *Description length should be at least 4 characters
+              *Description length should be at least 4 characters. Max length
+              100 characters
             </p>
           )}
         </div>

@@ -1,24 +1,8 @@
 @import '../../styles/shared.scss';
 
 .sprintCard {
-  width: 100%; // TODO дублюється клас
+  width: 100%;
 }
-
-// .sprintCard {
-//   // TODO дублюється клас
-//   position: relative;
-//   // width: 280px;
-//   height: 214px;
-//   background: $text-dark-theme-color;
-//   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-//   border-radius: 5px;
-//   list-style: none;
-//   padding-bottom: 10px;
-//   &:hover,
-//   &:focus {
-//     box-shadow: 0px 0px 15px 1px #606264;
-//   }
-// }
 
 .sprintCardList {
   list-style: none;
@@ -101,10 +85,13 @@
   }
 }
 
-.deleteSprintBtn {
+.deleteTaskBtn {
   position: absolute;
   bottom: 10px;
   right: 10px;
+
+  width: 20px;
+  height: 20px;
 
   border-radius: 50%;
 
@@ -118,25 +105,18 @@
   &:focus {
     color: $accent-color;
     background-color: $icon-dark-theme-bcg-color;
-    // box-shadow: $dark-theme-box-shadow;
+    box-shadow: $light-bcg-box-shadow;
   }
 }
 
-.deleteSprintIcon {
+.deleteTaskIcon {
   width: 20px;
   height: 20px;
   fill: currentColor;
 }
 
-// @media screen and (min-width: 480px) {
-//   .SprintCard {
-//     width: 440px;
-//   }
-// }
-
 @media screen and (max-width: 767px) {
   .sprintTitle {
-    // width: 240px;
     font-size: 36px;
     line-height: 44px;
     padding-top: 17px;
@@ -156,14 +136,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  // .sprintCard {
-  //   // width: 216px;
-  //   width: calc((100% - (4 * 15px)) / 2);
-  //   height: 284px;
-  //   margin: 15px;
-  //   // margin-bottom: 20px;
-  // }
-
   .sprintTitle {
     width: 176px;
 
@@ -189,10 +161,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  //   .sprintCard:nth-child(even) {
-  //     width: 216px;
-  //     height: 306px;
-  //   }
   .sprintTitle {
     min-height: 74px;
   }
@@ -218,7 +186,6 @@
   .sprintCardList {
     display: flex;
     position: relative;
-    // flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0px;
@@ -230,69 +197,7 @@
     }
   }
 
-  // .sprintCard {
-  //   // width: 869px;
-  //   align-items: center;
-  //   height: 95px;
-
-  //   padding-top: 25px;
-  //   padding-bottom: 25px;
-  //   padding-left: 50px;
-  //   padding-right: 30px;
-  // }
-  // .sprintItem1 {
-  //   position: absolute;
-  //   margin-top: 0;
-  //   right: 0px;
-  //   // padding: 0px;
-  // }
-  // .sprintCardList {
-  //   display: flex;
-  //   // flex-direction: row;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   // margin: 0;
-  //   // padding: 0px;
-  //   li {
-  //     // margin: 0;
-  //     padding: 15px;
-  //     align-items: center;
-  //   }
-  // }
-
-  // .sprintItem,
-  // .sprintTitle {
-  //   width: 100px;
-
-  //   margin: 0;
-  //   padding: 0;
-  // }
-
-  // .sprintNameInput {
-  //   width: 170px;
-  // }
-
-  // .sprintSpan {
-  //   display: none;
-  // }
-
-  // .sprintRowInput {
-  //   margin: 0;
-  //   padding: 0;
-  // }
-
-  // .deleteSprintBtn {
-  //   position: relative;
-  //   align-items: center;
-
-  //   top: 15px;
-  //   bottom: 51px;
-  // }
-  .deleteSprintBtn {
-    position: absolute;
-    top: 0px;
-    height: 55px;
-    // top: -50%;
-    // border-radius: 50%;
+  .deleteTaskBtn {
+    bottom: 16px;
   }
 }

@@ -45,20 +45,6 @@
 
 .arrowLeftBtn {
   margin-right: 20px;
-  transition: all $transition-duration $timing-function;
-  &:hover,
-  &:focus {
-    fill: $accent-color;
-  }
-}
-
-.arrowRightBtn {
-  // margin-right: 69px;
-  transition: all $transition-duration $timing-function;
-  &:hover,
-  &:focus {
-    fill: $accent-color;
-  }
 }
 
 .arrowRightBtn,
@@ -66,22 +52,25 @@
   background: transparent;
   width: 15px;
   height: 15px;
+  transition: all $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .arrowLeftIcon,
 .arrowRightIcon {
   position: absolute;
-  background: transparent;
   width: 15px;
   height: 15px;
-  // fill: $icon-without-bgc-color;
+
+  fill: currentColor;
+  background: transparent;
 }
 
 .formContainer {
-  // padding-top: 20px;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
   display: block;
 
   @media screen and (max-width: 767px) {
@@ -141,8 +130,8 @@
   top: 5px;
   left: 0px;
   position: absolute;
+
   border: none;
-  cursor: pointer;
   background: transparent;
 }
 
@@ -159,16 +148,11 @@
 }
 
 .searchIcon {
-  // fill: $accent-color;
   width: 20px;
   height: 20px;
   fill: $icon-light-theme-bcg-color;
 
   transition: all $transition-duration $timing-function;
-  // &:hover,
-  // &:focus {
-  //   fill: $accent-color;
-  // }
 }
 
 .analyticsBtn,
@@ -198,39 +182,32 @@
   &:focus {
     color: $accent-color;
     background-color: $icon-dark-theme-bcg-color;
-    box-shadow: $dark-theme-box-shadow;
+    box-shadow: $light-bcg-box-shadow;
   }
 }
 
-.analyticsIcon,
 .addIcon {
   width: 18px;
   height: 18px;
   fill: currentColor;
 }
 
+.analyticsIcon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
 .addButton {
   position: fixed;
   right: 10%;
-  // top: 0%;
   transform: translateX(-10%);
-  // right: 20px;
-  // top: calc(100% - 125px);
-  // z-index: 9999;
 }
 
 .analyticsBtn {
   position: fixed;
-  // left: 20px;
   left: 10%;
-  // top: 0%;
   transform: translateX(-10%);
-  // top: calc(100% - 125px);
-  // z-index: 9999;
-  // padding: 2em;
-  // left: 50%;
-  // bottom: 0%;
-  // transform: translateX(-50%);
 }
 
 @media screen and (min-width: 320px) {
@@ -260,12 +237,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    // padding-top: 19px;
   }
-
-  // .arrowRightBtn {
-  //   margin-right: 39px;
-  // }
 
   .searchForm {
     margin-left: 15px;
@@ -279,11 +251,6 @@
     width: 214px;
     padding: 5px 30px 5px 0px;
   }
-
-  // .sprintName {
-  //   margin-right: 43px;
-  //   // width: 350px;
-  // }
 
   .createTaskTitle {
     display: none;
@@ -303,7 +270,6 @@
 
   .sprintsWrapper {
     display: flex;
-    // justify-content: baseline;
   }
 
   .addButton {
@@ -313,9 +279,6 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .analyticsBtn {
-    // position: absolute;
-    // right: 55px;
-    // top: calc(100% - 100px);
     right: 10%;
     left: auto;
     position: fixed;
@@ -327,7 +290,6 @@
 
 @media screen and (min-width: 1280px) {
   .sprintsSideContainer {
-    // width: 100%;
     padding: 19px 20px 20px 70px;
   }
 
@@ -337,9 +299,6 @@
   }
 
   .analyticsBtn {
-    // position: absolute;
-    // right: 75px;
-    // top: calc(100% - 115px);
     right: 10%;
     left: auto;
     position: fixed;

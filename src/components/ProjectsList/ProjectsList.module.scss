@@ -10,18 +10,15 @@
   position: relative;
   width: 100%;
 
-  letter-spacing: 0.04em;
   border-radius: 5px;
 
   color: $text-dark-theme-color;
   background-repeat: no-repeat;
-
   transition: box-shadow $transition-duration $timing-function;
 
   &:hover,
   &:focus {
-    // box-shadow: $light-theme-box-shadow;
-    box-shadow: 0px 0px 20px 4px #666564;
+    box-shadow: $light-theme-box-shadow-hover;
   }
 }
 

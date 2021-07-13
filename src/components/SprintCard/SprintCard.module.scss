@@ -1,136 +1,96 @@
 @import '../../styles/shared.scss';
 
-.SprintCard {
-  position: relative;
-  background: $components-bcg-color;
-  // box-shadow: $light-theme-box-shadow;
-  border-radius: 5px;
+.sprintLink {
+  display: block;
+  padding: 20px 20px 36px 20px;
+  color: inherit;
 }
 
-.SprintCardList {
+.sprintName {
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  word-wrap: break-word;
+
+  color: $text-main-color;
+}
+
+.sprintDetailsList {
   list-style: none;
   padding: 0;
 }
 
-.SprintTitle {
-  min-height: 112px;
-  word-wrap: break-word;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: $text-main-color;
-  padding-top: 18px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 28px;
-}
-
-.SprintItem {
+.sprintDetails {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 12px;
-  display: flex;
   align-items: center;
-  letter-spacing: 0.04em;
+
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
 
   color: $sprint-cart-text-color;
 
-  &:last-child {
-    padding-bottom: 40px;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sprintName {
+    margin-bottom: 28px;
+    min-height: 65px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .sprintDetails {
+    font-size: 14px;
+    line-height: 1.21;
+
+    &:not(:last-child) {
+      margin-bottom: 36px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sprintLink {
+    padding: 20px 30px 36px 30px;
+  }
+
+  .sprintDetails:not(:last-child) {
+    margin-bottom: 20px;
   }
 }
 
 .deleteSprintBtn {
   position: absolute;
-  bottom: 10px;
   right: 10px;
-  background: transparent;
-  width: 20px;
-  height: 20px;
+  bottom: 10px;
+
   border-radius: 50%;
-  z-index: 10;
-}
-.deleteSprintIcon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-// .SprintCard {
-//   width: 100%;
-// }
-// @media screen and (min-width: 480px) {
-//   .SprintCard {
-//     width: 440px;
-//   }
-// }
-
-@media screen and (max-width: 767px) {
-  // .SprintCard {
-  //   width: 280px;
-  // }
-  .SprintTitle {
-    font-size: 16px;
-    line-height: 20px;
-    padding-top: 17px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-  }
-  .SprintItem {
-    font-size: 10px;
-    padding-bottom: 10px;
-  }
-  .SprintItem:last-child {
-    padding-bottom: 39px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .SprintCard {
-    width: 216px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .SprintCard {
-    width: 270px;
-  }
-  .SprintItem {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-.deleteSprintBtn {
-  border-radius: 50%;
-
   color: $icon-light-theme-bcg-color;
   background-color: transparent;
   transition: color $transition-duration $timing-function,
     background-color $transition-duration $timing-function,
     box-shadow $transition-duration $timing-function;
 
-  // &:hover,
-  // &:focus {
-  //   color: $accent-color;
-  //   background-color: $icon-dark-theme-bcg-color;
-  //   box-shadow: $dark-theme-box-shadow;
-  // }
   &:hover,
   &:focus {
     color: $accent-color;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px #ffffff;
+    background-color: $icon-dark-theme-bcg-color;
+    box-shadow: $light-bcg-box-shadow;
   }
+}
+
+.deleteSprintIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }

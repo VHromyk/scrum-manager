@@ -69,11 +69,11 @@ const TaskCard = ({
       </li>
       <li className={styles.sprintItem}>
         <IconButton
-          classes={styles.deleteSprintBtn}
+          classes={styles.deleteTaskBtn}
           onClick={handleDeleteTask}
           aria-label="delete sprint button"
         >
-          <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
+          <SvgComponent name="delete" classes={styles.deleteTaskIcon} />
         </IconButton>
       </li>
     </ul>

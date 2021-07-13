@@ -2,7 +2,7 @@
 
 .projectLink {
   display: block;
-  height: 136px; // -
+  height: 136px;
   padding: 10px;
 
   color: inherit;
@@ -39,11 +39,10 @@
 }
 
 .deleteProjectBtn {
-  border: none;
-  outline: none;
   position: absolute;
   right: 10px;
   bottom: 10px;
+
   border-radius: 50%;
   color: $icon-dark-theme-bcg-color;
   background-color: transparent;
@@ -51,16 +50,11 @@
     background-color $transition-duration $timing-function,
     box-shadow $transition-duration $timing-function;
 
-  // &:hover,
-  // &:focus {
-  //   background-color: $accent-color;
-  //   box-shadow: $dark-theme-box-shadow;
-  // }
   &:hover,
   &:focus {
     color: $accent-color;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px #ffffff;
+    background-color: $button-hover-bcg-color;
+    box-shadow: $dark-bcg-box-shadow;
   }
 }
 

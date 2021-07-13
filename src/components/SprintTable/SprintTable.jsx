@@ -11,7 +11,7 @@ const SprintTable = ({ currentDate }) => {
   return (
     <div className={styles.sprintNameContainer}>
       <ul className={styles.sprintHeader}>
-        <li className={styles.sprintFieldNameTask}>Task</li>
+        <li className={styles.sprintHeaderTask}>Task</li>
         <li className={styles.sprintFieldName}>Sheduled hours</li>
         <li className={styles.sprintFieldName}>Spent hour/day</li>
         <li className={styles.sprintFieldName}>Hours spent</li>

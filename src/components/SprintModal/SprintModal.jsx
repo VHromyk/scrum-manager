@@ -29,7 +29,7 @@ const SprintModal = ({ onCloseModal }) => {
     const startTime = new Date();
     const endTime = new Date();
 
-    const nameLengthLimits = name.length > 3 && name.length < 41;
+    const nameLengthLimits = name.length >= 4 && name.length <= 30;
 
     let durationNumber = Number(duration);
     let expression = /^\d+/;
@@ -75,10 +75,6 @@ const SprintModal = ({ onCloseModal }) => {
     onCloseModal();
   };
 
-  // const showCalendar = () => {
-  //   Calendar(currentTime, setcurrentTime);
-  // };
-
   return (
     <ModalBackdrop onClose={onCloseModal}>
       <div className={styles.modal}>
@@ -101,7 +97,7 @@ const SprintModal = ({ onCloseModal }) => {
             {validName === 'invalidLength' && (
               <p
                 className={styles.helper}
-              >{`*Enter name between 4 and 40 characters long. Current length is ${sprintName.length} characters`}</p>
+              >{`*Enter name between 4 and 30 characters long. Current length is ${sprintName.length} characters`}</p>
             )}
           </div>
 

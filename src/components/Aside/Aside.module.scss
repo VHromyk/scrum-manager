@@ -28,19 +28,13 @@
   transition: color $transition-duration $timing-function;
   .arrowBtn {
     color: $accent-color;
-    transition: color $transition-duration $timing-function;
   }
 }
 
 .arrowBtn {
   color: $icon-without-bgc-color;
   background-color: transparent;
-  // transition: color $transition-duration $timing-function;
-
-  // &:hover,
-  // &:focus {
-  //   color: $accent-color;
-  // }
+  transition: color $transition-duration $timing-function;
 }
 
 .arrowIcon {

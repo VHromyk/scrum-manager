@@ -1,13 +1,12 @@
-// TaskModal.jsx;
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { tasksOperations } from '../../redux/tasks';
 import ModalBackdrop from '../ModalBackdrop';
 import IconButton from '../IconButton';
 import SvgComponent from '../SvgComponent';
-import styles from './TaskModal.module.scss';
 import Button from '../Button';
+import styles from './TaskModal.module.scss';
 
 function TaskModal({ onCloseModal, dateTask }) {
   const [nameTask, setNameTask] = useState('');
@@ -41,7 +40,7 @@ function TaskModal({ onCloseModal, dateTask }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const nameLengthLimits = nameTask.length > 3 && nameTask.length < 41;
+    const nameLengthLimits = nameTask.length >= 4 && nameTask.length <= 30;
     let durationNumber = Number(durationTask);
     let expression = /^\d+/;
 
@@ -60,7 +59,7 @@ function TaskModal({ onCloseModal, dateTask }) {
       return;
     } else if (
       durationNumber === 0 ||
-      durationNumber >= 24 ||
+      durationNumber > 24 ||
       expression.test(durationNumber) === false
     ) {
       setValidDuration('invalidNumber');
@@ -100,7 +99,7 @@ function TaskModal({ onCloseModal, dateTask }) {
           {validTask === 'invalidLength' && (
             <p
               className={styles.helper}
-            >{`*Enter name between 4 and 40 characters long. Current length is ${nameTask.length} characters`}</p>
+            >{`*Enter name between 4 and 30 characters long. Current length is ${nameTask.length} characters`}</p>
           )}
         </div>
         <div className={styles.containerInput2}>

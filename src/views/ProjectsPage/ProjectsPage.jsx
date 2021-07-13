@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
@@ -6,7 +6,6 @@ import Container from '../../components/Container';
 import ProjectList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
 import ModalProjects from '../../components/ModalProjects';
-// import Footer from '../../components/Footer';
 import styles from './ProjectsPage.module.scss';
 
 const ProjectsPage = () => {
@@ -50,7 +49,6 @@ const ProjectsPage = () => {
 
         {showModal && <ModalProjects onCloseModal={buttonCloseHandler} />}
       </Container>
-      {/* <Footer /> */}
     </>
   );
 };

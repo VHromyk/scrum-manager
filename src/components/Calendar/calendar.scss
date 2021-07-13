@@ -311,7 +311,7 @@
 .react-calendar__tile--active:enabled:focus {
   color: $accent-color;
   background-color: $icon-dark-theme-color;
-  box-shadow: $dark-theme-box-shadow;
+  box-shadow: $light-bcg-box-shadow;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {

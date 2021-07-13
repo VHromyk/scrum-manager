@@ -86,7 +86,7 @@
   font-size: 18px;
   line-height: 1.22;
   letter-spacing: 0.04em;
-  box-shadow: $dark-theme-box-shadow;
+  box-shadow: $light-bcg-box-shadow;
   color: $text-dark-theme-color;
   cursor: pointer;
 }
@@ -115,15 +115,21 @@
   position: absolute;
   top: 10px;
   right: 10px;
+
+  color: $icon-without-bgc-color;
   background-color: transparent;
-  cursor: pointer;
+  transition: color $transition-duration $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
 .closeIcon {
   width: 18px;
   height: 18px;
-  fill: $icon-without-bgc-color;
-  cursor: pointer;
+  fill: currentColor;
 }
 
 .addedUsersTitle {

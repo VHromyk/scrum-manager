@@ -158,36 +158,9 @@
     height: 20px;
     fill: $icon-light-theme-bcg-color;
   }
-
-  .deleteSprintBtn {
-    position: relative;
-    align-items: center;
-
-    top: 15px;
-    bottom: 51px;
-  }
 }
 
-.deleteSprintBtn,
-.projectBtn {
-  border-radius: 50%;
-
-  color: $icon-light-theme-bcg-color;
-  background-color: transparent;
-  transition: color $transition-duration $timing-function,
-    background-color $transition-duration $timing-function,
-    box-shadow $transition-duration $timing-function;
-
-  &:hover,
-  &:focus {
-    color: $accent-color;
-    background-color: $icon-dark-theme-bcg-color;
-    box-shadow: $dark-theme-box-shadow;
-  }
-}
-
-.deleteSprintIcon,
-.projectIcon {
+.deleteSprintIcon {
   width: 20px;
   height: 20px;
   fill: currentColor;

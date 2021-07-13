@@ -55,12 +55,6 @@
 <symbol id="arrow-right" viewBox="0 0 24 24">
 <path d="M6.49 20.13l1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13z"></path>
 </symbol>
-<!-- <symbol id="arrow-up" viewBox="0 0 48 32">
-<path d="M24 0l20.785 30h-41.569l20.785-30z"></path>
-</symbol>
-<symbol id="arrow-down" viewBox="0 0 48 32">
-<path d="M24 32l-20.785-30h41.569l-20.785 30z"></path>
-</symbol> -->
 <symbol id="done" viewBox="0 0 24 24">
 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
 </symbol>

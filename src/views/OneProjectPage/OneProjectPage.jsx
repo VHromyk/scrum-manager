@@ -16,6 +16,7 @@ import EditNameForm from '../../components/EditNameForm';
 import SprintModal from '../../components/SprintModal';
 import ModalProjects from '../../components/ModalProjects';
 import AddPeople from '../../components/AddPeople';
+import Spinner from '../../components/Spinner';
 import styles from './OneProjectPage.module.scss';
 
 const OneProjectPage = () => {
@@ -104,13 +105,14 @@ const OneProjectPage = () => {
             </IconButton>
           </div>
 
+          {isLoadingSprints && <Spinner />}
           {!isLoadingSprints && sprints.length === 0 && (
             <p className={styles.warningMessage}>
               This project has no sprints yet. To create a sprint, use the
               button above
             </p>
           )}
-          {sprints.length !== 0 && <SprintsList />}
+          {!isLoadingSprints && sprints.length !== 0 && <SprintsList />}
         </div>
 
         {createProject && <ModalProjects onClick={buttonCloseHandler} />}

@@ -5,7 +5,7 @@ import styles from './ModalBackdrop.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalBackdrop = ({ onClose, children }) => {
+const ModalBackdrop = ({ onClose, children, ...allyProps }) => {
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -29,7 +29,11 @@ const ModalBackdrop = ({ onClose, children }) => {
   };
 
   return createPortal(
-    <div className={styles.backdrop} onClick={handleOverlayClick}>
+    <div
+      className={styles.backdrop}
+      onClick={handleOverlayClick}
+      {...allyProps}
+    >
       {children}
     </div>,
     modalRoot,

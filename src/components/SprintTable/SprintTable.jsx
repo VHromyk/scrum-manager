@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { tasksSelectors } from '../../redux/tasks';
 import TasksList from '../TasksList';
+import Spinner from '../../components/Spinner';
 import styles from './SprintTable.module.scss';
 
 const SprintTable = ({ currentDate }) => {
@@ -20,12 +21,15 @@ const SprintTable = ({ currentDate }) => {
         <hr className={styles.headerLine} />
       </div>
 
+      {isLoadingTasks && <Spinner />}
       {!isLoadingTasks && tasks.length === 0 && (
         <p className={styles.warningMessage}>
           This sprint has no tasks yet. To create a task, use the button above
         </p>
       )}
-      {tasks.length !== 0 && <TasksList currentDate={currentDate} />}
+      {!isLoadingTasks && tasks.length !== 0 && (
+        <TasksList currentDate={currentDate} />
+      )}
     </div>
   );
 };

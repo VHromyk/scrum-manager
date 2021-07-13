@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import tasksSelectors from '../../redux/tasks/tasks-selectors';
-import styles from './Diagram.module.css';
+import styles from './Diagram.module.scss';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash';
 
@@ -124,7 +124,7 @@ function Diagram({ duration, arrayOfDate }) {
         {
           scaleLabel: {
             display: true,
-            labelString: 'Человеко-часы',
+            labelString: 'man-hours',
             fontFamily: "'Montserrat', 'sans-serif'",
             fontSize: 16,
             fontColor: '#181C27',

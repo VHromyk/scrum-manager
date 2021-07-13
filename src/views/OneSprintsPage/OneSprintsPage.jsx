@@ -23,6 +23,10 @@ import Diagram from '../../components/Diagram';
 import ModalBackdrop from '../../components/ModalBackdrop';
 import styles from './OneSprintsPage.module.scss';
 
+const backdropStyles = {
+  overflowX: 'scroll',
+};
+
 const OneSprintsPage = () => {
   const [createSprint, setCreateSprint] = useState(false);
   const [createTask, setCreateTask] = useState(false);
@@ -258,7 +262,7 @@ const OneSprintsPage = () => {
           />
         )}
         {showDiagram && (
-          <ModalBackdrop onClose={btnCloseDiagram} styles="overflowX: scroll">
+          <ModalBackdrop onClose={btnCloseDiagram} style={backdropStyles}>
             <Diagram
               duration={currentSprint.duration}
               currentDate={currentDate}

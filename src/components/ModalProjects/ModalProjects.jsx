@@ -18,11 +18,6 @@ const ModalProjects = ({ onCloseModal }) => {
 
   const handleInputChange = event => {
     const valueInput = event.currentTarget.name;
-    // console.log('name.length:', name.length);
-    // console.log('description.length:', description.length);
-
-    // const nameLengthLimits = name.length > 3 && name.length < 41;
-    // const descriptionLengthLimits = description.length > 3;
 
     switch (valueInput) {
       case 'project-name':
@@ -35,48 +30,10 @@ const ModalProjects = ({ onCloseModal }) => {
       default:
         return;
     }
-
-    // if (name && !nameLengthLimits) {
-    //   setValidName('invalidLength');
-    //   return;
-    // } else {
-    //   setValidName('valid');
-    // }
-
-    // if (description && !descriptionLengthLimits) {
-    //   setValidText('invalidLength');
-    //   return;
-    // } else {
-    //   setValidText('valid');
-    // }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    //  if (validName === 'invalidLength') {
-    //    toast.error('Fill the fields correctly');
-    //    return;
-    //  }
-
-    //  if (validText === 'invalidLength') {
-    //    toast.error('Fill the fields correctly');
-    //    return;
-    // }
-
-    // if (!name) {
-    //   setValidName('invalid');
-    //   return;
-    // } else {
-    //   setValidName('valid');
-    // }
-
-    // if (!description) {
-    //   setValidText('invalid');
-    //   return;
-    // } else {
-    //   setValidText('valid');
-    // }
 
     const nameLengthLimits = name.length >= 4 && name.length <= 35;
     const descriptionLengthLimits =

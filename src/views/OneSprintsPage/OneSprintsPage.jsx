@@ -82,6 +82,7 @@ const OneSprintsPage = () => {
     setArrayDate(doArrayOfDate(currentSprint.startDate, currentSprint.endDate));
     setChangeArray(false);
     setChangeDate(true);
+    setCount(Number(1));
   }
   if (changeDate) {
     setCurrentDate(arrayDate[0]);

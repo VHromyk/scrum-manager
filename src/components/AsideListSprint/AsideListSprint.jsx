@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import styles from './AsideListSprint.module.scss';
 
-const AsideListSprint = () => {
+const AsideListSprint = ({ onClick }) => {
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const { projectId } = useParams();
 

@@ -32,17 +32,31 @@ const OneSprintsPage = () => {
 
   const { projectId, sprintId } = useParams();
   const { taskId } = useParams(); // undefined
+  const [idSprint, setIdSprint] = useState(sprintId);
+  const [changeArray, setChangeArray] = useState(false);
+  const [changeDate, setChangeDate] = useState(false);
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
-  const currentSprint = sprints.find(({ id }) => id === sprintId);
-
+  const [currentSprint, setCurrentSprint] = useState(
+    sprints.find(({ id }) => id === idSprint),
+  );
   const dispatch = useDispatch();
 
   const filter = useSelector(tasksSelectors.getFilter);
 
-  const doArrayOfDate = () => {
-    let start = new Date(currentSprint.startDate),
-      end = new Date(currentSprint.endDate),
+  if (idSprint !== sprintId) {
+    setIdSprint(sprintId);
+  }
+  if (idSprint !== currentSprint.id) {
+    const sp = sprints.find(({ id }) => id === idSprint);
+    setCurrentSprint(sp);
+    setChangeArray(true);
+  }
+
+  const doArrayOfDate = (startDate, endDate) => {
+    console.log('mount One sprintPage');
+    let start = new Date(startDate),
+      end = new Date(endDate),
       array = [];
 
     for (let q = start; q <= end; q.setDate(q.getDate() + 1)) {
@@ -51,8 +65,20 @@ const OneSprintsPage = () => {
     return array;
   };
 
-  const [arrayDate, setArrayDate] = useState(doArrayOfDate());
+  const [arrayDate, setArrayDate] = useState(
+    doArrayOfDate(currentSprint.startDate, currentSprint.endDate),
+  );
   const [currentDate, setCurrentDate] = useState(arrayDate[0]);
+
+  if (changeArray) {
+    setArrayDate(doArrayOfDate(currentSprint.startDate, currentSprint.endDate));
+    setChangeArray(false);
+    setChangeDate(true);
+  }
+  if (changeDate) {
+    setCurrentDate(arrayDate[0]);
+    setChangeDate(false);
+  }
 
   const increment = e => {
     e.preventDefault();
@@ -236,7 +262,9 @@ const OneSprintsPage = () => {
             <Diagram
               duration={currentSprint.duration}
               currentDate={currentDate}
-              arrayOfDate={doArrayOfDate}
+              arrayOfDate={() =>
+                doArrayOfDate(currentSprint.startDate, currentSprint.endDate)
+              }
             />
           </ModalBackdrop>
         )}

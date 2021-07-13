@@ -4,10 +4,17 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.04em;
+
   background-color: $page-bcg-color;
   box-sizing: border-box;
   color: $text-main-color; // основний текст чорним шрифтом
 }
+
+body.modal-open {
+  overflow: hidden;
+}
+
 html {
   overflow-y: scroll;
 }

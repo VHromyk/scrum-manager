@@ -111,7 +111,7 @@ const SprintModal = ({ onCloseModal }) => {
               checkBox ? setCheckBox(false) : setCheckBox(true);
             }}
           >
-            <div className={styles.roud}>
+            <div className={styles.round}>
               {checkBox && (
                 <SvgComponent name="circle" classes={styles.circleIcon} />
               )}
@@ -169,7 +169,7 @@ const SprintModal = ({ onCloseModal }) => {
               {validDuration === 'invalidNumber' && (
                 <p
                   className={styles.helper2}
-                >{`*Please enter an integer greater than 0.`}</p>
+                >{`*Please enter an integer greater than 0`}</p>
               )}
             </div>
           </div>

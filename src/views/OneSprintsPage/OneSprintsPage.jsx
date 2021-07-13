@@ -40,10 +40,14 @@ const OneSprintsPage = () => {
   const [changeArray, setChangeArray] = useState(false);
   const [changeDate, setChangeDate] = useState(false);
 
+  const tasks = useSelector(tasksSelectors.getTasks);
+  console.log('tasks:', tasks);
+
   const sprints = useSelector(sprintsSelectors.getAllSprints);
   const [currentSprint, setCurrentSprint] = useState(
     sprints.find(({ id }) => id === idSprint),
   );
+
   const dispatch = useDispatch();
 
   const filter = useSelector(tasksSelectors.getFilter);
@@ -51,6 +55,7 @@ const OneSprintsPage = () => {
   if (idSprint !== sprintId) {
     setIdSprint(sprintId);
   }
+
   if (idSprint !== currentSprint.id) {
     const sp = sprints.find(({ id }) => id === idSprint);
     setCurrentSprint(sp);
@@ -58,7 +63,6 @@ const OneSprintsPage = () => {
   }
 
   const doArrayOfDate = (startDate, endDate) => {
-    console.log('mount One sprintPage');
     let start = new Date(startDate),
       end = new Date(endDate),
       array = [];
@@ -101,19 +105,17 @@ const OneSprintsPage = () => {
   const decrement = e => {
     e.preventDefault();
     const currentIndex = arrayDate.indexOf(currentDate);
+
     if (currentIndex === 0) {
       return;
     } else {
       setCurrentDate(arrayDate[currentIndex - 1]);
     }
+
     if ((count > 1 && count < arrayDate.length) || count === arrayDate.length) {
       setCount(prevstate => prevstate - 1);
     }
   };
-
-  // -------------
-  //   const dispatch = useDispatch();
-  // const filter = useSelector(tasksSelectors.getFilter);
 
   const onHandleInputSearch = useCallback(
     e => {
@@ -282,13 +284,15 @@ const OneSprintsPage = () => {
           <SvgComponent name="create-btn" classes={styles.addIcon} />
         </button>
         {/* Кнопка аналітки */}
-        <IconButton
-          classes={styles.analyticsBtn}
-          aria-label="open diagram button"
-          onClick={buttonHandlerDiagram}
-        >
-          <SvgComponent name="analytics" classes={styles.analyticsIcon} />
-        </IconButton>
+        {tasks.length > 0 && (
+          <IconButton
+            classes={styles.analyticsBtn}
+            aria-label="open diagram button"
+            onClick={buttonHandlerDiagram}
+          >
+            <SvgComponent name="analytics" classes={styles.analyticsIcon} />
+          </IconButton>
+        )}
       </Container>
     </>
   );

@@ -17,7 +17,6 @@ const SprintCard = ({
 
   return (
     <>
-      {/* <div className={styles.SprintCard}> */}
       <Link
         to={`/projects/${projectId}/sprints/${id}`}
         className={styles.sprintLink}
@@ -47,7 +46,6 @@ const SprintCard = ({
       >
         <SvgComponent name="delete" classes={styles.deleteSprintIcon} />
       </IconButton>
-      {/* </div> */}
     </>
   );
 };

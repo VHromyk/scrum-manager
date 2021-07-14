@@ -34,50 +34,46 @@ const TaskCard = ({
   };
 
   return (
-    // <div className={styles.sprintCard}>
-    <ul className={styles.sprintCardList}>
-      <li className={styles.sprintTitle}>
-        {name}
-        {/* <input className={styles.sprintNameInput}>{nameTask}</input> */}
-      </li>
-      <li className={styles.sprintItem}>
-        <span className={styles.sprintSpan}>Sheduled hours</span>
-        <span>{scheduledHours}</span>
-      </li>
-      <li className={styles.sprintItem}>
-        <span className={styles.sprintSpan}>Spent hour/day</span>
-        <form
-          onSubmit={e => {
-            handleSubmit(e, projectId, sprintId, id);
-          }}
-          onBlur={e => {
-            handleSubmit(e, projectId, sprintId, id);
-          }}
-        >
-          <input
-            className={styles.sprintRowInput}
-            type="text"
-            name="time"
-            value={time}
-            onChange={handleInputChange}
-          />
-        </form>
-      </li>
-      <li className={styles.sprintItem}>
-        <span className={styles.sprintSpan}>Hours spent</span>
-        <span>{hoursSpent}</span>
-      </li>
-      <li className={styles.sprintItem}>
-        <IconButton
-          classes={styles.deleteTaskBtn}
-          onClick={handleDeleteTask}
-          aria-label="delete sprint button"
-        >
-          <SvgComponent name="delete" classes={styles.deleteTaskIcon} />
-        </IconButton>
-      </li>
-    </ul>
-    // </div>
+    <>
+      <h3 className={styles.taskName}>{name}</h3>
+      <ul className={styles.taskDetailsList}>
+        <li className={styles.taskDetails}>
+          <span className={styles.taskSpan}>Sheduled hours</span>
+          <span>{scheduledHours}</span>
+        </li>
+        <li className={styles.taskDetails}>
+          <span className={styles.taskSpan}>Spent hour/day</span>
+          <form
+            onSubmit={e => {
+              handleSubmit(e, projectId, sprintId, id);
+            }}
+            onBlur={e => {
+              handleSubmit(e, projectId, sprintId, id);
+            }}
+          >
+            <input
+              className={styles.taskRowInput}
+              type="text"
+              name="time"
+              value={time}
+              onChange={handleInputChange}
+            />
+          </form>
+        </li>
+        <li className={styles.taskDetails}>
+          <span className={styles.taskSpan}>Hours spent</span>
+          <span>{hoursSpent}</span>
+        </li>
+      </ul>
+
+      <IconButton
+        classes={styles.deleteTaskBtn}
+        onClick={handleDeleteTask}
+        aria-label="delete sprint button"
+      >
+        <SvgComponent name="delete" classes={styles.deleteTaskIcon} />
+      </IconButton>
+    </>
   );
 };
 
@@ -85,6 +81,8 @@ TaskCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   scheduledHours: PropTypes.number.isRequired,
+  hoursSpent: PropTypes.number.isRequired,
+  spentTime: PropTypes.number.isRequired,
   handleDeleteTask: PropTypes.func.isRequired,
 };
 

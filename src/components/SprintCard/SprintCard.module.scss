@@ -7,9 +7,6 @@
 }
 
 .sprintName {
-  margin-top: 0;
-  margin-right: 0;
-  margin-left: 0;
   margin-bottom: 20px;
 
   font-weight: 500;
@@ -34,7 +31,7 @@
   font-size: 10px;
   line-height: 1.2;
 
-  color: $sprint-cart-text-color;
+  color: $cart-text-color;
 
   &:not(:last-child) {
     margin-bottom: 10px;

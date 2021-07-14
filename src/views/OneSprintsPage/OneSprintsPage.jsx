@@ -35,18 +35,16 @@ const OneSprintsPage = () => {
   const [count, setCount] = useState(Number(1));
 
   const { projectId, sprintId } = useParams();
-  const { taskId } = useParams(); // undefined
   const [idSprint, setIdSprint] = useState(sprintId);
   const [changeArray, setChangeArray] = useState(false);
   const [changeDate, setChangeDate] = useState(false);
 
   const tasks = useSelector(tasksSelectors.getTasks);
-  console.log('tasks:', tasks);
 
   const sprints = useSelector(sprintsSelectors.getAllSprints);
-  const [currentSprint, setCurrentSprint] = useState(
-    sprints.find(({ id }) => id === idSprint),
-  );
+  const currentSprint = sprints.find(({ id }) => id === sprintId);
+
+  // const [currentSprint1, setCurrentSprint1] = useState(currentSprint);
 
   const dispatch = useDispatch();
 
@@ -57,8 +55,8 @@ const OneSprintsPage = () => {
   }
 
   if (idSprint !== currentSprint.id) {
-    const sp = sprints.find(({ id }) => id === idSprint);
-    setCurrentSprint(sp);
+    // const sp = sprints.find(({ id }) => id === idSprint);
+    // setCurrentSprint1(sp);
     setChangeArray(true);
   }
 
@@ -67,7 +65,7 @@ const OneSprintsPage = () => {
       end = new Date(endDate),
       array = [];
 
-    for (let q = start; q <= end; q.setDate(q.getDate() + 1)) {
+    for (let q = start; q < end; q.setDate(q.getDate() + 1)) {
       array.push(q.toLocaleDateString());
     }
     return array;
@@ -129,8 +127,6 @@ const OneSprintsPage = () => {
     dispatch(authOperations.getCurrentUser());
     dispatch(tasksOperations.fetchTasks(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
-
-  // const currentTask = tasks.find(({ id }) => id === sprintId);
 
   // Зміна назви спринта
   const onRenameSprint = newName =>
@@ -208,16 +204,6 @@ const OneSprintsPage = () => {
                 <span className={styles.sprintDate}>{currentDate}</span>
               </div>
               <form className={styles.searchForm}>
-                {/* <IconButton
-                  classes={styles.searchBtn}
-                  aria-label="search task button"
-                >
-                  <SvgComponent
-                    name="search"
-                    classes={styles.searchIcon}
-                    type="submit"
-                  />
-                </IconButton> */}
                 <input
                   className={styles.searchSprint}
                   name="filter"
@@ -258,23 +244,19 @@ const OneSprintsPage = () => {
           <SprintModal onCloseModal={btnCloseSprint} projectId={sprintId} />
         )}
         {createTask && (
-          <TaskModal
-            onCloseModal={btnCloseTask}
-            projectId={taskId}
-            dateTask={currentDate}
-          />
+          <TaskModal onCloseModal={btnCloseTask} dateTask={currentDate} />
         )}
         {showDiagram && (
           <ModalBackdrop onClose={btnCloseDiagram} style={backdropStyles}>
             <Diagram
               duration={currentSprint.duration}
-              currentDate={currentDate}
               arrayOfDate={() =>
                 doArrayOfDate(currentSprint.startDate, currentSprint.endDate)
               }
             />
           </ModalBackdrop>
         )}
+
         {/* Кнопка додати проект */}
         <button
           onClick={buttonHandlerTask}
@@ -284,6 +266,7 @@ const OneSprintsPage = () => {
         >
           <SvgComponent name="create-btn" classes={styles.addIcon} />
         </button>
+
         {/* Кнопка аналітки */}
         {tasks.length > 0 && (
           <IconButton

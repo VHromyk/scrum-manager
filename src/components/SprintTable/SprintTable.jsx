@@ -15,7 +15,6 @@ const SprintTable = ({ currentDate }) => {
         <li className={styles.sprintFieldName}>Sheduled hours</li>
         <li className={styles.sprintFieldName}>Spent hour/day</li>
         <li className={styles.sprintFieldName}>Hours spent</li>
-        <li className={styles.sprintSearchHeaderBtn}></li>
       </ul>
       <div className={styles.headerLineWrapper}>
         <hr className={styles.headerLine} />

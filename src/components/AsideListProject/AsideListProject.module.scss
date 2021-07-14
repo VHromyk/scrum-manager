@@ -12,7 +12,10 @@
   width: 36px;
   height: 36px;
   border-radius: 5px;
-  // background-color: #8c72df;
+
+  &:hover {
+    box-shadow: $light-bcg-box-shadow;
+  }
 }
 
 .squareName {

@@ -24,9 +24,9 @@ const TasksList = ({ currentDate }) => {
   );
 
   return (
-    <ul className={styles.CardList}>
+    <ul className={styles.tasksList}>
       {taskList.map(({ id, name, scheduledHours, spentTime }) => (
-        <li className={styles.sprintCard} key={id}>
+        <li className={styles.listItem} key={id}>
           <TaskCard
             id={id}
             name={name}

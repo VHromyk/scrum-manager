@@ -65,7 +65,7 @@ const OneSprintsPage = () => {
       end = new Date(endDate),
       array = [];
 
-    for (let q = start; q < end; q.setDate(q.getDate() + 1)) {
+    for (let q = start; q <= end; q.setDate(q.getDate() + 1)) {
       array.push(q.toLocaleDateString());
     }
     return array;

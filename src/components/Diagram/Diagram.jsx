@@ -16,6 +16,7 @@ function Diagram({ duration, arrayOfDate }) {
     arrRedLine.push(sumRedLine); // создаем первый индекс массива;
     let currentIndex = sumRedLine; //первый индекс массива 105 сумма всех часов;
     let sumAllRedLine = sumRedLine / duration; // делим общее количество запланированых часов на кол-во дней спринта
+
     for (let i = 0; i <= duration; i += 1) {
       currentIndex = currentIndex - sumAllRedLine;
       let typeToNumber = Math.floor(currentIndex * 100) / 100; // обрезаем число до двух знаков после запятой;
@@ -65,8 +66,8 @@ function Diagram({ duration, arrayOfDate }) {
         label: 'Planned remaining work in hours',
         fill: false,
         lineTension: 0,
-        backgroundColor: 'rgb(255, 0, 0)',
-        borderColor: 'rgb(255, 0, 0)',
+        backgroundColor: '#ff2c0c',
+        borderColor: '#ff2c0c',
         data: daysRedLine(),
       },
     ],
@@ -75,99 +76,89 @@ function Diagram({ duration, arrayOfDate }) {
   const chartOptions = {
     layout: {
       padding: {
-        left: 0,
-        right: 10,
-        top: 20,
+        left: 20,
+        right: 20,
+        top: 10,
         bottom: 10,
       },
     },
-    responsive: true,
-    title: {
-      display: true,
-      text: 'Burndown Chart(Calendar Team)                                                          ',
-      fontColor: '#181C27',
-      fontFamily: "'Montserrat', 'sans-serif'",
-      fontSize: 23,
-      padding: 0,
-      position: 'top',
-    },
     elements: {
-      line: {
-        borderWidth: 2,
-      },
       point: {
         pointStyle: 'circle',
-        borderWidth: 2,
-        hoverRadius: 5,
+        borderWidth: 1, // радіус крапочки
+        radius: 2, // радіус крапочки
+
+        hoverRadius: 4, // радіус крапочки при ховері
+        hoverBorderWidth: 2, // border крапочки при ховері по ній
         hoverBackgroundColor: 'rgba(255, 255, 255, 0.2)',
-        hoverBorderWidth: 2,
-        radius: 2,
-        hitRadius: 10,
+      },
+      line: { borderWidth: 2 },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: 'BurnDown Chart (Calendar Team)',
+        color: '#181C27',
+        font: {
+          size: 14,
+          family: "'Montserrat', 'sans-serif'",
+        },
+        padding: 10,
+        position: 'top',
+        align: 'start',
+      },
+      responsive: true,
+      legend: {
+        display: true,
+        labels: {
+          color: '#181C27',
+          font: {
+            size: 12,
+            family: "'Montserrat', 'sans-serif'",
+          },
+          boxWidth: 5,
+          usePointStyle: true,
+          padding: 10,
+        },
       },
     },
-    tooltips: {
-      mode: 'index',
-      titleFontSize: 16,
-      titleMarginBottom: 10,
-      bodyFontFamily: "'Montserrat', 'sans-serif'",
-      bodyFontSize: 16,
-      bodySpacing: 5,
-      bodyAlign: 'center',
-      xPadding: 8,
-      yPadding: 8,
-      caretPadding: 5,
-      caretSize: 10,
-      cornerRadius: 6,
-    },
     scales: {
-      yAxes: [
-        {
-          scaleLabel: {
-            display: true,
-            labelString: 'man-hours',
-            fontFamily: "'Montserrat', 'sans-serif'",
-            fontSize: 16,
-            fontColor: '#181C27',
-          },
-          ticks: {
-            beginAtZero: true,
-            fontSize: 14,
-            fontColor: '#181C27',
-          },
-          gridLines: {
-            display: true,
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Man-hours',
+          font: {
+            size: 12,
+            family: "'Montserrat', 'sans-serif'",
           },
         },
-      ],
-      xAxes: [
-        {
-          gridLines: {
-            display: false,
-          },
-          ticks: {
-            beginAtZero: false,
-            fontSize: 14,
-            fontColor: '#181C27',
-          },
+        beginAtZero: true,
+        ticks: {
+          font: { size: 10 },
+          color: '#181C27',
         },
-      ],
-    },
-    legend: {
-      display: true,
-      fullWidth: false,
-      labels: {
-        fontColor: '#181C27',
-        fontFamily: "'Montserrat', 'sans-serif'",
-        fontSize: 12,
-        boxWidth: 5,
-        usePointStyle: true,
-        padding: 20,
+        grid: {
+          display: true,
+        },
+      },
+
+      x: {
+        beginAtZero: false,
+        ticks: {
+          font: { size: 10 },
+          color: '#181C27',
+        },
+        grid: {
+          display: false,
+        },
       },
     },
   };
 
   return (
     <div className={styles.chartContainer}>
+      {/* <h3 className={styles.title}>BurnDown Chart (Calendar Team)</h3> */}
       <Line data={data} options={chartOptions} />
     </div>
   );

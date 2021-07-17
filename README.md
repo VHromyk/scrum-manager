@@ -4,9 +4,9 @@ This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app), using the
 [Redux](https://redux.js.org/).
 
-Live page of the project: [Netlify](https://scrum-manager2.netlify.app/login)
-[Backend](https://github.com/VHromyk/scrum-manager-backend) repository Link to
-backend [documentation](https://scrum-manager-24.herokuapp.com/api-docs/)
+_Live page of the project: [Netlify](https://scrum-manager2.netlify.app/login)
+_[Backend](https://github.com/VHromyk/scrum-manager-backend) repository \*Link
+to backend [documentation](https://scrum-manager-24.herokuapp.com/api-docs/)
 
 # Technologies and libraries used
 
